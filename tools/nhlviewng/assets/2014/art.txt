@@ -1,0 +1,8336 @@
+3000 - Aab, Vitalij
+3002 - Aalto, Teemu
+3003 - Aaltonen, Juhamatti
+9467 - Aaltonen, Miro
+1728 - Aaltonen, Nico
+3004 - Aarnio, Antti
+5199 - Abbott, Cam
+5200 - Abbott, Chris
+9189 - Abbott, Michael
+10216 - Abbott, Spencer
+2661 - Abdelkader, Justin
+6888 - Abeltshauser, Konrad
+5750 - Abid, Ramzi
+5785 - Abney, Cameron
+9904 - Abou-Assaly, Andrew
+5509 - Abplanalp, Marc
+7730 - Abraham, Spencer
+6133 - Acolatse, Sena
+9413 - Acton, Will
+8818 - Adam, Austin
+6802 - Adam, Luke
+3009 - Adams, Bryan
+2 - Adams, Craig
+3010 - Adamski, Marek
+2837 - Adamsky, Martin
+9947 - Addesi, Jordan
+9933 - Addison, Jeremiah
+4 - Aebischer, David
+5 - Afanasenkov, Dimitry
+6 - Afinogenov, Maxim
+6485 - Agozzino, Andrew
+1571 - Ahlqvist, Aleksis
+7393 - Ahlstrom, Oscar
+7392 - Ahlstrom, Victor
+1463 - Ahnelöv, Jonas
+2570 - Ahtola, Jerry
+7335 - Aittokallio, Sami
+3015 - Aizawa, Shigehiko
+2462 - Akdag, Sinan
+6415 - Akeson, Jason
+10108 - Alain, Charles-Antoine
+7333 - Alatalo, Santeri
+6326 - Alberga, Domenic
+3022 - Alberici, Alberto
+9317 - Albert, John
+1127 - Alberts, Andrew
+10042 - Alcalde, Liam
+6512 - Alcock, Cody
+6653 - Alderson, Brandon
+6308 - Aleardi, Alex
+3024 - Alen, Juha
+9930 - Alexeev, Andrey
+10 - Alfredsson, Daniel
+3026 - Alikoski, Mikko
+2457 - Alinc, Jan
+4508 - Aliu, Akim
+12 - Allen, Bryan
+6836 - Allen, Jake
+7418 - Alm, Johan
+1007 - Almond, Cody
+7380 - Almquist, Adam
+1429 - Almtorp, Jonas
+6159 - Alos, Tyler
+8613 - Alsenfelt, Oscar
+9057 - Altshuller, Daniel
+5386 - Alzner, Karl
+1812 - Amadio, Greg
+9849 - Amadio, Michael
+3027 - Ambühl, Andres
+9321 - Amestoy, Carlos
+9411 - Andersen, Frederik
+2533 - Andersen, Niclas
+16 - Anderson, Craig
+6483 - Anderson, JP
+9034 - Anderson, Josh
+2125 - Anderson, Matt
+10094 - Anderson, Stephen
+9604 - Andersson, Andreas
+10310 - Andersson, Calle
+2557 - Andersson, Erik
+85 - Andersson, Joakim
+2543 - Andersson, Johan
+3032 - Andersson, Johan A.
+10307 - Andersson, Jonathan
+3035 - Andersson, Peter
+6511 - Andreoff, Andy
+6904 - Andrews, Brent
+9218 - Andrighetto, Sven
+4811 - Andronov, Sergey
+10237 - Andrä, Andreas
+1739 - Angelidis, Mike
+2145 - Anisimov, Artem
+2448 - Ankert, Torsten
+7078 - Anthony, Steven
+879 - Antonietti, Benjamin
+8581 - Antonietti, Eliot
+20 - Antropov, Nik
+3040 - Anttila, Marko
+9648 - Appleby, Ken
+3042 - Apsitis, Sergey
+7951 - Aquin, Samuel
+7133 - Archambault, Olivier
+9200 - Archambault, Philippe
+6689 - Archibald, Brandon
+6281 - Archibald, Darren
+8780 - Arcobello, Mark
+1776 - Ardelan, Mark
+3043 - Arendt, Ronny
+3044 - Arkatov, Vyacheslav
+2560 - Arlbrandt, Par
+7325 - Armia, Joel
+1154 - Armstrong, Colby
+5634 - Armstrong, John
+2060 - Arniel, Jamie
+10170 - Arnold, Scott
+25 - Arnott, Jason
+6031 - Aronson, Taylor
+9146 - Arsenault, Jacob
+1871 - Arsene, Dean
+6756 - Arseneau, Vincent
+9340 - Arvidsson, Viktor
+26 - Asham, Arron
+7921 - Ashley, Darcy
+6118 - Ashton, Carter
+1443 - Ask, Morten
+10322 - Åslin, David
+1461 - Åslund, Per
+9397 - Aspeqvist, Christopher
+6968 - Asselin, Guillaume
+8953 - Ast, Anthony
+5855 - Astles, Jessey
+7764 - Athanasiou, Andreas
+8740 - Atkinson, Cam
+2283 - Aubin, Brent
+4460 - Aubin, Mathieu
+6965 - Aubry, Louis-Marc
+10125 - Aubé-Kubel, Nicolas
+29 - Aucoin, Adrian
+1210 - Aucoin, Keith
+9650 - Audette, Daniel
+7008 - Audy-Marchessault, Jonathan
+9006 - Auger, Justin
+10025 - Auger, Jérémy
+9226 - Auger, Sébastien
+5525 - Augsburger, Gaetan
+8618 - Augustin, Jeremias
+31 - Auld, Alexander
+900 - Aulie, Keith
+3050 - Aus den Birken, Danny
+6357 - Austin, Brady
+9450 - Auvitu, Yohann
+3051 - Auzins, Igor
+7671 - Aviani, Mike
+1464 - Axelsson, Anton
+2535 - Axelsson, Dick
+34 - Axelsson, Per-Johan
+10133 - Ayotte, Mathieu
+5623 - Azevedo, Justin
+3052 - Azzaroni, Marco
+35 - Babchuk, Anton
+7025 - Babineau, Casey
+9886 - Babintsev, Semyon
+36 - Bacashihua, Jason
+8427 - Bachman, Richard
+5667 - Back, Rene
+1373 - Backes, David
+1527 - Backlund, Johan
+5387 - Backlund, Mikael
+37 - Backman, Christian
+8456 - Backman, Sean
+3057 - Backman, Simon
+1431 - Backstrom, Nicklas
+3058 - Backstrom, Niklas
+9677 - Baddock, Brandon
+7607 - Baertschi, Sven
+2187 - Bagnall, Drew
+10294 - Bagnoud, Christopher
+4593 - Bahensky, Zdenek
+9992 - Bahl, Julien
+4438 - Bailey, Josh
+9875 - Bailey, Justin
+6532 - Bailie, Kevin
+8837 - Baillie, Tyson
+8881 - Baker, Joey
+3059 - Bakos, Michael
+1108 - Balastik, Jaroslav
+2247 - Baldwin, Gord
+8395 - Baldwin, Lee
+39 - Balej, Jozef
+1101 - Ballard, Keith
+8703 - Balmelli, Lukas
+3060 - Balodis, George
+10303 - Baltisberger, Chris
+10305 - Baltisberger, Phil
+3061 - Banasik, Jacek
+5888 - Bancks, Carter
+7394 - Bang, Daniel
+9121 - Banville, Alec Jon
+9105 - Baptiste, Nicholas
+10049 - Barbashev, Ivan
+6946 - Barberio, Mark
+1393 - Barch, Krystofer
+6190 - Bardaro, Anthony
+40 - Barinka, Michal
+1211 - Barker, Cam
+9459 - Barkov, Aleksander
+9540 - Barlow, Evan
+6255 - Barnett, JT
+9286 - Barriball, Jay
+9945 - Barrick, Brodie
+5857 - Barrie, Tyson
+3067 - Barta, Alexander
+3068 - Barta, Bjorn
+8651 - Barta, Michal
+3069 - Bartecko, Lubos
+3070 - Bartek, Martin
+8413 - Bartkowski, Matt
+7177 - Bartley, Victor
+8904 - Bartosak, Patrik
+46 - Bartovic, Milan
+2223 - Bartulis, Oskars
+2114 - Bass, Cody
+3072 - Bassen, Chad
+6312 - Basso, Alex
+1503 - Bastiansen, Anders
+5575 - Bastl, Mark
+9115 - Bateman, Adam
+10134 - Batt, Lucas
+9861 - Bauman, Chad
+8819 - Bauml, Kohl
+3075 - Baxmann, Jens
+1334 - Bayda, Ryan
+10390 - Bays, Christophe
+2343 - Bazany, Marian
+5184 - Beach, Cody
+6186 - Beach, Kyle
+2151 - Beagle, Jay
+10004 - Beaton, Bronson
+10005 - Beaton, Zach
+10047 - Beauchemin, Dominic
+51 - Beauchemin, Francois
+7903 - Beaudoin, Charles-David
+8019 - Beaudoin, Eric
+5620 - Beaudoin, Mathieu
+9243 - Beaudry, Jeremy
+7044 - Beaudry, Michaël
+10135 - Beaulieu, Anthony
+2227 - Beaulieu, Josh
+7085 - Beaulieu, Nathan
+9151 - Beauregard, Mickael
+6918 - Beauvillier, Francis
+3079 - Bebko, Mark
+6370 - Beck, Taylor
+8863 - Becker, Kyle
+9865 - Beckstead, Marc
+8020 - Bednar, Jaroslav
+3080 - Bednarz, Artur
+54 - Beech, Kris
+2432 - Beechey, Tyler
+55 - Begin, Steve
+3081 - Beier, Eugene
+58 - Belanger, Eric
+10032 - Belding, Brandon
+5258 - Beleskey, Matt
+1213 - Bell, Brendan
+8974 - Bell, Brendan
+60 - Bell, Mark
+6126 - Bell, Myles
+8830 - Bell, Tyler
+6337 - Bell, Zach
+1359 - Belle, Shawn
+604 - Bellemare, Pierre-Edouard
+5225 - Bellemore, Brett
+7699 - Bellerive, Matt
+9612 - Bellissimo, Daniel
+7618 - Belter, Caleb
+1666 - Ben-Amor, Semir
+2826 - Benak, Vaclav
+3084 - Benin, Eugene
+373 - Benn, Jamie
+8428 - Benn, Jordie
+10184 - Bennett, Beau
+9870 - Bennett, Samuel
+6015 - Bennett, Spencer
+1954 - Benoit, Andre
+7576 - Benoit, Erik
+10014 - Benoit, Samuel
+9482 - Benovic, Tomáš
+6141 - Benson, Brent
+8811 - Benson, Cole
+2221 - Benson, Hans
+9190 - Bent, Kelly
+3085 - Bentley, Nick
+9191 - Beran, Matej
+3087 - Berg, Markus
+3088 - Bergamini, Pietro
+65 - Bergenheim, Sean
+1 - Berger, Alain
+8705 - Berger, Nils
+5742 - Berger, Pascal
+5588 - Berger, Sven
+9230 - Bergeron, Félix-Antoine
+66 - Bergeron, Marc-Andre
+67 - Bergeron, Patrice
+10035 - Bergeron, Simon
+9135 - Bergeron, Toliver
+7372 - Berglind, Victor
+8024 - Berglund, Christian
+8609 - Berglund, Jonas
+5195 - Berglund, Kristofer
+4445 - Berglund, Patrik
+9620 - Bergström, Nils
+9842 - Berisha, Aaron
+3093 - Berkoff, Stanislav
+6754 - Bernier, Alexis
+2076 - Bernier, Jonathan
+1177 - Bernier, Steve
+5701 - Berra, Reto
+7478 - Bertaggia, Alessio
+8706 - Berthon, Eliot
+53 - Bertilsson, Simon
+9678 - Bertolucci, Luke
+9431 - Bertrand, Charles
+10300 - Bertschy, Christoph
+71 - Bertuzzi, Todd
+9007 - Bertuzzi, Tyler
+6954 - Berube, Jean-Francois
+7062 - Berube, Jean-Sebastien
+6409 - Beskorowany, Tyler
+9685 - Betker, Ben
+7612 - Bettauer, James
+72 - Betts, Blair
+8995 - Betz, Nick
+9918 - Betzold, Greg
+6694 - Beukeboom, Brock
+7654 - Bews, Levi
+7712 - Beyers, Steven
+73 - Bezina, Goran
+5672 - Bianchi, Elias
+5693 - Bianchi, Mattia
+9192 - Bibeau, Antoine
+2856 - Bicanek, Radim
+8026 - Bicek, Jiri
+5259 - Bickel, Stu
+2052 - Bickell, Bryan
+5761 - Bieber, Matthias
+8410 - Biega, Alex
+1152 - Bieksa, Kevin
+3096 - Bielas, Robert
+7220 - Bielke, Dominik
+8487 - Biggs, Tyler
+7715 - Bignell, Adam
+9062 - Bigras, Chris
+9116 - Bilcke, Ty
+4618 - Bilek, Vitezslav
+3097 - Bilik, Varoslav
+10275 - Billia, Julio
+10198 - Billins, Chad
+8538 - Bina, Robbie
+7170 - Binnington, Jordan
+5496 - Birbaum, Alain
+7556 - Birkholz, Josh
+1902 - Birner, Michal
+76 - Biron, Martin
+5290 - Bishop, Ben
+10006 - Bishop, Clark
+9152 - Bisson, Elliot
+6927 - Bissonnette, Matthew
+2045 - Bissonnette, Paul
+10202 - Bitetto, Anthony
+8821 - Bittner, Dominik
+9766 - Bittner, Jan
+9742 - Bittner, Paul
+9743 - Bjorkstrand, Oliver
+10358 - Bjugstad, Nick
+8937 - Black, Graham
+6572 - Blacker, Jesse
+3102 - Blair, Ian
+9901 - Blair, Jacob
+80 - Blake, Jason
+2106 - Blanchard, Nicolas
+2439 - Blanchard, Sean
+9063 - Blandisi, Joseph
+3103 - Blank, Boris
+3104 - Blank, Sachar
+5676 - Blaser, Yannick
+3105 - Blatter, Florian
+9767 - Bleackley, Conner
+5584 - Blindenbacher, Severin
+5373 - Bliznak, Mario
+3107 - Blomdahl, Patric
+8854 - Blomqvist, Albin
+9301 - Blomqvist, Anton
+9713 - Blomqvist, Axel
+5841 - Bloodoff, Evan
+7726 - Blujus, Dylan
+5754 - Blum, Eric
+682 - Blum, Jonathon
+1332 - Blunden, Michael
+7769 - Bobkov, Igor
+7507 - Bobrovsky, Sergei
+10357 - Bobyk, Colton
+3108 - Bobyk, Roman
+5556 - Bodenmann, Simon
+2039 - Bodie, Troy
+5308 - Bodnarchuk, Andrew
+4440 - Boedker, Mikkel
+7509 - Boes, Corbin
+9298 - Bogosian, Aaron
+4431 - Bogosian, Zach
+9403 - Bohm, Oliver
+8767 - Bohmbach, Andy
+9201 - Boily, Mathieu
+9219 - Bois, Redgie
+7283 - Bojer, Jan
+7806 - Boland, Connor
+2202 - Bolduc, Alexandre
+9757 - Bolduc, Carson
+2729 - Bolf, Lukáš
+2097 - Boll, Jared
+1333 - Bolland, Dave
+8453 - Bollig, Brandon
+9410 - Boltshauser, Luca
+7197 - Bonino, Nick
+88 - Bonk, Radek
+2301 - Bonneau, Jimmy
+5546 - Bonnet, Julien
+548 - Bonsaksen, Alexander
+9768 - Boomgaarden, Riley
+3113 - Boos, Tino
+1350 - Booth, David
+435 - Bordeleau, Patrick
+8420 - Bordson, Rob
+2107 - Borer, Casey
+10185 - Borlat, Valentin
+9257 - Borowiecki, Mark
+5819 - Bortnak, Dalibor
+732 - Bortuzzo, Robert
+10225 - Bostrom, Justin
+93 - Bouchard, Pierre-Marc
+94 - Boucher, Brian
+10136 - Boucher, Félix
+5400 - Boucher, Jean-Francois
+9092 - Boucher, Reid
+96 - Bouck, Tyler
+9159 - Boudens, Matthew
+10039 - Boudreau, Deric
+9989 - Boudreau, Gabryel
+7922 - Boudreau, Matthew
+9583 - Boudreau, Shawn
+10077 - Boudreau, Simon
+98 - Bouillon, Francis
+100 - Boulton, Eric
+6247 - Bouma, Lance
+8036 - Boumedienne, Josef
+8391 - Bourbeau, Jean
+7174 - Bourdon, Marc-Andre
+7626 - Bourke, Troy
+9887 - Bourne, Damian
+7110 - Bournival, Michael
+1872 - Bourque, Chris
+6950 - Bourque, Gabriel
+1110 - Bourque, Rene
+7021 - Bourque, Ryan
+7072 - Bourret, Gabriel
+10078 - Boutet, Jasmin
+7028 - Boutet, Étienne
+7904 - Bouvet-Morrissette, Andre
+102 - Bouwmeester, Jay
+9806 - Bow, Landon
+9117 - Bowen, John
+8838 - Bowey, Madison
+9812 - Bowles, Parker
+936 - Bowman, Drayson
+2286 - Boyce, Darryl
+9343 - Boyce-Rotevall, Jeremy
+1740 - Boychuk, Johnny
+6016 - Boychuk, Riley
+4433 - Boychuk, Zach
+8822 - Boyd, Jordyn
+3119 - Boyer, Olivier
+103 - Boyes, Brad
+2192 - Boyle, Brian
+104 - Boyle, Dan
+5286 - Boyle, Daryl
+481 - Bozak, Tyler
+8831 - Bozon, Tim
+7800 - Brace, Cameron
+6470 - Brace, Riley
+8975 - Bradford, Erik
+8889 - Braid, Chance
+7707 - Braid, Mackenzie
+3120 - Brain, Nick
+6596 - Braithwaite, Jeff
+10255 - Brandt, Marcel
+6298 - Brassard, Austen
+2279 - Brassard, Derick
+9202 - Brassard, François
+10036 - Brassard, Éric
+6183 - Brassart, Brady
+3122 - Brathen, Per
+9924 - Bratina, Zach
+2365 - Braun, Constantin
+8433 - Braun, Justin
+7221 - Braun, Laurin
+5972 - Bredo, Dylan
+6597 - Breen, Christopher
+6261 - Breitkreuz, Brett
+9518 - Brejcak, Ján
+570 - Brendheden, Andrée
+110 - Brendl, Pavel
+9122 - Brennan, Jacob
+5636 - Brennan, Mike
+698 - Brennan, T.J.
+9414 - Brenner, Tyler
+1814 - Brent, Tim
+112 - Brewer, Eric
+113 - Briere, Danny
+6915 - Brisebois, Mathieu
+9625 - Brithén, Ted
+6615 - Brittain, Josh
+9723 - Broadhead, Gavin
+9878 - Broadhurst, Alex
+7443 - Brocklehurst, Aaron
+5155 - Broda, Joel
+10394 - Brodeur, Anthony
+119 - Brodeur, Martin
+6790 - Brodeur, Mathieu
+1980 - Brodeur, Mike
+6292 - Brodie, TJ
+7367 - Brodin, Daniel
+7376 - Brodin, Jonas
+1214 - Brodziak, Kyle
+6345 - Broll, David
+1406 - Brookbank, Sheldon
+120 - Brookbank, Wade
+9774 - Brooks, Adam
+853 - Brooks, Brendan
+8872 - Brooks, Brett
+8805 - Brooks, Calder
+2265 - Brophey, Evan
+1555 - Bros, Michal
+7547 - Brossoit, Laurent
+7905 - Brouillard, Marc-Olivier
+9160 - Brouillard, Nikolas
+8776 - Brouillette, Julien
+1376 - Brouwer, Troy
+10171 - Brown, Chris
+9837 - Brown, Cody
+8996 - Brown, Connor
+9941 - Brown, Davis
+123 - Brown, Dustin
+10208 - Brown, J.T.
+9058 - Brown, Josh
+10095 - Brown, Mackenzie
+1788 - Brown, Mike
+9557 - Brown, Rob
+8873 - Brown, Travis
+6436 - Brown, Tyler
+1670 - Bruckler, Bernd
+994 - Bruess, Trevor
+5677 - Brunner, Damien
+2539 - Brunnstrom, Fabian
+1420 - Brust, Barry
+10169 - Bruton, Chris
+3133 - Bruun, Antti
+10079 - Bryukvin, Vladimir
+127 - Bryzgalov, Ilya
+2310 - Brückmann, Felix
+2311 - Brückner, Benedikt
+8708 - Brügger, Sandro
+7287 - Buchtele, Jan
+2472 - Buchwieser, Martin
+1185 - Budaj, Peter
+5732 - Buhrer, Marco
+3134 - Bulakhov, Yury
+5849 - Bulmer, Brett
+9475 - Bulír, Michal
+3136 - Bunka, Andris
+6061 - Buonassisi, Nick
+6598 - Buonomo, Chris
+10007 - Bureau, Alex
+2769 - Burger, Jiri
+9962 - Burgess, Connor
+9500 - Burian, Vilém
+1324 - Burish, Adam
+8883 - Burke, Brendan
+7914 - Burke, Taylor
+5590 - Burkhalter, Loic
+2179 - Burki, Codey
+9252 - Burlon, Brandon
+6271 - Burmistrov, Alexander
+133 - Burns, Brent
+6249 - Burns, Nathan
+9885 - Burnside, Josh
+8914 - Burroughs, Kyle
+1157 - Burrows, Alexandre
+10058 - Bursey, Matt
+7407 - Burström, Niclas
+3139 - Busch, Florian
+5977 - Busenius, Dylan
+6786 - Bussieres, Raphaël
+9724 - Butcher, Chad
+134 - Butenschön, Sven
+7195 - Butler, Bobby
+5302 - Butler, Chris
+6053 - Button, Ryan
+2317 - Buzas, Patrick
+1767 - Byers, Dane
+1215 - Byfuglien, Dustin
+5498 - Bykov, Andrej
+709 - Byron, Paul
+9356 - Bystrom, Ludvig
+9335 - Bäckman, Mattias
+7456 - Bäckström, Nils
+9553 - Bär, Steven
+5740 - Bärtschi, Patrik
+10086 - Bélanger, Alexandre
+9993 - Bérubé, Élie
+5569 - Bühler, Cyrill
+5702 - Bürgler, Dario
+8845 - Cable, Levi
+3143 - Cacciaguerra, Alberto
+9421 - Cadorette, Philippe
+3144 - Caffrey, Steve
+7737 - Cairns, Luke
+140 - Cajanek, Petr
+7753 - Cajkovsky, Michal
+2828 - Cakajik, Martin
+1997 - Caldwell, Ryan
+5320 - Calla, Brady
+9668 - Calladine, Austin
+9071 - Callaghan, Sean
+1824 - Callahan, Joe
+5853 - Callahan, Mitch
+1360 - Callahan, Ryan
+4986 - Calvert, Matt
+6630 - Camara, Anthony
+5762 - Camenzind, Andreas
+5973 - Cameron, Bretton
+7997 - Cameron, Jason
+5664 - Camichel, Corsin
+5666 - Camichel, Duri
+142 - Cammalleri, Mike
+6650 - Campagna, JC
+7853 - Campagna, Mathew
+5624 - Campbell, Andrew
+143 - Campbell, Brian
+2027 - Campbell, Darcy
+144 - Campbell, Greg
+7861 - Campbell, Jack
+7968 - Campbell, Kyle
+9293 - Camper, Carter
+884 - Camperchioli, Luca
+1111 - Campoli, Chris
+3145 - Cane, Rob
+10353 - Cannata, Joe
+9258 - Cannone, Pat
+6737 - Cantin, Marc
+1998 - Canzanello, Andy
+9161 - Caouette, Olivier
+9259 - Caporusso, Louie
+5388 - Caputi, Luca
+1414 - Carcillo, Daniel
+6715 - Cardwell, Jake
+10161 - Carey, Paul
+1216 - Carkner, Matt
+2141 - Carle, Mathieu
+1217 - Carle, Matt
+9059 - Carlisle, Chris
+995 - Carlson, John
+7396 - Carlsson, Fredrik
+2534 - Carlsson, Jonathan
+1465 - Carlsson, Patrik
+8448 - Carman, Mike
+8980 - Carnevale, Alex
+10087 - Caron, Allan
+10088 - Caron, Félix
+6778 - Caron, Jean-Philippe
+7065 - Caron, Jordan
+9983 - Caron, Miguel
+146 - Caron, Sebastien
+9928 - Carrick, Connor
+6322 - Carrick, Sam
+9042 - Carrick, Trevor
+10038 - Carrier, Alexandre
+10066 - Carrier, Marc-Antoine
+6926 - Carrier, Samuel
+10015 - Carrier, Scott
+7885 - Carrier, William
+7201 - Carriere, Jack
+8777 - Carroll, Andrew
+8962 - Carroll, Austin
+6481 - Carrozzi, Chris
+6032 - Carruth, Mac
+1741 - Carson, Brett
+2827 - Cartelli, Mario
+1089 - Carter, Jeff
+1815 - Carter, Ryan
+2510 - Caruso, Dave
+5321 - Caruso, Michael
+9758 - Carvalho, Joseph
+9060 - Cassels, Cole
+760 - Casserini, Giacomo
+5675 - Casutt, Corsin
+6673 - Catenacci, Daniel
+3153 - Cavallo, Mario
+8939 - Cave, Colby
+2753 - Cech, Filip
+6553 - Ceci, Cody
+10314 - Cederholm, Anton
+495 - Cehlin, Patric
+9076 - Ceresnak, Peter
+2918 - Cermak, Leoš
+4640 - Cermák, Miloslav
+2965 - Cernosek, Marek
+4592 - Cerny, Jakub
+4641 - Cervenka, Roman
+7299 - Cerveny, Rudolf
+3154 - Cespiva, David
+2810 - Cetkovsky, Jiri
+8656 - Chaloupka, Petr
+7153 - Champagne, Joël
+7838 - Chapman, Adam
+9938 - Chapman, Josh
+5858 - Chapman, Mitchell
+6922 - Chaput, Michael
+5226 - Chaput, Stefan
+151 - Chara, Zdeno
+3157 - Charpenon, Pierre
+8929 - Chartier, Connor
+9701 - Chartier, Rourke
+8806 - Chase, Greg
+10360 - Chavaillaz, Benjamin
+154 - Cheechoo, Jonathan
+7535 - Cheek, Trevor
+6782 - Chenevert, Alexandre
+8832 - Cheveldave, Cole
+9314 - Cheverie, Marc
+6666 - Chiarlitti, Nathan
+6714 - Chiarot, Ben
+10182 - Chiasson, Alex
+5715 - Chiesa, Alessandro
+6562 - Childerley, Brendan
+156 - Chimera, Jason
+1955 - Chipchura, Kyle
+5334 - Chorney, Taylor
+159 - Chouinard, Eric
+7156 - Chouinard, Joel
+3162 - Christen, Björn-Olaf
+1143 - Christensen, Erik
+3163 - Christensen, Johan
+7245 - Christensen, Mads
+3164 - Christiansen, Ole
+9775 - Christoffer, Braden
+3166 - Chubisov, Serikbolsyn
+8457 - Chupp, Cody
+3167 - Churin, Theodor
+8823 - Chynoweth, Ryan
+2736 - Chábera, Jan
+10059 - Chénier-Allard, Alexandre
+7923 - Ciampini, Luca
+163 - Cibak, Martin
+8056 - Ciernik, Ivan
+2877 - Cikanek, Lukas
+3169 - Ciroi, Umberto
+6459 - Cizikas, Casey
+5294 - Clackson, Matt
+9136 - Clapperton, Christopher
+165 - Clark, Brett
+6523 - Clark, Emerson
+10153 - Clark, Jason
+8475 - Clark, Kevin
+6335 - Clark, Mat
+9850 - Clarke, Blake
+9167 - Clarke, Chris
+3171 - Clarke, Dale
+7952 - Clarke, Michael
+9248 - Clarke, Michael
+1882 - Clarkson, David
+3172 - Classen, Greg
+7528 - Clayton, Chase
+168 - Cleary, Daniel
+3173 - Cleeve, Dave
+169 - Clemmensen, Scott
+9575 - Clendening, Adam
+6859 - Clermont, Maxime
+2193 - Cliche, Marc-Andre
+6274 - Clifford, Kyle
+5629 - Climie, Matt
+5336 - Clitsome, Grant
+7998 - Cloutier, Guillaume
+1090 - Clowe, Ryane
+9813 - Clowes, Brodie
+2167 - Clune, Rich
+9958 - Clutsam, Mac
+2157 - Clutterbuck, Cal
+9043 - Cobbold, Spenser
+1091 - Coburn, Braydon
+8643 - Cochrane, William
+6093 - Coetzee, Willie
+2090 - Cogliano, Andrew
+8441 - Cohen, Colby
+8449 - Cohen, Zach
+172 - Colaiacovo, Carlo
+2425 - Colbert, Will
+8414 - Colborne, Joe
+173 - Cole, Erik
+8442 - Cole, Ian
+1194 - Coleman, Gerald
+9352 - Collberg, Sebastian
+3177 - Collenberg, Franco
+1218 - Collins, Rob
+10178 - Collins, Sean
+2149 - Collins, Sean
+3178 - Colliva, Francesco
+9551 - Combs, Jack
+1362 - Comeau, Blake
+174 - Commodore, Mike
+6383 - Comrie, Adam
+8944 - Comrie, Eric
+6851 - Comtois, Alexandre
+8346 - Comtois, Thierry
+8779 - Conacher, Cory
+414 - Conboy, Andrew
+1742 - Conboy, Tim
+957 - Condra, Erik
+176 - Conklin, Ty
+6264 - Connauton, Kevin
+5716 - Conne, Flavien
+4510 - Connelly, Brian
+1364 - Conner, Chris
+6058 - Connolly, Brett
+10330 - Connolly, Chris
+9599 - Connolly, Jack
+9694 - Connolly, Josh
+9310 - Connolly, Mike
+177 - Connolly, Tim
+8800 - Conroy, Dakota
+3179 - Conti, Leonardo
+5517 - Conz, Benjamin
+5524 - Conz, Florian
+9065 - Cook, Holden
+7572 - Cooke, Jordon
+179 - Cooke, Matt
+8955 - Cooke, Scott
+9227 - Cooper, Oliver
+9658 - Cooper, Taylor
+3180 - Cope, Cédric
+9679 - Corbett, Cody
+9106 - Corbett, Jeff
+5861 - Corbin, Antoine
+9929 - Corbin, Riley
+6476 - Cord, Alex
+7068 - Cormier, Patrice
+9916 - Cornel, Eric
+7067 - Cornet, Philippe
+3182 - Coronel, Stefan
+6716 - Corrado, Frankie
+5269 - Corrente, Matthew
+9203 - Corriveau, Raphaël
+3183 - Corry, Mike
+8058 - Corso, Daniel
+7719 - Corson, Dylan
+9118 - Cortellessa, Anthony
+10031 - Cortese, Anthony
+10290 - Corvi, Enzo
+183 - Corvo, Joe
+8963 - Cote, Brett
+1220 - Cote, Jean-Phillipe
+8924 - Cotton, Daniel
+2387 - Courchaine, Adam
+6360 - Courchaine, Adam
+9168 - Courtemanche, Samuel
+7070 - Cousineau, Marco
+6686 - Cousins, Nick
+1800 - Couture, Derek
+483 - Couture, Logan
+9652 - Couture, William
+6840 - Couturier, Sean
+6192 - Cowen, Jared
+6543 - Cowick, Corey
+6005 - Cox, Connor
+8865 - Cox, Trevor
+9417 - Coyle, Charlie
+5979 - Coyle, Jace
+9819 - Coyle, Stewart
+1752 - Crabb, Joey
+2253 - Cracknell, Adam
+6217 - Craig, Graeme
+1153 - Craig, Ryan
+6462 - Cramarossa, Joseph
+9843 - Cramarossa, Michael
+1195 - Crawford, Corey
+6290 - Crawford, Nick
+6416 - Crescenzi, Andrew
+7735 - Crisp, Connor
+5699 - Croce, Lorenzo
+1600 - Crombeen, B.J.
+6571 - Crombeen, Curtis
+5459 - Crooks, Jamie
+1082 - Crosby, Sidney
+8833 - Cross, Landon
+987 - Crowder, Paul
+8964 - Crunk, Taylor
+7038 - Culek, Jakub
+7969 - Culkin, Ryan
+7754 - Cull, Nathan
+186 - Cullen, Matt
+9550 - Cullity, Patrick
+6552 - Cuma, Tyler
+1379 - Cumiskey, Kyle
+9966 - Cummins, Conor
+6740 - Cundari, Mark
+6250 - Cunningham, Craig
+854 - Cunti, Luca
+10096 - Cuomo, Marcus
+8558 - Cupper, Marvin
+7842 - Curcuruto, Gianluca
+6993 - Currie, Josh
+2073 - Curry, John
+6296 - Curtis, Michael
+5093 - Cutta, Jakub
+6569 - Cutting, Keevin
+3185 - Cygan, Tomasz
+6614 - Czarnik, Robbie
+5873 - Czerwonka, Drew
+7864 - Czinder, Nick
+10137 - Côté, Vytal
+6603 - D'Agostini, Andrew
+1956 - D'Agostini, Matt
+9776 - D'Amico, Patrick
+8462 - D'Amigo, Jerry
+10109 - D'Aoust, Alexis
+8486 - Da Costa, Stephane
+9862 - Da Silva, Jason
+1743 - DaSilva, Dan
+8630 - Dahlroth, Jesper
+5337 - Dahm, Sebastian
+9299 - Dainton, Paul
+3188 - Dakeev, Pavel
+9900 - Dal Colle, Michael
+8940 - Dale, Daniel
+195 - Daley, Trevor
+8945 - Dallman, Tyson
+7502 - Dalpe, Zac
+7152 - Danault, Phillip
+3192 - Danielsmeier, Collin
+3195 - Danielsson, Nicklas
+1192 - Danis, Yann
+4511 - Danis-Pepin, Simon
+3197 - Danner, Simon
+8601 - Dansk, Oscar
+7615 - Danyluk, Shane
+6780 - Darveau, Simon
+2485 - Daschner, Stephan
+201 - Datsyuk, Pavel
+5231 - Daugavins, Kaspars
+399 - Dauls, Arturs
+3199 - Daumont, Charles
+10016 - Dauphin, Laurent
+6123 - Davidson, Brandon
+3201 - Davidsson, Johan
+8773 - Davies, Mike
+9123 - Davis, Robert
+9906 - Davis, Taylor
+8885 - De Leo, Chase
+9846 - De Sousa, Daniel
+9093 - DeAngelo, Anthony
+9306 - DeFazio, Brandon
+10354 - DeKeyser, Danny
+9971 - DeKort, Jordan
+10080 - DeLuca, Anthony
+6473 - DeMelo, Dylan
+5826 - DePape, Jordan
+5295 - DeSantis, Jason
+9647 - DeSimone, Philip
+9220 - Dea, Jean-Sébastien
+9827 - Deacon, Mitch
+10138 - Decelles, Guillaume
+7433 - Dehner, Jeremy
+4627 - Dej, Rastislav
+5280 - Dekanich, Mark
+379 - Del Zotto, Michael
+8355 - Delisle, Carl-Antoine
+7048 - Delisle, Steven
+6277 - Della Rovere, Stefan
+6882 - Delmas, Peter
+9788 - Delnov, Alexander
+10089 - Delorme, Jonathan
+3205 - Dembski, Janusz
+2867 - Demel, Tomas
+5343 - Demers, Jason
+10380 - Demkov, Artem
+9083 - Dempsey, Mitchell
+10243 - Demuth, Dustin
+3206 - Demén-Willaume, Richard
+4702 - Denisov, Denis
+2170 - Denisov, Vladimir
+7676 - Derko, Josh
+2908 - Derner, Lukas
+10050 - Deruelle, Mitchell
+9752 - Desautels, Andy
+9903 - Desautels, Mathieu
+1753 - Desbiens, Guillaume
+9581 - Desbiens, Simon
+9656 - Deschamps, Jonathan
+6948 - Deschamps, Nicolas
+8846 - Descheneau, Jaedon
+4461 - Desharnais, David
+5644 - Desjardins, Andrew
+2500 - Desjardins, Cedrick
+6894 - Desjardins, Gabriel
+10219 - Deske, Niklas
+9147 - Deslauriers, Jean-Simon
+1936 - Deslauriers, Jeff
+7053 - Deslauriers, Nick
+9651 - Deslauriers, Vincent
+7924 - Desmarais, Simon
+7087 - Despres, Simon
+9960 - Desrochers, Danny
+8470 - Desrosiers, Francis
+9584 - Desrosiers, Philippe
+1754 - Deveaux, Andre
+7703 - Devlin, Brandon
+7144 - Devos, Philip-Michael
+3209 - Di Nicola, Maurizio
+5615 - DiDiomete, Devin
+9891 - DiFruscia, Anthony
+9864 - DiPerna, Dylan
+218 - DiPietro, Rick
+1903 - DiSalvatore, Jon
+9244 - Diaby, Jonathan
+5663 - Diaz, Raphael
+10231 - Dibelka, Lubor
+9009 - Dickinson, Jason
+10278 - Diem, Nolan
+7652 - Dietz, Darren
+6172 - Dillon, Brenden
+215 - Dimitrakos, Niko
+9279 - Dimmen, Jeff
+3212 - Dinger, Derek
+9044 - Diodati, Eric
+9094 - Dipaolo, Mike
+5881 - Dirk, Jagger
+219 - Divis, Reinhard
+2838 - Divisek, Tomas
+9828 - Dixon, Kolton
+7295 - Dlouhy, Radek
+220 - Doan, Shane
+6423 - Dodero, Charlie
+8906 - Doetzel, Kayle
+9868 - Doggett, Slater
+6402 - Doherty, Taylor
+3216 - Dolak, Thomas
+9539 - Dolan, Sean
+4642 - Dolezal, Jiri
+5718 - Domenichelli, Hnat
+9035 - Domi, Max
+10090 - Donaghey, Cody
+8415 - Donald, Ryan
+5703 - Donati, Gianni
+7775 - Donnay, Troy
+6957 - Donnelly, Dillon
+9260 - Donovan, Matt
+4563 - Donskoi, Joonas
+2525 - Dorsett, Derek
+10361 - Dostoinov, Alexei
+9066 - Dotchin, Jake
+7664 - Doty, Jacob
+7233 - Dotzler, Alexander
+9973 - Doucet, Jeremy
+8874 - Doucette, Braiden
+4452 - Doughty, Drew
+6238 - Dow, Drydn
+2269 - Dowell, Jake
+6200 - Dowling, Justin
+5567 - Down, Blaine
+6938 - Downe, Patrick
+2226 - Downie, Steve
+10152 - Downing, Jack
+2970 - Dragoun, Michal
+9753 - Draisaitl, Leon
+2195 - Dravecky, Vladimir
+3219 - Draxinger, Tobias
+2216 - Drazenovic, Nick
+3220 - Dreiber, Reinhold
+2830 - Dresler, Jan
+5273 - Drewiske, Davis
+7682 - Driedger, Chris
+2412 - Driendl, Andreas
+10043 - Drouin, Jonathan
+4630 - Drtina, Jiri
+7286 - Drtina, Marek
+9483 - Drábek, Václav
+3222 - Dshunussow, Daniar
+5543 - Du Bois, Félicien
+3224 - DuPont, Micki
+8078 - Dubeau, Alex
+2024 - Dubinsky, Brandon
+2038 - Dubnyk, Devan
+5745 - Dubé, Christian
+7148 - Dubé, Yannick
+5688 - Duca, Paolo
+371 - Duchene, Matt
+9902 - Duchesne, Jonathan
+9204 - Duclair, Anthony
+1626 - Duda, Radek
+10097 - Duda, Steve
+6990 - Duffy, Ben
+9045 - Duhaime, Ryan
+6736 - Duininck, Craig
+7970 - Duke, Brendan
+9714 - Duke, Reid
+7633 - Dumba, Mathew
+6848 - Dumont, Gabriel
+9237 - Dumontier, Yan
+10186 - Dumoulin, Brian
+9095 - Dundas, Justice
+9238 - Dunn, Vincent
+3225 - Duponte, Morgan
+234 - Dupuis, Pascal
+1999 - Dupuis, Philippe
+9965 - Dupuis, Taylor
+9019 - Dupuy, Jean
+2839 - Duras, Michal
+7083 - Durepos, Pierre
+2919 - Dusek, Antonin
+2840 - Dvorak, Michal
+236 - Dvorak, Radek
+1744 - Dwyer, Pat
+2420 - Dzieduszycki, Matt
+3227 - Dziuk, Bogdan
+6140 - Dziurzynski, Darian
+8387 - Dziurzynski, David
+5540 - Déruns, Thomas
+1151 - Eager, Ben
+6208 - Eakin, Cody
+1839 - Earl, Robbie
+240 - Eaton, Mark
+2619 - Eaves, Ben
+1146 - Eaves, Patrick
+1852 - Ebbett, Andrew
+5922 - Eberle, Jan
+6107 - Eberle, Jordan
+8875 - Eberle, Tanner
+7865 - Ebert, Nick
+10226 - Ebner, Bernhard
+5268 - Eckford, Tyler
+8768 - Eddy, Cullen
+8599 - Edelmann, Mikael
+1342 - Edler, Alexander
+7595 - Edmundson, Joel
+9377 - Edström, Rasmus
+10335 - Eerola, Ville-Veikko
+2469 - Ehelechner, Patrick
+10276 - Ehlers, Nikolaj
+8577 - Ehliz, Yasin
+5480 - Ehrensperger, Gianni
+6004 - Ehrhardt, Dallas
+650 - Ehrhardt, Travis
+241 - Ehrhoff, Christian
+2549 - Ejdepalm, Johan
+8976 - Ekblad, Aaron
+541 - Ekbom, Viktor
+7373 - Ekholm, Mattias
+2532 - Eklund, Oscar
+7503 - Ekman-Larsson, Oliver
+7203 - El-Sayed, Marc
+2480 - Elfring, Calvin
+243 - Elias, Patrik
+9880 - Elie, Remi
+3232 - Eliuk, Andy
+659 - Elkins, Corey
+158 - Eller, Lars
+5323 - Ellerby, Keaton
+8774 - Ellington, Taylor
+6168 - Elliot, Mitch
+2081 - Elliott, Brian
+6149 - Elliott, Stefan
+244 - Ellis, Dan
+1369 - Ellis, Matt
+6791 - Ellis, Morgan
+6735 - Ellis, Ryan
+7350 - Elo, Eero
+6084 - Elson, Turner
+8520 - Elwing, Sebastian
+9401 - Emanuelsson, Petter
+4667 - Emelin, Alexei
+246 - Emery, Ray
+247 - Eminger, Steve
+10329 - Eminger, Vladimir
+3235 - Emmer, Luciano
+5635 - Emmerson, Riley
+5237 - Emmerton, Cory
+7894 - Emond, Danick
+7311 - Endal, Lukas
+3237 - Endras, Dennis
+2458 - Endraß, Michael
+7669 - Engel, Mac
+1873 - Engelland, Deryk
+8764 - Englbrecht, Maximilian
+2651 - Engren, Atte
+114 - Engstrand, Christian
+711 - Ennis, Tyler
+1534 - Enroth, Jhonas
+3238 - Enstrom, Tobias
+8373 - Enterfeldt, Sebastian
+248 - Erat, Martin
+2868 - Erat, Roman
+1513 - Ericsson, Jimmie
+3239 - Ericsson, Jonathan
+8576 - Eriksson, Fredrik
+7415 - Eriksson, Joacim
+3241 - Eriksson, Joakim
+3242 - Eriksson, Loui
+9404 - Eriksson, Mikael
+2564 - Erixon, Sebastian
+593 - Erixon, Tim
+8855 - Erkamps, Macoy
+2634 - Erkinjuntti, Antti
+9205 - Erne, Adam
+8711 - Erni, Samuel
+7339 - Eronen, Teemu
+7554 - Erricson, Jari
+250 - Erskine, John
+10327 - Eskelinen, Toni
+9266 - Estoclet, Adam
+9206 - Etchegary, Kurt
+5971 - Etem, Emerson
+2008 - Evans, Brennan
+8998 - Evans, Jake
+9626 - Everberg, Dennis
+3250 - Evtuh, Dimitri
+5780 - Ewanyk, Travis
+252 - Exelby, Garnet
+7710 - Ezekiel, Norm
+9859 - Fabbri, Robbie
+3251 - Fabricius, Karl
+1212 - Fadden, Mitch
+8920 - Fafard, Devan
+3254 - Faikov, Bulat
+9285 - Fairchild, Cade
+9707 - Faith, Tanner
+9026 - Faksa, Radek
+1471 - Falk, Andreas
+5256 - Falk, Justin
+9175 - Falkenham, Ryan
+474 - Fallon, Joe
+8692 - Falter, Martin
+6425 - Fanelli, Ben
+7499 - Fantenberg, Oscar
+8505 - Farny, Andreas
+8642 - Farrell, Kyle
+5291 - Fast, T.J.
+7498 - Fasth, Jesper
+7400 - Fasth, Viktor
+256 - Fata, Rico
+8739 - Faulk, Justin
+7257 - Fauser, Gerrit
+9836 - Fawcett, Tyson
+8458 - Fayne, Mark
+10292 - Fazzini, Luca
+3257 - Fediuk, Mike
+260 - Fedotenko, Ruslan
+3258 - Fedotov, Uriy
+10167 - Fedun, Taylor
+1221 - Fehr, Eric
+9853 - Felker, Justin
+3260 - Felski, Sven
+6263 - Fenske, Luke
+3263 - Feodorov, Yermukhamet
+261 - Ference, Andrew
+8839 - Ferguson, Austin
+5133 - Ferland, Michael
+3265 - Fernholm, Daniel
+9395 - Fernström, Linus
+6087 - Ferraro, Landon
+407 - Ferriero, Benn
+9036 - Ferry, Tyler
+6232 - Feser, Justin
+7734 - Festarini, Christopher
+2234 - Festerling, Brett
+5408 - Festerling, Garrett
+775 - Fey, Kevin
+3267 - Ficenec, Jakub
+7616 - Fiddler, Todd
+267 - Fiddler, Vernon
+9814 - Fiebelkorn, Brenden
+7798 - Fielding, Taylor
+7564 - Fienhage, Corey
+5185 - Figren, Robin
+4496 - Filatov, Nikita
+9815 - Filbrandt, Clint
+7136 - Filiatrault, Alex
+3269 - Filipiak, Robert
+7971 - Filippi, Tomas
+3270 - Filppula, Ilari
+1223 - Filppula, Valtteri
+7839 - Findlay, Brett
+1746 - Finger, Jeff
+3272 - Fini, Giampaolo
+8400 - Finley, Joe
+7746 - Finn, Matt
+7317 - Finsterle, Lukas
+7599 - Fioretti, Sam
+9629 - Fischbuch, Daniel
+2312 - Fischer, Christopher
+5657 - Fischer, Jannik
+888 - Fischer, Patrick
+5492 - Fischer, Simon
+7270 - Fischhaber, Simon
+9382 - Fish, Christopher
+9829 - Fisher, Logan
+271 - Fisher, Mike
+1778 - Fistric, Mark
+1905 - Fitzgerald, Zack
+9020 - Fitzmorris, Mitchell
+2450 - Flaake, Jerome
+5389 - Flache, Peter
+1160 - Fleischmann, Tomas
+6477 - Flemming, Brett
+9769 - Fleury, Haydn
+275 - Fleury, Marc-Andre
+6471 - Flick, Rob
+3275 - Flinck, Markku
+9649 - Flinn, Jack
+2102 - Flood, Mark
+10172 - Florek, Justin
+7482 - Fluckiger, Michael
+10348 - Flynn, Brian
+5573 - Flüeler, Lukas
+7163 - Foglia, Nicholas
+9609 - Fogström, Niklas
+6709 - Foligno, Marcus
+2080 - Foligno, Nick
+8896 - Fontaine, Jarrett
+9272 - Fontaine, Justin
+8403 - Ford, Matt
+2493 - Ford, Scott
+8897 - Fordyce, Devon
+9512 - Forman, Miroslav
+977 - Forney, Michael
+3277 - Forrest, J.D.
+8898 - Forsberg, Alex
+10350 - Forsberg, Filip
+6074 - Forsberg, Jesse
+606 - Forsberg, Johan
+555 - Forsberg, Kristian
+2558 - Forssell, Erik
+3278 - Forster, Beat
+9211 - Fortier, Maxime
+7192 - Fortier, Olivier
+10081 - Fortier, Simon
+10067 - Fortin, Zach
+1789 - Fortunus, Maxime
+9278 - Foss, Jeff
+1841 - Foster, Alex
+8797 - Foster, Brian
+283 - Foster, Kurtis
+5776 - Foster, T.J.
+9820 - Foster, Thomas
+9423 - Fotinos, Alex
+5149 - Foucault, Kris
+9686 - Foulk, Griffin
+10098 - Fournier, Alex
+7932 - Fournier, Dillon
+7030 - Fournier, Gleason
+6919 - Fournier, Stefan
+6738 - Fowler, Cam
+7552 - Fowlie, Cody
+6435 - Fox, Dane
+3281 - Fox, Danny
+9046 - Foy, Brett
+1112 - Foy, Matt
+8930 - Fram, Jason
+2984 - Franek, Petr
+7573 - Franko, Zach
+7694 - Franson, Cain
+2203 - Franson, Cody
+7515 - Fransoo, Jordan
+3284 - Fransson, Johan
+1476 - Fransson, Jonas
+1124 - Franzen, Johan
+1388 - Fraser, Colin
+7867 - Fraser, Jérémie
+1386 - Fraser, Mark
+5867 - Fraser, Matt
+8492 - Frattin, Matt
+5383 - Frazee, Jeff
+8446 - Fredheim, Kris
+9388 - Friberg, Max
+5592 - Friedli, Samuel
+6484 - Friesen, Alex
+9695 - Friesen, Mitchell
+10336 - Friman, Niklas
+9597 - Frisk, Andreas
+6494 - Fritsch, Andrew
+8712 - Fritsche Jr., John
+286 - Fritsche, Dan
+7925 - Frk, Martin
+6395 - Froats, Derek
+9357 - Froberg, Linus
+5800 - Froese, Byron
+786 - Frohlicher, Joel
+2893 - Frolik, Martin
+4436 - Frolik, Michael
+2730 - Frolo, Tomas
+287 - Frolov, Alexander
+5430 - Frosch, Dusan
+10261 - Fröhlich, Stefan
+9176 - Fucale, Zachary
+847 - Fuglister, Jeffrey
+9821 - Fuhr, Tyler
+1424 - Fukufuji, Yutaka
+9948 - Fuller, Matt
+3293 - Fuloc, Julien
+4629 - Furch, Dominik
+3295 - Furchner, Sebastian
+9869 - Furlong, Colin
+5704 - Furrer, Andreas
+5734 - Furrer, Philippe
+3297 - Furtak, Danyo
+9830 - Fushimi, Brandon
+5894 - Fyten, Austin
+7385 - Fälth, Elias
+9912 - Gabor, Gilbert
+289 - Gaborik, Marian
+7804 - Gabriel, Kurtis
+290 - Gagne, Simon
+2091 - Gagner, Sam
+5238 - Gagnon, Aaron
+10018 - Gagnon, Gabriel
+6860 - Gagnon, Mathieu
+10017 - Gagnon, Michael
+9831 - Gagnon, Ryan
+7081 - Gagné, Kevin
+5529 - Gailland, Jeremy
+5914 - Gajovsky, Nikola
+6180 - Gal, Blake
+9578 - Galbraith, Patrick
+7832 - Galchenyuk, Alex
+5264 - Galiardi, T.J.
+7090 - Galiev, Stanislav
+6248 - Gallagher, Brendan
+8771 - Gallant, Brett
+2749 - Galvas, Lukas
+292 - Gamache, Simon
+7880 - Gamelin, Frédérick
+9949 - Ganly, Tyler
+8783 - Garbutt, Ryan
+9835 - Garcia, C.J.
+3302 - Gardener, Chris
+8737 - Gardiner, Jake
+9754 - Gardiner, Reid
+5583 - Gardner, Ryan
+3304 - Garkusha, Vladmir
+9010 - Garlent, Hunter
+293 - Garon, Mathieu
+5324 - Garrison, Jason
+7562 - Gaudet, Brady
+10110 - Gaudet, Chase
+9232 - Gaudreau, Frédérick
+7717 - Gaunce, Brendan
+6480 - Gaunce, Cameron
+294 - Gaustad, Paul
+9233 - Gauthier, Alexandre
+7080 - Gauthier, Danick
+10082 - Gauthier, Frédérik
+9213 - Gauthier, Guillaume
+10068 - Gauthier, Samuel
+7050 - Gauthier-Leduc, Jerome
+5684 - Gautschi, Marc
+3306 - Gavrilovs, Denis
+3307 - Gawlik, Christoph
+8404 - Gawryletz, Travis
+7187 - Gazdic, Luke
+10048 - Gazzola, Randy
+10368 - Gebler, Philip
+5580 - Geering, Patrick
+8812 - Geertsen, Mason
+8713 - Geiger, Marc
+6834 - Gelinas, Eric
+9696 - Gelsinger, Brayden
+712 - Generous, Matt
+5706 - Genoni, Leonardo
+9027 - Genovese, Cory
+9274 - Genoway, Chay
+1790 - Genoway, Colby
+3311 - Gentile, Luigi
+3312 - Genze, Alexander
+5305 - Gerbe, Nathan
+5735 - Gerber, Beat
+5707 - Gerber, Lukas
+298 - Gerber, Martin
+4767 - Gerber, Roland
+7284 - Gerhat, Frantisek
+1224 - Germyn, Carsen
+8813 - Gernat, Martin
+1184 - Gervais, Bruno
+7117 - Gervais-Chouinard, Jacob
+1092 - Getzlaf, Ryan
+5593 - Geyer, Cyrill
+6071 - Gibb, Daniel
+9308 - Gibbons, Brian
+6813 - Gibson, Christopher
+8700 - Gibson, John
+3315 - Gienbaev, Pavel
+6537 - Giftopoulos, Remy
+5512 - Gigon, Olivier
+300 - Giguere, Jean-Sebastien
+6764 - Gilbert, David
+9028 - Gilbert, Jared
+1395 - Gilbert, Tom
+5361 - Giliati, Stefano
+301 - Gill, Hal
+6900 - Gillard, Steve
+4437 - Gillies, Colton
+388 - Gilroy, Matt
+3316 - Gimbert, Laurent
+10069 - Gingras, Anthony
+9914 - Ginnell, Liam
+302 - Gionta, Brian
+1883 - Gionta, Stephen
+1226 - Giordano, Mark
+7881 - Girard, Félix
+10111 - Girard, Raphaël
+7051 - Girard, Sean
+1400 - Girardi, Daniel
+10206 - Girgensons, Zemgus
+5296 - Giroux, Claude
+8093 - Giroux, Ray
+8649 - Giroux, Tommy
+9921 - Giugovaz, Michael
+1228 - Giuliano, Jeff
+8999 - Glass, Nathan
+2263 - Glass, Tanner
+305 - Gleason, Tim
+3319 - Glebov, Turgay
+1391 - Glencross, Curtis
+5011 - Glennie, Scott
+5572 - Gloor, Kevin
+9702 - Glover, Austin
+6009 - Glover, Brandon
+1182 - Glumac, Mike
+5755 - Gmür, Sandro
+5530 - Gobbi, John
+9130 - Gobeil, Thomas
+306 - Goc, Marcel
+2424 - Goc, Nikolai
+3320 - Goc, Sascha
+5372 - Godfrey, Josh
+8357 - Godin, François
+3321 - Godlewski, Jan
+7236 - Goepfert, Bobby
+10162 - Goers, Barry
+1141 - Goertzen, Steven
+6134 - Gogol, Curt
+8807 - Gogolev, Alex
+3322 - Gogulla, Philip
+3323 - Golash, Stepan
+9883 - Goldberg, Andrew
+9946 - Goldobin, Nikolai
+2290 - Goligoski, Alex
+8751 - Goll, Jakob
+8418 - Goloubef, Cody
+10175 - Gomes, Jared
+308 - Gomez, Scott
+309 - Gonchar, Sergei
+8455 - Goncharov, Maxim
+6328 - Goodrow, Barclay
+2150 - Gordon, Andrew
+310 - Gordon, Boyd
+8941 - Gordon, Coda
+3327 - Gordon, Ian
+9733 - Gore, Bryson
+311 - Goren, Lee
+1129 - Gorges, Josh
+6932 - Gormley, Brandon
+9974 - Gosselin, Alexandre
+5482 - Gossweiler, Manuel
+8840 - Goulbourne, Tyrell
+2064 - Goulet, Alain
+7171 - Gourde, Yanni
+7672 - Gow, Reid
+2201 - Grabner, Michael
+1385 - Grabovski, Mikhail
+990 - Grachev, Evgeny
+2260 - Gragnani, Marc-Andre
+8981 - Graham, Charlie
+7907 - Graham, Domenic
+7783 - Graham, Jesse
+9984 - Graham, Robbie
+9783 - Graham, Ryan
+10391 - Granato, Cammi
+8378 - Granberg, Petter
+9994 - Grand-Maison, Pier-Olivier
+9234 - Grandmaison, Alexandre
+9580 - Granlund, Markus
+4543 - Granlund, Mikael
+3332 - Granstrom, Jonathan
+736 - Grant, Alex
+9256 - Grant, Derek
+9264 - Grant, Tommy
+1335 - Grant, Triston
+911 - Grantham, Ryley
+6541 - Graovac, Tyler
+9471 - Grassi, Daniele
+1230 - Gratton, Josh
+7017 - Gravel, Maxime
+9047 - Graves, Jacob
+9194 - Graves, Ryan
+3334 - Gray, Angus
+10126 - Gray, Mason
+7632 - Grayson, Lucas
+316 - Grebeshkov, Denis
+317 - Green, Josh
+1305 - Green, Mike
+3335 - Green, Morten
+9789 - Green, Taylor
+9021 - Greenaway, Darcy
+1390 - Greene, Andy
+1162 - Greene, Matt
+8388 - Greening, Colin
+3336 - Greffe, Stephane
+9318 - Gregoire, Jason
+2724 - Gregorek, Petr
+3338 - Greilinger, Thomas
+3339 - Greiss, Thomas
+10144 - Grenier, Alexandre
+7198 - Gretzky, Wayne
+9759 - Grewal, Raymond
+9472 - Grieder, Marc
+10377 - Griffin, Brent
+7774 - Griffith, Seth
+9207 - Grigorenko, Mikhail
+1472 - Grillfors, Daniel
+7689 - Grist, Sam
+9975 - Groleau, Bryan
+3343 - Grossmann, Nicklas
+5708 - Grossmann, Robin
+1957 - Groulx, Danny
+6744 - Grubauer, Philipp
+2050 - Grumet-Morris, Dov
+7377 - Grundel, Anton
+8389 - Gryba, Eric
+3348 - Grygiel, Adrian
+3349 - Grzelak, Piotr
+10266 - Gräubig, Dominik
+9153 - Grégoire, Jérémy
+3341 - Grönholm, Ossi-Petteri
+9486 - Gründling, Martin
+5920 - Gudas, Radko
+7749 - Gudbranson, Alex
+6404 - Gudbranson, Erik
+1394 - Guenin, Nate
+7688 - Guenther, Riley
+10204 - Guentzel, Gabe
+7476 - Guerra, Samuel
+3352 - Guggisberg, Peter
+3353 - Gugnot, Pierre
+10026 - Guindon, Louis-Philippe
+1231 - Guite, Ben
+8660 - Gula, Jiri
+2787 - Gulasi, Michal
+3355 - Gundersen, Aksel
+421 - Gunderson, Ryan
+1477 - Gunnarsson, Carl
+9412 - Gunnarsson, Daniel
+7423 - Gunnarsson, Jonas
+3356 - Guryca, Jan
+6812 - Gusse, Robin
+8382 - Gustafsson, Erik
+9399 - Gustafsson, Johan
+8637 - Gustavsen, Brett
+78 - Gustavsson, Jonas
+10372 - Guth, Martin
+9816 - Gutierrez, Justin
+9908 - Guy, Nevin
+9221 - Guénette, Justin
+10008 - Guévremont, Charles
+8876 - Gwinner, Shayne
+8463 - Gysbers, Simon
+10296 - Gähler, Jorden
+6893 - Gélinas, Carl
+8347 - Gélinas, Guillaume
+2395 - Gödtel, Thomas
+9390 - Görtz, Max
+7468 - Haas, Gaetan
+8921 - Haas, Kyle
+8752 - Haase, Henry
+3361 - Haataja, Juha-Pekka
+10227 - Habermann, Marco
+8179 - Haché, Justin
+6626 - Hackett, Matt
+9715 - Hackman, Lenny
+8791 - Haczyk, Bryan
+737 - Haddad, Joey
+10099 - Hade, Benjamin
+9589 - Hafenrichter, Jaroslav
+9265 - Hagelin, Carl
+2460 - Hager, Patrick
+327 - Hagman, Niklas
+3366 - Hagos, Yared
+8535 - Hahl, Philipp
+328 - Hahl, Riku
+2381 - Hahn, Derek
+329 - Hainsey, Ron
+8907 - Hak, Stephen
+7425 - Hakanpää, Jani
+3369 - Haken, Jay
+9100 - Halagian, Nick
+1426 - Halak, Jaroslav
+4455 - Haley, Micheal
+5272 - Halischuk, Matthew
+332 - Hall, Adam
+3371 - Hall, Nicholas
+6721 - Hall, Taylor
+6284 - Hall, Zach
+6870 - Halley, Philippe
+3374 - Hallin, Per
+2574 - Halme, Jussi
+6567 - Halmo, Mike
+2630 - Halonen, Antti
+7228 - Haloschan, Dustin
+333 - Halpern, Jeff
+10308 - Hamberg, Alexander
+1802 - Hambly, Tim
+7301 - Hamerlik, Peter
+335 - Hamhuis, Dan
+4474 - Hamill, Zach
+6132 - Hamilton, Curtis
+6505 - Hamilton, Dougie
+6486 - Hamilton, Freddie
+8908 - Hamilton, Joel
+1963 - Hamilton, Ryan
+5976 - Hamilton, Wacey
+8946 - Hamonic, Justin
+5137 - Hamonic, Travis
+2947 - Hampl, Zbynek
+2742 - Hamrlik, Martin
+337 - Hamrlik, Roman
+8825 - Hand, Tye
+338 - Handzus, Michal
+7173 - Hanes, Ryan
+340 - Hannan, Scott
+6885 - Hannay, Sawyer
+4505 - Hannula, Mika
+10351 - Hanowski, Ben
+8877 - Hansen, Carter
+10179 - Hansen, Jake
+1791 - Hansen, Jannik
+1433 - Hansen, Mads
+5832 - Hansen, Tyler
+5656 - Hanson, Christian
+7603 - Hanson, Josh
+9587 - Hanuljak, Miroslav
+7223 - Hanusch, Steve
+2094 - Hanzal, Martin
+9519 - Hanzl, Robin
+2966 - Hanzlik, Jan
+4602 - Hanzlik, Jiri
+9777 - Hardarson, Henry
+9178 - Hardie, Austyn
+342 - Harding, Josh
+2577 - Hardt, Nichlas
+9940 - Hargrave, Brett
+7953 - Hari, Janos
+1485 - Harju, Johan
+9784 - Harland, Logan
+9669 - Harmsworth, Colby
+9716 - Harper, Harrison
+5797 - Harper, Shane
+9000 - Harper, Stephen
+9011 - Harpur, Ben
+6449 - Harrington, Scott
+9107 - Harris, Jacob
+1232 - Harrison, Jay
+8965 - Harrison, Luke
+6042 - Harrison, Ryan
+1354 - Harrold, Peter
+8866 - Hart, Jayden
+2654 - Hartikainen, Teemu
+9925 - Hartman, Ryan
+344 - Hartnell, Scott
+9048 - Harvey, Doug
+840 - Hasani, Adam
+3393 - Hashimoto, Eiji
+4456 - Haskins, Tyler
+9037 - Hatcher, Chase
+5452 - Hattunen, Jarkko
+8926 - Hauf, Jared
+7310 - Havel, Lukas
+1559 - Haverinen, Joni
+349 - Havlat, Martin
+9507 - Havlícek, Ondrej
+7933 - Hawes, Cole
+9659 - Hawryluk, Jayce
+8654 - Hay, Darrell
+1404 - Haydar, Darren
+9894 - Haydon, Aaron
+7558 - Hayer, Manraj
+9296 - Hayes, Jimmy
+7120 - Hazen, Jonathan
+9654 - Hazlehurst, Alex
+7820 - Heard, Mitchell
+8942 - Heatherington, Dillon
+353 - Heatley, Dany
+354 - Hecht, Jochen
+7259 - Hecquefeuille, Kevin
+10389 - Hecquet, Fabien
+355 - Hedberg, Johan
+8782 - Hedden, Mike
+7389 - Hedman, Anton
+3401 - Hedman, Oscar
+2553 - Hedman, Victor
+3402 - Hedström, Jonathan
+615 - Heed, Tim
+5817 - Heemskerk, Thomas
+10147 - Heeter, Cal
+9844 - Heffernan, Chad
+8631 - Heffley, Colton
+5423 - Heid, Chris
+3403 - Heikkinen, Ilkka
+3405 - Heino, Henri
+1343 - Hejda, Jan
+361 - Hejduk, Milan
+1113 - Helbling, Timo
+7340 - Helenius, Jani-Petteri
+1631 - Helenius, Riku
+9797 - Helewka, Adam
+5766 - Helfenstein, Sven
+8809 - Helgesen, Kenton
+9367 - Hellberg, Magnus
+2497 - Helm, Darren
+8108 - Helmer, Bryan
+1769 - Helminen, Dwight
+8523 - Helms, Kyle
+363 - Hemsky, Ales
+2576 - Henderson, Kevin
+1875 - Hendricks, Matt
+4479 - Hendrikx, Trevor
+1982 - Hendry, Jordan
+7130 - Henley, Cédrick
+6914 - Henley, Samuel
+3414 - Henriksen, Martin
+6724 - Henrique, Adam
+9441 - Henritius, Teemu
+365 - Henry, Alex
+8826 - Henry, Darian
+4475 - Henry, Jordan
+2173 - Hensick, T.J.
+3416 - Hentunen, Jukka
+10363 - Herburger, Raphael
+7303 - Herman, Martin
+3418 - Herperger, Chris
+7483 - Herren, Yannick
+8758 - Hertel, Jimmy
+9509 - Hertl, Tomáš
+1792 - Heshka, Shaun
+8348 - Hester, Brett
+7640 - Hewitt, Matt
+9288 - Hextall, Brett
+8966 - Hicketts, Joe
+660 - Hickey, Thomas
+7665 - Hickman, Justin
+9892 - Hiddink, Brook
+6580 - Hietkamp, Luke
+367 - Higgins, Chris
+718 - Higgins, Chris
+6646 - Hill, Jordan
+8625 - Hillding, Joakim
+2659 - Hillen, Jack
+3424 - Hiller, Jonas
+1865 - Himelfarb, Eric
+9996 - Hinds, Marcus
+2348 - Hinterstocker, Martin
+6060 - Hirsche, Brock
+5720 - Hirschi, Steve
+3429 - Hirschovits, Kim
+6560 - Hishon, Joey
+8622 - Hjalmarsson, Gustav
+1473 - Hjalmarsson, Niklas
+580 - Hjalmarsson, Simon
+8111 - Hlavac, Jan
+2082 - Hlinka, Jaroslav
+2427 - Hlinka, Martin
+6928 - Hlinka, Michal
+4620 - Hluchy, Milan
+9970 - Ho-Sang, Joshua
+3433 - Hobson, Simon
+3434 - Hock, Robert
+6268 - Hodder, Zach
+10051 - Hodge, Kris
+5455 - Hodges, Steven
+6325 - Hodgson, Cody
+9854 - Hodgson, Hayden
+8184 - Hodhod, Samuel
+9253 - Hoeffel, Mike
+5532 - Hoehener, Martin
+7084 - Hoffman, Mike
+10295 - Hoffmann, Luka
+7273 - Hofland, Diego
+9708 - Hoflin, Wyatt
+7472 - Hofmann, Gregory
+1114 - Hoggan, Jeff
+8113 - Holden, Josh
+5338 - Holden, Nick
+4643 - Holec, Miroslav
+8699 - Holik, Petr
+8114 - Holland, Jason
+6236 - Holland, Patrick
+6365 - Holland, Peter
+848 - Hollenstein, Denis
+5274 - Holloway, Bud
+1115 - Hollweg, Ryan
+6184 - Holmberg, Mitch
+1478 - Holmqvist, Andreas
+3440 - Holmqvist, Johan
+8383 - Holmstrom, Ben
+7537 - Holowenko, Cole
+3441 - Holowka, Stephen
+1003 - Holtby, Braden
+1780 - Holtet, Marius
+2909 - Holub, Jan
+9790 - Holub, Michal
+4457 - Holzapfel, Riley
+2352 - Holzer, Korbinian
+2417 - Holzmann, Thomas
+5189 - Holös, Jonas
+3443 - Hommel, Christian
+6000 - Honejsek, Antonin
+9791 - Honey, Connor
+9660 - Honey, Curtis
+9435 - Honka, Juuso
+3444 - Honkaheimo, Otto
+3445 - Honkanen, Jani
+8359 - Honzik, David
+5899 - Hood, Graham
+7835 - Hooey, Garrett
+7834 - Hope, Brandon
+6524 - Hope, Kyle
+5448 - Horak, Roman
+1495 - Horava, Miloslav
+8678 - Horcicka, Lubos
+380 - Horcoff, Shawn
+381 - Hordichuk, Darcy
+9896 - Hore, Tyler
+2895 - Horna, Tomas
+4448 - Hornqvist, Patric
+382 - Horton, Nathan
+9038 - Horvat, Bo
+9012 - Horvat, Ryan
+3448 - Hospelt, Kai
+383 - Hossa, Marcel
+384 - Hossa, Marian
+1612 - Hostikka, Ville
+6652 - Hottot, Craig
+8956 - Houck, Jackson
+7988 - Houde, Jason
+10112 - Houde, Jean-Christophe
+7869 - Houle, Olivier
+9282 - House, Tanner
+6456 - Houser, Michael
+3450 - Hovi, Sasu
+10343 - Hovinen, Miro
+1703 - Hovinen, Niko
+2701 - Hovorka, Marek
+1193 - Howard, Jimmy
+5994 - Howden, Quinton
+5374 - Howes, Scott
+7680 - Howorko, Shea
+5467 - Howse, Ryan
+9139 - Hoyles, Aaron
+7979 - Hozjan, Carl
+4953 - Hrabal, Josef
+7548 - Hrbas, Marek
+2210 - Hrdel, Zbynek
+2723 - Hrebejk, Štepán
+6937 - Hrivik, Marek
+2948 - Hrna, Erik
+2973 - Hromas, Karel
+7300 - Hrubec, Simon
+9493 - Hruska, Milan
+2770 - Hruska, Radim
+4644 - Hruška, David
+3453 - Hryshko, Georges
+2771 - Hubacek, Petr
+10283 - Huber, Kevin
+7076 - Huberdeau, Jonathan
+8847 - Hubic, Jeff
+2983 - Hubl, Jaroslav
+2714 - Hubl, Viktor
+10382 - Huch, Domenic
+9600 - Hudacek, Julius
+5066 - Hudec, Stanislav
+386 - Hudler, Jiri
+7895 - Hudon, Charles
+10139 - Hudon, Philippe
+10113 - Hudon, Émeric
+387 - Huet, Cristobal
+9959 - Huether, Ray
+6522 - Hughes, Brian
+6452 - Hughes, Tommy
+9798 - Hughson, Garrett
+8714 - Huguenin, Anthony
+7463 - Huhtala, Santtu
+7457 - Huhtala, Teemu
+1625 - Huhtala, Tommi
+1592 - Huhtanen, Tuomas
+9521 - Hujsa, Martin
+9358 - Hultström, Linus
+8118 - Huml, Ivan
+7690 - Humphries, Spencer
+8763 - Hundhammer, Markus
+1709 - Hunkes, Jiri
+10196 - Hunt, Brad
+8915 - Hunt, Dryden
+10070 - Hunter, David
+9275 - Hunter, Eric
+7519 - Hunter, Rene
+393 - Hunter, Trent
+2237 - Hunwick, Matt
+10381 - Hunwick, Shawn
+5877 - Hurley, Brendan
+7354 - Hurri, Joonas
+8687 - Husak, Patrik
+1374 - Huskins, Kent
+396 - Hussey, Matt
+6273 - Hutchings, Alex
+397 - Hutchinson, Andrew
+3463 - Hutchinson, Jamie
+6457 - Hutchinson, Michael
+9866 - Hutchinson, Ryan
+8435 - Hutton, Carter
+4477 - Huxley, Adam
+8695 - Huzevka, Peter
+8655 - Hyka, Tomas
+7145 - Hynes, Brandon
+3467 - Hynning, Fredrik
+10304 - Hächler, Cédric
+1641 - Hämäläinen, Ville
+5719 - Hänni, Andreas
+348 - Hävelid, Niclas
+10083 - Hébert, Nicolas
+7972 - Höfflin, Mirko
+10285 - Höhener, Martin
+2401 - Höhenleitner, Christoph
+1577 - Hölli, Antti
+3447 - Hördler, Frank
+5595 - Hürlimann, Stefan
+7819 - Iafrate, Max
+3473 - Idirshev, Bulat
+2009 - Iggulden, Mike
+398 - Iginla, Jarome
+10364 - Iglesias, Frederic
+3474 - Iijima, Takuya
+9442 - Ikonen, Henri
+2611 - Ikonen, Jasse
+9468 - Ikonen, Juuso
+10332 - Ilomäki, Arttu
+1573 - Ilvonen, Harri
+9985 - Imama, Bokondji
+1235 - Immonen, Jarkko
+3476 - Immonen, Jarkko A.
+6145 - Inglis, Charles
+3479 - Irizawa, Tamihiro
+9680 - Irving, Aaron
+5315 - Irving, Leland
+7196 - Irwin, Brayden
+8436 - Irwin, Matt
+3480 - Ishihara, Takeshi
+1236 - Ivanans, Raitis
+9745 - Iverson, Keegan
+10100 - Izacky, Jakub
+3482 - Jaaskelainen, Jari
+5440 - Jaatinen, Antti
+9451 - Jaatinen, Antti-P
+401 - Jackman, Barret
+402 - Jackman, Richard
+403 - Jackman, Tim
+5862 - Jackson, Dallas
+5960 - Jackson, Reid
+6164 - Jacobs, Colin
+3485 - Jacobsen, Bjorn
+3486 - Jacobsen, Henrik
+10311 - Jacobsson, Robin
+1237 - Jacques, Jean-Francois
+1794 - Jaffray, Jason
+404 - Jagr, Jaromir
+8785 - Jakaitis, Jeff
+9608 - Jakobs, Jens
+626 - Jakobsen, Julian
+3488 - Jakobsen, Tommy
+1707 - Jalvanti, Joonas
+1238 - James, Connor
+9882 - Jammes, Jacob
+6539 - Janes, Steven
+3495 - Janicki, Marek
+406 - Janik, Doug
+3496 - Janikin, Selibek
+3497 - Janka, Markus
+9494 - Jankovic, Branislav
+9380 - Janmark-Nylén, Mattias
+2998 - Jansky, Peter
+1150 - Janssen, Cam
+3501 - Janzen, Alexander
+2422 - Janzen, Sergeij
+2859 - Jares, Richard
+7374 - Jarnkrok, Calle
+8814 - Jarry, Tristan
+3502 - Jarventie, Martti
+2631 - Jarvinen, Joonas
+2617 - Jarvinen, Mika
+8986 - Jarvis, Connor
+8679 - Jaskin, Dmitrij
+8121 - Jaspers, Jason
+10240 - Jass, Maris
+1730 - Jasu, Juhani
+10156 - Jean, Kyle
+5515 - Jeannin, Sandy
+5342 - Jeffrey, Dustin
+9464 - Jekimovs, Roberts
+5943 - Jelinek, Petr
+2996 - Jenacek, Martin
+5411 - Jenike, Andreas
+7781 - Jenkins, Billy
+6610 - Jenks, A.J.
+6518 - Jenner, Boone
+3504 - Jenni, Marcel
+3506 - Jensen, Esben
+3507 - Jensen, Jakob
+9617 - Jensen, Jesper B
+3508 - Jensen, Jorgen
+7792 - Jensen, Nicklas
+8867 - Jensen, Spenser
+7304 - Jerabek, Jakub
+1770 - Jessiman, Hugh
+9997 - Jevpalovs, Nikita
+9590 - Jira, Petr
+9484 - Jiránek, Tomáš
+5736 - Jobin, David
+5859 - Jobke, Colton
+7890 - Jodoin, Olivier
+3511 - Joensuu, Jesse
+825 - Joggi, Mathias
+3512 - Johansen, Kristoffer
+6018 - Johansen, Ryan
+9614 - Johansson, Alexander
+3514 - Johansson, Jakob
+2556 - Johansson, Lars
+3516 - Johansson, Magnus
+75 - Johansson, Marcus
+1456 - Johansson, Martin
+153 - Johansson, Mikael
+3518 - Johansson, Mikael
+7401 - Johansson, Stefan
+410 - Johnson, Aaron
+7592 - Johnson, Andrew
+9119 - Johnson, Ben
+411 - Johnson, Brent
+991 - Johnson, Chad
+7938 - Johnson, Charles
+5232 - Johnson, Chaz
+2300 - Johnson, Erik
+1417 - Johnson, Jack
+8778 - Johnson, Justin
+9734 - Johnson, Kirk
+5367 - Johnson, Nick
+8676 - Johnson, Nick
+10052 - Johnson, Stephen
+6179 - Johnson, Tyler
+9770 - Johnson, Wyatt
+3521 - Johnsson, Pierre
+9574 - Johnston, Andrew
+5956 - Johnston, Daniel
+5860 - Johnston, MacKenzie
+10053 - Johnston, Ross
+3522 - Jokela, Mikko
+3524 - Jokinen, Jussi
+418 - Jokinen, Olli
+2612 - Jokinen, Tommi
+7453 - Jokipakka, Jyrki
+10084 - Joly, Michael
+1349 - Jones, Blair
+2175 - Jones, David
+5369 - Jones, Martin
+9923 - Jones, Mitch
+419 - Jones, Randy
+4449 - Jones, Ryan
+9746 - Jones, Seth
+8967 - Jones, Zane
+3529 - Jonsson, Lars
+3530 - Jonsson, Robin
+6624 - Jordan, Michal
+5721 - Jorg, Mauro
+3533 - Jorgenson, Morten
+7435 - Jormakka, Pekka
+5650 - Josefson, Jacob
+1539 - Josefsson, Daniel
+8627 - Josefsson, Erik
+5737 - Josi, Roman
+2296 - Joslin, Derek
+2153 - Joudrey, Andrew
+423 - Jovanovski, Ed
+3536 - Jowyk, Roman
+1479 - Junland, Jonas
+1554 - Junnila, Jyri
+7346 - Junttila, Julius
+1130 - Jurcina, Milan
+7089 - Jurco, Tomas
+9449 - Juusela, Aki
+2590 - Jyrkkiö, Jesse
+3493 - Jämtin, Andreas
+10334 - Järveläinen, Ville
+2596 - Järvenpää, Juha
+2586 - Järvinen, Jan-Mikael
+9453 - Järvinen, Kristian
+7427 - Järvinen, Matti
+6934 - Kabanov, Kirill
+424 - Kaberle, Frantisek
+425 - Kaberle, Tomas
+10267 - Kabitzky, Christoph
+3543 - Kaboursalay, Sylvain
+4632 - Kadlec, Petr
+6444 - Kadri, Nazem
+5946 - Kafka, Petr
+10244 - Kahle, Marcel
+3544 - Kahnberg, Magnus
+9963 - Kahun, Dominik
+1606 - Kaijomaa, Kalle
+9477 - Kajínek, David
+2600 - Kaksonen, Elmeri
+2025 - Kaleta, Patrick
+426 - Kalinin, Dmitri
+3547 - Kalinka, Nick
+5297 - Kalinski, Jonathon
+2896 - Kalla, Jaroslav
+3548 - Kallio, Tomi
+118 - Kalt, Dieter
+1693 - Kalteva, Mikko
+7670 - Kalus, Marek
+9222 - Kamaev, Denis
+6095 - Kambeitz, Adam
+5578 - Kamber, Oliver
+5481 - Kamerzin, Jérémie
+7291 - Kames, Vladimir
+8416 - Kampfer, Steven
+8693 - Kana, Jan
+2703 - Kana, Tomas
+427 - Kane, Boyd
+364 - Kane, Evander
+2086 - Kane, Patrick
+9596 - Kangasmäki, Aki
+7358 - Kangasniemi, Antti
+2938 - Kania, Jakub
+3551 - Kankaanperä, Markus
+7454 - Kantola, Kai
+6631 - Kantor, Michael
+8968 - Kanzig, Keegan
+10325 - Kapanen, Kasperi
+429 - Kapanen, Sami
+3556 - Kapitanov, Sergey
+3559 - Karczewski, Jerzy
+10337 - Karhu, Niko
+5441 - Karhunen, Tomi
+8614 - Karlsson, Bjorn
+89 - Karlsson, Erik
+137 - Karlsson, Henrik
+3567 - Karlsson, Mattias
+609 - Karlsson, Melker
+1436 - Karlsson, Sebastian
+9927 - Karlsson, Simon
+9603 - Karlsson, William
+7332 - Karmeniemi, Lauri
+10346 - Karpowich, Paul
+1915 - Karsums, Martins
+7276 - Kasik, Jaroslav
+2923 - Kasparik, Pavel
+4464 - Kassian, Matt
+6725 - Kassian, Zack
+3570 - Kaszuba, Dariusz
+3571 - Kathan, Klaus
+641 - Katic, Mark
+3572 - Kato, Hideki
+10376 - Katzer, Tim
+5392 - Kaufmann, Evan
+8485 - Kaunisto, Ray
+3575 - Kauppila, Jari
+3576 - Kauppinen, Marko
+3578 - Kauvosaari, Jarkko
+7041 - Kavanagh, Ryan
+9529 - Kašík, Libor
+7830 - Kea, Justin
+1893 - Kearns, Bracken
+3579 - Kebich, Oleg
+7561 - Keil, Bernhard
+1116 - Keith, Duncan
+3581 - Kelembet, Gustavo
+3582 - Kell, Matt
+5557 - Kellenberger, Steve
+9632 - Keller, Kilian
+2000 - Keller, Ryan
+8715 - Keller, Samuel
+7082 - Kelly, Aidan
+9888 - Kelly, Broderick
+437 - Kelly, Chris
+6428 - Kelly, Dan
+10101 - Kelly, Ryan
+5197 - Kempe, Mario
+7296 - Kempny, Michal
+1598 - Kemppainen, Joonas
+8716 - Kenins, Ronalds
+6275 - Kennedy, Matt
+5304 - Kennedy, Tim
+1939 - Kennedy, Tyler
+2587 - Kerala, Antti
+5444 - Keranen, Juho
+7336 - Keranen, Michael
+3585 - Kerman, Kalle
+1567 - Keränen, Janne
+1587 - Kesa, Teemu
+439 - Kesler, Ryan
+9250 - Kessel, Blake
+1309 - Kessel, Phil
+5975 - Kessy, Kale
+7207 - Kettemer, Florian
+440 - Khabibulin, Nikolai
+7856 - Khokhlachev, Alexander
+5220 - Khudobin, Anton
+9478 - Kica, Petr
+6194 - Kichton, Brenden
+10030 - Kielly, Kameron
+4876 - Kienzle, Lorenz
+9822 - Kieser, Riley
+3587 - Kiilholma, Juha
+6339 - Killeen, Patrick
+10209 - Killorn, Alexander
+1602 - Kilpelainen, Eero
+622 - Kilström, Lukas
+3590 - Kinasz, Tom
+2131 - Kindl, Jakub
+10034 - King, Chris
+1300 - King, D.J.
+7181 - King, Dwight
+444 - King, Jason
+3591 - King, Scott
+5969 - King, Tristan
+8932 - King, Tyler
+3592 - Kink, Marcus
+8766 - Kinkaid, Keith
+966 - Kinrade, Geoff
+445 - Kiprusoff, Miikka
+9951 - Kirkup, Ryan
+5145 - Kirsch, Justin
+4565 - Kivimaki, Samuli
+2562 - Klasen, Linus
+6146 - Klassen, Sam
+9398 - Klefbom, Oscar
+10250 - Klein, Artem
+1242 - Klein, Kevin
+10228 - Klein, Patrick
+449 - Klesla, Rostislav
+8662 - Klima, Tomas
+8916 - Klimchuk, Morgan
+2774 - Klimek, Lukas
+2924 - Klimenta, Tomas
+505 - Klingberg, Carl
+9611 - Klingberg, John
+3600 - Klinge, Manuel
+10229 - Klingsporn, Maik
+4476 - Klinkhammer, Rob
+5298 - Klotz, Garrett
+450 - Kloucek, Tomas
+5450 - Klubertanz, Kyle
+9637 - Klöpper, Patrick
+10207 - Knapp, Connor
+3601 - Knight, Gary
+6447 - Knight, Jared
+10040 - Knight-Rouleau, Olivier
+6891 - Knotek, Tomas
+451 - Knuble, Mike
+8892 - Knutsen, Jonas
+5756 - Kobach, Reto
+452 - Kobasew, Chuck
+3604 - Kobayashi, Haruo
+3605 - Koch, Thomas
+2022 - Koci, David
+2912 - Koci, Vaclav
+7813 - Koekkoek, Slater
+2313 - Kohl, Benedikt
+2122 - Kohn, Dustin
+4727 - Kohn, Ladislav
+3610 - Koho, Ville
+3611 - Koistinen, Ville
+9444 - Koivisto, Juha
+10324 - Koivisto, Micah
+3614 - Koivisto, Toni
+1136 - Koivu, Mikko
+453 - Koivu, Saku
+1687 - Kokkala, Lassi
+454 - Kolanos, Krys
+2800 - Kolar, Jan
+2812 - Kolar, Jan
+5329 - Kolarik, Chad
+4633 - Kolarik, Pavel
+8669 - Kolarz, Michael
+3618 - Kolehmainen, Janne
+1205 - Kolesnik, Vitaly
+455 - Kolnik, Juraj
+668 - Kolomatis, David
+5963 - Kolppanen, Ville
+456 - Koltsov, Konstantin
+2801 - Koma, Jaroslav
+3620 - Komachi, Jun
+1718 - Komarov, Leo
+459 - Komisarek, Mike
+8515 - Kompon, Mike
+7438 - Komulainen, Joonas
+5981 - Konan, Matt
+3621 - Konichev, Sagadat
+1149 - Konopka, Zenon
+6701 - Kontos, Kristoff
+9747 - Kopeck, Presten
+1244 - Kopecky, Tomas
+3624 - Kopitar, Anze
+3625 - Kopitz, Lasse
+3627 - Koppchen, Patrick
+2019 - Kopriva, Miroslav
+9422 - Kopstals, Andres
+9889 - Kopta, Ondrej
+1828 - Koreis, Jakub
+1624 - Korhonen, Ville
+8595 - Korkko, Tomi
+5995 - Kornelsen, Joe
+10210 - Korobov, Dmitry
+3632 - Korpikari, Oskari
+3633 - Korpikoski, Lauri
+3636 - Koskenkorva, Kimmo
+3637 - Koskinen, Kalle
+2626 - Koskinen, Mikko
+3638 - Koskinen, Petri
+4571 - Koskiranta, Jarno
+1664 - Koskiranta, Tero
+10234 - Koslowski, John
+7748 - Kosmachuk, Scott
+4612 - Kostal, Jan
+9513 - Kostalek, Jan
+5243 - Kosterman, Peter
+1166 - Kostitsyn, Andrei
+2138 - Kostitsyn, Sergei
+5306 - Kostka, Mike
+7480 - Kostner, Diego
+465 - Kostopoulos, Tom
+466 - Kotalik, Ales
+3641 - Kotlyar, Nikolay
+2727 - Kotrla, Jindrich
+3642 - Kotschnew, Dimitrij
+2813 - Koukal, Petr
+9725 - Koules, Miles
+1708 - Kousa, Mikko
+7288 - Kousal, Robert
+8659 - Kousalik, Petr
+2797 - Koutský, Vladislav
+9497 - Kovacik, Jozef
+467 - Kovalchuk, Ilya
+3644 - Kovanen, Tommi
+152 - Kovar, Jakub
+2842 - Kovar, Jan
+10114 - Koys, Patrik
+469 - Kozlov, Viktor
+470 - Kozlov, Vyacheslav
+5147 - Kozun, Brandon
+9697 - Kozun, Taran
+3647 - Kozybaev, Vladmir
+5477 - Kparghai, Clarence
+8136 - Kraft, Milan
+8632 - Kramer, Darren
+3648 - Kramer, Rene
+8533 - Krammer, Nicolas
+9502 - Kranjc, Aleš
+2565 - Kratena, Ondrej
+3649 - Kravchenko, Ivan
+9986 - Kravchuk, Kristofer
+9562 - Kreider, Chris
+1398 - Krejci, David
+8680 - Krejcik, Jakub
+9479 - Krejcík, Lukáš
+2776 - Krenzelok, Lukas
+1387 - Kreps, Kamil
+10251 - Kretschmann, Christian
+3651 - Kretschmann, James
+3652 - Kreutzer, Daniel
+3653 - Kristensen, Carsten
+9329 - Kristiansen, Tommy
+1357 - Krog, Jason
+476 - Kronwall, Niklas
+2913 - Krstev, Angel
+7487 - Krueger, Justin
+9564 - Krug, Torey
+497 - Kruger, Marcus
+6311 - Krupp, Bjorn
+10262 - Krämer, Cornelius
+7240 - Krüger, Marvin
+477 - Kuba, Filip
+9961 - Kubalik, Dominik
+2845 - Kubalik, Tomas
+2993 - Kubat, Karel
+4621 - Kubena, Pavel
+478 - Kubina, Pavel
+2995 - Kubincak, Vojtech
+2743 - Kubis, Pavel
+2790 - Kubos, Petr
+2734 - Kuchejda, David
+10071 - Kucherov, Nikita
+2898 - Kuchler, Jiri
+5955 - Kucny, Jiri
+2111 - Kudelka, Tomas
+4863 - Kudrna, Jaroslav
+6106 - Kuemper, Darcy
+3660 - Kuhl, Dietmar
+3662 - Kuhta, Kimmo
+9096 - Kujawinski, Ryan
+9607 - Kukan, Dean
+1289 - Kukkonen, Lasse
+2609 - Kukkonen, Mikko
+8957 - Kulak, Brett
+5352 - Kulda, Arturs
+9681 - Kulda, Edgars
+4859 - Kulemin, Nikolai
+9856 - Kuleshov, Artyom
+374 - Kulikov, Dmitry
+9448 - Kulmala, Rasmus
+3665 - Kumagai, Takashi
+4626 - Kumstat, Petr
+2940 - Kundratek, Tomas
+482 - Kunitz, Chris
+10393 - Kuonen, Robin
+9487 - Kupec, Martin
+9049 - Kuptsov, Sergey
+8142 - Kurka, Tomas
+9437 - Kuronen, Mikael
+6699 - Kurtz, John
+3673 - Kurvinen, Mikko
+8143 - Kutlak, Zdenek
+1616 - Kuukka, Mikko
+5447 - Kuusela, Joonas
+3674 - Kuusela, Kristian
+6573 - Kuzmyk, Jack
+2951 - Kveton, David
+2720 - Kveton, Lukas
+487 - Kwiatkowski, Joel
+2067 - Kwiet, Rob
+1669 - Kähkönen, Toni
+2775 - Köhler, Bedrich
+3643 - Köttstorfer, Rainer
+5476 - Küng, Andreas
+10383 - La Coultre, Vincent
+489 - LaBarbera, Jason
+1155 - LaRose, Chad
+4537 - Laakso, Aleksi
+2663 - Laakso, Tapio
+9432 - Laaksonen, Jere
+3679 - Laatikainen, Arto
+6513 - Labardo, J.P
+10115 - Labbé, Dylan
+9726 - Labelle, Chad
+6869 - Labrie, Hubert
+2200 - Labrie, Pierre-Cedric
+10027 - Labrie, Ryan
+3681 - Labruyere, Laurent
+484 - Lack, Eddie
+1158 - Ladd, Andrew
+3682 - Laffi, Loriano
+7954 - Laflamme, Jean-Christophe
+7918 - Lafontaine, Raphael
+6795 - Lagace, Jacob
+7962 - Lagacé, Maxime
+1678 - Lahti, Miika
+493 - Laich, Brooks
+8147 - Laing, Quintin
+2620 - Lajunen, Jani
+1659 - Lajunen, Ville
+359 - Lakhmatov, Vitaly
+7871 - Lalancette, Christophe
+2225 - Laliberte, David
+1894 - Laliberte, John
+10060 - Laliberté, Kevin
+8646 - Lalonde, Christophe
+6314 - Lalonde, Shawn
+6779 - Lamarche, Maxim
+10072 - Lamarre, Hubert
+10193 - Lamb, Brady
+7908 - Lambert-Lemay, Francis
+8717 - Lammer, Dominic
+3689 - Lancet, David
+150 - Lander, Anton
+6422 - Landeskog, Gabriel
+6845 - Landry, Charles
+7260 - Landry, Jon
+10116 - Landry, Samuel
+6318 - Lane, Phil
+9670 - Lang, Chase
+5362 - Langdon, Scott
+8893 - Lange, Sawyer
+501 - Langenbrunner, Jamie
+9727 - Langhamer, Marek
+2974 - Langhammer, Jakub
+5804 - Langkow, Chris
+3693 - Langkow, Scott
+7882 - Langlois, Mikael
+5795 - Lanigan, Cam
+1245 - Lapierre, Maxim
+9195 - Laplante, Yan Pavel
+9514 - Lapsansky, Adam
+2544 - Larsen, Philip
+3699 - Larsen, Soren
+599 - Larsson, Adam
+3700 - Larsson, Alexander
+1447 - Larsson, Daniel
+7496 - Larsson, Johan
+9420 - Larsson, Johan
+8379 - Lasch, Ryan
+10270 - Lascheit, Dominik
+8977 - Laser, Jonathan
+6405 - Lashoff, Brian
+1336 - Lashoff, Matt
+7368 - Lassen, Stefan
+511 - Lasu, Nicklas
+5948 - Latal, Martin
+1311 - Latendresse, Guillaume
+9061 - Latour, Bradley
+6369 - Latta, Michael
+7837 - Latta, Nickolas
+10041 - Latulippe, Nicholas
+3702 - Latvala, Jan
+3703 - Latypov, Sergey
+7793 - Laughton, Scott
+107 - Laumann Ylven, Martin
+5495 - Lauper, Adrien
+9717 - Laurencelle, Remi
+9418 - Lauridsen, Oliver
+9807 - Laurikainen, Eetu
+3704 - Laurila, Henri
+61 - Lauritzen, Sebastian
+3705 - Lavallée, Kevin
+2550 - Lavander, Mats
+9131 - Laverdure, Mathieu
+9297 - Lavin, Joe
+6826 - Lavoie, Alexandre
+7031 - Lavoie, Jonathan
+8472 - Lawson, Kyle
+5612 - Lawson, Nathan
+8815 - Lazar, Curtis
+10355 - LeBlanc, Drew
+8784 - LeBlanc, Peter
+9808 - LeSann, Tanner
+1246 - Leach, Jay
+5883 - Leach, Joey
+3706 - Leask, Robert
+1117 - Lebda, Brett
+6816 - Lebel, Steve
+7139 - Leblanc, Jean-François
+7956 - Leblanc, Louis
+10102 - Leblanc, Olivier
+10073 - Lebrasseur, Jean-Philippe
+513 - Lecavalier, Vincent
+7991 - Leclerc, Alexandre
+7501 - Leddy, Nick
+3709 - Ledin, Per
+8380 - Leduc, Julien
+7891 - Leduc, Loic
+10349 - Lee, Anders
+2054 - Lee, Brian
+2164 - Lee, Chris
+2148 - Lee, Mark
+9687 - Leedahl, Dawson
+10384 - Leeger, Larry
+8841 - Lees, Jesse
+7013 - Lefebvre, Martin
+6856 - Lefebvre, Philippe
+3712 - Leforestier, Eric
+6809 - Legault, Maxime
+7551 - Legault, Stephane
+5641 - Legein, Stefan
+4576 - Leggio, David
+522 - Legwand, David
+9454 - Lehkonen, Artturi
+2129 - Lehman, Scott
+6696 - Lehner, Robin
+1247 - Lehoux, Yanick
+1614 - Lehtivuori, Joonas
+524 - Lehtonen, Kari
+3716 - Lehtonen, Mikko
+9429 - Lehtonen, Mikko
+1736 - Lehtonen, Mikko A.
+7584 - Leier, Boston
+8886 - Leier, Taylor
+1423 - Leighton, Michael
+4573 - Leimu, Juha
+3718 - Leino, Ville
+7600 - Leipsic, Brendan
+8718 - Leist, Pascal
+7850 - Leivo, Joshua
+7451 - Leivo, Tomi
+9223 - Lemay, Mathieu
+8322 - Lemieux, Mario
+9987 - Lemieux, Simon
+5566 - Lemm, Aurelio
+5723 - Lemm, Romano
+8982 - Lemmon, Mack
+10297 - Leone, Robin
+3720 - Leonov, Alexander
+527 - Leopold, Jordan
+9132 - Lepage, Julien
+9536 - Lepine, Jason
+3721 - Lepisto, Sami
+6641 - Lepkowski, Alex
+326 - Lerg, Bryan
+9785 - Lernout, Brett
+2737 - Leska, Petr
+9013 - Leslie, Zac
+7789 - Lessio, Lucas
+9030 - Lesway, Brandon
+1298 - Letang, Kris
+2289 - Letestu, Mark
+2183 - Letourneau-Leblond, Pierre-Luc
+7306 - Lev, Jakub
+8858 - Leverton, Craig
+6621 - Levi, Austin
+3725 - Levokari, Pauli
+3727 - Lewandowski, Grzegorz
+8868 - Lewington, Tyler
+2128 - Lewis, Grant
+8987 - Lewis, Jamie
+2190 - Lewis, Trevor
+7926 - Lewis, Trey
+9876 - Liberati, Miles
+3728 - Licht, Matthias
+3729 - Lie, Martin
+5886 - Lieuwen, Nathan
+5437 - Liivik, Siim
+2188 - Likens, Jeff
+532 - Liles, John-Michael
+533 - Lilja, Andreas
+9623 - Lilja, Jakob
+585 - Liljewall, Christopher
+9354 - Lillieström-Karlsson, David
+9703 - Linaker, Cole
+2355 - Linda, Bjorn
+5630 - Lindback, Anders
+9932 - Lindberg, Brandon
+610 - Lindberg, Oscar
+5558 - Lindemann, Sven
+8619 - Linder, Tom
+1518 - Lindgren, Fredrik
+1623 - Lindgren, Perttu
+1488 - Lindgren, Viktor
+542 - Lindhagen, Erik
+10309 - Lindholm, Elias
+9616 - Lindholm, Hampus
+9641 - Lindlbauer, Peter
+9913 - Lindo, Jaden
+9622 - Lindqvist Hansen, Alexander
+1489 - Lindqvist, Robin
+10044 - Lindsay, Max
+10340 - Lindsten, Jasper
+1250 - Lindström, Joakim
+3739 - Lindström, Johan
+3740 - Lindström, Sanny
+1907 - Linglet, Charles
+2802 - Linhart, Tomas
+5550 - Liniger, Michael
+3742 - Lintner, Richard
+3743 - Linzen, Georg
+5827 - Lipon, JC
+9792 - Lipsbergs, Roberts
+9760 - Lishchynsky, Tanner
+1323 - Lisin, Enver
+7517 - Liston, Liam
+9598 - Little, Broc
+2098 - Little, Bryan
+6613 - Livingston, James
+1448 - Liwing, Jonas
+9874 - Llewellyn, Darby
+8988 - Lloyd, Adam
+1959 - Locke, Corey
+7859 - Locke, Eric
+9858 - Locke, Kyle
+6165 - Lockhart, Luke
+9088 - Lodge, Jimmy
+10385 - Loeffel, Colin
+833 - Loeffel, Romain
+2602 - Lofman, Anssi
+8827 - Lofthouse, Trent
+9214 - Loiseau, Alexis
+1403 - Lojek, Martin
+669 - Loktionov, Andrei
+540 - Lombardi, Matthew
+4515 - Long, Colin
+9263 - Longpre, Nathan
+3751 - Lopatin, Yuri
+9937 - Lopez, Ramon
+2763 - Loprieno, Joe
+7763 - Lorentz, Zach
+3753 - Lorentzon, Albin
+339 - Lotscher, Kevin
+3756 - Lottner, Patrick
+3757 - Lottner, Richard
+8828 - Lotz, Austin
+3760 - Louhivaara, Ossi
+2288 - Lovejoy, Ben
+10045 - Lovell, Brian
+5788 - Lowe, Keegan
+9280 - Lowery, Ryan
+6205 - Lowry, Adam
+1575 - Lucenius, Niclas
+8437 - Lucia, Tony
+2099 - Lucic, Milan
+2755 - Lucka, Martin
+5375 - Ludwig, Trevor
+9537 - Lukac, Michal
+2994 - Lukes, Frantisek
+544 - Lukowich, Brad
+6167 - Lund, Chance
+3762 - Lund, Torgeir
+3763 - Lundberg, Emil
+5204 - Lundberg, Martin
+8483 - Lunden, Josh
+10321 - Lundgren, Niclas
+7378 - Lundh, Patrik
+2085 - Lundin, Mike
+545 - Lundmark, Jamie
+1190 - Lundqvist, Henrik
+3766 - Lundqvist, Joel
+3767 - Lundstrom, Joakim
+7402 - Lundström, Niklas
+8163 - Luoma, Mikko
+3769 - Luomala, Marko
+547 - Luongo, Roberto
+549 - Lupul, Joffrey
+5935 - Lusnak, Patrik
+829 - Lussy, Silvan
+3771 - Luttinen, Arttu
+550 - Lydman, Toni
+9976 - Lyle, Michael
+9657 - Lysenko, Vladislav
+2578 - Lähde, Nestori
+2588 - Lähteenmäki, Sami
+10085 - Légaré, Charles-Éric
+9988 - Léveillé, Loik
+490 - Löf, Simon
+3761 - Lüdemann, Mirko
+5679 - Lüthi, Fabian
+9001 - Maaskant, Liam
+9039 - Maatta, Olli
+1370 - MacArthur, Clarke
+5637 - MacArthur, Peter
+7074 - MacAulay, Stephen
+9068 - MacDermid, Kurtis
+7182 - MacDermid, Lane
+2118 - MacDonald, Andrew
+9688 - MacDonald, Cole
+6617 - MacDonald, Colin
+553 - MacDonald, Craig
+1428 - MacDonald, Joey
+8978 - MacDonald, Josh
+2105 - MacDonald, Kirk
+9884 - MacIntyre, Bobby
+1787 - MacIntyre, Drew
+10074 - MacIntyre, Duncan
+2245 - MacIntyre, Steve
+10154 - MacKay, Max
+9809 - MacKay, Zac
+556 - MacKenzie, Derek
+5206 - MacKenzie, Matt
+9289 - MacKinnon, Kyle
+9179 - MacKinnon, Nathan
+9215 - MacKinnon, Ryan
+10203 - MacLellan, Jack
+6329 - MacLeod, Matt
+9300 - MacLeod, Wade
+7941 - MacMillan, Cole
+10277 - MacMurchy, Ryan
+2368 - MacNevin, Josh
+10201 - MacQueen, Jamie
+6227 - Macek, Brooks
+8422 - Macenauer, Maxime
+8989 - Machac, Patrik
+2735 - Machacek, Petr
+5353 - Machacek, Spencer
+3777 - Macholda, Petr
+7745 - Machovsky, Matej
+9698 - Macklin, Aaron
+5836 - Madaisky, Austin
+3778 - Madigozhin, Sergei
+3779 - Madsen, Jens
+2161 - Madsen, Morten
+7536 - Magee, Brandon
+6717 - Maggio, Daniel
+1948 - Magowan, Ken
+9661 - Maguire, Geordie
+9920 - Maguire, Josh
+7818 - Mahalak, Matt
+10117 - Maheux, Raphaël
+9748 - Mahon, Joseph
+7143 - Maillet, Philippe
+3784 - Maisonneuve, Alain
+7285 - Majdan, Juraj
+561 - Majesky, Ivan
+7935 - Makarov, Andrei
+3786 - Maki, Tomi
+7337 - Makinen, Konsta
+3789 - Makkonen, Jussi
+563 - Malec, Tomas
+2824 - Malek, Roman
+9120 - Maletta, Jordan
+3790 - Malevich, Sergei
+564 - Malhotra, Manny
+565 - Malik, Marek
+2613 - Malinen, Jarkko
+6761 - Malka, Olivier
+2575 - Malkamaki, Miko
+1325 - Malkin, Evgeni
+7033 - Mallet, Alexandre
+9953 - Mallette, Trent
+3792 - Malmivaara, Olli
+9276 - Malone, Brad
+7942 - Malone, Brett
+566 - Malone, Ryan
+6752 - Malouin, Jérémie
+6623 - Malysa, Nick
+2023 - Mancari, Mark
+10187 - Manderson, Denver
+10149 - Mangene, Matt
+4572 - Mankinen, Jesse
+8610 - Mannberg, Daniel
+5652 - Manning, Brandon
+5235 - Mannino, Peter
+9239 - Mantha, Anthony
+3799 - Mantymaa, Ville
+2058 - Manzato, Daniel
+9689 - Mappin, Ty
+571 - Mara, Paul
+10374 - Maraun, Kevin
+7761 - Marcantuoni, Matia
+5309 - Marchand, Brad
+7732 - Marchese, Chris
+7963 - Marcotte, Louick
+6955 - Marcoux, Etienne
+3801 - Marczak, Mariusz
+9503 - Marek, Jakub
+3802 - Marha, Josef
+7623 - Marincin, Martin
+1251 - Marjamaki, Masi
+574 - Markkanen, Jussi
+575 - Markov, Andrei
+576 - Markov, Danny
+9644 - Markovic, Jaroslav
+5183 - Markstrom, Jacob
+8626 - Markusson, Johan
+577 - Marleau, Patrick
+9977 - Marois, Carl
+10019 - Marois, Nick
+5299 - Maroon, Patrick
+9645 - Marosz, Rostislav
+5310 - Marquardt, Matt
+1047 - Marshall, David
+924 - Marshall, Kevin
+2436 - Martens, Henry
+10000 - Marti, Christian
+9810 - Martin, Brycen
+8842 - Martin, Colten
+5880 - Martin, James
+8848 - Martin, Jonathon
+646 - Martin, Matt
+581 - Martin, Paul
+9050 - Martin, Spencer
+6547 - Martindale, Ryan
+582 - Martinek, Radek
+5277 - Martinez, Alec
+7697 - Martinook, Jordan
+10230 - Martinsen, Andreas
+7811 - Martschini, Lino
+3808 - Marttinen, Jyri
+2952 - Martynek, Rostislav
+1450 - Marusak, Jiri
+10298 - Marzan, Nicolas
+2832 - Mashinter, Brandon
+584 - Mason, Chris
+4582 - Mason, Steve
+10103 - Mastrangelo, Michael
+7343 - Masuhr, Adam
+3810 - Masulis, Bruno
+3811 - Masumura, Shin
+9530 - Matejícek, Martin
+7807 - Mathers, Derek
+2207 - Matheson, Mark
+10197 - Matson, Taylor
+2230 - Matsumoto, Jon
+10001 - Matteau, Stefan
+2308 - Matthias, Shawn
+2314 - Mauer, Frank
+8175 - Mauldin, Greg
+5658 - Maurer, Marco
+3815 - Maurer, Ulrich
+10387 - Mauron, Lionel
+5244 - Maxwell, Ben
+8909 - Maxwell, Brooks
+8633 - Maxwell, Russell
+5626 - Maxwell, Tom
+8394 - Mayer, Robert
+8755 - Mayer, Vincenz
+589 - Mayers, Jamal
+9682 - Mayo, Dysin
+6086 - Mayor, Colten
+7307 - Mazanec, Marek
+3819 - McAllister, Robert
+2261 - McArdle, Kenndal
+941 - McBain, Jamie
+9952 - McCann, Jared
+2922 - McCarthy, John
+594 - McCarthy, Steve
+9917 - McCartney, Matt
+1093 - McClement, Jay
+5848 - McColgan, Shane
+652 - McCollum, Tom
+597 - McCormick, Cody
+8910 - McCoy, Marc
+9817 - McCue, Beau
+9857 - McDavid, Connor
+8398 - McDonagh, Ryan
+9181 - McDonald, Cameron
+2274 - McDonald, Colin
+9978 - McDonald, Mason
+6527 - McDowell, Jimmy
+1798 - McElhinney, Curtis
+7758 - McEneny, Evan
+8922 - McEvoy, Travis
+6713 - McFadden, Josh
+6702 - McFarland, John
+6001 - McFaull, Kendall
+9662 - McGauley, Tim
+7743 - McGinn, Brock
+5346 - McGinn, Jamie
+6878 - McGinn, Tye
+5371 - McGinnis, Ryan
+9196 - McGrath, Patrick
+1094 - McGrattan, Brian
+8674 - McGregor, Bryan
+9003 - McGuire, Johnny
+9182 - McGurty, Myles
+6006 - McIlrath, Dylan
+9799 - McIntosh, Jeremy
+8471 - McIntyre, David
+1345 - McIver, Nathan
+7728 - McIvor, Marcus
+8859 - McKechnie, Sam
+6344 - McKegg, Greg
+8397 - McKelvie, Chris
+9294 - McKelvie, Zach
+2517 - McKenna, Mike
+5281 - McKenzie, Ian
+9867 - McKeown, Roland
+5462 - McKinlay, Dylen
+5347 - McLaren, Frazer
+607 - McLean, Brett
+9778 - McLean, Ty
+1748 - McLeod, Cody
+5845 - McMillan, Brandon
+1018 - McMillan, Carson
+5879 - McNabb, Brayden
+9208 - McNamee, Michael
+6371 - McNaughton, Cody
+8990 - McNaughton, Jordan
+9262 - McNeely, Tyler
+6034 - McNeill, Mark
+2504 - McNeill, Patrick
+9761 - McNulty, Marc
+7692 - McPhee, Zach
+10150 - McPherson, Corbin
+2242 - McQuaid, Adam
+6616 - McRae, Phil
+7565 - McVeigh, Logan
+10247 - Mebus, Oliver
+2197 - Meckler, David
+9273 - Medvec, Kyle
+3827 - Medvenov, Bulin
+3828 - Medvinsky, Kirill
+1363 - Meech, Derek
+10188 - Megna, Jayson
+5660 - Meier, Dominic
+9031 - Meighan, Curtis
+10293 - Meili, Lukas
+7513 - Meilleur, Jens
+5453 - Melart, Ilari
+7760 - Melchiori, Julian
+4622 - Melenovsky, Marek
+3831 - Melin, Bjorn
+7943 - Melindy, James
+7320 - Melka, Antonin
+3833 - Melnik, Meik
+6363 - Menard, Francis
+3834 - Menard, Robin
+3836 - Menegatti, Paolino
+7785 - Mercer, Luke
+5531 - Mercier, Jonathan
+1055 - Mercier, Justin
+9224 - Mercier, Steven
+9979 - Meredith, Andrew
+8860 - Merkley, Jay
+9633 - Merl, Thomas
+8719 - Merola, Melvin
+2728 - Mertl, Tomas
+6230 - Messier, Jordan
+7685 - Messier, Marcus
+1096 - Meszaros, Andrej
+3838 - Methot, Francois
+1413 - Methot, Marc
+3839 - Metropolit, Glen
+4544 - Metsola, Juha
+5508 - Meunier, Laurent
+6608 - Meurs, Garrett
+913 - Meyers, Josh
+7957 - Micallef, Alex
+8361 - Miceli, Angelo
+7175 - Micflikier, Jacob
+618 - Michalek, Milan
+619 - Michalek, Zbynek
+3841 - Michalski, Krzysztof
+4645 - Micka, Tomas
+9910 - Middleton, Jacob
+10075 - Midensky, Stephen
+8788 - Miele, Andy
+1619 - Mielonen, Juho
+620 - Miettinen, Antti
+1667 - Miettinen, Camilo
+3843 - Miettinen, Tommi
+7466 - Mieville, Alain
+6556 - Mignardi, Rob
+8698 - Mika, Radek
+4941 - Mikeska, Mikhail
+2231 - Mikkelson, Brendan
+3844 - Mikkola, Ilkka
+2733 - Mikulík, Milan
+8658 - Mikus, Peter
+2189 - Milam, Troy
+9957 - Millen, Charlie
+8991 - Miller, Brenden
+7840 - Miller, Colin
+1819 - Miller, Drew
+9084 - Miller, J.T.
+9771 - Miller, Jesse
+9290 - Miller, Kevan
+623 - Miller, Ryan
+5141 - Miller, Ryley
+723 - Miller, Tim
+8911 - Millette, Cory
+624 - Milley, Norm
+9149 - Millman, Blake
+4465 - Mills, Brad
+9860 - Milne, Brody
+2453 - Milo, Dusan
+6759 - Milson, Bryce
+1887 - Minard, Chris
+7757 - Ming, Eric
+8325 - Mink, Graham
+3850 - Mironenko, Sergei
+3851 - Mischenko, Paul
+1006 - Miskovic, Zach
+6602 - Missiaen, Jason
+9085 - Mistele, Matthew
+2421 - Mitchell, Adam
+6108 - Mitchell, Garrett
+1843 - Mitchell, John
+8423 - Mitchell, John
+2088 - Mitchell, Torrey
+627 - Mitchell, Willie
+6372 - Mitchell, Zack
+4517 - Mitera, Mark
+9636 - Mitja, Robar
+3853 - Miura, Yuji
+8843 - Moar, Tanner
+5909 - Mocek, David
+9488 - Mocek, Petr
+1490 - Modig, Mattias
+630 - Modry, Jaroslav
+3854 - Moe, Kristian
+631 - Moen, Travis
+7772 - Moffat, Michael
+9355 - Molin, Emil
+1497 - Molinder, Andreas
+3859 - Molsher, Steve
+7797 - Monahan, Sean
+3860 - Mondt, Nikolaus
+5586 - Monnet, Thibaut
+633 - Montador, Steve
+8720 - Montandon, Arnaud
+5875 - Montgomery, Brock
+1764 - Montoya, Al
+7974 - Montreuil, Vincent
+9786 - Moodie, Alex
+10009 - Moody, Zachary
+6389 - Moon, Nathan
+9943 - Moore, Bryan
+634 - Moore, Dominic
+1771 - Moore, Greg
+6427 - Moore, John
+5348 - Moore, Mike
+3864 - Moosbacher, Edmund
+1409 - Moran, Brad
+9895 - Moran, Brent
+8721 - Morant, Johan
+2914 - Moravec, Jiri
+6679 - Morbeck, Trevor
+3866 - Morczinietz, Andreas
+7553 - Morden, Evan
+6420 - Morin, Jeremy
+10127 - Morin, Jessy
+9216 - Morin, Samuel
+479 - Morin, Travis
+3869 - Morita, Sakuji
+1976 - Mormina, Joey
+7549 - Moroz, Mitchell
+3870 - Moroza, Victor
+8193 - Morozov, Aleksey
+642 - Morris, Derek
+10232 - Morris, Ty
+6433 - Morrison, Mike
+9823 - Morrison, Tyler
+8894 - Morrissey, Josh
+645 - Morrow, Brenden
+6029 - Morrow, Joe
+9735 - Morse, Spencer
+6193 - Mort, Tanner
+5897 - Moser, Ryon
+5769 - Moser, Simon
+10323 - Moses, Steve
+10104 - Mosher, David
+1371 - Moss, David
+2528 - Motherwell, Brett
+8195 - Mottau, Mike
+648 - Motzko, Joe
+9542 - Mouillierat, Kael
+1977 - Moulson, Matt
+9089 - Moutrey, Nick
+9643 - Mozik, Vojtech
+9905 - Mraz, Richard
+2791 - Mrazek, Jaroslav
+6554 - Mrazek, Petr
+2976 - Mrna, Pavel
+5622 - Mueller, Chris
+8464 - Mueller, Marcel
+9690 - Mueller, Mirco
+2095 - Mueller, Peter
+677 - Mullen, Patrick
+10291 - Muller, Devin
+2440 - Muller, Marcel
+5579 - Muller, Pascal
+7224 - Mulock, T.J.
+2361 - Mulock, Tyson
+9779 - Mumby, Griffin
+1986 - Munroe, Scott
+3874 - Murata, Ken
+653 - Murley, Matt
+6629 - Murovich, Tyler
+10010 - Murphy, Cole
+1845 - Murphy, Colin
+9098 - Murphy, Connor
+9240 - Murphy, Matt
+6429 - Murphy, Ryan
+9077 - Murphy, Trevor
+2002 - Murray, Andrew
+1148 - Murray, Douglas
+7872 - Murray, Jordan
+8722 - Murray, Jordy
+7843 - Murray, Matthew
+5815 - Murray, Ryan
+5240 - Mursak, Jan
+9576 - Muse, John
+6262 - Musil, David
+3878 - Musselwhite, Wayne
+9325 - Mustonen, Joel
+4539 - Mutanen, Sami
+6174 - Muth, Tanner
+6691 - Muzzin, Jake
+8829 - Mychan, Jesse
+366 - Myers, Tyler
+8899 - Mykitiuk, Jake
+8900 - Mylchreest, Michael
+9793 - Myles, Justin
+5473 - Myllykoski, Joni
+3881 - Myllyniemi, Jere
+10339 - Mähönen, Krister
+4579 - Mäkilä, Antti
+1677 - Männikkö, Miikka
+3798 - Mäntylä, Tuukka
+8524 - Möchel, Marius
+4450 - Möller, Oscar
+5736 - Müller, Jonas
+3872 - Müller, Moritz
+5561 - Müller, Yves
+661 - Nabokov, Evgeni
+1066 - Nagy, Kory
+662 - Nagy, Ladislav
+8661 - Nahodil, Lukas
+3884 - Nakamura, Akira
+4538 - Nakyva, Kristian
+7776 - Namestnikov, Vladislav
+6966 - Narbonne, Jonathan
+8474 - Nash, Brendon
+663 - Nash, Rick
+8772 - Nash, Riley
+9069 - Nastasiuk, Zach
+4540 - Nattinen, Joonas
+3885 - Nawrocki, Tomasz
+2168 - Neal, James
+4526 - Neal, Michael
+10395 - Nedeljkovic, Alex
+7679 - Nedomlel, Richard
+671 - Nedved, Petr
+8834 - Needham, Matt
+10020 - Neeposh, Silas
+914 - Negrin, John
+8582 - Neher, Lars
+672 - Neil, Chris
+10124 - Neill, Carl
+4471 - Neilson, Eric
+9663 - Nejezchleb, Richard
+10155 - Nelson, Brock
+8970 - Nelson, Logan
+9499 - Nemec, Vojtech
+9939 - Nemecek, David
+4634 - Nemecek, Roman
+7494 - Nemeth, Patrik
+6729 - Nemisz, Greg
+8370 - Nermark, Joachim
+2520 - Nesbitt, Derek
+9261 - Ness, Aaron
+10365 - Ness, Martin
+7635 - Ness, Tyson
+7146 - Nestrasil, Andrej
+6659 - Neuber, Kyle
+10288 - Neuenschwander, Jan
+10370 - Neugebauer, Jari
+8723 - Neukom, Benjamin
+5619 - Neuvirth, Michal
+9099 - Nevins, Jack
+1377 - Newbury, Kris
+5510 - Ngoy, Michael
+10199 - Nicastro, Max
+6138 - Nicholls, Josh
+9956 - Nichols, Justin
+10011 - Nicholson, Gareth
+8947 - Nickles, Lucas
+8508 - Niederberger, Mathias
+6019 - Niederreiter, Nino
+8756 - Nielsen, Daniel
+3889 - Nielsen, Frans
+3890 - Nielsen, Klaus
+3891 - Nielsen, Lars
+9461 - Nielsen, Simon
+7349 - Niemelä, Mikko
+1719 - Niemi, Antti
+3892 - Niemi, Antti-Jussi
+6150 - Niemi, Jyri
+3893 - Niemi, Mika
+2573 - Nieminen, Jani
+3895 - Nieminen, Niko
+678 - Nieminen, Ville
+5616 - Nightingale, Jared
+6542 - Nigro, Anthony
+3899 - Niinimaki, Jesse
+9944 - Nikandrov, Daniel
+4700 - Nikitin, Nikita
+8803 - Nikkel, Ayrton
+683 - Nilson, Marcus
+3901 - Nilsson, Anders
+10320 - Nilsson, Ludvig
+1125 - Nilsson, Robert
+3896 - Nilstorp, Cristopher
+9102 - Nishi, Michael
+3904 - Niskala, Janne
+2083 - Niskanen, Matt
+7706 - Nixon, Kyler
+5726 - Nodari, Matteo
+5378 - Nodl, Andreas
+7264 - Noebels, Marcel
+6607 - Noesen, Stefan
+1097 - Nokelainen, Petteri
+6684 - Nolan, Jordan
+3909 - Nomura, Masashi
+7994 - Noonan, Jeffrey
+3911 - Nordgren, Niklas
+1725 - Nordlund, Markus
+1983 - Nordqvist, Jonas
+7403 - Nordström, Joakim
+2160 - Noreau, Maxim
+6772 - Noreau, Samuel
+10344 - Norja, Mika
+7370 - Norman, John
+685 - Noronen, Mika
+3917 - Norrena, Fredrik
+9078 - Nosad, Stephen
+2741 - Nosek, David
+9490 - Nosek, Tomáš
+5912 - Nouza, Tomas
+4635 - Novak, Jan
+2344 - Nowak, Marco
+3919 - Nowosad, Thomas
+6083 - Nugent-Hopkins, Ryan
+1294 - Nummelin, Petteri
+3920 - Nurmi, Teemu
+9103 - Nurse, Darnell
+9704 - Nyberg, Henrik
+8606 - Nygren, Magnus
+7331 - Nyholm, Robert
+9268 - Nyquist, Gustav
+1254 - Nystrom, Eric
+1617 - Näppilä, Jarkko
+7900 - O'Brien, Andrew
+971 - O'Brien, Jim
+7980 - O'Brien, Liam
+3927 - O'Brien, Mike
+10091 - O'Brien, Quinn
+1307 - O'Brien, Shane
+7873 - O'Brien, Zach
+1960 - O'Byrne, Ryan
+9709 - O'Connor, Kyle
+6643 - O'Connor, Ryan
+7209 - O'Connor, Sean
+6710 - O'Dell, Eric
+9316 - O'Hanley, Brian
+10164 - O'Neill, Brian
+2178 - O'Neill, Wes
+10181 - O'Neill, Will
+376 - O'Reilly, Ryan
+1078 - Oberg, Evan
+3925 - Öberg, Peter
+3926 - Obergauer, Georg
+7225 - Oblinger, Alexander
+3929 - Oduya, Johnny
+695 - Ohlund, Mattias
+7261 - Ohmann, Marcel
+9351 - Öhrn, Daniel
+2566 - Ohtamaa, Atte
+8007 - Oke, Scott
+2494 - Okposo, Kyle
+3937 - Okunev, Oleg
+1481 - Olausson, Niklas
+8489 - Oleksiak, Jamie
+10189 - Oleksuk, Travis
+9543 - Oleksy, Steve
+1095 - Olesz, Rostislav
+6983 - Oligny, Jimmy
+6850 - Oligny, Jonathan
+2332 - Olimb, Mathis
+9229 - Oliver-Dares, Devon
+9400 - Ollas, Jesper
+8790 - Olsen, Dylan
+7657 - Olsen, Ryan
+10194 - Olson, Brett
+5427 - Olver, Darin
+7505 - Olver, Mark
+1492 - Omark, Linus
+2759 - Ondracek, Jiri
+2474 - Ondruschka, Florian
+5191 - Onerud, Simon
+2379 - Oppenheimer, Thomas
+8959 - Orban, Blake
+9469 - Ore, Antti
+7248 - Orendorz, Dieter
+10252 - Orendorz, Kevin
+2529 - Oreskovic, Phil
+9271 - Orlov, Dmitry
+700 - Orpik, Brooks
+701 - Orr, Colton
+8673 - Orsava, Jakub
+3944 - Orsoni, Luciano
+4577 - Ortio, Joni
+703 - Ortmeyer, Jed
+10256 - Ortolf, Stefan
+9635 - Ortwein, Mike
+9780 - Ortynski, Bryar
+4444 - Oshie, T.J.
+5958 - Oslanski, Landon
+3946 - Osterloh, Sebastian
+7302 - Ostrizek, David
+2366 - Ostwald, Elia
+705 - Ott, Steve
+9197 - Ottereyes, Deverick
+7383 - Ottosson, Sebastian
+1147 - Ouellet, Michel
+6967 - Ouellet, Xavier
+7644 - Ouellette, Trent
+2793 - Ovcacik, Ctirad
+1083 - Ovechkin, Alexander
+9728 - Owre, Steven
+74 - Owuya, Mark
+9457 - Paajanen, Otto
+138 - Paajarvi, Magnus
+3950 - Paakkolanvaara, Tommi
+9426 - Paalanen, Ville
+2925 - Pabiska, Lukas
+5355 - Pacioretty, Max
+5866 - Pacovsky, Dominik
+9671 - Padakin, Pavlo
+1256 - Paetsch, Nathan
+6867 - Pageau, Jean-Gabriel
+708 - Pahlsson, Samuel
+1159 - Paille, Daniel
+2130 - Painchaud, Chad
+4560 - Pakarinen, Iiro
+6844 - Palat, Ondrej
+7752 - Palazzese, Franky
+1804 - Palin, Brett
+8804 - Palmer, Jack
+8447 - Palmer, Jarod
+8425 - Palmieri, Kyle
+1067 - Palmieri, Nick
+7362 - Palmroth, Markus
+2649 - Palola, Olli
+4580 - Palonen, Niko
+4722 - Palushaj, Aaron
+3957 - Palyga, Michael
+9110 - Pancel, Nathan
+710 - Pandolfo, Jay
+9618 - Panelin Borg, Victor
+6309 - Panik, Richard
+9664 - Pankewicz, Kord
+9142 - Paquette, Cédric
+7014 - Paquette, Danick
+7108 - Paradis, Philippe
+1805 - Pardy, Adam
+5241 - Pare, Francis
+2028 - Parent, Ryan
+1407 - Parenteau, Pierre-Alexandre
+8429 - Paris, Drew
+1098 - Parise, Zach
+713 - Park, Richard
+6044 - Parker, Jonathan
+3960 - Parker, Nigel
+6970 - Parkes, Trevor
+7587 - Parkkonen, Patrik
+6478 - Parlett, Blake
+1118 - Parros, George
+2194 - Parse, Scott
+3961 - Parssinen, Timo
+6649 - Pasquale, Eddie
+2899 - Patera, Pavel
+7829 - Paterson, Jake
+10158 - Pateryn, Greg
+3963 - Pateschko, Günter
+10076 - Patriarco, Anthony
+6142 - Patterson, Gaelan
+9040 - Patterson, Jake
+4478 - Paukovich, Geoff
+9851 - Paul, Nick
+9555 - Pauli, Andreas
+9736 - Paulic, Justin
+3966 - Paulsson, Marcus
+2059 - Pavelec, Ondrej
+9054 - Pavelka, Jaroslav
+9198 - Pavelka, Tomas
+1353 - Pavelski, Joe
+10338 - Paven, Jarno
+3968 - Pavlikovsky, Richard
+8652 - Pavlu, Michal
+10118 - Pawelczyk, Alex
+9877 - Pawley, Corey
+6303 - Payerl, Adam
+7787 - Payne, Cody
+5871 - Pearce, Elgin
+654 - Pearce, Jordan
+7713 - Pearson, Tanner
+4616 - Pech, Lukas
+2522 - Peckham, Theo
+7742 - Pedan, Andrei
+9032 - Pedersen, Brent
+3970 - Pedersen, Hans
+3971 - Pedersen, Niels
+3974 - Pedretti, Abdon
+10287 - Pedretti, Marco
+7731 - Pelech, Adam
+2249 - Pelech, Matt
+10033 - Pelletier, Robert
+1401 - Pelley, Rod
+5267 - Peltier, Derek
+1574 - Peltola, Jukka
+7338 - Peltola, Niko
+1320 - Peltonen, Ville
+1302 - Peluso, Anthony
+9729 - Penner, Blake
+1181 - Penner, Dustin
+8647 - Penny, Ryan
+3985 - Pentikainen, Atte
+6474 - Percy, Stuart
+8592 - Perhonen, Samu
+10062 - Perigo, Daniel
+9073 - Perklin, David
+9840 - Perlini, Brendan
+1257 - Perrault, Joel
+5254 - Perreault, Mathieu
+8895 - Perreaux, Carson
+1303 - Perrin, Eric
+2093 - Perron, David
+10092 - Perron, Francis
+1100 - Perry, Corey
+9405 - Persson, Christopher
+1451 - Persson, Dennis
+6089 - Persson, John
+5180 - Persson, Linus
+101 - Persson, Robin
+3988 - Perzyna, Andrezej
+9455 - Pesonen, Anssi
+2629 - Pesonen, Harri
+3990 - Pesonen, Jussi
+4887 - Pestoni, Inti
+7790 - Petaccio, Mark
+8887 - Petan, Nicolas
+5479 - Peter, Emanuel
+2955 - Peterek, Jan
+3991 - Petermann, Felix
+9922 - Peters, Alex
+1737 - Peters, Justin
+6022 - Peters, Taylor
+1806 - Peters, Warren
+3992 - Petersen, Michael
+7073 - Petersen, Nick
+2051 - Petersen, Toby
+9055 - Petersen, Trevor
+9672 - Peterson, Elliott
+539 - Petersson, Andre
+6504 - Petgrave, Matt
+1258 - Petiot, Richard
+3993 - Petrasek, David
+2934 - Petrecki, Nick
+3995 - Petrell, Lennart
+6102 - Petrovic, Alex
+5952 - Petrovický, Robert
+8677 - Petruska, Patrik
+8467 - Petry, Jeff
+5968 - Petryk, Reid
+9897 - Petschenig, William
+8377 - Pettersson, Adam
+8629 - Pettersson-Wentzel, Fredrik
+1519 - Petterström, Pontus
+9845 - Petti, Niki
+730 - Pettinger, Matt
+9855 - Pettit, Kyle
+1418 - Peverley, Rich
+9911 - Pezzetta, Stefano
+10272 - Pfleger, Marco
+10263 - Pfohl, Fabio
+9639 - Pföderl, Leohard
+1086 - Phaneuf, Dion
+9143 - Phaneuf, Storm
+4929 - Philipp, Radek
+731 - Phillips, Chris
+7088 - Phillips, Zack
+4000 - Philox, Philippe
+9710 - Philp, Luke
+1259 - Picard, Alexandre
+1260 - Picard, Alexandre
+8362 - Picard, Olivier
+657 - Piche, Sebastien
+6176 - Pickard, Calvin
+688 - Pickard, Chet
+9079 - Pierog, Stephen
+4535 - Pierro-Zabotel, Casey
+8597 - Pietlä, Juha-Pekka
+4446 - Pietrangelo, Alex
+4002 - Pietta, Daniel
+733 - Pihlman, Tuomas
+4005 - Piispanen, Arsi
+4006 - Pikkarainen, Hannu
+1564 - Pikkarainen, Ilkka
+9718 - Pilon, Ryan
+8971 - Pilton, Kade
+2907 - Pinc, Marek
+5255 - Pinizzotto, Steve
+8219 - Pirnes, Esa
+8222 - Piros, Kamil
+7504 - Pirri, Brandon
+8223 - Pisa, Ales
+6806 - Piskacek, Jan
+2026 - Piskula, Joe
+952 - Pistilli, Matthew
+6272 - Pither, Luke
+740 - Pitkanen, Joni
+7590 - Pitlick, Tyler
+10157 - Pitt, Scott
+7308 - Pitule, Tomas
+4835 - Pivron, Pierrick
+4010 - Pizzi, Pietro
+8498 - Plachta, Matthias
+3765 - Plante, Alex
+6913 - Plante, Jean-François
+4014 - Plaskon, Rons
+9881 - Platzer, Kyle
+9800 - Playfair, Jackson
+743 - Plekanec, Tomas
+2926 - Pletka, Vaclav
+1399 - Plihal, Tomas
+9144 - Plouffe, Félix
+5499 - Pluss, Benjamin
+8948 - Plutnar, Michal
+4015 - Plüss, Martin
+9762 - Pochiro, Zach
+9772 - Pochuk, Kevin
+745 - Pock, Thomas
+5078 - Podkonicky, Andrej
+2978 - Podlesak, Martin
+7226 - Pohl, Patrick
+2281 - Pohl, Petr
+9737 - Point, Brayden
+9171 - Poirier, Emile
+2693 - Pojkar, David
+8594 - Pokka, Ville
+4017 - Polaczek, Alexander
+1313 - Polak, Roman
+1261 - Polak, Vojtech
+2956 - Polansky, Jiri
+6980 - Polasek, Adam
+4018 - Poli, Luca
+9832 - Polivka, Patrik
+9015 - Poliziani, Daniel
+9683 - Pollock, Brett
+8227 - Pollock, Jame
+10140 - Pomerleau, Tristan
+749 - Pominville, Jason
+6028 - Ponich, Brett
+750 - Ponikarovsky, Alexei
+463 - Pope, Matt
+9824 - Popoff, Carter
+1425 - Popperle, Tomas
+2217 - Porter, Chris
+4441 - Porter, Kevin
+6739 - Posa, Saverio
+2834 - Posmyk, Marek
+2126 - Pospisil, Tomas
+979 - Postma, Paul
+752 - Pothier, Brian
+753 - Poti, Tom
+8878 - Potomak, Brandon
+1772 - Potter, Corey
+1262 - Potulny, Ryan
+6964 - Poudrier, Loïk
+9154 - Poudrier, Pierre-Maxime
+4558 - Poukkula, Markus
+9133 - Poulin, Charles
+7901 - Poulin, Dominic
+7140 - Poulin, Kevin
+1355 - Pouliot, Benoit
+7628 - Pouliot, Bolton
+7601 - Pouliot, Derrick
+1263 - Pouliot, Marc-Antoine
+4023 - Pourpier, Jean-Christophe
+9090 - Povorozniouk, Sam
+2229 - Powe, Darroll
+9801 - Power, Adam
+9225 - Power, Marcus
+10119 - Pozgay, Lukas
+10257 - Prantl, Leopold
+9802 - Predinchuk, Tyson
+7217 - Preibisch, Alexander
+756 - Preissing, Tom
+9515 - Pribyl, Daniel
+2077 - Price, Carey
+10054 - Primeau, Jake
+10388 - Primeau, Josh
+6540 - Prince, Shane
+8664 - Prindis, Petr
+9711 - Prochazka, Jakub
+1520 - Prochazka, Libor
+4614 - Procházka, Milan
+5728 - Profico, Leandro
+7508 - Proft, Carter
+10166 - Prokhorkin, Nikolay
+4028 - Prokop, Andrij
+9111 - Prong, Tyler
+759 - Pronger, Chris
+9935 - Prophet, Brandon
+4610 - Prosek, Roman
+761 - Prospal, Vinny
+7199 - Prosser, Nate
+8667 - Protivny, Tomas
+6287 - Prout, Dalton
+7965 - Provencher, Victor
+1338 - Prust, Brandon
+2968 - Ptacek, Frantisek
+6586 - Puempel, Matt
+7634 - Pufahl, Matthew
+4031 - Pukka, Mikko
+5439 - Pulkkinen, Teemu
+7445 - Pulli, Jere
+7520 - Pulock, Ryan
+9585 - Pulpan, Lukas
+2989 - Puncochar, Petr
+10392 - Punnenovs, Ivars
+2198 - Purcell, Teddy
+5436 - Puustinen, Juuso
+765 - Pyatt, Taylor
+2147 - Pyatt, Tom
+5242 - Pyett, Logan
+4037 - Pyorala, Mika
+5787 - Pysyk, Mark
+2005 - Pätzold, Dimitri
+10061 - Pépin, Alexis
+2466 - Périard, Michel
+1716 - Pöyhönen, Marko
+2571 - Pöysti, Eetu
+10159 - Quailer, Steve
+9665 - Quenneville, John
+10021 - Quenneville, Jérémy
+2305 - Quick, Jonathan
+2514 - Quick, Kevin
+1339 - Quincey, Kyle
+6388 - Quine, Alan
+2972 - Quirk, Cory
+10248 - Raaf-Effertz, Patrik
+5445 - Raanta, Antti
+2738 - Rachunek, Ivan
+7093 - Racine, Jonathan
+5933 - Radil, Lukas
+769 - Radivojevic, Branko
+1327 - Radulov, Alexander
+4915 - Raedeke, Brent
+2302 - Rahimi, Daniel
+520 - Rahm, Robin
+7771 - Raine, Kevin
+5454 - Rajala, Toni
+1662 - Rajamäki, Erkki
+7822 - Rakell, Rickard
+8393 - Rakhshani, Rhett
+2816 - Rakos, Daniel
+4467 - Rallo, Greg
+1807 - Ramholt, Tim
+7581 - Ramsay, Brady
+5376 - Ramsey, Travis
+1689 - Ramstedt, Teemu
+883 - Randegger, Flurin
+7471 - Randegger, Gian-Andrea
+6411 - Randell, Tyler
+5828 - Ranford, Brendan
+9134 - Ranger, Alexandre
+1137 - Ranger, Paul
+4044 - Rankel, Andre
+7683 - Rankin, Connor
+10174 - Rankin, Evan
+2593 - Rantanen, Anssi
+10341 - Rantanen, Mikko
+4548 - Rask, Joonas
+2244 - Rask, Tuukka
+8810 - Rask, Victor
+9396 - Rasmussen, Dennis
+4046 - Rasmussen, Hans
+7777 - Rasmussen, Justin
+10028 - Ratelle, Joey
+8973 - Rathjen, Jared
+6011 - Rattie, Ty
+1020 - Rau, Chad
+9436 - Rautiainen, Teemu
+1493 - Rautio, David
+4052 - Ravani, Gabriele
+9848 - Raycroft, Mark
+8770 - Raymond, Bobby
+2056 - Raymond, Mason
+8738 - Read, Matt
+777 - Reasoner, Marty
+2515 - Reaves, Ryan
+5385 - Rechlicz, Joel
+779 - Redden, Wade
+2044 - Reddox, Liam
+1831 - Redenbach, Tyler
+2004 - Redlihs, Jekabs
+9319 - Redmond, Zach
+5229 - Reed, Harrison
+2272 - Reese, Dylan
+5260 - Regan, Eric
+1173 - Regehr, Richie
+780 - Regehr, Robyn
+6832 - Regimbald, Rock
+1529 - Regin, Peter
+725 - Regner, Brent
+7314 - Rehak, Denis
+10141 - Rehak, Dominik
+9699 - Rehill, Ryan
+9586 - Rehor, Milan
+5749 - Reichert, Marc
+1408 - Reid, Brandon
+9311 - Reid, Brodie
+6199 - Reid, James
+5364 - Reimer, James
+2351 - Reimer, Jochen
+4054 - Reimer, Patrick
+7543 - Reinhart, Griffin
+5874 - Reinhart, Max
+8849 - Reinhart, Sam
+784 - Reinprecht, Steven
+4055 - Reiss, Andre
+5497 - Reist, Alain
+4056 - Rekis, Arvids
+9942 - Renaud, Alexandre
+7323 - Rendulic, Borna
+2356 - Renkewitz, Etienne
+10105 - Repe, Jurij
+7815 - Restoule, Adam
+4060 - Reszczyk, Piotr
+5599 - Reuille, Sebastian
+7205 - Reul, Denis
+7695 - Reum, Dalton
+9787 - Revel, Matt
+10037 - Reway, Martin
+8724 - Reymondin, Joel
+1896 - Reynolds, T.J.
+8697 - Reznicek, Dalibor
+5278 - Rheault, Jonathan
+788 - Ribeiro, Mike
+10128 - Richard, Anthony
+7486 - Richard, Tanner
+4514 - Richards, Alec
+790 - Richards, Brad
+1102 - Richards, Mike
+1163 - Richardson, Brad
+8364 - Richer, Vincent
+10268 - Richter, Alexis
+2563 - Richter, Martin
+10242 - Richter, Tim
+9291 - Ridderwall, Calle
+7762 - Rieder, Tobias
+5422 - Riefers, Philip
+1647 - Riekkinen, Joonas
+7598 - Rielly, Morgan
+7619 - Rigby, Carter
+10326 - Riikola, Juuso
+7344 - Riikola, Simo-Pekka
+4847 - Riksman, Juuso
+9541 - Riley, Blair
+9803 - Rimmel, Mikulas
+7522 - Rimmer, Ty
+6276 - Rinaldo, Zac
+7828 - Ringuette, Jacob
+9549 - Ringwald, Dan
+2646 - Rinkinen, Teemu
+1199 - Rinne, Pekka
+7975 - Rioux, Axel
+10129 - Rioux-Legault, Guillaume
+4069 - Riska, Filip
+4562 - Rissanen, Jaakko
+5813 - Rissanen, Rasmus
+5282 - Rissling, Jaynen
+792 - Rissmiller, Patrick
+9463 - Ristolainen, Rasmus
+793 - Rita, Jani
+6655 - Ritchie, Brett
+794 - Ritchie, Byron
+9080 - Ritchie, Nick
+2135 - Ritola, Mattias
+2315 - Ritter, Toni
+5518 - Rivera, Christopher
+5600 - Rizzello, Antonio
+4070 - Rizzi, Sandro
+7525 - Roach, Alex
+5135 - Robak, Colby
+9330 - Robar, Mitja
+9127 - Robert, Samuel
+9183 - Robichaud, Erik
+798 - Robidas, Stephane
+7910 - Robillard, Mitchell
+1859 - Robins, Bobby
+9915 - Robinson, Alex
+8993 - Robinson, Brandon
+7630 - Robinson, Chad
+9324 - Robinson, Mat
+9893 - Robinson, Michael
+799 - Robinson, Nathan
+1382 - Roche, Travis
+8917 - Rodewald, Jack
+492 - Rodin, Anton
+2491 - Rodney, Bryan
+9249 - Roe, Garrett
+803 - Roenick, Jeremy
+4072 - Rogalski, Maciej
+1984 - Rogers, Brandon
+5365 - Rogers, Kyle
+8665 - Rohan, Martin
+7495 - Rohdin, Joachim
+4075 - Rollings, Kevin
+9556 - Roloff, Brian
+5950 - Roman, Ondrej
+1381 - Rome, Aaron
+2013 - Rome, Ashton
+5729 - Romy, Kevin
+7481 - Ronchetti, Massimo
+1918 - Rosa, Marco
+8245 - Rosa, Pavel
+7799 - Rose, Brayden
+1932 - Rosehill, Jay
+7390 - Rosen, Robert
+9763 - Rosinskis, Rinalds
+6017 - Ross, Brad
+6627 - Ross, Garret
+1990 - Ross, Jared
+7185 - Ross, Nick
+9601 - Rosseli Olsen, Mats
+7574 - Rossignol, Adam
+7313 - Roth, Vladimir
+8726 - Rouiller, Anthony
+9764 - Roulston, Brett
+6162 - Rouse, Brendan
+6830 - Roussel, Antoine
+9184 - Roussy, Samuel
+6502 - Rover, Shayne
+8384 - Rowe, Andrew
+6819 - Roy, Alexandre
+812 - Roy, Derek
+7511 - Roy, Eric
+7976 - Roy, Frederick
+9145 - Roy, Marc-Olivier
+1397 - Roy, Mathieu
+6789 - Roy, Olivier
+517 - Roymark, Martin
+4082 - Rozitis, Rolands
+813 - Rozsival, Michal
+5519 - Rubin, Daniel
+815 - Rucinsky, Martin
+2901 - Rudovský, Jan
+10146 - Ruegsegger, Tyler
+350 - Rufenacht, Thomas
+10352 - Ruhwedel, Chad
+5203 - Rundblad, David
+10331 - Ruohomaa, Mikael
+6047 - Ruopp, Harrison
+8636 - Rupert, Matt
+8635 - Rupert, Ryan
+816 - Rupp, Mike
+2363 - Rupprich, Steven
+4086 - Rusakevich, Andre
+2096 - Russell, Kris
+2137 - Russell, Ryan
+8419 - Ruth, Theo
+6025 - Rutkowski, Troy
+9588 - Rutta, Jan
+9465 - Ruuttu, Alexander
+817 - Ruutu, Jarkko
+818 - Ruutu, Tuomo
+9646 - Ruzicka, Dan
+2884 - Ruzicka, David
+2798 - Ruzicka, Martin
+4651 - Ruzicka, Vladimir
+7927 - Ryan, Andrew
+9313 - Ryan, Ben
+2078 - Ryan, Bobby
+5643 - Ryan, Joe
+6726 - Ryan, Kenny
+1351 - Ryan, Michael
+7778 - Rychel, Kerby
+5905 - Ryckman, Derek
+820 - Ryder, Michael
+2915 - Rygl, Martin
+9070 - Rymarchuk, Devon
+1603 - Rynnas, Jussi
+7492 - Ryser, Sven
+8727 - Rytz, Simon
+4079 - Röthke, Rene
+5555 - Rüeger, Ronnie
+5750 - Rüthemann, Ivo
+6910 - Saab, Ian
+7825 - Saad, Brandon
+4088 - Saarenheimo, Pekka
+4090 - Saarinen, Jesse
+1697 - Saarinen, Ossi
+10378 - Sabolic, Robert
+821 - Sabourin, Dany
+7794 - Sabourin, Scott
+9781 - Sacher, Teagan
+9931 - Sadowy, Dylan
+4095 - Saga, Jiro
+2716 - Sailer, Petr
+1582 - Sailio, Jari
+8650 - Sakaris, Peter
+2641 - Salak, Alexander
+1821 - Salcido, Brian
+5065 - Salficky, Dusan
+9909 - Salituro, Dante
+2623 - Sallinen, Jere
+2624 - Sallinen, Tomi
+1593 - Salmelainen, Tobias
+8005 - Salmelainen, Tony
+9579 - Salmi, Juuso
+2594 - Salminen, Sakari
+4101 - Salmonsson, Johannes
+826 - Salo, Sami
+2615 - Salo, Timo
+7439 - Salomaki, Miikka
+827 - Salvador, Bryce
+9128 - Salvail, Etienne
+10258 - Samhuber, Christoph
+1590 - Sammalkangas, Tapio
+9673 - Samoridny, Carson
+2103 - Samson, Jerome
+4106 - Samuelsen, Erik
+9384 - Samuelsson, Henrik
+830 - Samuelsson, Mikael
+9307 - Samuelsson, Philip
+10002 - Sanche, Philippe
+7406 - Sandberg, Christian
+1622 - Sandell, Sami
+9691 - Sandhu, Tyler
+6373 - Sandlak, Carter
+4110 - Sandström, Jan
+9730 - Sanford, Cole
+5247 - Sanguinetti, Bobby
+5730 - Sannitz, Raffaele
+8249 - Santala, Tommi
+4112 - Santavuori, Tuomas
+2205 - Santorelli, Mike
+9852 - Santos, Mathew
+9755 - Santucci, Joey
+7662 - Sanvido, Connor
+9967 - Sanvido, Patrick
+6391 - Sarault, Charles
+4113 - Saravo, Pekka
+835 - Sarich, Cory
+4114 - Sasaki, Makoto
+837 - Satan, Miroslav
+8728 - Sataric, Rajan
+2581 - Sateri, Harri
+1057 - Sauer, Billy
+2143 - Sauer, Michael
+6942 - Saulnier, Alex
+6941 - Saulnier, Allain
+8816 - Sautner, Ashton
+7131 - Sauve, Maxime
+7086 - Sauve, Yann
+10142 - Savage, Félix-Antoine
+6949 - Savard, David
+4116 - Savard, Jacques
+842 - Savard, Marc
+10284 - Savary, Jean
+5535 - Savary, Paul
+2580 - Saviano, Steve
+4117 - Savilahti Nagander, Per
+2595 - Savinainen, Veli-Matti
+5377 - Sawada, Raymond
+4439 - Sbisa, Luca
+4119 - Sbruev, Grigori
+7121 - Scandella, Marco
+4120 - Scarabelli, Alessandro
+6218 - Scarlett, Reece
+4527 - Sceviour, Colton
+844 - Schaefer, Nolan
+8440 - Schaus, Nick
+6085 - Scheidl, Lane
+7708 - Scheifele, Mark
+5582 - Schelling, Philippe
+6575 - Schemitsch, Geoffrey
+4966 - Schenn, Brayden
+4447 - Schenn, Luke
+782 - Scherwey, Tristan
+716 - Schiestel, Drew
+9950 - Schiller, Landon
+10160 - Schilling, Cameron
+5538 - Schilt, Sebastian
+872 - Schlagenhauf, Roman
+5333 - Schlemko, David
+8754 - Schlenker, Vincent
+10379 - Schlenker, jonas
+10371 - Schlipper, Tobias
+7111 - Schlumpf, Dominik
+9873 - Schmalz, Matt
+8252 - Schmidt, Chris
+8757 - Schmidt, Kevin
+7532 - Schmidt, Kyle
+10271 - Schmidt, Marius
+10259 - Schmitt, Kevin
+10280 - Schmuckli, Florian
+10249 - Schmölz, Daniel
+5488 - Schneeberger, Noah
+10195 - Schneider, Cole
+2063 - Schneider, Cory
+2415 - Schneider, Eric
+6023 - Schneider, Stefan
+8431 - Schnell, Ryan
+10281 - Schneuwly, Cédric
+4131 - Schnicks, Christoph
+5570 - Schnyder, Daniel
+5674 - Schnyder, Fabian
+9749 - Schoenborn, Alex
+6458 - Schoenmakers, Derek
+9302 - Schofield, Rick
+5581 - Schommer, Patrick
+4133 - Schopper, Benedikt
+4134 - Schoten, Markus
+8476 - Schroeder, Jordan
+10239 - Schrörs, Justin
+1134 - Schubert, Christoph
+5548 - Schulthess, Marc
+5150 - Schultz, Ian
+1375 - Schultz, Jeff
+10168 - Schultz, Justin
+850 - Schultz, Nick
+9303 - Schultz, Stephen
+9104 - Schumacher, Michael
+7855 - Schutt, Samuel
+9560 - Schwartz, Jaden
+1422 - Schwarz, Marek
+8584 - Schwendener, Jannick
+4141 - Schymainski, Martin
+10223 - Schäffler, Maximilian
+8729 - Schäppi, Reto
+5428 - Schönberger, Sandro
+5394 - Schüle, Tim
+4138 - Schütz, Felix
+5694 - Sciaroni, Gregory
+10120 - Scott, Evan
+4533 - Scott, Greg
+1968 - Scott, John
+9838 - Scott, Justin
+8430 - Scrivens, Ben
+856 - Scuderi, Rob
+1103 - Seabrook, Brent
+7523 - Seaman, Tyrel
+857 - Sedin, Daniel
+858 - Sedin, Henrik
+7315 - Sedivy, Ondrej
+2764 - Sedlacek, Jakub
+9155 - Sedlak, Lukas
+6863 - Seed, Jason
+6712 - Sefton, Justin
+1898 - Segal, Brandon
+5576 - Seger, Mathias
+6605 - Seguin, Tyler
+859 - Seidenberg, Dennis
+4142 - Seidenberg, Yannic
+7211 - Seifert, Patrick
+4143 - Seikola, Markus
+10342 - Seinelä, Joni
+860 - Sejna, Peter
+1366 - Sekera, Andrej
+862 - Selanne, Teemu
+10317 - Selin, Sebastian
+8482 - Selleck, Eric
+1304 - Semin, Alexander
+1580 - Seppänen, Timo
+9934 - Serebryakov, Nikita
+8352 - Sergeyev, Artem
+10130 - Sergeyev, Artyom
+4147 - Serizawa, Susumu
+2042 - Sestito, Tim
+2303 - Sestito, Tom
+2089 - Setoguchi, Devin
+4148 - Setzinger, Oliver
+2885 - Sevc, Martin
+7569 - Severson, Damon
+4519 - Sexton, Dan
+5513 - Seydoux, Philippe
+6401 - Seymour, Clark
+6639 - Sgarbossa, Mike
+4149 - Shalimov, Viktor
+6636 - Shalla, Joshua
+1308 - Shannon, Ryan
+4150 - Sharov, Vyacheslav
+867 - Sharp, Patrick
+1759 - Sharrow, Jimmy
+8443 - Shattenkirk, Kevin
+5177 - Shattock, Tyler
+6488 - Shaw, Andrew
+8983 - Shaw, Jason
+7851 - Shaw, Kyle
+6796 - Shaw, Logan
+9185 - Shea, Brandon
+10200 - Sheahan, Riley
+8870 - Sheen, Riley
+4152 - Sheiman, Vladmir
+5246 - Shelast, Tyler
+868 - Shelley, Jody
+2100 - Sheppard, James
+6355 - Shields, David
+9674 - Shields, Mack
+7586 - Shinkaruk, Hunter
+6233 - Shinnimin, Brendan
+6561 - Shipley, Steven
+9712 - Shirley, Colin
+9684 - Shmoorkoff, Stephen
+10176 - Shore, Drew
+6728 - Shugg, Justin
+8260 - Shvidki, Denis
+4154 - Sicak, Vladimir
+5551 - Sidler, Patrick
+9245 - Sidlik, Petr
+8817 - Sieben, Tristan
+10289 - Sieber, Luke
+9968 - Sieloff, Patrick
+6148 - Siemens, Duncan
+7557 - Siemens, Luke
+1847 - Sifers, Jaime
+9592 - Sikora, Marek
+6316 - Silas, Stephen
+494 - Silfverberg, Jakob
+7848 - Silk, Brody
+738 - Sill, Zach
+4585 - Sillanpää, Severi
+9653 - Sills, Alexandre
+9926 - Sills, Connor
+2715 - Simanek, Jiri
+10131 - Simard, Timothé
+2199 - Simek, Juraj
+8730 - Simion, Dario
+7721 - Simmonds, Scott
+4451 - Simmonds, Wayne
+8850 - Simpson, Mike
+5911 - Sindelar, Filip
+4162 - Sinitsin, Alexander
+9544 - Sinkewich, Russ
+1680 - Sipilainen, Olli
+9254 - Sislo, Mike
+4165 - Sisoyev, Leo
+7568 - Sissons, Colton
+4166 - Sivan, Hervé
+6088 - Siwak, Daulton
+5181 - Sjogren, Mattias
+880 - Sjöström, Fredrik
+8851 - Skapski, Mackenzie
+2266 - Skille, Jack
+1808 - Skinner, Brett
+6419 - Skinner, Jeff
+4617 - Skladany, Frantisek
+4647 - Sklenar, Jakub
+4169 - Skogs, Tomas
+4171 - Skrbek, Pavel
+4172 - Skrøder, Per-Age
+4615 - Skuhravy, Vaclav
+2988 - Skuhrovec, Radim
+4174 - Skvortsov, Mikhail
+1133 - Slater, Jim
+885 - Slegr, Jiri
+10093 - Slight, Gabriel
+7312 - Slipcenko, Robert
+4176 - Slivchenko, Vadim
+8266 - Sloan, Blake
+1876 - Sloan, Tyler
+4636 - Sloboda, Karol
+4177 - Sluka, Yuriy
+1934 - Smaby, Matt
+9980 - Small, Kent
+4178 - Smallenberg, Chris
+4179 - Smallenberg, Mark
+10106 - Smallman, Spencer
+1293 - Smid, Ladislav
+10217 - Smith, Austin
+8444 - Smith, Ben
+8445 - Smith, Brendan
+5820 - Smith, Colin
+8741 - Smith, Craig
+6544 - Smith, Dalton
+2115 - Smith, Derek
+7801 - Smith, Gemel
+9899 - Smith, Hunter
+9023 - Smith, Jacob
+9847 - Smith, Jake
+1135 - Smith, Jeremy
+9794 - Smith, Jerret
+1286 - Smith, Mike
+10183 - Smith, Reilly
+2121 - Smith, Trevor
+5233 - Smith, Zack
+6468 - Smith-Pelly, Devante
+895 - Smithson, Jerred
+4184 - Smits, Serge
+2213 - Smolenak, Radek
+7705 - Smoskowitz, Dylan
+897 - Smyth, Ryan
+8432 - Sneep, Carl
+2239 - Sobotka, Vladimir
+7583 - Sofillas, Michael
+6706 - Sointu, Matias
+6644 - Sol, Cody
+4194 - Solis, Daniel
+4195 - Somervuori, Eero
+8270 - Somik, Radovan
+8743 - Somma, Sergio
+1522 - Sondell, Daniel
+1306 - Sonne, Brett
+9558 - Sonnenburg, Kyle
+1714 - Sopanen, Vili
+4198 - Sorensen, Jorgen
+9209 - Sorensen, Nick
+4200 - Sorokins, Oleg
+9172 - Soumakis, Alexandros
+9692 - Soumelidis, Stathis
+4202 - Soupre, Daniel
+902 - Souray, Sheldon
+7563 - Souto, Chase
+9255 - Sova, Joe
+2930 - Spacek, Daniel
+9811 - Spagrud, Justin
+5284 - Spaling, Nick
+2014 - Spang, Dan
+7744 - Sparks, Garret
+7250 - Sparre, Dan
+7249 - Sparre, Kris
+10313 - Spelling, Thomas
+412 - Spencer, Tim
+1441 - Spets, Lars-Erik
+904 - Spezza, Jason
+10132 - Spiller, Skyler
+1935 - Spina, David
+9954 - Spinozzi, Kevin
+6590 - Spooner, Ryan
+4204 - Springis, Roberts
+7845 - Sproul, Ryan
+1329 - Sprukts, Janis
+5507 - Sprunger, Julien
+6195 - Spurgeon, Jared
+2467 - Spylo, Ahren
+9242 - St-Arnaud, Alexandre
+7995 - St-Cyr, Maxime
+5245 - St-Denis, Frederic
+5778 - St. Croix, Michael
+907 - St. Louis, Martin
+1272 - St. Pierre, Martin
+8675 - St.Pierre, Nick
+908 - Staal, Eric
+6705 - Staal, Jared
+1297 - Staal, Jordan
+2084 - Staal, Marc
+9705 - Stadel, Riley
+9693 - Stadnyk, Carson
+1340 - Stafford, Drew
+2015 - Stafford, Garrett
+5649 - Stahl, Tyler
+910 - Stajan, Matt
+6578 - Stajcer, Scott
+10190 - Stalberg, Sebastian
+392 - Stalberg, Viktor
+351 - Stalder, Ralph
+3475 - Stalock, Alex
+4430 - Stamkos, Steven
+8272 - Stana, Rastislav
+5560 - Stancescu, Viktor
+4207 - Stannek, Alexander
+6002 - Stanton, Ryan
+9731 - Stanton, Ty
+7751 - Staples, Dylan
+9732 - Staples, Matt
+9610 - Starkbaum, Bernhard
+2819 - Stary, Jan
+4210 - Stasiak, Gustaw
+1292 - Stastny, Paul
+1209 - Stastny, Yan
+2016 - Staubitz, Brad
+10373 - Stauder, Florian
+1273 - Steckel, David
+9024 - Steele, Warren
+1107 - Steen, Alexander
+4215 - Steen, Oscar
+10316 - Steen, Stefan
+7875 - Steeves, Robert
+2960 - Stefanka, Juraj
+5771 - Steiner, Daniel
+4838 - Steiner, Nicholas
+8548 - Steinhauer, Lukas
+5662 - Steinmann, Janick
+9270 - Stejskal, Joe
+1119 - Stempniak, Lee
+10318 - Stenqvist, Tommy
+7500 - Stepan, Derek
+10264 - Stephan, Eric
+1775 - Stephan, Tobias
+8273 - Stephens, Charlie
+7636 - Stephenson, Chandler
+9033 - Sterk, Josh
+1761 - Sterling, Brett
+537 - Sterner, Robin
+8835 - Sterzer, Aspen
+9129 - Stevens, Adam
+7638 - Stevenson, Dyson
+1172 - Stewart, Anthony
+8385 - Stewart, Brian
+2176 - Stewart, Chris
+917 - Stewart, Karl
+8935 - Stewart, Liam
+9872 - Stewart, Owen
+6958 - Stich, David
+5924 - Stieler, David
+1060 - Stoa, Ryan
+9773 - Stockl, Christian
+5564 - Stoffel, Andri
+10221 - Stokowski, Felix
+10347 - Stolarz, Anthony
+920 - Stoll, Jarret
+10163 - Stollery, Karl
+5053 - Stone, Mark
+5358 - Stone, Michael
+1970 - Stoner, Clayton
+5710 - Stoop, Lukas
+1396 - Stortini, Zack
+7651 - Stovin, Brett
+4472 - Strachan, Tyson
+741 - Strait, Brian
+1734 - Straka, Josef
+922 - Straka, Martin
+7035 - Straka, Petr
+1531 - Stralman, Anton
+9350 - Strandberg, Sebastian
+2849 - Stransky, Jan
+7656 - Stransky, Matej
+2781 - Strapac, Petr
+8793 - Street, Ben
+5603 - Streit, Marco
+1203 - Streit, Mark
+5823 - Stretch, C.J.
+7280 - Stritesky, Matej
+9638 - Strobl, Florian
+9628 - Strodel, Manuel
+6491 - Strome, Ryan
+8950 - Stromwall, Malte
+3738 - Strong, Dean
+10003 - Strong, Joseph
+6315 - Strong, Steven
+926 - Stuart, Brad
+1762 - Stuart, Colin
+1274 - Stuart, Mark
+9969 - Studnicka, Sam
+928 - Stumpel, Jozef
+10369 - Sturm, Dennis
+929 - Sturm, Marco
+2444 - Sturm, Soren
+115 - Styrman, Fredrik
+8984 - Subban, Jordan
+7720 - Subban, Malcolm
+9936 - Subban, Marselis
+983 - Subban, P.K.
+6531 - Suellentrop, Colin
+4223 - Sugihara, Katsunori
+8670 - Sulc, Jakub
+4224 - Sulkovsky, David
+2521 - Sullivan, Sean
+933 - Sullivan, Steve
+4226 - Sulzer, Alexander
+8484 - Summers, Chris
+1532 - Sundh, Oscar
+5432 - Sundher, Kevin
+1442 - Sundqvist, Jörgen
+7497 - Sundstrom, Johan
+935 - Sundström, Niklas
+4230 - Sundukov, Sagynbek
+10328 - Suoranta, Simon
+8753 - Supis, Thomas
+5536 - Suri, Reto
+10359 - Sustr, Andrej
+6469 - Sutch, Gregg
+1104 - Suter, Ryan
+938 - Sutherby, Brian
+4434 - Sutter, Brandon
+2251 - Sutter, Brett
+5896 - Sutter, Brody
+7663 - Sutter, Dave
+4233 - Sutter, Fabian
+7655 - Sutter, Lukas
+8732 - Sutter, Sebastian
+9719 - Sutton, Connor
+2782 - Svacina, Vladimir
+940 - Svatos, Marek
+121 - Svedberg, Niklas
+9406 - Svedberg, Viktor
+7176 - Svendsen, Brandon
+1533 - Svensson, Bjorn
+2406 - Svensson, Fredrik
+9391 - Svensson, Markus
+4239 - Svoboda, Adam
+8668 - Svoboda, Jakub
+5942 - Svoboda, Tomas
+2863 - Svrcek, Jan
+7696 - Sward, Dalton
+8477 - Sweatt, Bill
+10055 - Sweeney, Jacob
+6020 - Swenson, Seth
+7512 - Swyripa, Jason
+8696 - Sykora, Juraj
+1120 - Sykora, Petr
+946 - Sykora, Petr
+5906 - Sykora, Tomas
+9164 - Sylvegard, Emil
+5148 - Sylvester, Cody
+5868 - Sylvester, Dustin
+10121 - Sylvestre, Danny
+10022 - Sylvestre, Sébastien
+9624 - Sylwander, Daniel
+9051 - Syrette, Grant
+9890 - Sysala, David
+6376 - Syvret, Corey
+1174 - Syvret, Danny
+2783 - Szturc, Roman
+4243 - Szumielak, Eugeniusz
+6628 - Szwarz, Jordan
+6347 - Szydlowski, Shawn
+4189 - Söderberg, Carl
+4190 - Söderholm, Toni
+4191 - Söderström, Christian
+10260 - Söllner, Felix
+947 - Taffe, Jeff
+9720 - Tai, Chris
+9460 - Taimi, Tommi
+4246 - Takashi, Mori
+7428 - Talaja, Roope
+8399 - Talbot, Cameron
+2218 - Talbot, Julian
+1121 - Talbot, Maxime
+9582 - Talbot-Tassi, Dominic
+1171 - Tallackson, Barry
+948 - Tallinder, Henrik
+4248 - Tamarra, Riccardo
+1179 - Tambellini, Jeff
+4249 - Tamura, Yoichi
+5522 - Tamò, Federico
+4250 - Tanaka, Mikio
+8478 - Tanev, Christopher
+742 - Tangradi, Eric
+951 - Tanguay, Alex
+6929 - Tanguy, Jess
+6319 - Tanski, Scott
+9919 - Tanus, Jonatan
+1076 - Taormina, Matt
+10273 - Tarasenko, Vladimir
+10191 - Tarasov, Daniil
+2134 - Tardif, Jamie
+7911 - Tardif-Richard, Simon
+1557 - Tarkki, Tuomas
+1275 - Tarnasky, Nick
+6204 - Tassone, Matt
+981 - Tatar, Tomas
+5904 - Tavares, John
+4568 - Tavi, Janne
+4466 - Taylor, Daniel
+10122 - Taylor, Zachary
+5190 - Tedenby, Mattias
+4254 - Tee, Neil
+7168 - Teichmann, Tyson
+4255 - Teifel, Marat
+6635 - Telegin, Ivan
+4259 - Tenkrat, Petr
+10192 - Tennyson, Matt
+1877 - Tenute, Joey
+4260 - Tepper, Marvin
+7929 - Terenzio, Anthony
+954 - Terry, Chris
+9458 - Teräväinen, Teuvo
+2864 - Tesarík, Radim
+8077 - Tesink, Ryan
+9052 - Teskey, Scott
+9025 - Tessier, Andrew
+6952 - Tessier, Kelsey
+8386 - Testwuide, Mike
+6127 - Teubert, Colten
+4261 - Thalberger, Christoph
+8452 - Thang, Ryan
+958 - Theodore, Jose
+8927 - Theodore, Shea
+6495 - Theoret, Mitchell
+5809 - Theriau, Alex
+7485 - Thibaudeau, Nicolas
+7948 - Thibeau, Brandon
+8641 - Thibodeau, Chad
+8912 - Thiel, Cody
+746 - Thiessen, Brad
+1277 - Thomas, Bill
+6520 - Thomas, Christian
+10143 - Thomas, Matthew
+962 - Thomas, Tim
+1328 - Thompson, Nate
+9309 - Thompson, Paul
+6412 - Thomson, Ben
+9700 - Thomson, Jordan
+9559 - Thomson, Robin
+1278 - Thorburn, Chris
+8607 - Thorell, Erik
+4265 - Thoresen, Patrick
+963 - Thornton, Joe
+965 - Thornton, Shawn
+6152 - Thrower, Dalton
+9675 - Thrower, Josh
+2206 - Thuresson, Andreas
+9336 - Thörnberg, Jesper
+8762 - Ticar, Rok
+7765 - Tierney, Chris
+4453 - Tifu, Yannick
+4269 - Tikkanen, Harri
+6734 - Timmins, Scott
+4270 - Timonen, Jussi
+967 - Timonen, Kimmo
+7770 - Tinordi, Jarred
+968 - Tjarnqvist, Daniel
+969 - Tjärnqvist, Mathias
+8902 - Tkatch, Jordan
+2285 - Tlusty, Jiri
+4272 - Tobia, Mario
+2087 - Toews, Jonathan
+6538 - Toffoli, Tyler
+1186 - Toivonen, Hannu
+1585 - Toivonen, Juha
+690 - Tokarski, Dustin
+9955 - Tolchinsky, Sergei
+1279 - Tollefsen, Ole-Kristian
+4274 - Tolsa, Jari
+4536 - Tolvanen, Mikko
+2718 - Toman, Milan
+4595 - Tomas, Roman
+10245 - Tomassoni, Matt
+9818 - Tomchuk, Wil
+4649 - Tomica, Marek
+86 - Tommernes, Henrik
+2980 - Ton, Petr
+972 - Tootoo, Jordin
+4279 - Tophy, Christophe
+9721 - Topping, Joel
+5651 - Topping, Mitch
+9655 - Torok, Tomas
+161 - Torp, Nichlas
+973 - Torres, Raffi
+5895 - Tot, Philip
+4528 - Tousignant, Mathieu
+5472 - Traber, Tim
+5533 - Trachsler, Morris
+4285 - Traczyk, Waldemar
+7831 - Trafford, Terry
+9217 - Trainor, Peter
+10236 - Trautmann, Elmar
+2999 - Travnicek, Michal
+8689 - Treille, Sacha
+9186 - Tremaine, Mark
+10024 - Tremblay, Carl
+8354 - Tremblay, François
+9283 - Tremblay, Hunter
+9157 - Tremblay, Simon
+8879 - Tremblay, Spencer
+10023 - Tremblay, Tristan
+2446 - Treutle, Niklas
+1919 - Trevelyan, T.J.
+4289 - Trevisan, Agostino
+10063 - Trickett, Mark
+8289 - Tripp, John
+8290 - Trnka, Pavel
+6638 - Trocheck, Vincent
+7866 - Trojanovic, Steven
+2888 - Troncinsky, Marek
+7661 - Troock, Branden
+8411 - Tropp, Corey
+10173 - Trotman, Zach
+7950 - Trudeau, Philippe
+330 - Trunz, Adrian
+7817 - Trutmann, Dario
+2855 - Trvaj, Jiri
+4290 - Trygg, Mats
+7533 - Trzonkowski, Rob
+4292 - Tsarik, Oleg
+5486 - Tschantre, Mathieu
+7724 - Tsogkas, Andreas
+4294 - Tukio, Arto
+4295 - Tukonen, Lauri
+8588 - Tuohimaa, Frans
+4297 - Tuokkola, Pekka
+1732 - Tuomainen, Miikka
+7452 - Tuominen, Henri
+1604 - Tuominen, Joni
+4299 - Turakov, Vladmir
+7930 - Turbide, Francis
+9750 - Turgeon, Dominic
+7876 - Turnbull, Brent
+717 - Turnbull, Travis
+2652 - Turris, Kyle
+4301 - Tursumbayev, Galym
+7334 - Turtiainen, Jaakko
+1694 - Tuulola, Marko
+7698 - Tvrdon, Marek
+691 - Tyrell, Dana
+4569 - Tyrvainen, Antti
+8598 - Tyrvainen, Juhani
+4305 - Tyupkin, Ballash
+988 - Tyutin, Fedor
+4275 - Tölzer, Steffen
+10315 - Törnkvist, Tobias
+4284 - Töykkälä, Joni
+4306 - Ueno, Masao
+6188 - Uher, Dominik
+9738 - Uhrich, Josh
+4308 - Ujcik, Viktor
+4309 - Ulbricht, Michael
+7328 - Ullberg, Richard
+4310 - Ullmann, Christoph
+10312 - Ullmark, Linus
+8836 - Ully, Cole
+2404 - Ulmer, Jason
+2382 - Ulmer, Jeff
+4875 - Ulmer, Stefan
+9480 - Ulrych, Petr
+1139 - Umberger, R.J.
+4312 - Umicevic, Dragan
+5833 - Underwood, Brandon
+809 - Untersander, Ramon
+992 - Upshall, Scottie
+8653 - Urban, Tomas
+9898 - Urbanic, John
+9331 - Urbas, Jan
+5139 - Urbom, Alexander
+4317 - Uusikartano, Aki
+1711 - Uusitalo, Ville
+8745 - Uvira, Sebastian
+993 - Vaananen, Ossi
+4319 - Vaccari, Cesare
+8663 - Vachovec, Michal
+4320 - Vahalahti, Ville
+7858 - Vail, Brady
+10333 - Vainio, Juuso
+9863 - Vainonen, Mikko
+10177 - Vaive, Justin
+2721 - Vak, Tomas
+1763 - Valabik, Boris
+9511 - Valach, Juraj
+7667 - Valcourt, Collin
+7277 - Valent, Michal
+2139 - Valentenko, Pavel
+6525 - Valentine, Scott
+7461 - Valery-Trabucco, Mario
+4325 - Valivaara, Jyrki
+7585 - Valk, Curtis
+9445 - Valkonen, Joonas
+4327 - Vallin, Ari
+5921 - Valsky, Jakub
+2852 - Vampola, Petr
+5285 - Van Guilder, Mark
+4329 - Van Hecke, Richard
+9666 - Van Horne, Riley
+389 - Van Riemsdyk, James
+9074 - Van Stralen, Ryan
+1811 - Van der Gulik, David
+9246 - Vance, Troy
+7653 - Vandane, Davis
+999 - Vandermeer, Jim
+9086 - Vanderwiel, Danny
+8480 - Vandevelde, Chris
+1084 - Vanek, Thomas
+9990 - Vanier, Alexis
+7701 - Vannieuwenhuizen, Wes
+9756 - Vanstone, Tim
+4331 - Vanttinen, Tuomas
+2931 - Vantuch, Lukas
+1000 - Varada, Vaclav
+4332 - Varakas, Ville
+9081 - Varga, Steven
+4846 - Varlamov, Semyon
+1001 - Varlamov, Sergei
+6443 - Varone, Phil
+4637 - Vasicek, Jiri
+4334 - Vasiljevs, Herbert
+8844 - Vasko, Filip
+4557 - Vatanen, Sami
+8301 - Vauclair, Julien
+5901 - Vauclair, Tristan
+4556 - Vauhkonen, Olavi
+6206 - Vause, Taylor
+4336 - Vegetti, Gabriele
+4337 - Vehanen, Petri
+748 - Veilleux, Keven
+1004 - Veilleux, Stephane
+10345 - Veilleux, Steven
+9247 - Veilleux, Tommy
+7096 - Veilleux, Yannick
+2645 - Veistola, Jiri
+10064 - Venne, Antoine
+10123 - Venne, Philippe
+9165 - Venuto, Lucas
+4338 - Venäläinen, Sami
+9972 - Verbeek, Ryan
+9056 - Verhaeghe, Carter
+8734 - Vermeille, Mike
+1005 - Vermette, Antoine
+6823 - Vermette, Gabriel
+783 - Vermin, Joel
+1750 - Vernace, Mike
+7883 - Verpaelst, Gabriel
+7996 - Verret, Anthony
+9166 - Verrier, Jérôme
+1985 - Versteeg, Kris
+4341 - Verwey, Roland
+1861 - Vesce, Ryan
+2722 - Vesely, Ondrej
+8960 - Vetterl, Austin
+5966 - Vey, Linden
+9825 - Vickerman, Taylor
+6137 - Viedensky, Marek
+9113 - Vienneau, Joel
+4344 - Vignal, Achille
+4345 - Vihko, Joonas
+4346 - Viinanen, Mika
+4348 - Viitaluoma, Ville
+1723 - Viitanen, Mikko
+4349 - Vikingstad, Tore
+4350 - Viklund, Tobias
+7912 - Villemaire, Maxime
+6258 - Vincour, Tomas
+4542 - Virkkunen, Valtteri
+2650 - Virtala, Marko
+9676 - Virtanen, Jake
+9456 - Virtanen, Jesse
+2603 - Virtanen, Jonne
+2932 - Visek, Jan
+6506 - Visentin, Mark
+1010 - Visnovsky, Lubomir
+4357 - Visockis, Yury
+4358 - Vital, Ethan
+754 - Vitale, Joe
+7366 - Vittasmäki, Veli-Matti
+4359 - Viuhkola, Jari
+8888 - Viveiros, Layne
+2758 - Vlach, Roman
+9075 - Vlajkov, Mike
+4360 - Vlasak, Tomas
+1299 - Vlasic, Marc-Edouard
+8787 - Voakes, Mark
+4361 - Vogl, Sebastian
+2936 - Vojtek, Martin
+1011 - Vokoun, Tomas
+1012 - Volchenkov, Anton
+8918 - Volek, Dominik
+2686 - Volke, Martin
+9833 - Vollrath, Coleman
+8465 - Volpatti, Aaron
+4650 - Vondrka, Michal
+4435 - Voracek, Jakub
+5949 - Voracek, Tomas
+9751 - Vorobev, Kirill
+5927 - Vostrak, Pavel
+7316 - Vosvrda, Tomas
+4368 - Voutilainen, Jukka
+5279 - Voynov, Slava
+5908 - Vrbata, David
+1014 - Vrbata, Radim
+9506 - Vráblík, Roman
+5520 - Vukovic, Daniel
+4370 - Vyater, Martins
+1015 - Vyborny, David
+2725 - Vydareny, Rene
+4371 - Vykoukal, Jiri
+2945 - Vytisk, Jan
+7458 - Välimaa, Tommi
+10205 - Wagner, Chris
+2092 - Wagner, Steve
+6182 - Wahl, Mitch
+4375 - Wakabayashi, Koichi
+9804 - Walchuk, Dylan
+9470 - Walker, Ben
+4888 - Walker, Brenden
+446 - Walker, Geoff
+9834 - Walker, Jack
+5690 - Walker, Julian
+6014 - Walker, Luke
+1016 - Walker, Matt
+9526 - Walker, Nathan
+2292 - Wallace, Tim
+1019 - Wallin, Niclas
+8306 - Wallin, Rickard
+8307 - Walser, Derrick
+8583 - Walser, Samuel
+9907 - Walsh, Daniel
+7977 - Walsh, Patrick
+1131 - Walsky, Eric
+1280 - Walter, Ben
+8951 - Walter, Lukas
+4378 - Walter, Martin
+7559 - Walters, Nick
+9667 - Waltz, Colton
+8852 - Wand, Spencer
+1591 - Wandell, Tom
+7375 - Wannstrom, Sebastian
+9739 - Wapple, Daniel
+1187 - Ward, Cam
+1384 - Ward, Joel
+9606 - Ward, Samuel
+2492 - Ward, Steve
+8928 - Wardley, Evan
+4382 - Warg, Fredrik
+9740 - Warkentine, Miles
+9292 - Warsofsky, David
+1785 - Wathier, Francis
+7186 - Watkins, Matt
+9017 - Watling, Patrick
+6583 - Watson, Austin
+8861 - Watson, Jamal
+9871 - Watson, Spencer
+6113 - Weal, Jordan
+1028 - Weaver, Mike
+10029 - Weber, Dexter
+10375 - Weber, Marcus
+2255 - Weber, Mike
+1176 - Weber, Shea
+10180 - Weber, Will
+5614 - Weber, Yannick
+7860 - Webermin, Grant
+9839 - Webster, Michael
+7920 - Weckworth, David
+10319 - Wedin, Anton
+8936 - Wedman, Cole
+10046 - Weegar, MacKenzie
+1738 - Weiman, Tyler
+1032 - Weinhandl, Mattias
+4384 - Weinreich, Stefan
+5250 - Weise, Dale
+1034 - Weiss, Stephen
+10366 - Weisskopf, Dan
+2360 - Weiß, Alexander
+1281 - Welch, Noah
+420 - Wellar, Patrick
+1774 - Weller, Craig
+2112 - Weller, Shawn
+5711 - Wellinger, Thomas
+7191 - Wellman, Casey
+6730 - Wellwood, Eric
+1035 - Wellwood, Kyle
+1524 - Welser, Daniel
+9561 - Welsh, Jeremy
+5549 - Welti, Marc
+9041 - Welychka, Brett
+2384 - Wendler, Christian
+6399 - Werek, Ethan
+2523 - Werner, Stephen
+5188 - Wesslau, Gustaf
+1037 - Westcott, Duvie
+2191 - Westgarth, Kevin
+552 - Westin, Jens
+5490 - Wetzel, Philipp
+2340 - Weyrich, Fabian
+6733 - Whaley, Michael
+9706 - Wheaton, Mitch
+4432 - Wheeler, Blake
+8961 - Whistle, Jackson
+1282 - White, Ian
+5356 - White, Ryan
+8880 - White, Torrin
+5426 - Whitecotton, Dustin
+1042 - Whitfield, Trent
+5307 - Whitmore, Derek
+8367 - Whitney, Brandon
+9251 - Whitney, Joe
+1043 - Whitney, Ray
+1140 - Whitney, Ryan
+9805 - Whittingham, Riley
+8512 - Wichert, Christian
+5562 - Wichser, Adrian
+5554 - Wick, Roman
+1142 - Wideman, Dennis
+4395 - Widing, Daniel
+5103 - Wiebe, Shayne
+8390 - Wiercioch, Patrick
+5712 - Wieser, Dino
+5713 - Wieser, Marc
+7784 - Wigle, Joel
+4396 - Wiikman, Miika
+2478 - Wilhelm, Stephan
+8952 - Williams, Brian
+9782 - Williams, Colby
+9004 - Williams, Devin
+6055 - Williams, Eric
+1045 - Williams, Jason
+1046 - Williams, Justin
+9348 - Williamsson, Jesper
+5822 - Willick, Dylan
+1048 - Willsie, Brian
+5198 - Wilson, Ben
+409 - Wilson, Colin
+6559 - Wilson, Garrett
+6558 - Wilson, Jason
+8994 - Wilson, Keegan
+5655 - Wilson, Klarc
+1879 - Wilson, Kyle
+5318 - Wilson, Ryan
+7823 - Wilson, Tom
+1161 - Winchester, Brad
+2660 - Winchester, Jesse
+6338 - Wind, Cameron
+10306 - Windlert, Filip
+7704 - Windsor, Clint
+7506 - Wingels, Tommy
+1834 - Winnik, Daniel
+5799 - Winquist, Josh
+7614 - Winther, Mike
+1051 - Wiseman, Chad
+5289 - Wishart, Ty
+1284 - Wisniewski, James
+8903 - Witala, Chase
+10265 - Wittmann, Robert
+10151 - Wohlberg, David
+4402 - Wohowski, Zbigniew
+7218 - Woidtke, Jannik
+7244 - Wolf, David
+9795 - Wolf, Kevin
+2430 - Wolf, Michael
+7493 - Wolf, Tim
+1105 - Wolski, Wojtek
+9722 - Wong, Tyler
+10057 - Wood, Brayden
+9005 - Wood, Travis
+6792 - Woodworth, Stephen
+6455 - Worrad, Jake
+6030 - Wotherspoon, Tyler
+1106 - Woywitka, Jeff
+1122 - Wozniewski, Andy
+9796 - Wray, Daniel
+8468 - Wrenn, William
+390 - Wright, James
+5678 - Wruck, Dylan
+7232 - Wurm, Armin
+5357 - Wyman, J.T.
+8735 - Wyss, Silvan
+7596 - Wyton, Jordan
+1569 - Wärn, Max
+2378 - Wörle, Tobias
+8862 - Yakubowski, Jaimen
+7836 - Yakupov, Nail
+1315 - Yandle, Keith
+1059 - Yashin, Alexei
+6048 - Yaworski, Tyler
+9548 - Yeo, Dylan
+10065 - Yetman, Nathan
+1063 - Yip, Brandon
+4415 - Ylönen, Antti
+6342 - Yogan, Andrew
+1062 - Yonkman, Nolan
+8789 - York, Allen
+1064 - York, Mike
+4418 - Yoshida, Mitsuharu
+9295 - Youds, Ben
+7826 - Young, Dalton
+6741 - Young, Harry
+6241 - Yuen, Zachary
+8979 - Yuill, Alex
+2917 - Zabka, Boris
+2548 - Zackrisson, Patrik
+9879 - Zadorov, Nikita
+1995 - Zagrapan, Marek
+9741 - Zagryadsky, Nikita
+8769 - Zajac, Darcy
+8923 - Zajac, Nick
+1312 - Zajac, Travis
+8685 - Zalcik, Lukas
+8316 - Zalesak, Miroslav
+5350 - Zalewski, Steve
+9826 - Zalitach, Reid
+4423 - Zancanella, Ruggero
+6549 - Zanetti, Marc-Anthony
+1285 - Zanon, Greg
+9765 - Zarowny, Brett
+458 - Zatkoff, Jeff
+4628 - Zatovic, Martin
+4601 - Zavorka, Tomas
+9981 - Zboril, Adam
+9982 - Zdrahal, Patrik
+1069 - Zednik, Richard
+1410 - Zeiler, John
+1611 - Zepp, Rob
+1070 - Zetterberg, Henrik
+7539 - Zgraggen, Jesse
+8985 - Zharkov, Daniil
+1072 - Zherdev, Nikolay
+2916 - Zib, Lukas
+8488 - Zibanejad, Mika
+1074 - Zidlicky, Marek
+10235 - Ziegler, Sven
+4427 - Ziffzer, Youri
+1075 - Zigomanis, Mike
+4428 - Zikov, Sergia
+10107 - Zilbert, Noah
+8943 - Zinkan, Bobby
+8320 - Zizka, Tomas
+8304 - Zlobin, Anton
+2821 - Zohorna, Tomas
+8765 - Zolnierczyk, Harry
+8736 - Zubler, Patrick
+1080 - Zubrus, Dainius
+5196 - Zuccarello, Mats
+4619 - Zucker, David
+9563 - Zucker, Jason
+5670 - Zurkirchen, Sandro
+6566 - Zweep, Daniel
+9991 - Zykov, Valentin
+9533 - Zámorský, Petr
+9744 - de Champlain, Adam
+6530 - de Haan, Calvin
+9964 - de Haan, Evan
+4364 - von Arx, Jan
+4365 - von Arx, Reto
+5552 - von Gunten, Patrick
+60000 - Silhouette 1
+60001 - Silhouette 2
+60002 - Silhouette 3
+60003 - Silhouette 4
+3
+7
+9
+13
+15
+23
+24
+27
+28
+33
+41
+43
+44
+47
+49
+57
+59
+62
+63
+64
+77
+81
+82
+83
+84
+90
+92
+95
+99
+105
+106
+108
+109
+111
+116
+117
+122
+124
+125
+126
+128
+129
+131
+132
+139
+141
+145
+147
+149
+155
+157
+160
+166
+167
+170
+171
+175
+178
+184
+187
+194
+198
+202
+204
+207
+208
+209
+210
+213
+214
+217
+223
+225
+226
+227
+228
+230
+231
+232
+233
+242
+245
+251
+253
+257
+258
+259
+263
+264
+268
+270
+273
+277
+279
+280
+281
+285
+295
+297
+307
+312
+315
+318
+319
+321
+324
+325
+331
+334
+336
+343
+346
+347
+356
+357
+358
+360
+368
+369
+370
+372
+375
+377
+378
+394
+395
+400
+408
+415
+416
+417
+422
+428
+430
+431
+433
+434
+436
+438
+443
+447
+448
+457
+460
+468
+472
+488
+491
+496
+498
+499
+502
+503
+504
+506
+507
+508
+509
+510
+512
+515
+519
+521
+523
+525
+526
+528
+529
+530
+531
+534
+536
+538
+543
+546
+551
+557
+558
+559
+560
+562
+567
+568
+572
+578
+579
+583
+586
+588
+591
+592
+595
+596
+598
+602
+603
+605
+608
+611
+612
+613
+614
+616
+617
+621
+625
+628
+629
+632
+635
+636
+637
+638
+639
+640
+643
+644
+647
+649
+651
+655
+656
+658
+664
+665
+666
+670
+673
+674
+675
+676
+680
+681
+684
+686
+687
+689
+692
+694
+699
+702
+704
+707
+714
+715
+719
+720
+721
+722
+724
+726
+727
+728
+729
+734
+735
+739
+747
+751
+755
+758
+762
+764
+766
+768
+770
+771
+772
+773
+774
+776
+778
+781
+787
+789
+791
+795
+796
+797
+801
+802
+804
+805
+806
+807
+808
+810
+811
+814
+819
+822
+823
+824
+828
+831
+832
+834
+836
+838
+839
+843
+845
+846
+849
+851
+852
+855
+863
+866
+870
+873
+874
+875
+876
+881
+882
+889
+890
+891
+892
+893
+894
+896
+899
+901
+903
+905
+906
+909
+912
+918
+919
+921
+925
+927
+930
+931
+932
+934
+937
+939
+942
+944
+945
+950
+953
+955
+956
+960
+961
+964
+970
+974
+975
+976
+978
+980
+982
+984
+985
+986
+989
+996
+997
+1002
+1008
+1009
+1013
+1017
+1021
+1022
+1023
+1024
+1025
+1026
+1027
+1029
+1030
+1031
+1033
+1036
+1038
+1039
+1041
+1044
+1050
+1052
+1054
+1061
+1068
+1071
+1073
+1077
+1079
+1081
+1085
+1087
+1088
+1099
+1109
+1123
+1126
+1128
+1132
+1138
+1144
+1145
+1156
+1164
+1165
+1167
+1168
+1169
+1170
+1175
+1178
+1180
+1183
+1188
+1189
+1191
+1196
+1197
+1200
+1201
+1202
+1206
+1207
+1208
+1219
+1222
+1225
+1227
+1229
+1233
+1239
+1241
+1243
+1248
+1249
+1252
+1253
+1255
+1264
+1265
+1266
+1267
+1268
+1269
+1270
+1271
+1276
+1283
+1287
+1288
+1290
+1291
+1295
+1296
+1310
+1314
+1316
+1317
+1318
+1319
+1321
+1322
+1326
+1330
+1331
+1337
+1341
+1344
+1346
+1347
+1348
+1352
+1356
+1358
+1361
+1365
+1367
+1368
+1372
+1378
+1380
+1383
+1389
+1392
+1402
+1405
+1411
+1412
+1415
+1416
+1419
+1421
+1427
+1432
+1440
+1444
+1445
+1446
+1449
+1452
+1453
+1454
+1455
+1458
+1459
+1462
+1466
+1467
+1470
+1475
+1482
+1484
+1486
+1487
+1496
+1498
+1499
+1500
+1501
+1505
+1506
+1509
+1511
+1512
+1523
+1526
+1528
+1530
+1536
+1537
+1541
+1543
+1550
+1551
+1552
+1553
+1556
+1558
+1560
+1561
+1562
+1565
+1566
+1572
+1576
+1578
+1579
+1581
+1583
+1584
+1586
+1588
+1589
+1594
+1596
+1597
+1599
+1601
+1605
+1607
+1608
+1609
+1610
+1618
+1620
+1621
+1627
+1628
+1629
+1630
+1632
+1633
+1634
+1635
+1636
+1637
+1638
+1639
+1640
+1642
+1643
+1644
+1645
+1646
+1648
+1649
+1650
+1651
+1652
+1653
+1654
+1655
+1656
+1657
+1658
+1660
+1661
+1663
+1668
+1672
+1673
+1674
+1675
+1676
+1679
+1681
+1682
+1686
+1688
+1691
+1695
+1696
+1698
+1699
+1700
+1701
+1702
+1704
+1705
+1706
+1710
+1712
+1713
+1715
+1720
+1722
+1724
+1726
+1727
+1729
+1731
+1733
+1747
+1749
+1751
+1755
+1756
+1757
+1758
+1760
+1765
+1766
+1768
+1773
+1779
+1782
+1783
+1784
+1786
+1795
+1796
+1797
+1799
+1801
+1803
+1809
+1810
+1813
+1816
+1817
+1818
+1820
+1822
+1823
+1826
+1827
+1829
+1830
+1832
+1833
+1835
+1836
+1837
+1838
+1840
+1842
+1844
+1846
+1848
+1849
+1850
+1853
+1854
+1855
+1856
+1857
+1858
+1864
+1866
+1867
+1868
+1869
+1870
+1874
+1878
+1880
+1881
+1884
+1885
+1886
+1888
+1889
+1890
+1891
+1892
+1895
+1899
+1900
+1901
+1904
+1906
+1908
+1909
+1910
+1911
+1912
+1913
+1914
+1916
+1917
+1920
+1921
+1922
+1923
+1924
+1925
+1926
+1927
+1929
+1930
+1931
+1933
+1937
+1938
+1940
+1942
+1943
+1944
+1945
+1946
+1947
+1949
+1950
+1951
+1952
+1953
+1958
+1961
+1964
+1965
+1966
+1967
+1969
+1971
+1972
+1973
+1974
+1975
+1978
+1979
+1981
+1987
+1988
+1989
+1991
+1992
+1993
+1994
+1996
+2001
+2003
+2006
+2007
+2010
+2017
+2018
+2020
+2021
+2029
+2033
+2037
+2040
+2041
+2043
+2046
+2047
+2048
+2049
+2053
+2055
+2057
+2061
+2062
+2065
+2068
+2070
+2071
+2072
+2074
+2075
+2079
+2101
+2104
+2108
+2109
+2110
+2113
+2116
+2117
+2119
+2123
+2124
+2127
+2132
+2136
+2142
+2144
+2146
+2154
+2155
+2158
+2159
+2162
+2163
+2165
+2166
+2171
+2172
+2174
+2180
+2181
+2184
+2185
+2196
+2204
+2208
+2209
+2211
+2212
+2214
+2215
+2219
+2220
+2222
+2224
+2232
+2233
+2236
+2238
+2240
+2241
+2243
+2246
+2248
+2250
+2252
+2254
+2256
+2257
+2258
+2259
+2262
+2264
+2267
+2268
+2270
+2271
+2275
+2276
+2277
+2278
+2280
+2282
+2284
+2287
+2291
+2293
+2294
+2295
+2298
+2299
+2304
+2306
+2307
+2309
+2316
+2318
+2321
+2322
+2325
+2326
+2328
+2330
+2331
+2333
+2341
+2345
+2346
+2347
+2349
+2358
+2369
+2370
+2371
+2372
+2373
+2374
+2376
+2383
+2385
+2386
+2388
+2389
+2390
+2391
+2392
+2393
+2394
+2396
+2397
+2399
+2402
+2407
+2408
+2409
+2414
+2419
+2429
+2431
+2433
+2434
+2441
+2442
+2443
+2445
+2447
+2451
+2452
+2454
+2455
+2464
+2475
+2476
+2477
+2479
+2481
+2483
+2486
+2487
+2488
+2489
+2495
+2498
+2502
+2503
+2507
+2508
+2509
+2511
+2512
+2516
+2526
+2527
+2531
+2536
+2538
+2540
+2542
+2545
+2546
+2547
+2551
+2552
+2561
+2567
+2568
+2579
+2582
+2584
+2585
+2589
+2592
+2597
+2598
+2599
+2601
+2604
+2606
+2610
+2616
+2621
+2622
+2627
+2628
+2632
+2633
+2636
+2638
+2639
+2643
+2644
+2647
+2648
+2653
+2655
+2658
+2682
+2685
+2690
+2717
+2726
+2731
+2732
+2739
+2740
+2744
+2745
+2746
+2747
+2748
+2750
+2751
+2752
+2754
+2756
+2757
+2760
+2761
+2762
+2765
+2766
+2767
+2768
+2772
+2773
+2777
+2779
+2780
+2784
+2785
+2788
+2789
+2794
+2796
+2799
+2803
+2804
+2805
+2806
+2809
+2811
+2814
+2815
+2817
+2818
+2820
+2822
+2823
+2829
+2831
+2833
+2836
+2841
+2844
+2846
+2847
+2848
+2851
+2853
+2857
+2858
+2860
+2861
+2862
+2865
+2866
+2869
+2870
+2871
+2872
+2873
+2874
+2875
+2876
+2878
+2879
+2880
+2882
+2883
+2886
+2887
+2889
+2891
+2892
+2894
+2897
+2900
+2902
+2905
+2911
+2920
+2921
+2927
+2928
+2929
+2933
+2939
+2942
+2946
+2950
+2954
+2958
+2961
+2962
+2964
+2967
+2969
+2971
+2975
+2977
+2979
+2981
+2985
+2986
+2987
+2990
+2991
+2992
+2997
+3006
+3008
+3012
+3016
+3017
+3018
+3019
+3020
+3021
+3025
+3031
+3033
+3047
+3056
+3063
+3074
+3076
+3077
+3078
+3083
+3089
+3091
+3099
+3101
+3110
+3112
+3114
+3115
+3123
+3124
+3125
+3137
+3147
+3148
+3150
+3181
+3187
+3196
+3213
+3217
+3218
+3223
+3230
+3234
+3236
+3244
+3247
+3248
+3252
+3253
+3256
+3262
+3266
+3280
+3288
+3289
+3291
+3292
+3298
+3305
+3314
+3317
+3318
+3325
+3328
+3342
+3346
+3358
+3359
+3360
+3364
+3368
+3370
+3372
+3375
+3376
+3380
+3382
+3384
+3385
+3386
+3395
+3397
+3399
+3406
+3407
+3409
+3412
+3415
+3421
+3422
+3425
+3435
+3436
+3439
+3454
+3462
+3469
+3472
+3481
+3484
+3489
+3490
+3499
+3500
+3503
+3510
+3519
+3520
+3523
+3525
+3526
+3527
+3531
+3532
+3538
+3539
+3541
+3542
+3546
+3549
+3550
+3553
+3558
+3561
+3563
+3564
+3574
+3580
+3583
+3594
+3595
+3598
+3609
+3612
+3613
+3615
+3616
+3617
+3623
+3626
+3628
+3629
+3630
+3635
+3646
+3650
+3654
+3658
+3667
+3668
+3669
+3670
+3671
+3676
+3677
+3678
+3683
+3684
+3685
+3686
+3688
+3691
+3694
+3695
+3696
+3701
+3711
+3715
+3719
+3722
+3723
+3726
+3732
+3733
+3736
+3741
+3747
+3749
+3752
+3758
+3759
+3764
+3774
+3775
+3781
+3785
+3788
+3797
+3804
+3806
+3807
+3813
+3814
+3817
+3825
+3832
+3835
+3846
+3857
+3858
+3867
+3875
+3880
+3886
+3887
+3888
+3894
+3900
+3902
+3906
+3908
+3913
+3914
+3915
+3916
+3921
+3922
+3923
+3928
+3930
+3933
+3934
+3935
+3938
+3942
+3943
+3948
+3949
+3953
+3954
+3955
+3969
+3973
+3979
+3980
+3982
+3983
+3989
+3994
+3997
+3998
+3999
+4003
+4004
+4009
+4021
+4024
+4030
+4033
+4034
+4036
+4038
+4039
+4042
+4048
+4050
+4051
+4053
+4057
+4059
+4061
+4062
+4064
+4065
+4066
+4073
+4074
+4076
+4078
+4083
+4087
+4089
+4091
+4094
+4097
+4099
+4102
+4111
+4124
+4125
+4130
+4132
+4145
+4155
+4156
+4160
+4170
+4186
+4187
+4203
+4205
+4211
+4212
+4216
+4220
+4221
+4222
+4229
+4231
+4236
+4237
+4240
+4241
+4245
+4247
+4251
+4253
+4258
+4266
+4273
+4276
+4280
+4281
+4286
+4288
+4296
+4298
+4302
+4307
+4316
+4321
+4328
+4330
+4333
+4340
+4342
+4343
+4347
+4351
+4353
+4355
+4356
+4369
+4372
+4374
+4376
+4377
+4385
+4387
+4390
+4400
+4401
+4413
+4414
+4421
+4422
+4429
+4442
+4443
+4454
+4458
+4459
+4462
+4463
+4468
+4469
+4470
+4473
+4480
+4481
+4490
+4492
+4498
+4501
+4503
+4507
+4512
+4521
+4524
+4525
+4529
+4530
+4531
+4532
+4534
+4541
+4545
+4546
+4547
+4549
+4550
+4551
+4552
+4553
+4554
+4555
+4561
+4564
+4567
+4574
+4575
+4578
+4589
+4590
+4594
+4597
+4598
+4599
+4600
+4603
+4604
+4605
+4606
+4607
+4608
+4609
+4623
+4631
+4638
+4652
+4653
+4654
+4655
+4656
+4657
+4658
+4659
+4660
+4661
+4662
+4663
+4664
+4665
+4669
+4670
+4671
+4672
+4673
+4674
+4679
+4683
+4685
+4686
+4687
+4688
+4689
+4691
+4692
+4693
+4695
+4696
+4698
+4701
+4704
+4705
+4706
+4707
+4708
+4709
+4710
+4714
+4715
+4716
+4717
+4718
+4719
+4720
+4721
+4723
+4724
+4725
+4728
+4729
+4731
+4732
+4733
+4736
+4738
+4740
+4741
+4747
+4748
+4749
+4750
+4751
+4752
+4753
+4754
+4755
+4757
+4758
+4759
+4760
+4761
+4763
+4764
+4766
+4769
+4770
+4771
+4772
+4773
+4774
+4775
+4777
+4778
+4779
+4781
+4782
+4783
+4784
+4785
+4786
+4787
+4788
+4789
+4790
+4791
+4792
+4794
+4795
+4797
+4798
+4799
+4800
+4801
+4802
+4803
+4804
+4805
+4806
+4807
+4808
+4809
+4810
+4812
+4814
+4816
+4818
+4819
+4820
+4821
+4822
+4823
+4824
+4825
+4827
+4828
+4829
+4831
+4833
+4834
+4836
+4839
+4840
+4841
+4842
+4843
+4844
+4845
+4848
+4849
+4850
+4851
+4852
+4853
+4854
+4855
+4856
+4857
+4858
+4860
+4861
+4862
+4864
+4865
+4866
+4867
+4869
+4870
+4871
+4872
+4873
+4877
+4878
+4879
+4881
+4882
+4883
+4884
+4885
+4886
+4889
+4890
+4892
+4893
+4894
+4895
+4896
+4897
+4898
+4899
+4900
+4901
+4902
+4903
+4904
+4905
+4906
+4908
+4909
+4910
+4911
+4912
+4913
+4914
+4916
+4918
+4920
+4921
+4922
+4944
+4949
+5003
+5006
+5127
+5128
+5129
+5131
+5132
+5134
+5136
+5138
+5140
+5142
+5143
+5144
+5146
+5151
+5152
+5153
+5154
+5162
+5163
+5164
+5172
+5179
+5186
+5187
+5193
+5201
+5207
+5208
+5212
+5213
+5216
+5217
+5219
+5224
+5227
+5228
+5230
+5234
+5236
+5239
+5248
+5249
+5251
+5252
+5253
+5257
+5261
+5262
+5263
+5265
+5266
+5270
+5271
+5275
+5276
+5283
+5287
+5288
+5292
+5293
+5300
+5301
+5303
+5311
+5312
+5313
+5314
+5316
+5319
+5322
+5325
+5326
+5327
+5328
+5330
+5331
+5332
+5335
+5339
+5340
+5341
+5344
+5345
+5349
+5351
+5354
+5359
+5360
+5363
+5366
+5368
+5370
+5379
+5380
+5381
+5434
+5435
+5438
+5442
+5443
+5446
+5449
+5451
+5456
+5457
+5458
+5460
+5461
+5463
+5466
+5468
+5478
+5483
+5484
+5485
+5487
+5489
+5491
+5493
+5494
+5500
+5501
+5503
+5506
+5511
+5516
+5523
+5526
+5527
+5528
+5534
+5537
+5541
+5542
+5544
+5545
+5547
+5553
+5563
+5565
+5568
+5571
+5574
+5577
+5587
+5591
+5594
+5596
+5597
+5598
+5601
+5602
+5604
+5605
+5606
+5607
+5608
+5609
+5617
+5618
+5625
+5627
+5628
+5631
+5632
+5633
+5639
+5640
+5642
+5645
+5646
+5647
+5648
+5653
+5654
+5659
+5661
+5665
+5668
+5669
+5671
+5673
+5680
+5681
+5682
+5683
+5685
+5686
+5687
+5689
+5691
+5692
+5695
+5696
+5697
+5698
+5700
+5705
+5709
+5714
+5717
+5722
+5725
+5727
+5731
+5733
+5738
+5739
+5741
+5743
+5744
+5746
+5747
+5748
+5751
+5752
+5757
+5758
+5759
+5760
+5764
+5765
+5767
+5768
+5770
+5772
+5774
+5775
+5777
+5779
+5781
+5782
+5783
+5784
+5786
+5789
+5790
+5792
+5793
+5794
+5796
+5801
+5802
+5803
+5805
+5806
+5807
+5808
+5812
+5814
+5816
+5818
+5821
+5824
+5829
+5830
+5831
+5834
+5837
+5838
+5839
+5840
+5842
+5843
+5844
+5846
+5847
+5850
+5851
+5852
+5854
+5856
+5863
+5864
+5865
+5869
+5870
+5872
+5876
+5878
+5882
+5884
+5885
+5887
+5889
+5890
+5891
+5892
+5893
+5898
+5902
+5903
+5907
+5913
+5915
+5916
+5917
+5919
+5923
+5925
+5928
+5929
+5930
+5932
+5934
+5936
+5938
+5941
+5944
+5945
+5947
+5954
+5957
+5959
+5961
+5962
+5964
+5965
+5967
+5970
+5974
+5978
+5980
+5983
+5984
+5985
+5986
+5987
+5988
+5989
+5990
+5991
+5992
+5993
+5996
+5997
+5998
+5999
+6003
+6007
+6008
+6010
+6012
+6013
+6021
+6024
+6026
+6033
+6035
+6036
+6037
+6038
+6039
+6040
+6041
+6043
+6045
+6046
+6049
+6050
+6051
+6052
+6054
+6056
+6057
+6059
+6062
+6063
+6064
+6065
+6066
+6067
+6068
+6069
+6070
+6072
+6073
+6075
+6076
+6077
+6078
+6079
+6080
+6081
+6082
+6090
+6091
+6092
+6094
+6096
+6097
+6098
+6099
+6101
+6103
+6104
+6105
+6109
+6110
+6112
+6114
+6115
+6116
+6117
+6119
+6120
+6121
+6122
+6125
+6128
+6129
+6130
+6131
+6135
+6136
+6139
+6143
+6144
+6147
+6151
+6153
+6154
+6155
+6156
+6157
+6158
+6160
+6161
+6163
+6166
+6169
+6170
+6171
+6173
+6175
+6177
+6178
+6181
+6185
+6187
+6189
+6191
+6196
+6197
+6198
+6201
+6202
+6203
+6207
+6209
+6210
+6211
+6212
+6213
+6214
+6215
+6216
+6219
+6220
+6221
+6222
+6223
+6224
+6225
+6226
+6228
+6229
+6231
+6234
+6237
+6239
+6240
+6242
+6243
+6244
+6245
+6246
+6251
+6252
+6253
+6256
+6257
+6259
+6260
+6265
+6266
+6270
+6278
+6279
+6280
+6282
+6283
+6285
+6286
+6289
+6291
+6293
+6294
+6295
+6297
+6299
+6300
+6301
+6302
+6304
+6305
+6306
+6307
+6310
+6313
+6317
+6320
+6321
+6323
+6324
+6327
+6330
+6331
+6332
+6333
+6334
+6336
+6340
+6341
+6343
+6346
+6348
+6349
+6350
+6351
+6352
+6353
+6354
+6356
+6358
+6359
+6361
+6362
+6364
+6366
+6368
+6374
+6375
+6378
+6379
+6380
+6381
+6382
+6384
+6386
+6387
+6390
+6392
+6393
+6394
+6396
+6397
+6398
+6400
+6403
+6406
+6408
+6410
+6413
+6414
+6417
+6418
+6421
+6424
+6426
+6430
+6431
+6432
+6434
+6437
+6439
+6440
+6441
+6442
+6445
+6446
+6448
+6450
+6451
+6453
+6454
+6460
+6461
+6464
+6465
+6466
+6467
+6472
+6475
+6479
+6482
+6487
+6489
+6490
+6492
+6493
+6496
+6497
+6498
+6499
+6500
+6501
+6503
+6507
+6508
+6510
+6514
+6515
+6516
+6517
+6519
+6521
+6526
+6528
+6529
+6533
+6534
+6535
+6536
+6545
+6546
+6548
+6550
+6551
+6555
+6557
+6563
+6564
+6565
+6568
+6570
+6574
+6576
+6579
+6581
+6582
+6584
+6585
+6587
+6588
+6589
+6591
+6592
+6593
+6594
+6595
+6599
+6600
+6601
+6604
+6606
+6609
+6611
+6612
+6618
+6619
+6620
+6622
+6625
+6632
+6633
+6634
+6637
+6640
+6642
+6645
+6647
+6648
+6651
+6654
+6656
+6657
+6660
+6661
+6662
+6663
+6664
+6665
+6667
+6668
+6669
+6670
+6671
+6672
+6674
+6675
+6676
+6677
+6678
+6680
+6681
+6682
+6683
+6685
+6687
+6688
+6690
+6692
+6693
+6695
+6697
+6698
+6700
+6703
+6704
+6707
+6711
+6718
+6719
+6720
+6722
+6723
+6727
+6731
+6742
+6743
+6745
+6747
+6748
+6749
+6750
+6751
+6753
+6755
+6757
+6758
+6760
+6762
+6765
+6766
+6767
+6768
+6769
+6770
+6775
+6776
+6777
+6781
+6783
+6784
+6785
+6787
+6788
+6793
+6794
+6797
+6799
+6800
+6801
+6803
+6804
+6805
+6807
+6808
+6810
+6811
+6814
+6815
+6817
+6818
+6820
+6821
+6824
+6825
+6827
+6829
+6831
+6833
+6835
+6837
+6838
+6839
+6841
+6842
+6843
+6846
+6847
+6849
+6852
+6853
+6854
+6857
+6858
+6861
+6862
+6864
+6865
+6866
+6868
+6872
+6873
+6874
+6875
+6877
+6879
+6880
+6881
+6883
+6887
+6889
+6890
+6892
+6895
+6896
+6897
+6898
+6899
+6901
+6903
+6905
+6906
+6907
+6909
+6911
+6912
+6916
+6917
+6920
+6921
+6923
+6924
+6925
+6931
+6933
+6935
+6936
+6939
+6940
+6943
+6944
+6945
+6947
+6951
+6953
+6956
+6960
+6962
+6963
+6969
+6971
+6972
+6973
+6974
+6975
+6976
+6977
+6978
+6979
+6982
+6984
+6985
+6986
+6987
+6988
+6989
+6991
+6992
+6994
+6995
+6996
+6997
+6998
+6999
+7000
+7001
+7005
+7007
+7009
+7010
+7011
+7012
+7015
+7016
+7018
+7019
+7020
+7022
+7023
+7024
+7026
+7027
+7029
+7032
+7034
+7036
+7037
+7039
+7040
+7042
+7043
+7045
+7046
+7047
+7049
+7054
+7055
+7056
+7057
+7058
+7059
+7060
+7061
+7064
+7066
+7069
+7071
+7075
+7077
+7079
+7092
+7094
+7095
+7098
+7099
+7100
+7101
+7102
+7103
+7104
+7105
+7106
+7107
+7109
+7113
+7114
+7115
+7116
+7118
+7122
+7123
+7124
+7125
+7126
+7127
+7128
+7129
+7132
+7134
+7135
+7137
+7138
+7141
+7142
+7147
+7149
+7150
+7151
+7154
+7155
+7158
+7159
+7160
+7161
+7169
+7172
+7178
+7180
+7183
+7184
+7188
+7189
+7194
+7202
+7208
+7256
+7281
+7289
+7326
+7327
+7345
+7352
+7353
+7355
+7356
+7357
+7359
+7360
+7361
+7363
+7365
+7382
+7386
+7388
+7395
+7397
+7398
+7399
+7404
+7405
+7408
+7409
+7410
+7412
+7420
+7421
+7424
+7426
+7441
+7442
+7444
+7448
+7459
+7460
+7467
+7469
+7473
+7474
+7475
+7477
+7479
+7484
+7488
+7489
+7490
+7491
+7510
+7514
+7518
+7521
+7524
+7526
+7527
+7529
+7531
+7538
+7540
+7541
+7542
+7544
+7545
+7546
+7550
+7560
+7566
+7567
+7570
+7571
+7575
+7578
+7580
+7588
+7589
+7591
+7594
+7597
+7602
+7604
+7608
+7609
+7610
+7611
+7613
+7617
+7622
+7624
+7625
+7627
+7629
+7631
+7637
+7639
+7641
+7642
+7643
+7645
+7646
+7648
+7649
+7650
+7658
+7659
+7660
+7666
+7668
+7673
+7674
+7675
+7681
+7684
+7686
+7691
+7693
+7700
+7702
+7709
+7711
+7714
+7716
+7718
+7723
+7727
+7729
+7736
+7738
+7739
+7740
+7741
+7747
+7750
+7755
+7756
+7759
+7766
+7768
+7779
+7780
+7782
+7786
+7788
+7791
+7795
+7796
+7802
+7803
+7808
+7810
+7812
+7821
+7824
+7827
+7833
+7841
+7846
+7847
+7857
+7863
+7870
+7884
+7886
+7887
+7889
+7892
+7893
+7896
+7897
+7899
+7906
+7909
+7916
+7917
+7928
+7931
+7936
+7937
+7939
+7940
+7944
+7945
+7946
+7947
+7949
+7960
+7961
+7964
+7967
+7973
+7978
+7981
+7982
+7983
+7984
+7985
+7986
+7989
+7990
+8009
+8011
+8021
+8025
+8028
+8033
+8034
+8037
+8039
+8040
+8043
+8047
+8050
+8055
+8062
+8070
+8082
+8085
+8088
+8094
+8095
+8098
+8105
+8106
+8119
+8122
+8128
+8129
+8133
+8138
+8140
+8146
+8151
+8152
+8153
+8159
+8164
+8165
+8170
+8172
+8176
+8178
+8183
+8185
+8188
+8192
+8194
+8197
+8198
+8199
+8204
+8210
+8211
+8215
+8216
+8221
+8224
+8225
+8230
+8233
+8235
+8238
+8239
+8241
+8242
+8243
+8250
+8251
+8258
+8261
+8263
+8265
+8268
+8271
+8279
+8280
+8283
+8284
+8286
+8287
+8293
+8303
+8308
+8310
+8312
+8313
+8318
+8327
+8331
+8344
+8345
+8349
+8350
+8351
+8353
+8358
+8369
+8371
+8376
+8381
+8392
+8396
+8401
+8408
+8409
+8412
+8417
+8421
+8424
+8426
+8438
+8439
+8450
+8451
+8454
+8459
+8460
+8466
+8469
+8473
+8479
+8531
+8550
+8559
+8585
+8586
+8587
+8593
+8596
+8602
+8638
+8657
+8681
+8682
+8688
+8710
+8725
+8731
+8742
+8744
+8775
+8781
+8786
+8792
+8795
+8799
+8801
+8802
+8808
+8820
+8824
+8853
+8856
+8857
+8864
+8869
+8871
+8882
+8884
+8890
+8891
+8901
+8905
+8913
+8919
+8925
+8931
+8933
+8934
+8958
+8969
+8992
+8997
+9002
+9008
+9014
+9016
+9018
+9022
+9029
+9053
+9064
+9067
+9072
+9087
+9091
+9097
+9108
+9109
+9112
+9114
+9277
+9281
+9284
+9305
+9312
+9315
+9320
+9322
+9416
+9485
+9496
+9498
+9501
+9516
+9517
+9523
+9527
+9528
+9531
+9532
+9565
+9566
+9568
+9569
+10148
+10254
+11036

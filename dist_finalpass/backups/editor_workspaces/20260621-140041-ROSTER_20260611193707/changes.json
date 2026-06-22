@@ -1,0 +1,4386 @@
+[
+  {
+    "timestamp": "2026-06-21T14:01:11.069411",
+    "type": "update-player-info",
+    "result": {
+      "bio": {
+        "player": "Darren Raddysh",
+        "updated_fields": {
+          "tRVs": 43,
+          "JzFM": "CALEDON",
+          "aljv": 3
+        },
+        "changes": []
+      },
+      "ratings": {
+        "player": "Darren Raddysh",
+        "updated_fields": {
+          "sFgQ": 1,
+          "YqJH": 1
+        },
+        "changes": [
+          {
+            "section": "ratings",
+            "field": "sFgQ",
+            "before": 4,
+            "after": 1
+          }
+        ]
+      },
+      "instance": {
+        "player": "Darren Raddysh",
+        "instance_ids": [
+          5063
+        ],
+        "updated_count": 1,
+        "updated_fields": {
+          "sFgQ": 1
+        },
+        "changes": [
+          {
+            "section": "instance_rows",
+            "field": "sFgQ",
+            "before": 4,
+            "after": 1
+          }
+        ]
+      }
+    }
+  },
+  {
+    "timestamp": "2026-06-21T14:02:32.543854",
+    "type": "update-attributes",
+    "result": {
+      "player": "Darren Raddysh",
+      "updated_fields": {
+        "bEdA": 54,
+        "seUB": 52,
+        "oRUd": 52,
+        "KQBB": 47,
+        "ujcW": 50,
+        "VlLd": 55,
+        "POYr": 51,
+        "YqXz": 51,
+        "DCvJ": 60,
+        "Hvje": 55,
+        "ckxF": 52,
+        "zRrS": 51
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 60,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 44,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "oRUd",
+          "before": 42,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 41,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 53,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 50,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "POYr",
+          "before": 48,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 54,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 51,
+          "after": 60
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 52,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 56,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "zRrS",
+          "before": 49,
+          "after": 51
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T14:02:43.282051",
+    "type": "save-to-game",
+    "result": {
+      "target": "C:\\Users\\jesus\\Downloads\\xenia_manager\\Emulators\\Xenia Canary\\content\\E03000006397D304\\454109EC\\00000001\\ROSTER 20260611193707\\ROSTER 20260611193707",
+      "working_roster": "C:\\Users\\jesus\\OneDrive\\Documents\\NHL legacy mods\\dist_finalpass\\backups\\editor_workspaces\\20260621-140041-ROSTER_20260611193707\\working_roster.bin"
+    }
+  },
+  {
+    "timestamp": "2026-06-21T14:04:09.124791",
+    "type": "update-player-info",
+    "result": {
+      "bio": {
+        "player": "Darren Raddysh",
+        "updated_fields": {
+          "tRVs": 43,
+          "JzFM": "CALEDON",
+          "aljv": 3
+        },
+        "changes": []
+      },
+      "ratings": {
+        "player": "Darren Raddysh",
+        "updated_fields": {
+          "sFgQ": 2,
+          "YqJH": 1
+        },
+        "changes": [
+          {
+            "section": "ratings",
+            "field": "sFgQ",
+            "before": 1,
+            "after": 2
+          }
+        ]
+      },
+      "instance": {
+        "player": "Darren Raddysh",
+        "instance_ids": [
+          5063
+        ],
+        "updated_count": 1,
+        "updated_fields": {
+          "sFgQ": 2
+        },
+        "changes": [
+          {
+            "section": "instance_rows",
+            "field": "sFgQ",
+            "before": 1,
+            "after": 2
+          }
+        ]
+      }
+    }
+  },
+  {
+    "timestamp": "2026-06-21T14:05:11.148407",
+    "type": "update-attributes",
+    "result": {
+      "player": "Auston Matthews",
+      "updated_fields": {
+        "bEdA": 52,
+        "seUB": 58,
+        "oRUd": 54,
+        "KQBB": 56,
+        "ObeE": 57,
+        "ujcW": 52,
+        "pyYq": 51,
+        "ckxF": 52,
+        "iCvN": 53,
+        "fRaZ": 48
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 53,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 46,
+          "after": 58
+        },
+        {
+          "section": "ratings",
+          "field": "oRUd",
+          "before": 57,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 57,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 60,
+          "after": 57
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 54,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 53,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 54,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 56,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 46,
+          "after": 48
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T14:05:14.417668",
+    "type": "save-to-game",
+    "result": {
+      "target": "C:\\Users\\jesus\\Downloads\\xenia_manager\\Emulators\\Xenia Canary\\content\\E03000006397D304\\454109EC\\00000001\\ROSTER 20260611193707\\ROSTER 20260611193707",
+      "working_roster": "C:\\Users\\jesus\\OneDrive\\Documents\\NHL legacy mods\\dist_finalpass\\backups\\editor_workspaces\\20260621-140041-ROSTER_20260611193707\\working_roster.bin"
+    }
+  },
+  {
+    "timestamp": "2026-06-21T14:06:31.590441",
+    "type": "build-contract-pass",
+    "result": {
+      "count": 1514,
+      "real_cap": 104.0,
+      "game_cap": 78.6
+    }
+  },
+  {
+    "timestamp": "2026-06-21T14:07:26.562835",
+    "type": "approve-scaled-contract",
+    "result": {
+      "player_name": "Auston Matthews",
+      "real_aav_millions": 13.25,
+      "game_aav_millions": 10.013942307692306,
+      "cap_hit_percent": 0.12740384615384615,
+      "expiry": null,
+      "source": "CapWages",
+      "note": "Approved scaled contract. Roster salary field mapping pending."
+    }
+  },
+  {
+    "timestamp": "2026-06-21T14:07:31.222112",
+    "type": "approve-scaled-contract",
+    "result": {
+      "player_name": "Auston Matthews",
+      "real_aav_millions": 13.25,
+      "game_aav_millions": 10.013942307692306,
+      "cap_hit_percent": 0.12740384615384615,
+      "expiry": null,
+      "source": "CapWages",
+      "note": "Approved scaled contract. Roster salary field mapping pending."
+    }
+  },
+  {
+    "timestamp": "2026-06-21T14:08:03.797872",
+    "type": "build-contract-pass",
+    "result": {
+      "count": 1514,
+      "real_cap": 104.0,
+      "game_cap": 78.6
+    }
+  },
+  {
+    "timestamp": "2026-06-21T14:08:18.226612",
+    "type": "save-to-game",
+    "result": {
+      "target": "C:\\Users\\jesus\\Downloads\\xenia_manager\\Emulators\\Xenia Canary\\content\\E03000006397D304\\454109EC\\00000001\\ROSTER 20260611193707\\ROSTER 20260611193707",
+      "working_roster": "C:\\Users\\jesus\\OneDrive\\Documents\\NHL legacy mods\\dist_finalpass\\backups\\editor_workspaces\\20260621-140041-ROSTER_20260611193707\\working_roster.bin"
+    }
+  },
+  {
+    "timestamp": "2026-06-21T14:09:43.738970",
+    "type": "build-contract-pass",
+    "result": {
+      "count": 1514,
+      "real_cap": 104.0,
+      "game_cap": 78.6
+    }
+  },
+  {
+    "timestamp": "2026-06-21T14:09:49.508886",
+    "type": "save-to-game",
+    "result": {
+      "target": "C:\\Users\\jesus\\Downloads\\xenia_manager\\Emulators\\Xenia Canary\\content\\E03000006397D304\\454109EC\\00000001\\ROSTER 20260611193707\\ROSTER 20260611193707",
+      "working_roster": "C:\\Users\\jesus\\OneDrive\\Documents\\NHL legacy mods\\dist_finalpass\\backups\\editor_workspaces\\20260621-140041-ROSTER_20260611193707\\working_roster.bin"
+    }
+  },
+  {
+    "timestamp": "2026-06-21T14:25:46.546809",
+    "type": "update-attributes",
+    "result": {
+      "player": "Beckett Sennecke",
+      "updated_fields": {
+        "bEdA": 54,
+        "seUB": 56,
+        "KQBB": 53,
+        "ObeE": 54,
+        "ujcW": 53,
+        "VlLd": 53,
+        "YqXz": 50,
+        "DCvJ": 54,
+        "Hvje": 55,
+        "pyYq": 54,
+        "ckxF": 56,
+        "iCvN": 54,
+        "fRaZ": 54,
+        "OTvp": 51
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 52,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 46,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 48,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 47,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 45,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 49,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 52,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 53,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 53,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 51,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 50,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 48,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 44,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 50,
+          "after": 51
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T14:26:40.728350",
+    "type": "update-attributes",
+    "result": {
+      "player": "Jackson LaCombe",
+      "updated_fields": {
+        "seUB": 58,
+        "KQBB": 46,
+        "ObeE": 51,
+        "ujcW": 51,
+        "VlLd": 50,
+        "YqXz": 51,
+        "DCvJ": 50,
+        "Hvje": 50,
+        "pyYq": 55,
+        "ckxF": 57,
+        "iCvN": 54,
+        "fRaZ": 52,
+        "OTvp": 54
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 44,
+          "after": 58
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 51,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 50,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 48,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 53,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 52,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 54,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 53,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 54,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 53,
+          "after": 57
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 50,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 49,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 51,
+          "after": 54
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T14:27:25.933679",
+    "type": "update-attributes",
+    "result": {
+      "player": "Mason McTavish",
+      "updated_fields": {
+        "bEdA": 46,
+        "seUB": 46,
+        "KQBB": 44,
+        "ObeE": 46,
+        "ujcW": 44,
+        "VlLd": 52,
+        "YqXz": 49,
+        "DCvJ": 53,
+        "Hvje": 53,
+        "pyYq": 48,
+        "ckxF": 44,
+        "iCvN": 48,
+        "fRaZ": 48,
+        "OTvp": 49
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 52,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 44,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 49,
+          "after": 44
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 51,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 48,
+          "after": 44
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 51,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 51,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 51,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 51,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 50,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 50,
+          "after": 44
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 50,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 39,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 52,
+          "after": 49
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T14:28:15.663408",
+    "type": "update-attributes",
+    "result": {
+      "player": "Connor McDavid",
+      "updated_fields": {
+        "bEdA": 59,
+        "seUB": 55,
+        "KQBB": 54,
+        "ObeE": 56,
+        "ujcW": 57,
+        "VlLd": 58,
+        "YqXz": 58,
+        "DCvJ": 52,
+        "Hvje": 55,
+        "pyYq": 57,
+        "ckxF": 59,
+        "iCvN": 58,
+        "fRaZ": 57,
+        "OTvp": 52
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 63,
+          "after": 59
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 49,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 59,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 61,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 62,
+          "after": 57
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 63,
+          "after": 58
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 63,
+          "after": 58
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 58,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 59,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 62,
+          "after": 57
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 63,
+          "after": 59
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 63,
+          "after": 58
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 62,
+          "after": 57
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 56,
+          "after": 52
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T14:33:24.929949",
+    "type": "update-attributes",
+    "result": {
+      "player": "Cutter Gauthier",
+      "updated_fields": {
+        "bEdA": 53,
+        "seUB": 53,
+        "KQBB": 53,
+        "ObeE": 50,
+        "ujcW": 49,
+        "VlLd": 55,
+        "YqXz": 51,
+        "DCvJ": 54,
+        "pyYq": 52,
+        "ckxF": 54,
+        "iCvN": 52,
+        "fRaZ": 51,
+        "OTvp": 49
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 54,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 44,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 52,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 52,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 48,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 54,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 50,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 55,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 49,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 51,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 48,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 39,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 46,
+          "after": 49
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T14:34:29.166284",
+    "type": "update-attributes",
+    "result": {
+      "player": "Chris Kreider",
+      "updated_fields": {
+        "bEdA": 54,
+        "seUB": 50,
+        "KQBB": 47,
+        "ObeE": 49,
+        "ujcW": 53,
+        "VlLd": 51,
+        "YqXz": 50,
+        "DCvJ": 51,
+        "Hvje": 51,
+        "pyYq": 54,
+        "ckxF": 54,
+        "iCvN": 51,
+        "fRaZ": 51,
+        "OTvp": 48
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 52,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 49,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 49,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 51,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 58,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 54,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 55,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 52,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 52,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 51,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 52,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 54,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 54,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 52,
+          "after": 48
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T14:36:36.447203",
+    "type": "update-attributes",
+    "result": {
+      "player": "Charlie McAvoy",
+      "updated_fields": {
+        "bEdA": 53,
+        "seUB": 52,
+        "ObeE": 46,
+        "ujcW": 46,
+        "VlLd": 53,
+        "YqXz": 48,
+        "DCvJ": 54,
+        "Hvje": 49,
+        "pyYq": 46,
+        "ckxF": 50,
+        "iCvN": 46,
+        "fRaZ": 39,
+        "OTvp": 54
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 52,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 44,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 47,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 51,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 49,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 49,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 52,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 52,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 50,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 52,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 44,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 44,
+          "after": 39
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 51,
+          "after": 54
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T14:36:40.230719",
+    "type": "save-to-game",
+    "result": {
+      "target": "D:\\Emulation\\xenia_manager\\Emulators\\Xenia Canary\\content\\E03000006397D304\\454109EC\\00000001\\ROSTER 20260611193707\\ROSTER 20260611193707",
+      "working_roster": "C:\\Users\\jesus\\OneDrive\\Documents\\NHL legacy mods\\dist_finalpass\\backups\\editor_workspaces\\20260621-140041-ROSTER_20260611193707\\working_roster.bin"
+    }
+  },
+  {
+    "timestamp": "2026-06-21T14:43:27.925814",
+    "type": "update-attributes",
+    "result": {
+      "player": "Morgan Geekie",
+      "updated_fields": {
+        "DCvJ": 55,
+        "Hvje": 53,
+        "fRaZ": 47,
+        "OTvp": 47
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 51,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 51,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 44,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 46,
+          "after": 47
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T15:07:29.411116",
+    "type": "update-attributes",
+    "result": {
+      "player": "Nikita Zadorov",
+      "updated_fields": {
+        "bEdA": 46,
+        "seUB": 47,
+        "oRUd": 45,
+        "KQBB": 40,
+        "ObeE": 40,
+        "YqOX": 56,
+        "ujcW": 38,
+        "VlLd": 45,
+        "POYr": 55,
+        "YqXz": 41,
+        "DCvJ": 53,
+        "Hvje": 48,
+        "pyYq": 41,
+        "ckxF": 42,
+        "iCvN": 39,
+        "fRaZ": 38,
+        "zRrS": 52
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 47,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 44,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "oRUd",
+          "before": 40,
+          "after": 45
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 37,
+          "after": 40
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 37,
+          "after": 40
+        },
+        {
+          "section": "ratings",
+          "field": "YqOX",
+          "before": 61,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 36,
+          "after": 38
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 37,
+          "after": 45
+        },
+        {
+          "section": "ratings",
+          "field": "POYr",
+          "before": 61,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 39,
+          "after": 41
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 59,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 54,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 45,
+          "after": 41
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 47,
+          "after": 42
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 34,
+          "after": 39
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 39,
+          "after": 38
+        },
+        {
+          "section": "ratings",
+          "field": "zRrS",
+          "before": 54,
+          "after": 52
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T15:09:18.276947",
+    "type": "update-attributes",
+    "result": {
+      "player": "Bowen Byram",
+      "updated_fields": {
+        "bEdA": 55,
+        "seUB": 55,
+        "KQBB": 48,
+        "ObeE": 54,
+        "VlLd": 51,
+        "EksY": 9,
+        "YqXz": 53,
+        "DCvJ": 54,
+        "Hvje": 53,
+        "pyYq": 53,
+        "ckxF": 53,
+        "iCvN": 50,
+        "fRaZ": 51,
+        "OTvp": 51,
+        "hlsv": 11
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 51,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 49,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 46,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 47,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 46,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "EksY",
+          "before": 6,
+          "after": 9
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 46,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 51,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 51,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 51,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 51,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 40,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 41,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 48,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "hlsv",
+          "before": 10,
+          "after": 11
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T15:10:12.293208",
+    "type": "update-attributes",
+    "result": {
+      "player": "Jack Quinn",
+      "updated_fields": {
+        "bEdA": 56,
+        "seUB": 53,
+        "KQBB": 50,
+        "ObeE": 51,
+        "ujcW": 47,
+        "VlLd": 53,
+        "YqXz": 54,
+        "Hvje": 52,
+        "pyYq": 56,
+        "ckxF": 56,
+        "iCvN": 54,
+        "fRaZ": 50,
+        "OTvp": 49,
+        "baRY": 10
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 52,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 49,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 48,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 48,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 49,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 49,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 49,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 50,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 52,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 52,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 49,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 34,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 46,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "baRY",
+          "before": 8,
+          "after": 10
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T15:11:24.015671",
+    "type": "update-attributes",
+    "result": {
+      "player": "Peyton Krebs",
+      "updated_fields": {
+        "bEdA": 54,
+        "seUB": 53,
+        "oRUd": 49,
+        "KQBB": 46,
+        "ObeE": 49,
+        "ujcW": 47,
+        "VlLd": 50,
+        "DCvJ": 51,
+        "Hvje": 48,
+        "pyYq": 51,
+        "ckxF": 54,
+        "iCvN": 48,
+        "fRaZ": 50,
+        "OTvp": 44,
+        "hlsv": 10
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 52,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 49,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "oRUd",
+          "before": 45,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 44,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 45,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 46,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 46,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 50,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 50,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 52,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 52,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 46,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 34,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 46,
+          "after": 44
+        },
+        {
+          "section": "ratings",
+          "field": "hlsv",
+          "before": 6,
+          "after": 10
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T15:13:35.872610",
+    "type": "update-attributes",
+    "result": {
+      "player": "Zach Benson",
+      "updated_fields": {
+        "bEdA": 53,
+        "seUB": 53,
+        "oRUd": 49,
+        "KQBB": 48,
+        "ObeE": 53,
+        "ujcW": 51,
+        "VlLd": 51,
+        "YqXz": 55,
+        "DCvJ": 48,
+        "Hvje": 53,
+        "pyYq": 54,
+        "ckxF": 54,
+        "iCvN": 51,
+        "fRaZ": 51,
+        "OTvp": 45,
+        "hlsv": 10
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 51,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 44,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "oRUd",
+          "before": 45,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 42,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 43,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 42,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 45,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 43,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 50,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 50,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 51,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 51,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 44,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 34,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 42,
+          "after": 45
+        },
+        {
+          "section": "ratings",
+          "field": "hlsv",
+          "before": 6,
+          "after": 10
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T15:13:41.791710",
+    "type": "save-to-game",
+    "result": {
+      "target": "D:\\Emulation\\xenia_manager\\Emulators\\Xenia Canary\\content\\E03000006397D304\\454109EC\\00000001\\ROSTER 20260611193707\\ROSTER 20260611193707",
+      "working_roster": "C:\\Users\\jesus\\OneDrive\\Documents\\NHL legacy mods\\dist_finalpass\\backups\\editor_workspaces\\20260621-140041-ROSTER_20260611193707\\working_roster.bin"
+    }
+  },
+  {
+    "timestamp": "2026-06-21T15:52:40.554796",
+    "type": "update-attributes",
+    "result": {
+      "player": "Josh Doan",
+      "updated_fields": {
+        "bEdA": 52,
+        "seUB": 52,
+        "oRUd": 48,
+        "KQBB": 51,
+        "ObeE": 51,
+        "ujcW": 50,
+        "VlLd": 50,
+        "POYr": 46,
+        "oisw": 50,
+        "YqXz": 50,
+        "DCvJ": 52,
+        "Hvje": 52,
+        "pyYq": 54,
+        "ckxF": 53,
+        "iCvN": 52,
+        "fRaZ": 52,
+        "zRrS": 45,
+        "OTvp": 48
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 51,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 49,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "oRUd",
+          "before": 45,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 45,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 46,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 46,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 46,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "POYr",
+          "before": 44,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "oisw",
+          "before": 44,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 46,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 50,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 50,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 51,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 51,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 44,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 34,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "zRrS",
+          "before": 42,
+          "after": 45
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 42,
+          "after": 48
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T15:53:45.703390",
+    "type": "update-attributes",
+    "result": {
+      "player": "Josh Norris",
+      "updated_fields": {
+        "bEdA": 54,
+        "seUB": 52,
+        "KQBB": 47,
+        "ObeE": 49,
+        "ujcW": 47,
+        "YqXz": 49,
+        "DCvJ": 49,
+        "Hvje": 52,
+        "pyYq": 53,
+        "ckxF": 53,
+        "KrwV": 44,
+        "iCvN": 50,
+        "fRaZ": 46,
+        "OTvp": 46,
+        "hlsv": 9
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 51,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 44,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 48,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 48,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 46,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 46,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 50,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 50,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 51,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 51,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "KrwV",
+          "before": 43,
+          "after": 44
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 46,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 39,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 47,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "hlsv",
+          "before": 5,
+          "after": 9
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T15:53:58.262097",
+    "type": "save-to-game",
+    "result": {
+      "target": "D:\\Emulation\\xenia_manager\\Emulators\\Xenia Canary\\content\\E03000006397D304\\454109EC\\00000001\\ROSTER 20260611193707\\ROSTER 20260611193707",
+      "working_roster": "C:\\Users\\jesus\\OneDrive\\Documents\\NHL legacy mods\\dist_finalpass\\backups\\editor_workspaces\\20260621-140041-ROSTER_20260611193707\\working_roster.bin"
+    }
+  },
+  {
+    "timestamp": "2026-06-21T15:54:30.897663",
+    "type": "save-to-game",
+    "result": {
+      "target": "D:\\Emulation\\xenia_manager\\Emulators\\Xenia Canary\\content\\E03000006397D304\\454109EC\\00000001\\ROSTER 20260611193707\\ROSTER 20260611193707",
+      "working_roster": "C:\\Users\\jesus\\OneDrive\\Documents\\NHL legacy mods\\dist_finalpass\\backups\\editor_workspaces\\20260621-140041-ROSTER_20260611193707\\working_roster.bin"
+    }
+  },
+  {
+    "timestamp": "2026-06-21T19:26:43.974020",
+    "type": "update-attributes",
+    "result": {
+      "player": "Jonathan Huberdeau",
+      "updated_fields": {
+        "bEdA": 48,
+        "seUB": 52,
+        "KQBB": 46,
+        "ObeE": 47,
+        "ujcW": 46,
+        "VlLd": 51,
+        "YqXz": 51,
+        "DCvJ": 51,
+        "Hvje": 50,
+        "pyYq": 47,
+        "ckxF": 46,
+        "iCvN": 50,
+        "fRaZ": 47,
+        "OTvp": 47,
+        "baRY": 10,
+        "hlsv": 10
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 52,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 49,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 51,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 52,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 51,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 52,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 52,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 52,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 52,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 52,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 52,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 55,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 39,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 48,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "baRY",
+          "before": 8,
+          "after": 10
+        },
+        {
+          "section": "ratings",
+          "field": "hlsv",
+          "before": 5,
+          "after": 10
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T19:33:55.923422",
+    "type": "save-to-game",
+    "result": {
+      "target": "D:\\Emulation\\xenia_manager\\Emulators\\Xenia Canary\\content\\E03000006397D304\\454109EC\\00000001\\ROSTER 20260611193707\\ROSTER 20260611193707",
+      "working_roster": "C:\\Users\\jesus\\OneDrive\\Documents\\NHL legacy mods\\dist_finalpass\\backups\\editor_workspaces\\20260621-140041-ROSTER_20260611193707\\working_roster.bin"
+    }
+  },
+  {
+    "timestamp": "2026-06-21T19:39:54.587481",
+    "type": "update-attributes",
+    "result": {
+      "player": "Connor Zary",
+      "updated_fields": {
+        "bEdA": 48,
+        "seUB": 50,
+        "ObeE": 46,
+        "ujcW": 47,
+        "VlLd": 47,
+        "DCvJ": 48,
+        "Hvje": 47,
+        "pyYq": 48,
+        "ckxF": 48,
+        "iCvN": 44,
+        "fRaZ": 43,
+        "OTvp": 46,
+        "hlsv": 10
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 52,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 48,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 45,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 44,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 46,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 50,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 50,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 52,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 52,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 46,
+          "after": 44
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 34,
+          "after": 43
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 43,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "hlsv",
+          "before": 6,
+          "after": 10
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T19:40:41.465191",
+    "type": "update-attributes",
+    "result": {
+      "player": "Zayne Parekh",
+      "updated_fields": {
+        "bEdA": 52,
+        "KQBB": 46,
+        "ObeE": 46,
+        "ujcW": 50,
+        "VlLd": 53,
+        "DCvJ": 48,
+        "Hvje": 48,
+        "pyYq": 52,
+        "ckxF": 51,
+        "fRaZ": 50,
+        "OTvp": 50
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 53,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 45,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 45,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 47,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 47,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 50,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 51,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 53,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 53,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 39,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 42,
+          "after": 50
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T19:41:20.627493",
+    "type": "update-attributes",
+    "result": {
+      "player": "Ryan Strome",
+      "updated_fields": {
+        "bEdA": 51,
+        "seUB": 59,
+        "KQBB": 43,
+        "ujcW": 49,
+        "VlLd": 49,
+        "YqXz": 51,
+        "DCvJ": 51,
+        "Hvje": 51,
+        "ckxF": 52,
+        "iCvN": 47,
+        "fRaZ": 48,
+        "OTvp": 46
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 50,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 46,
+          "after": 59
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 48,
+          "after": 43
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 48,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 48,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 50,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 49,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 49,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 50,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 50,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 39,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 48,
+          "after": 46
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T19:45:23.496981",
+    "type": "update-attributes",
+    "result": {
+      "player": "Mikael Backlund",
+      "updated_fields": {
+        "bEdA": 54,
+        "seUB": 51,
+        "KQBB": 45,
+        "ObeE": 49,
+        "ujcW": 46,
+        "VlLd": 50,
+        "DCvJ": 51,
+        "Hvje": 52,
+        "pyYq": 54,
+        "ckxF": 53,
+        "iCvN": 50,
+        "fRaZ": 48,
+        "OTvp": 49,
+        "baRY": 10,
+        "hlsv": 9
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 49,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 47,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 47,
+          "after": 45
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 48,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 41,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 48,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 48,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 48,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 48,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 49,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 46,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 44,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 48,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "baRY",
+          "before": 8,
+          "after": 10
+        },
+        {
+          "section": "ratings",
+          "field": "hlsv",
+          "before": 6,
+          "after": 9
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T19:46:25.503260",
+    "type": "update-attributes",
+    "result": {
+      "player": "Shayne Gostisbehere",
+      "updated_fields": {
+        "bEdA": 53,
+        "seUB": 55,
+        "KQBB": 46,
+        "ObeE": 53,
+        "TUty": 48,
+        "YqOX": 46,
+        "ujcW": 52,
+        "VlLd": 53,
+        "EksY": 11,
+        "YqXz": 52,
+        "DCvJ": 52,
+        "Hvje": 55,
+        "pyYq": 52,
+        "ckxF": 53,
+        "iCvN": 52,
+        "fRaZ": 52,
+        "OTvp": 51,
+        "hlsv": 10
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 51,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 44,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 42,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 42,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "TUty",
+          "before": 46,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "YqOX",
+          "before": 44,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 48,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 48,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "EksY",
+          "before": 9,
+          "after": 11
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 50,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 50,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 51,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 51,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 51,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 48,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 39,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 48,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "hlsv",
+          "before": 7,
+          "after": 10
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T19:47:19.294927",
+    "type": "update-attributes",
+    "result": {
+      "player": "Jaccob Slavin",
+      "updated_fields": {
+        "bEdA": 53,
+        "seUB": 59,
+        "oRUd": 50,
+        "KQBB": 45,
+        "ObeE": 45,
+        "ujcW": 47,
+        "VlLd": 51,
+        "POYr": 59,
+        "EksY": 5,
+        "oisw": 54,
+        "DCvJ": 53,
+        "Hvje": 52,
+        "pyYq": 52,
+        "ckxF": 53,
+        "iCvN": 49,
+        "fRaZ": 42,
+        "zRrS": 51,
+        "OTvp": 58,
+        "baRY": 5,
+        "hlsv": 11
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 51,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 52,
+          "after": 59
+        },
+        {
+          "section": "ratings",
+          "field": "oRUd",
+          "before": 48,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 42,
+          "after": 45
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 43,
+          "after": 45
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 49,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 48,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "POYr",
+          "before": 49,
+          "after": 59
+        },
+        {
+          "section": "ratings",
+          "field": "EksY",
+          "before": 6,
+          "after": 5
+        },
+        {
+          "section": "ratings",
+          "field": "oisw",
+          "before": 52,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 52,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 51,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 51,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 51,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 45,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 44,
+          "after": 42
+        },
+        {
+          "section": "ratings",
+          "field": "zRrS",
+          "before": 47,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 55,
+          "after": 58
+        },
+        {
+          "section": "ratings",
+          "field": "baRY",
+          "before": 6,
+          "after": 5
+        },
+        {
+          "section": "ratings",
+          "field": "hlsv",
+          "before": 10,
+          "after": 11
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T19:48:37.965256",
+    "type": "update-attributes",
+    "result": {
+      "player": "Andrei Svechnikov",
+      "updated_fields": {
+        "bEdA": 55,
+        "seUB": 56,
+        "oRUd": 51,
+        "KQBB": 50,
+        "TUty": 48,
+        "YqOX": 47,
+        "kIjD": 46,
+        "ujcW": 55,
+        "VlLd": 53,
+        "ShqX": 47,
+        "POYr": 46,
+        "oisw": 46,
+        "YqXz": 56,
+        "DCvJ": 56,
+        "Hvje": 56,
+        "pyYq": 57,
+        "ckxF": 55,
+        "iCvN": 56,
+        "fRaZ": 56,
+        "OTvp": 47,
+        "baRY": 11,
+        "hlsv": 4
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 54,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 49,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "oRUd",
+          "before": 49,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 55,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "TUty",
+          "before": 50,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "YqOX",
+          "before": 49,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "kIjD",
+          "before": 51,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 53,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 55,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "ShqX",
+          "before": 48,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "POYr",
+          "before": 49,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "oisw",
+          "before": 48,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 57,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 55,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 55,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 54,
+          "after": 57
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 54,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 59,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 44,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 49,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "baRY",
+          "before": 10,
+          "after": 11
+        },
+        {
+          "section": "ratings",
+          "field": "hlsv",
+          "before": 3,
+          "after": 4
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T19:49:46.716332",
+    "type": "update-attributes",
+    "result": {
+      "player": "Jalen Chatfield",
+      "updated_fields": {
+        "bEdA": 54,
+        "seUB": 56,
+        "oRUd": 45,
+        "KQBB": 47,
+        "ObeE": 51,
+        "TUty": 51,
+        "YqOX": 49,
+        "kIjD": 45,
+        "oskO": 48,
+        "ujcW": 49,
+        "VlLd": 52,
+        "ShqX": 43,
+        "POYr": 51,
+        "oisw": 50,
+        "YqXz": 48,
+        "DCvJ": 54,
+        "Hvje": 53,
+        "pyYq": 52,
+        "ckxF": 53,
+        "iCvN": 48,
+        "fRaZ": 51,
+        "zRrS": 51,
+        "OTvp": 55
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 48,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 44,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "oRUd",
+          "before": 37,
+          "after": 45
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 37,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 37,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "TUty",
+          "before": 46,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "YqOX",
+          "before": 46,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "kIjD",
+          "before": 42,
+          "after": 45
+        },
+        {
+          "section": "ratings",
+          "field": "oskO",
+          "before": 44,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 37,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 37,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "ShqX",
+          "before": 39,
+          "after": 43
+        },
+        {
+          "section": "ratings",
+          "field": "POYr",
+          "before": 46,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "oisw",
+          "before": 48,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 39,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 49,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 49,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 48,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 48,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 32,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 34,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "zRrS",
+          "before": 46,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 44,
+          "after": 55
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T19:51:21.372042",
+    "type": "update-attributes",
+    "result": {
+      "player": "Seth Jarvis",
+      "updated_fields": {
+        "bEdA": 55,
+        "TUty": 49,
+        "kIjD": 46,
+        "ujcW": 51,
+        "VlLd": 55,
+        "oisw": 47,
+        "YqXz": 52,
+        "DCvJ": 53,
+        "Hvje": 54,
+        "pyYq": 55,
+        "ckxF": 54,
+        "iCvN": 54,
+        "fRaZ": 48,
+        "OTvp": 49,
+        "baRY": 10,
+        "hlsv": 7
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 53,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "TUty",
+          "before": 51,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "kIjD",
+          "before": 49,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 53,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 53,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "oisw",
+          "before": 49,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 54,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 52,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 52,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 53,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 53,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 55,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 44,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 51,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "baRY",
+          "before": 8,
+          "after": 10
+        },
+        {
+          "section": "ratings",
+          "field": "hlsv",
+          "before": 5,
+          "after": 7
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T19:52:20.126925",
+    "type": "update-attributes",
+    "result": {
+      "player": "Alexander Nikishin",
+      "updated_fields": {
+        "bEdA": 54,
+        "seUB": 54,
+        "oRUd": 51,
+        "KQBB": 43,
+        "ObeE": 41,
+        "oskO": 46,
+        "ujcW": 48,
+        "VlLd": 50,
+        "POYr": 49,
+        "EksY": 7,
+        "oisw": 48,
+        "YqXz": 49,
+        "DCvJ": 52,
+        "Hvje": 52,
+        "pyYq": 50,
+        "ckxF": 52,
+        "iCvN": 50,
+        "fRaZ": 41,
+        "zRrS": 48,
+        "OTvp": 50,
+        "baRY": 7,
+        "hlsv": 11
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 49,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 47,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "oRUd",
+          "before": 39,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 39,
+          "after": 43
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 39,
+          "after": 41
+        },
+        {
+          "section": "ratings",
+          "field": "oskO",
+          "before": 49,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 43,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 41,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "POYr",
+          "before": 52,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "EksY",
+          "before": 6,
+          "after": 7
+        },
+        {
+          "section": "ratings",
+          "field": "oisw",
+          "before": 49,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 42,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 51,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 51,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 49,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 49,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 39,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 34,
+          "after": 41
+        },
+        {
+          "section": "ratings",
+          "field": "zRrS",
+          "before": 47,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 47,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "baRY",
+          "before": 6,
+          "after": 7
+        },
+        {
+          "section": "ratings",
+          "field": "hlsv",
+          "before": 10,
+          "after": 11
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T19:53:02.853482",
+    "type": "update-attributes",
+    "result": {
+      "player": "Logan Stankoven",
+      "updated_fields": {
+        "bEdA": 53,
+        "seUB": 56,
+        "KQBB": 49,
+        "ObeE": 53,
+        "ujcW": 56,
+        "VlLd": 53,
+        "YqXz": 52,
+        "DCvJ": 52,
+        "Hvje": 53,
+        "pyYq": 53,
+        "ckxF": 54,
+        "iCvN": 53,
+        "fRaZ": 56,
+        "OTvp": 49
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 55,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 49,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 48,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 48,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 48,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 48,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 49,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 49,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 49,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 55,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 55,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 48,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 34,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 44,
+          "after": 49
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T19:54:04.418599",
+    "type": "update-attributes",
+    "result": {
+      "player": "Nikolaj Ehlers",
+      "updated_fields": {
+        "bEdA": 57,
+        "seUB": 50,
+        "KQBB": 54,
+        "ObeE": 56,
+        "VlLd": 53,
+        "pyYq": 54,
+        "ckxF": 55,
+        "OTvp": 51,
+        "hlsv": 6
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 54,
+          "after": 57
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 49,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 51,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 51,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 52,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 52,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 54,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 48,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "hlsv",
+          "before": 4,
+          "after": 6
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T19:55:22.402865",
+    "type": "update-attributes",
+    "result": {
+      "player": "Jackson Blake",
+      "updated_fields": {
+        "bEdA": 54,
+        "seUB": 53,
+        "oRUd": 48,
+        "KQBB": 49,
+        "ObeE": 50,
+        "oskO": 42,
+        "ujcW": 50,
+        "VlLd": 51,
+        "POYr": 49,
+        "YqXz": 55,
+        "DCvJ": 50,
+        "iCvN": 49,
+        "fRaZ": 41,
+        "OTvp": 47,
+        "baRY": 9,
+        "hlsv": 8
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 51,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 49,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "oRUd",
+          "before": 45,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 46,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 47,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "oskO",
+          "before": 40,
+          "after": 42
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 47,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 47,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "POYr",
+          "before": 48,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 49,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 51,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 47,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 34,
+          "after": 41
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 45,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "baRY",
+          "before": 8,
+          "after": 9
+        },
+        {
+          "section": "ratings",
+          "field": "hlsv",
+          "before": 6,
+          "after": 8
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T19:55:44.689796",
+    "type": "update-attributes",
+    "result": {
+      "player": "Nikolaj Ehlers",
+      "updated_fields": {
+        "KQBB": 53,
+        "ObeE": 54,
+        "OTvp": 49
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 54,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 56,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 51,
+          "after": 49
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T19:56:55.493477",
+    "type": "update-attributes",
+    "result": {
+      "player": "K'Andre Miller",
+      "updated_fields": {
+        "bEdA": 54,
+        "seUB": 57,
+        "oRUd": 46,
+        "KQBB": 44,
+        "ObeE": 43,
+        "TUty": 52,
+        "YqOX": 51,
+        "oskO": 46,
+        "ujcW": 41,
+        "VlLd": 48,
+        "POYr": 53,
+        "EksY": 5,
+        "oisw": 51,
+        "YqXz": 48,
+        "DCvJ": 54,
+        "pyYq": 52,
+        "ckxF": 56,
+        "iCvN": 51,
+        "fRaZ": 41,
+        "OTvp": 54,
+        "baRY": 5
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 48,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 49,
+          "after": 57
+        },
+        {
+          "section": "ratings",
+          "field": "oRUd",
+          "before": 39,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 39,
+          "after": 44
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 39,
+          "after": 43
+        },
+        {
+          "section": "ratings",
+          "field": "TUty",
+          "before": 46,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "YqOX",
+          "before": 50,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "oskO",
+          "before": 44,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 39,
+          "after": 41
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 39,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "POYr",
+          "before": 50,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "EksY",
+          "before": 6,
+          "after": 5
+        },
+        {
+          "section": "ratings",
+          "field": "oisw",
+          "before": 49,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 41,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 49,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 48,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 48,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 38,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 34,
+          "after": 41
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 44,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "baRY",
+          "before": 6,
+          "after": 5
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T19:57:52.026321",
+    "type": "update-attributes",
+    "result": {
+      "player": "Sebastian Aho",
+      "updated_fields": {
+        "seUB": 58,
+        "ujcW": 51,
+        "VlLd": 54,
+        "EksY": 12,
+        "oisw": 42,
+        "YqXz": 54,
+        "DCvJ": 52,
+        "Hvje": 52,
+        "pyYq": 54,
+        "ckxF": 54,
+        "iCvN": 54,
+        "fRaZ": 52,
+        "OTvp": 52,
+        "baRY": 9,
+        "hlsv": 7
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 44,
+          "after": 58
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 41,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 39,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "EksY",
+          "before": 6,
+          "after": 12
+        },
+        {
+          "section": "ratings",
+          "field": "oisw",
+          "before": 36,
+          "after": 42
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 41,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 48,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 48,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 48,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 48,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 39,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 39,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 39,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "baRY",
+          "before": 6,
+          "after": 9
+        },
+        {
+          "section": "ratings",
+          "field": "hlsv",
+          "before": 10,
+          "after": 7
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T19:59:01.137042",
+    "type": "update-attributes",
+    "result": {
+      "player": "Adam Fantilli",
+      "updated_fields": {
+        "bEdA": 56,
+        "seUB": 52,
+        "KQBB": 52,
+        "VlLd": 54,
+        "oisw": 50,
+        "YqXz": 52,
+        "DCvJ": 52,
+        "Hvje": 52,
+        "ckxF": 53,
+        "iCvN": 50,
+        "fRaZ": 47,
+        "zRrS": 48,
+        "OTvp": 50,
+        "hlsv": 8
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 52,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 49,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 51,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 51,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "oisw",
+          "before": 47,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 51,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 51,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 51,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 52,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 52,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 39,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "zRrS",
+          "before": 45,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 48,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "hlsv",
+          "before": 5,
+          "after": 8
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T20:00:01.937804",
+    "type": "update-attributes",
+    "result": {
+      "player": "Kent Johnson",
+      "updated_fields": {
+        "ujcW": 48,
+        "YqXz": 48,
+        "DCvJ": 47,
+        "Hvje": 49,
+        "pyYq": 52,
+        "ckxF": 53,
+        "OTvp": 42,
+        "baRY": 9,
+        "hlsv": 10
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 49,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 49,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 49,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 50,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 54,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 54,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 41,
+          "after": 42
+        },
+        {
+          "section": "ratings",
+          "field": "baRY",
+          "before": 8,
+          "after": 9
+        },
+        {
+          "section": "ratings",
+          "field": "hlsv",
+          "before": 5,
+          "after": 10
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T20:00:52.895237",
+    "type": "update-attributes",
+    "result": {
+      "player": "Zach Werenski",
+      "updated_fields": {
+        "KQBB": 53,
+        "VlLd": 57,
+        "YqXz": 54,
+        "OTvp": 53
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 50,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 59,
+          "after": 57
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 55,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 56,
+          "after": 53
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T20:02:31.768137",
+    "type": "update-attributes",
+    "result": {
+      "player": "Frank Nazar",
+      "updated_fields": {
+        "bEdA": 56,
+        "seUB": 51,
+        "VlLd": 49,
+        "YqXz": 52,
+        "DCvJ": 52,
+        "Hvje": 51,
+        "pyYq": 54,
+        "ckxF": 52,
+        "iCvN": 52,
+        "fRaZ": 43,
+        "OTvp": 44
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 50,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 49,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 46,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 46,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 49,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 49,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 51,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 50,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 46,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 34,
+          "after": 43
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 43,
+          "after": 44
+        }
+      ]
+    }
+  }
+]

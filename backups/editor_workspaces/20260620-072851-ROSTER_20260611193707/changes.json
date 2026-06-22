@@ -1,0 +1,1702 @@
+[
+  {
+    "timestamp": "2026-06-20T12:17:51.372119",
+    "type": "move-to-free-agency",
+    "result": {
+      "player": "Darren Raddysh",
+      "instance_id": 5063,
+      "from_team": "TB",
+      "to_team": "code:255",
+      "target_team_code": 255,
+      "changes": [
+        {
+          "section": "instance_rows",
+          "field": "rows",
+          "before": [
+            {
+              "AAai": 0,
+              "Adsx": 0,
+              "AkyJ": 0,
+              "Auad": 0,
+              "BSXd": 26,
+              "BWVK": 0,
+              "BcVZ": 0,
+              "BnOW": 0,
+              "BvDt": 1,
+              "CLEN": 0,
+              "EGLX": 0,
+              "EMLM": 0,
+              "FGkk": 0,
+              "FIER": 0,
+              "FMkb": 0,
+              "GtFK": 0,
+              "IkTY": 0,
+              "Imzy": 0,
+              "Jmcc": 0,
+              "Khwp": 0,
+              "MykP": 0,
+              "NYLL": 0,
+              "OQOd": 0,
+              "Onyv": 0,
+              "OsHB": 0,
+              "PGhZ": 0,
+              "Plxr": 0,
+              "PufE": 0,
+              "QHRq": 0,
+              "RNeu": 0,
+              "Sxps": 0,
+              "TWSX": 5063,
+              "TbGw": 0,
+              "VSQu": 0,
+              "WPGf": 0,
+              "WZZk": 0,
+              "Wbtt": 0,
+              "XBWz": 0,
+              "XUMR": 0,
+              "XWot": 1061,
+              "XxCx": 0,
+              "aAvX": 0,
+              "aRgN": 0,
+              "ajIB": 0,
+              "bNDE": 0,
+              "bSAb": 0,
+              "bjni": 0,
+              "ctKP": 0,
+              "gvQw": 0,
+              "hdfs": 1,
+              "iXft": 0,
+              "iiSQ": 0,
+              "jZSh": 1,
+              "jxQx": 0,
+              "kQGw": 0,
+              "knGr": 0,
+              "lcCm": 0,
+              "lxRC": 0,
+              "mxhB": 0,
+              "oOKP": 0,
+              "opNr": 0,
+              "pOUV": 0,
+              "pPkW": 0,
+              "pfiv": 0,
+              "pxVU": 0,
+              "rrTM": 0,
+              "sFgQ": 4,
+              "sKFN": 0,
+              "sNcy": 0,
+              "tIqR": 0,
+              "tRVs": 43,
+              "tmxm": 0,
+              "uAxS": 0,
+              "uklz": 0,
+              "vBOv": 0,
+              "yoNB": 0,
+              "zAcO": 0,
+              "zQng": 0
+            }
+          ],
+          "after": [
+            {
+              "AAai": 0,
+              "Adsx": 0,
+              "AkyJ": 0,
+              "Auad": 0,
+              "BSXd": 255,
+              "BWVK": 0,
+              "BcVZ": 0,
+              "BnOW": 0,
+              "BvDt": 1,
+              "CLEN": 0,
+              "EGLX": 0,
+              "EMLM": 0,
+              "FGkk": 0,
+              "FIER": 0,
+              "FMkb": 0,
+              "GtFK": 0,
+              "IkTY": 0,
+              "Imzy": 0,
+              "Jmcc": 0,
+              "Khwp": 0,
+              "MykP": 0,
+              "NYLL": 0,
+              "OQOd": 0,
+              "Onyv": 0,
+              "OsHB": 0,
+              "PGhZ": 0,
+              "Plxr": 0,
+              "PufE": 0,
+              "QHRq": 0,
+              "RNeu": 0,
+              "Sxps": 0,
+              "TWSX": 5063,
+              "TbGw": 0,
+              "VSQu": 0,
+              "WPGf": 0,
+              "WZZk": 0,
+              "Wbtt": 0,
+              "XBWz": 0,
+              "XUMR": 0,
+              "XWot": 1061,
+              "XxCx": 0,
+              "aAvX": 0,
+              "aRgN": 0,
+              "ajIB": 0,
+              "bNDE": 0,
+              "bSAb": 0,
+              "bjni": 0,
+              "ctKP": 0,
+              "gvQw": 0,
+              "hdfs": 1,
+              "iXft": 0,
+              "iiSQ": 0,
+              "jZSh": 1,
+              "jxQx": 0,
+              "kQGw": 0,
+              "knGr": 0,
+              "lcCm": 0,
+              "lxRC": 0,
+              "mxhB": 0,
+              "oOKP": 0,
+              "opNr": 0,
+              "pOUV": 0,
+              "pPkW": 0,
+              "pfiv": 0,
+              "pxVU": 0,
+              "rrTM": 0,
+              "sFgQ": 4,
+              "sKFN": 0,
+              "sNcy": 0,
+              "tIqR": 0,
+              "tRVs": 43,
+              "tmxm": 0,
+              "uAxS": 0,
+              "uklz": 0,
+              "vBOv": 0,
+              "yoNB": 0,
+              "zAcO": 0,
+              "zQng": 0
+            }
+          ]
+        }
+      ],
+      "team_lookup": {
+        "from": {
+          "code": 26,
+          "abbrev": "TB",
+          "name": "Tampa Bay Lightning\u2122",
+          "city": "Tampa Bay"
+        },
+        "to": null
+      }
+    }
+  },
+  {
+    "timestamp": "2026-06-20T12:48:27.873837",
+    "type": "update-ratings",
+    "result": {
+      "player": "Brayden Point",
+      "updated_fields": {
+        "AMoQ": 2,
+        "AvDn": 0
+      },
+      "changes": []
+    }
+  },
+  {
+    "timestamp": "2026-06-20T14:09:07.430525",
+    "type": "update-attributes",
+    "result": {
+      "player": "Darren Raddysh",
+      "updated_fields": {
+        "DCvJ": 51,
+        "ShqX": 51,
+        "oRUd": 50,
+        "KQBB": 50,
+        "ObeE": 49,
+        "YqXz": 52,
+        "YqOX": 49,
+        "EksY": 5,
+        "oisw": 51,
+        "ujcW": 49,
+        "bEdA": 62,
+        "ckxF": 61,
+        "pyYq": 52,
+        "Hvje": 51,
+        "iCvN": 48,
+        "fRaZ": 41,
+        "zRrS": 49,
+        "OTvp": 49,
+        "baRY": 7,
+        "hlsv": 6
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 49,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "EksY",
+          "before": 6,
+          "after": 5
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 49,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 38,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 45,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 38,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "ShqX",
+          "before": 44,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "YqOX",
+          "before": 48,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 40,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 49,
+          "after": 62
+        },
+        {
+          "section": "ratings",
+          "field": "baRY",
+          "before": 6,
+          "after": 7
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 49,
+          "after": 61
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 34,
+          "after": 41
+        },
+        {
+          "section": "ratings",
+          "field": "hlsv",
+          "before": 10,
+          "after": 6
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 38,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "oRUd",
+          "before": 42,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "oisw",
+          "before": 48,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 48,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 40,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "zRrS",
+          "before": 45,
+          "after": 49
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-20T14:09:41.173569",
+    "type": "move-player",
+    "result": {
+      "player": "Darren Raddysh",
+      "instance_id": 5063,
+      "from_team": null,
+      "to_team": "TOR",
+      "target_team_code": 27,
+      "changes": [
+        {
+          "section": "instance_rows",
+          "field": "rows",
+          "before": [
+            {
+              "AAai": 0,
+              "Adsx": 0,
+              "AkyJ": 0,
+              "Auad": 0,
+              "BSXd": 255,
+              "BWVK": 0,
+              "BcVZ": 0,
+              "BnOW": 0,
+              "BvDt": 1,
+              "CLEN": 0,
+              "EGLX": 0,
+              "EMLM": 0,
+              "FGkk": 0,
+              "FIER": 0,
+              "FMkb": 0,
+              "GtFK": 0,
+              "IkTY": 0,
+              "Imzy": 0,
+              "Jmcc": 0,
+              "Khwp": 0,
+              "MykP": 0,
+              "NYLL": 0,
+              "OQOd": 0,
+              "Onyv": 0,
+              "OsHB": 0,
+              "PGhZ": 0,
+              "Plxr": 0,
+              "PufE": 0,
+              "QHRq": 0,
+              "RNeu": 0,
+              "Sxps": 0,
+              "TWSX": 5063,
+              "TbGw": 0,
+              "VSQu": 0,
+              "WPGf": 0,
+              "WZZk": 0,
+              "Wbtt": 0,
+              "XBWz": 0,
+              "XUMR": 0,
+              "XWot": 1061,
+              "XxCx": 0,
+              "aAvX": 0,
+              "aRgN": 0,
+              "ajIB": 0,
+              "bNDE": 0,
+              "bSAb": 0,
+              "bjni": 0,
+              "ctKP": 0,
+              "gvQw": 0,
+              "hdfs": 1,
+              "iXft": 0,
+              "iiSQ": 0,
+              "jZSh": 1,
+              "jxQx": 0,
+              "kQGw": 0,
+              "knGr": 0,
+              "lcCm": 0,
+              "lxRC": 0,
+              "mxhB": 0,
+              "oOKP": 0,
+              "opNr": 0,
+              "pOUV": 0,
+              "pPkW": 0,
+              "pfiv": 0,
+              "pxVU": 0,
+              "rrTM": 0,
+              "sFgQ": 4,
+              "sKFN": 0,
+              "sNcy": 0,
+              "tIqR": 0,
+              "tRVs": 43,
+              "tmxm": 0,
+              "uAxS": 0,
+              "uklz": 0,
+              "vBOv": 0,
+              "yoNB": 0,
+              "zAcO": 0,
+              "zQng": 0
+            }
+          ],
+          "after": [
+            {
+              "AAai": 0,
+              "Adsx": 0,
+              "AkyJ": 0,
+              "Auad": 0,
+              "BSXd": 27,
+              "BWVK": 0,
+              "BcVZ": 0,
+              "BnOW": 0,
+              "BvDt": 1,
+              "CLEN": 0,
+              "EGLX": 0,
+              "EMLM": 0,
+              "FGkk": 0,
+              "FIER": 0,
+              "FMkb": 0,
+              "GtFK": 0,
+              "IkTY": 0,
+              "Imzy": 0,
+              "Jmcc": 0,
+              "Khwp": 0,
+              "MykP": 0,
+              "NYLL": 0,
+              "OQOd": 0,
+              "Onyv": 0,
+              "OsHB": 0,
+              "PGhZ": 0,
+              "Plxr": 0,
+              "PufE": 0,
+              "QHRq": 0,
+              "RNeu": 0,
+              "Sxps": 0,
+              "TWSX": 5063,
+              "TbGw": 0,
+              "VSQu": 0,
+              "WPGf": 0,
+              "WZZk": 0,
+              "Wbtt": 0,
+              "XBWz": 0,
+              "XUMR": 0,
+              "XWot": 1061,
+              "XxCx": 0,
+              "aAvX": 0,
+              "aRgN": 0,
+              "ajIB": 0,
+              "bNDE": 0,
+              "bSAb": 0,
+              "bjni": 0,
+              "ctKP": 0,
+              "gvQw": 0,
+              "hdfs": 1,
+              "iXft": 0,
+              "iiSQ": 0,
+              "jZSh": 1,
+              "jxQx": 0,
+              "kQGw": 0,
+              "knGr": 0,
+              "lcCm": 0,
+              "lxRC": 0,
+              "mxhB": 0,
+              "oOKP": 0,
+              "opNr": 0,
+              "pOUV": 0,
+              "pPkW": 0,
+              "pfiv": 0,
+              "pxVU": 0,
+              "rrTM": 0,
+              "sFgQ": 4,
+              "sKFN": 0,
+              "sNcy": 0,
+              "tIqR": 0,
+              "tRVs": 43,
+              "tmxm": 0,
+              "uAxS": 0,
+              "uklz": 0,
+              "vBOv": 0,
+              "yoNB": 0,
+              "zAcO": 0,
+              "zQng": 0
+            }
+          ]
+        }
+      ],
+      "team_lookup": {
+        "from": null,
+        "to": {
+          "code": 27,
+          "abbrev": "TOR",
+          "name": "Toronto Maple Leafs\u00ae",
+          "city": "Toronto"
+        }
+      }
+    }
+  },
+  {
+    "timestamp": "2026-06-20T20:33:06.988890",
+    "type": "update-attributes",
+    "result": {
+      "player": "Max Domi",
+      "updated_fields": {
+        "DCvJ": 53,
+        "ShqX": 45,
+        "KQBB": 42,
+        "ObeE": 42,
+        "TUty": 46,
+        "POYr": 47,
+        "kIjD": 39,
+        "oskO": 51,
+        "VlLd": 43,
+        "YqXz": 45,
+        "seUB": 33,
+        "YqOX": 40,
+        "EksY": 7,
+        "oisw": 46,
+        "ujcW": 48,
+        "bEdA": 44,
+        "ckxF": 44,
+        "pyYq": 51,
+        "Hvje": 48,
+        "KrwV": 39,
+        "iCvN": 50,
+        "fRaZ": 36,
+        "zRrS": 34,
+        "OTvp": 38,
+        "gUBy": 52,
+        "baRY": 12,
+        "hlsv": 12
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 50,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "EksY",
+          "before": 6,
+          "after": 7
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 50,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 47,
+          "after": 42
+        },
+        {
+          "section": "ratings",
+          "field": "KrwV",
+          "before": 43,
+          "after": 39
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 47,
+          "after": 38
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 48,
+          "after": 42
+        },
+        {
+          "section": "ratings",
+          "field": "POYr",
+          "before": 50,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "ShqX",
+          "before": 38,
+          "after": 45
+        },
+        {
+          "section": "ratings",
+          "field": "TUty",
+          "before": 47,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 46,
+          "after": 43
+        },
+        {
+          "section": "ratings",
+          "field": "YqOX",
+          "before": 50,
+          "after": 40
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 47,
+          "after": 45
+        },
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 49,
+          "after": 44
+        },
+        {
+          "section": "ratings",
+          "field": "baRY",
+          "before": 11,
+          "after": 12
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 49,
+          "after": 44
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 41,
+          "after": 36
+        },
+        {
+          "section": "ratings",
+          "field": "gUBy",
+          "before": 39,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "hlsv",
+          "before": 6,
+          "after": 12
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 48,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "kIjD",
+          "before": 47,
+          "after": 39
+        },
+        {
+          "section": "ratings",
+          "field": "oisw",
+          "before": 48,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "oskO",
+          "before": 54,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 48,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 44,
+          "after": 33
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 46,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "zRrS",
+          "before": 44,
+          "after": 34
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-20T20:33:41.561302",
+    "type": "build-contract-pass",
+    "result": {
+      "count": 1514,
+      "real_cap": 104.0,
+      "game_cap": 78.6
+    }
+  },
+  {
+    "timestamp": "2026-06-20T20:35:09.018106",
+    "type": "update-attributes",
+    "result": {
+      "player": "Easton Cowan",
+      "updated_fields": {
+        "YqXz": 45,
+        "EksY": 10,
+        "OTvp": 43,
+        "baRY": 10,
+        "hlsv": 10
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "EksY",
+          "before": 9,
+          "after": 10
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 45,
+          "after": 43
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 52,
+          "after": 45
+        },
+        {
+          "section": "ratings",
+          "field": "baRY",
+          "before": 12,
+          "after": 10
+        },
+        {
+          "section": "ratings",
+          "field": "hlsv",
+          "before": 7,
+          "after": 10
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T12:41:42.791777",
+    "type": "update-attributes",
+    "result": {
+      "player": "Auston Matthews",
+      "updated_fields": {
+        "ObeE": 58,
+        "ujcW": 52,
+        "bEdA": 56,
+        "ckxF": 56,
+        "pyYq": 51,
+        "Hvje": 53
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 59,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 60,
+          "after": 58
+        },
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 53,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 54,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 53,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 54,
+          "after": 52
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T12:43:46.215038",
+    "type": "update-attributes",
+    "result": {
+      "player": "Darren Raddysh",
+      "updated_fields": {
+        "ShqX": 52,
+        "KQBB": 48,
+        "ObeE": 52,
+        "VlLd": 49,
+        "YqXz": 58,
+        "ujcW": 54,
+        "bEdA": 60,
+        "ckxF": 59,
+        "Hvje": 52,
+        "iCvN": 51,
+        "fRaZ": 52,
+        "OTvp": 54
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 51,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 50,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 49,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 49,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "ShqX",
+          "before": 51,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 40,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 52,
+          "after": 58
+        },
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 62,
+          "after": 60
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 61,
+          "after": 59
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 41,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 48,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 49,
+          "after": 54
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T12:45:07.731899",
+    "type": "update-attributes",
+    "result": {
+      "player": "Matthew Knies",
+      "updated_fields": {
+        "DCvJ": 56,
+        "ShqX": 55,
+        "KQBB": 44,
+        "ObeE": 54,
+        "VlLd": 56,
+        "YqXz": 52,
+        "bEdA": 53,
+        "ckxF": 55,
+        "Hvje": 54,
+        "iCvN": 49,
+        "fRaZ": 52,
+        "OTvp": 46
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 51,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 51,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 49,
+          "after": 44
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 50,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 49,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "ShqX",
+          "before": 44,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 51,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 53,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 55,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 51,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 39,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 51,
+          "after": 49
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T12:45:55.059488",
+    "type": "update-attributes",
+    "result": {
+      "player": "Easton Cowan",
+      "updated_fields": {
+        "DCvJ": 52,
+        "ShqX": 50,
+        "oRUd": 52
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 51,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "ShqX",
+          "before": 49,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "oRUd",
+          "before": 50,
+          "after": 52
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T12:54:08.284374",
+    "type": "link-organization",
+    "result": {
+      "team": "SD",
+      "organization": "ANA"
+    }
+  },
+  {
+    "timestamp": "2026-06-21T12:54:45.958271",
+    "type": "link-organization",
+    "result": {
+      "team": "ANAS",
+      "organization": "ANA"
+    }
+  },
+  {
+    "timestamp": "2026-06-21T12:55:16.398038",
+    "type": "link-organization",
+    "result": {
+      "team": "AND",
+      "organization": "ANA"
+    }
+  },
+  {
+    "timestamp": "2026-06-21T13:07:07.305251",
+    "type": "update-attributes",
+    "result": {
+      "player": "William Nylander",
+      "updated_fields": {
+        "DCvJ": 56,
+        "ShqX": 55,
+        "KQBB": 51,
+        "ObeE": 54,
+        "VlLd": 55,
+        "oisw": 41,
+        "ujcW": 52,
+        "ckxF": 59,
+        "pyYq": 54,
+        "Hvje": 56,
+        "iCvN": 55,
+        "fRaZ": 53,
+        "OTvp": 46
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 57,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 55,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 54,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 48,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 55,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "ShqX",
+          "before": 49,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 58,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 56,
+          "after": 59
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 48,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 58,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "oisw",
+          "before": 49,
+          "after": 41
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 56,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 55,
+          "after": 52
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T13:07:26.978945",
+    "type": "build-contract-pass",
+    "result": {
+      "count": 1514,
+      "real_cap": 104.0,
+      "game_cap": 78.6
+    }
+  },
+  {
+    "timestamp": "2026-06-21T13:07:43.722170",
+    "type": "veto-auto-update-move",
+    "result": {
+      "player_name": "Jeremy Swayman",
+      "from_team": "USA",
+      "to_team": "BOS",
+      "source": "CapWages",
+      "reason": "CapWages lists Jeremy Swayman on BOS."
+    }
+  },
+  {
+    "timestamp": "2026-06-21T13:07:46.509111",
+    "type": "veto-auto-update-move",
+    "result": {
+      "player_name": "Joonas Korpisalo",
+      "from_team": "FIN",
+      "to_team": "BOS",
+      "source": "CapWages",
+      "reason": "CapWages lists Joonas Korpisalo on BOS."
+    }
+  },
+  {
+    "timestamp": "2026-06-21T13:08:30.339163",
+    "type": "veto-auto-update-move",
+    "result": {
+      "player_name": "Elvis Merzlikins",
+      "from_team": "LAT",
+      "to_team": "CBJ",
+      "source": "CapWages",
+      "reason": "CapWages lists Elvis Merzlikins on CBJ."
+    }
+  },
+  {
+    "timestamp": "2026-06-21T13:08:30.340114",
+    "type": "veto-auto-update-move",
+    "result": {
+      "player_name": "Jake Oettinger",
+      "from_team": "USA",
+      "to_team": "DAL",
+      "source": "CapWages",
+      "reason": "CapWages lists Jake Oettinger on DAL."
+    }
+  },
+  {
+    "timestamp": "2026-06-21T13:08:30.348644",
+    "type": "veto-auto-update-move",
+    "result": {
+      "player_name": "Sergei Bobrovsky",
+      "from_team": "RUS",
+      "to_team": "FLA",
+      "source": "CapWages",
+      "reason": "CapWages lists Sergei Bobrovsky on FLA."
+    }
+  },
+  {
+    "timestamp": "2026-06-21T13:08:30.354998",
+    "type": "veto-auto-update-move",
+    "result": {
+      "player_name": "Filip Gustavsson",
+      "from_team": "SWE",
+      "to_team": "MIN",
+      "source": "CapWages",
+      "reason": "CapWages lists Filip Gustavsson on MIN."
+    }
+  },
+  {
+    "timestamp": "2026-06-21T13:08:30.361259",
+    "type": "veto-auto-update-move",
+    "result": {
+      "player_name": "Jesper Wallstedt",
+      "from_team": "SWE",
+      "to_team": "MIN",
+      "source": "CapWages",
+      "reason": "CapWages lists Jesper Wallstedt on MIN."
+    }
+  },
+  {
+    "timestamp": "2026-06-21T13:08:30.367703",
+    "type": "veto-auto-update-move",
+    "result": {
+      "player_name": "Jacob Markstrom",
+      "from_team": "SWE",
+      "to_team": "NJD",
+      "source": "CapWages",
+      "reason": "CapWages lists Jacob Markstrom on NJD."
+    }
+  },
+  {
+    "timestamp": "2026-06-21T13:08:30.373843",
+    "type": "veto-auto-update-move",
+    "result": {
+      "player_name": "Igor Shesterkin",
+      "from_team": "RUS",
+      "to_team": "NYR",
+      "source": "CapWages",
+      "reason": "CapWages lists Igor Shesterkin on NYR."
+    }
+  },
+  {
+    "timestamp": "2026-06-21T13:08:30.379689",
+    "type": "veto-auto-update-move",
+    "result": {
+      "player_name": "Riley Kidney",
+      "from_team": "LAV",
+      "to_team": "OTT",
+      "source": "CapWages",
+      "reason": "CapWages lists Riley Kidney on OTT."
+    }
+  },
+  {
+    "timestamp": "2026-06-21T13:08:30.385644",
+    "type": "veto-auto-update-move",
+    "result": {
+      "player_name": "Oliver Okuliar",
+      "from_team": "SLV",
+      "to_team": "PIT",
+      "source": "CapWages",
+      "reason": "CapWages lists Oliver Okuliar on PIT."
+    }
+  },
+  {
+    "timestamp": "2026-06-21T13:08:54.721256",
+    "type": "auto-update-move",
+    "result": {
+      "player": "Alex Killorn",
+      "instance_id": 4608,
+      "from_team": "ANA",
+      "to_team": "ANA",
+      "target_team_code": 0,
+      "changes": [
+        {
+          "section": "instance_rows",
+          "field": "rows",
+          "before": [
+            {
+              "AAai": 0,
+              "Adsx": 0,
+              "AkyJ": 0,
+              "Auad": 0,
+              "BSXd": 0,
+              "BWVK": 0,
+              "BcVZ": 0,
+              "BnOW": 0,
+              "BvDt": 0,
+              "CLEN": 0,
+              "EGLX": 0,
+              "EMLM": 0,
+              "FGkk": 0,
+              "FIER": 0,
+              "FMkb": 0,
+              "GtFK": 0,
+              "IkTY": 1,
+              "Imzy": 0,
+              "Jmcc": 0,
+              "Khwp": 0,
+              "MykP": 0,
+              "NYLL": 0,
+              "OQOd": 0,
+              "Onyv": 0,
+              "OsHB": 0,
+              "PGhZ": 0,
+              "Plxr": 0,
+              "PufE": 0,
+              "QHRq": 0,
+              "RNeu": 0,
+              "Sxps": 0,
+              "TWSX": 4608,
+              "TbGw": 0,
+              "VSQu": 0,
+              "WPGf": 0,
+              "WZZk": 0,
+              "Wbtt": 0,
+              "XBWz": 0,
+              "XUMR": 0,
+              "XWot": 20,
+              "XxCx": 0,
+              "aAvX": 0,
+              "aRgN": 0,
+              "ajIB": 0,
+              "bNDE": 0,
+              "bSAb": 0,
+              "bjni": 0,
+              "ctKP": 0,
+              "gvQw": 0,
+              "hdfs": 0,
+              "iXft": 0,
+              "iiSQ": 0,
+              "jZSh": 1,
+              "jxQx": 0,
+              "kQGw": 0,
+              "knGr": 0,
+              "lcCm": 2,
+              "lxRC": 0,
+              "mxhB": 0,
+              "oOKP": 0,
+              "opNr": 0,
+              "pOUV": 0,
+              "pPkW": 0,
+              "pfiv": 0,
+              "pxVU": 0,
+              "rrTM": 0,
+              "sFgQ": 9,
+              "sKFN": 0,
+              "sNcy": 0,
+              "tIqR": 0,
+              "tRVs": 17,
+              "tmxm": 0,
+              "uAxS": 0,
+              "uklz": 0,
+              "vBOv": 0,
+              "yoNB": 0,
+              "zAcO": 0,
+              "zQng": 0
+            },
+            {
+              "AAai": 0,
+              "Adsx": 0,
+              "AkyJ": 0,
+              "Auad": 0,
+              "BSXd": 225,
+              "BWVK": 0,
+              "BcVZ": 0,
+              "BnOW": 0,
+              "BvDt": 0,
+              "CLEN": 0,
+              "EGLX": 0,
+              "EMLM": 0,
+              "FGkk": 0,
+              "FIER": 0,
+              "FMkb": 0,
+              "GtFK": 0,
+              "IkTY": 1,
+              "Imzy": 0,
+              "Jmcc": 0,
+              "Khwp": 0,
+              "MykP": 0,
+              "NYLL": 0,
+              "OQOd": 0,
+              "Onyv": 0,
+              "OsHB": 0,
+              "PGhZ": 0,
+              "Plxr": 0,
+              "PufE": 0,
+              "QHRq": 0,
+              "RNeu": 0,
+              "Sxps": 0,
+              "TWSX": 4608,
+              "TbGw": 0,
+              "VSQu": 0,
+              "WPGf": 0,
+              "WZZk": 0,
+              "Wbtt": 0,
+              "XBWz": 0,
+              "XUMR": 0,
+              "XWot": 9021,
+              "XxCx": 0,
+              "aAvX": 0,
+              "aRgN": 0,
+              "ajIB": 0,
+              "bNDE": 0,
+              "bSAb": 0,
+              "bjni": 0,
+              "ctKP": 0,
+              "gvQw": 0,
+              "hdfs": 0,
+              "iXft": 0,
+              "iiSQ": 0,
+              "jZSh": 1,
+              "jxQx": 0,
+              "kQGw": 0,
+              "knGr": 0,
+              "lcCm": 2,
+              "lxRC": 0,
+              "mxhB": 0,
+              "oOKP": 0,
+              "opNr": 0,
+              "pOUV": 0,
+              "pPkW": 0,
+              "pfiv": 0,
+              "pxVU": 0,
+              "rrTM": 0,
+              "sFgQ": 9,
+              "sKFN": 0,
+              "sNcy": 0,
+              "tIqR": 0,
+              "tRVs": 17,
+              "tmxm": 0,
+              "uAxS": 0,
+              "uklz": 0,
+              "vBOv": 0,
+              "yoNB": 0,
+              "zAcO": 0,
+              "zQng": 0
+            }
+          ],
+          "after": [
+            {
+              "AAai": 0,
+              "Adsx": 0,
+              "AkyJ": 0,
+              "Auad": 0,
+              "BSXd": 0,
+              "BWVK": 0,
+              "BcVZ": 0,
+              "BnOW": 0,
+              "BvDt": 0,
+              "CLEN": 0,
+              "EGLX": 0,
+              "EMLM": 0,
+              "FGkk": 0,
+              "FIER": 0,
+              "FMkb": 0,
+              "GtFK": 0,
+              "IkTY": 1,
+              "Imzy": 0,
+              "Jmcc": 0,
+              "Khwp": 0,
+              "MykP": 0,
+              "NYLL": 0,
+              "OQOd": 0,
+              "Onyv": 0,
+              "OsHB": 0,
+              "PGhZ": 0,
+              "Plxr": 0,
+              "PufE": 0,
+              "QHRq": 0,
+              "RNeu": 0,
+              "Sxps": 0,
+              "TWSX": 4608,
+              "TbGw": 0,
+              "VSQu": 0,
+              "WPGf": 0,
+              "WZZk": 0,
+              "Wbtt": 0,
+              "XBWz": 0,
+              "XUMR": 0,
+              "XWot": 20,
+              "XxCx": 0,
+              "aAvX": 0,
+              "aRgN": 0,
+              "ajIB": 0,
+              "bNDE": 0,
+              "bSAb": 0,
+              "bjni": 0,
+              "ctKP": 0,
+              "gvQw": 0,
+              "hdfs": 0,
+              "iXft": 0,
+              "iiSQ": 0,
+              "jZSh": 1,
+              "jxQx": 0,
+              "kQGw": 0,
+              "knGr": 0,
+              "lcCm": 2,
+              "lxRC": 0,
+              "mxhB": 0,
+              "oOKP": 0,
+              "opNr": 0,
+              "pOUV": 0,
+              "pPkW": 0,
+              "pfiv": 0,
+              "pxVU": 0,
+              "rrTM": 0,
+              "sFgQ": 9,
+              "sKFN": 0,
+              "sNcy": 0,
+              "tIqR": 0,
+              "tRVs": 17,
+              "tmxm": 0,
+              "uAxS": 0,
+              "uklz": 0,
+              "vBOv": 0,
+              "yoNB": 0,
+              "zAcO": 0,
+              "zQng": 0
+            },
+            {
+              "AAai": 0,
+              "Adsx": 0,
+              "AkyJ": 0,
+              "Auad": 0,
+              "BSXd": 0,
+              "BWVK": 0,
+              "BcVZ": 0,
+              "BnOW": 0,
+              "BvDt": 0,
+              "CLEN": 0,
+              "EGLX": 0,
+              "EMLM": 0,
+              "FGkk": 0,
+              "FIER": 0,
+              "FMkb": 0,
+              "GtFK": 0,
+              "IkTY": 1,
+              "Imzy": 0,
+              "Jmcc": 0,
+              "Khwp": 0,
+              "MykP": 0,
+              "NYLL": 0,
+              "OQOd": 0,
+              "Onyv": 0,
+              "OsHB": 0,
+              "PGhZ": 0,
+              "Plxr": 0,
+              "PufE": 0,
+              "QHRq": 0,
+              "RNeu": 0,
+              "Sxps": 0,
+              "TWSX": 4608,
+              "TbGw": 0,
+              "VSQu": 0,
+              "WPGf": 0,
+              "WZZk": 0,
+              "Wbtt": 0,
+              "XBWz": 0,
+              "XUMR": 0,
+              "XWot": 9021,
+              "XxCx": 0,
+              "aAvX": 0,
+              "aRgN": 0,
+              "ajIB": 0,
+              "bNDE": 0,
+              "bSAb": 0,
+              "bjni": 0,
+              "ctKP": 0,
+              "gvQw": 0,
+              "hdfs": 0,
+              "iXft": 0,
+              "iiSQ": 0,
+              "jZSh": 1,
+              "jxQx": 0,
+              "kQGw": 0,
+              "knGr": 0,
+              "lcCm": 2,
+              "lxRC": 0,
+              "mxhB": 0,
+              "oOKP": 0,
+              "opNr": 0,
+              "pOUV": 0,
+              "pPkW": 0,
+              "pfiv": 0,
+              "pxVU": 0,
+              "rrTM": 0,
+              "sFgQ": 9,
+              "sKFN": 0,
+              "sNcy": 0,
+              "tIqR": 0,
+              "tRVs": 17,
+              "tmxm": 0,
+              "uAxS": 0,
+              "uklz": 0,
+              "vBOv": 0,
+              "yoNB": 0,
+              "zAcO": 0,
+              "zQng": 0
+            }
+          ]
+        }
+      ],
+      "team_lookup": {
+        "from": {
+          "code": 0,
+          "abbrev": "ANA",
+          "name": "Anaheim Ducks\u00ae",
+          "city": "Anaheim"
+        },
+        "to": {
+          "code": 0,
+          "abbrev": "ANA",
+          "name": "Anaheim Ducks\u00ae",
+          "city": "Anaheim"
+        }
+      }
+    }
+  },
+  {
+    "timestamp": "2026-06-21T13:09:02.729797",
+    "type": "save-to-game",
+    "result": {
+      "target": "D:\\Emulation\\xenia_manager\\Emulators\\Xenia Canary\\content\\E03000006397D304\\454109EC\\00000001\\ROSTER 20260611193707\\ROSTER 20260611193707",
+      "working_roster": "C:\\Users\\jesus\\OneDrive\\Documents\\NHL legacy mods\\backups\\editor_workspaces\\20260620-072851-ROSTER_20260611193707\\working_roster.bin"
+    }
+  },
+  {
+    "timestamp": "2026-06-21T13:11:25.511224",
+    "type": "save-to-game",
+    "result": {
+      "target": "D:\\Emulation\\xenia_manager\\Emulators\\Xenia Canary\\content\\E03000006397D304\\454109EC\\00000001\\ROSTER 20260611193707\\ROSTER 20260611193707",
+      "working_roster": "C:\\Users\\jesus\\OneDrive\\Documents\\NHL legacy mods\\backups\\editor_workspaces\\20260620-072851-ROSTER_20260611193707\\working_roster.bin"
+    }
+  }
+]

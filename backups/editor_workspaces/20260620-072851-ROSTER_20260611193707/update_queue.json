@@ -1,0 +1,348 @@
+{
+  "moves": [
+    {
+      "player_name": "Alex Killorn",
+      "from_team": null,
+      "to_team": "ANA",
+      "source": "CapWages",
+      "reason": "CapWages lists Alex Killorn on ANA."
+    },
+    {
+      "player_name": "Lukas Dostal",
+      "from_team": null,
+      "to_team": "ANA",
+      "source": "CapWages",
+      "reason": "CapWages lists Lukas Dostal on ANA."
+    },
+    {
+      "player_name": "Jeremy Swayman",
+      "from_team": "USA",
+      "to_team": "BOS",
+      "source": "CapWages",
+      "reason": "CapWages lists Jeremy Swayman on BOS."
+    },
+    {
+      "player_name": "Joonas Korpisalo",
+      "from_team": "FIN",
+      "to_team": "BOS",
+      "source": "CapWages",
+      "reason": "CapWages lists Joonas Korpisalo on BOS."
+    },
+    {
+      "player_name": "Jordan Harris",
+      "from_team": null,
+      "to_team": "BOS",
+      "source": "CapWages",
+      "reason": "CapWages lists Jordan Harris on BOS."
+    },
+    {
+      "player_name": "Navrin Mutter",
+      "from_team": "MIL",
+      "to_team": "BOS",
+      "source": "CapWages",
+      "reason": "CapWages lists Navrin Mutter on BOS."
+    },
+    {
+      "player_name": "Ukko-Pekka Luukkonen",
+      "from_team": "FIN",
+      "to_team": "BUF",
+      "source": "CapWages",
+      "reason": "CapWages lists Ukko-Pekka Luukkonen on BUF."
+    },
+    {
+      "player_name": "Sebastian Aho",
+      "from_team": "WBS",
+      "to_team": "CAR",
+      "source": "CapWages",
+      "reason": "CapWages lists Sebastian Aho on CAR."
+    },
+    {
+      "player_name": "Elvis Merzlikins",
+      "from_team": "LAT",
+      "to_team": "CBJ",
+      "source": "CapWages",
+      "reason": "CapWages lists Elvis Merzlikins on CBJ."
+    },
+    {
+      "player_name": "Magnus Chrona",
+      "from_team": "MIL",
+      "to_team": "COL",
+      "source": "CapWages",
+      "reason": "CapWages lists Magnus Chrona on COL."
+    },
+    {
+      "player_name": "Jake Oettinger",
+      "from_team": "USA",
+      "to_team": "DAL",
+      "source": "CapWages",
+      "reason": "CapWages lists Jake Oettinger on DAL."
+    },
+    {
+      "player_name": "Jaxon Fuder",
+      "from_team": "REDD",
+      "to_team": "DAL",
+      "source": "CapWages",
+      "reason": "CapWages lists Jaxon Fuder on DAL."
+    },
+    {
+      "player_name": "Erik Gustafsson",
+      "from_team": null,
+      "to_team": "DET",
+      "source": "CapWages",
+      "reason": "CapWages lists Erik Gustafsson on DET."
+    },
+    {
+      "player_name": "Michael Milne",
+      "from_team": "SYR",
+      "to_team": "DET",
+      "source": "CapWages",
+      "reason": "CapWages lists Michael Milne on DET."
+    },
+    {
+      "player_name": "Wojciech Stachowiak",
+      "from_team": "SYR",
+      "to_team": "DET",
+      "source": "CapWages",
+      "reason": "CapWages lists Wojciech Stachowiak on DET."
+    },
+    {
+      "player_name": "Connor Murphy",
+      "from_team": null,
+      "to_team": "EDM",
+      "source": "CapWages",
+      "reason": "CapWages lists Connor Murphy on EDM."
+    },
+    {
+      "player_name": "James Hamblin",
+      "from_team": null,
+      "to_team": "EDM",
+      "source": "CapWages",
+      "reason": "CapWages lists James Hamblin on EDM."
+    },
+    {
+      "player_name": "Josh Bloom",
+      "from_team": "ABB",
+      "to_team": "EDM",
+      "source": "CapWages",
+      "reason": "CapWages lists Josh Bloom on EDM."
+    },
+    {
+      "player_name": "Emil Pieniniemi",
+      "from_team": "WBS",
+      "to_team": "FLA",
+      "source": "CapWages",
+      "reason": "CapWages lists Emil Pieniniemi on FLA."
+    },
+    {
+      "player_name": "Josh Davies",
+      "from_team": null,
+      "to_team": "FLA",
+      "source": "CapWages",
+      "reason": "CapWages lists Josh Davies on FLA."
+    },
+    {
+      "player_name": "Sergei Bobrovsky",
+      "from_team": "RUS",
+      "to_team": "FLA",
+      "source": "CapWages",
+      "reason": "CapWages lists Sergei Bobrovsky on FLA."
+    },
+    {
+      "player_name": "Jan Jenik",
+      "from_team": "BELL",
+      "to_team": "LAK",
+      "source": "CapWages",
+      "reason": "CapWages lists Jan Jenik on LAK."
+    },
+    {
+      "player_name": "Filip Gustavsson",
+      "from_team": "SWE",
+      "to_team": "MIN",
+      "source": "CapWages",
+      "reason": "CapWages lists Filip Gustavsson on MIN."
+    },
+    {
+      "player_name": "Jesper Wallstedt",
+      "from_team": "SWE",
+      "to_team": "MIN",
+      "source": "CapWages",
+      "reason": "CapWages lists Jesper Wallstedt on MIN."
+    },
+    {
+      "player_name": "Alexandre Carrier",
+      "from_team": null,
+      "to_team": "MTL",
+      "source": "CapWages",
+      "reason": "CapWages lists Alexandre Carrier on MTL."
+    },
+    {
+      "player_name": "Hunter Shepard",
+      "from_team": "BELL",
+      "to_team": "MTL",
+      "source": "CapWages",
+      "reason": "CapWages lists Hunter Shepard on MTL."
+    },
+    {
+      "player_name": "Jake Chiasson",
+      "from_team": "BELL",
+      "to_team": "MTL",
+      "source": "CapWages",
+      "reason": "CapWages lists Jake Chiasson on MTL."
+    },
+    {
+      "player_name": "Connor Brown",
+      "from_team": null,
+      "to_team": "NJD",
+      "source": "CapWages",
+      "reason": "CapWages lists Connor Brown on NJD."
+    },
+    {
+      "player_name": "Jack Hughes",
+      "from_team": null,
+      "to_team": "NJD",
+      "source": "CapWages",
+      "reason": "CapWages lists Jack Hughes on NJD."
+    },
+    {
+      "player_name": "Jacob Markstrom",
+      "from_team": "SWE",
+      "to_team": "NJD",
+      "source": "CapWages",
+      "reason": "CapWages lists Jacob Markstrom on NJD."
+    },
+    {
+      "player_name": "Dalton Bancroft",
+      "from_team": "PRO",
+      "to_team": "NSH",
+      "source": "CapWages",
+      "reason": "CapWages lists Dalton Bancroft on NSH."
+    },
+    {
+      "player_name": "Isak Posch",
+      "from_team": "COLE",
+      "to_team": "NSH",
+      "source": "CapWages",
+      "reason": "CapWages lists Isak Posch on NSH."
+    },
+    {
+      "player_name": "Massimo Rizzo",
+      "from_team": "PRO",
+      "to_team": "NSH",
+      "source": "CapWages",
+      "reason": "CapWages lists Massimo Rizzo on NSH."
+    },
+    {
+      "player_name": "Matt Murray",
+      "from_team": "SEA",
+      "to_team": "NSH",
+      "source": "CapWages",
+      "reason": "CapWages lists Matt Murray on NSH."
+    },
+    {
+      "player_name": "Ross Colton",
+      "from_team": "COL",
+      "to_team": "NSH",
+      "source": "CapWages",
+      "reason": "CapWages lists Ross Colton on NSH."
+    },
+    {
+      "player_name": "Igor Shesterkin",
+      "from_team": "RUS",
+      "to_team": "NYR",
+      "source": "CapWages",
+      "reason": "CapWages lists Igor Shesterkin on NYR."
+    },
+    {
+      "player_name": "Riley Kidney",
+      "from_team": "LAV",
+      "to_team": "OTT",
+      "source": "CapWages",
+      "reason": "CapWages lists Riley Kidney on OTT."
+    },
+    {
+      "player_name": "Samuel Bolduc",
+      "from_team": "ONT",
+      "to_team": "OTT",
+      "source": "CapWages",
+      "reason": "CapWages lists Samuel Bolduc on OTT."
+    },
+    {
+      "player_name": "Joseph Woll",
+      "from_team": "TOR",
+      "to_team": "PHI",
+      "source": "CapWages",
+      "reason": "CapWages lists Joseph Woll on PHI."
+    },
+    {
+      "player_name": "Simon Benoit",
+      "from_team": "TOR",
+      "to_team": "PHI",
+      "source": "CapWages",
+      "reason": "CapWages lists Simon Benoit on PHI."
+    },
+    {
+      "player_name": "Oliver Okuliar",
+      "from_team": "SLV",
+      "to_team": "PIT",
+      "source": "CapWages",
+      "reason": "CapWages lists Oliver Okuliar on PIT."
+    },
+    {
+      "player_name": "Andre Gasseau",
+      "from_team": "BOSS",
+      "to_team": "SJS",
+      "source": "CapWages",
+      "reason": "CapWages lists Andre Gasseau on SJS."
+    },
+    {
+      "player_name": "Carey Price",
+      "from_team": null,
+      "to_team": "SJS",
+      "source": "CapWages",
+      "reason": "CapWages lists Carey Price on SJS."
+    },
+    {
+      "player_name": "Marc-Edouard Vlasic",
+      "from_team": null,
+      "to_team": "SJS",
+      "source": "CapWages",
+      "reason": "CapWages lists Marc-Edouard Vlasic on SJS."
+    },
+    {
+      "player_name": "Michael Kesselring",
+      "from_team": "BUF",
+      "to_team": "SJS",
+      "source": "CapWages",
+      "reason": "CapWages lists Michael Kesselring on SJS."
+    },
+    {
+      "player_name": "Ian Mitchell",
+      "from_team": "GRR",
+      "to_team": "TB",
+      "source": "CapWages",
+      "reason": "CapWages lists Ian Mitchell on TB."
+    },
+    {
+      "player_name": "Emil Andrae",
+      "from_team": "PHI",
+      "to_team": "TOR",
+      "source": "CapWages",
+      "reason": "CapWages lists Emil Andrae on TOR."
+    },
+    {
+      "player_name": "Samuel Ersson",
+      "from_team": "PHI",
+      "to_team": "TOR",
+      "source": "CapWages",
+      "reason": "CapWages lists Samuel Ersson on TOR."
+    },
+    {
+      "player_name": "Jayden Grubbe",
+      "from_team": "BAKE",
+      "to_team": "VAN",
+      "source": "CapWages",
+      "reason": "CapWages lists Jayden Grubbe on VAN."
+    }
+  ],
+  "create_candidates": []
+}

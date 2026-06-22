@@ -1,0 +1,20 @@
+[
+  {
+    "player_name": "Auston Matthews",
+    "real_aav_millions": 13.25,
+    "game_aav_millions": 10.013942307692306,
+    "cap_hit_percent": 0.12740384615384615,
+    "expiry": null,
+    "source": "CapWages",
+    "note": "Approved scaled contract. Roster salary field mapping pending."
+  },
+  {
+    "player_name": "Auston Matthews",
+    "real_aav_millions": 13.25,
+    "game_aav_millions": 10.013942307692306,
+    "cap_hit_percent": 0.12740384615384615,
+    "expiry": null,
+    "source": "CapWages",
+    "note": "Approved scaled contract. Roster salary field mapping pending."
+  }
+]

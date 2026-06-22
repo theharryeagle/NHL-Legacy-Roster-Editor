@@ -1,0 +1,814 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NHL Legacy Roster Editor</title>
+  <style>
+    :root {
+      --bg1: #0a1e35;
+      --bg2: #12355b;
+      --panel: rgba(9, 29, 52, 0.92);
+      --panel-2: rgba(19, 52, 89, 0.95);
+      --line: rgba(171, 206, 236, 0.18);
+      --text: #eff6ff;
+      --muted: #9fb8d1;
+      --gold: #d5aa52;
+      --green: #58b984;
+      --red: #cd6666;
+      --card: rgba(255,255,255,0.05);
+      --card-2: rgba(255,255,255,0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Trebuchet MS", Verdana, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top center, rgba(213,170,82,.16), transparent 16%),
+        linear-gradient(180deg, #1d4e81 0%, #0e2b49 26%, #071628 100%);
+      min-height: 100vh;
+    }
+    a { color: inherit; }
+    .shell { max-width: 1600px; margin: 0 auto; padding: 18px; }
+    .topbar, .content-grid, .screen-grid, .detail-grid, .dual-grid, .triple-grid, .hero-grid {
+      display: grid;
+      gap: 16px;
+    }
+    .topbar { grid-template-columns: 1.15fr .95fr; }
+    .content-grid { grid-template-columns: 360px 1fr; align-items: start; }
+    .screen-grid, .detail-grid { grid-template-columns: 1fr 1fr; }
+    .dual-grid { grid-template-columns: repeat(2, 1fr); }
+    .triple-grid { grid-template-columns: repeat(3, 1fr); }
+    .hero-grid { grid-template-columns: repeat(4, 1fr); }
+    .panel, .hero {
+      background: linear-gradient(180deg, var(--panel-2), var(--panel));
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: 0 14px 36px rgba(0,0,0,.22);
+    }
+    .hero h1, .panel h2, .panel h3 { margin: 0 0 10px; text-transform: uppercase; letter-spacing: .06em; }
+    .hero h1 { font-size: 34px; }
+    .muted, .small { color: var(--muted); }
+    .small { font-size: 12px; line-height: 1.45; }
+    .message {
+      margin-top: 10px;
+      padding: 10px 12px;
+      background: rgba(88,185,132,.13);
+      border: 1px solid rgba(88,185,132,.28);
+      border-radius: 12px;
+    }
+    .nav-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 16px 0;
+    }
+    .nav-tabs a {
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .nav-tabs a.active {
+      background: linear-gradient(180deg, #dbb462, #b7862d);
+      color: #102337;
+      border-color: rgba(213,170,82,.4);
+    }
+    form { display: grid; gap: 10px; }
+    input, select, textarea, button {
+      width: 100%;
+      font: inherit;
+      border-radius: 10px;
+    }
+    input, select, textarea {
+      border: 1px solid rgba(171,206,236,.22);
+      background: rgba(231,241,253,.08);
+      color: var(--text);
+      padding: 10px 12px;
+    }
+    textarea { min-height: 96px; resize: vertical; }
+    button {
+      border: 0;
+      padding: 11px 12px;
+      background: linear-gradient(180deg, #4180c4, #24598d);
+      color: white;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      cursor: pointer;
+    }
+    button.alt { background: linear-gradient(180deg, #d9ae56, #b88526); color: #172739; }
+    button.danger { background: linear-gradient(180deg, #cf6666, #a54444); }
+    .info-box, .list-row, .queue-card, .pick-card, .team-card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      padding: 12px;
+    }
+    .list-stack, .queue-stack, .pick-stack {
+      display: grid;
+      gap: 10px;
+    }
+    .scroll {
+      max-height: 760px;
+      overflow: auto;
+      padding-right: 4px;
+    }
+    .player-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .player-link:hover, .queue-card:hover { border-color: rgba(213,170,82,.42); }
+    .player-meta, .row-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .screen-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .trade-board {
+      display: grid;
+      grid-template-columns: 1fr 320px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+    .trade-middle {
+      display: grid;
+      gap: 12px;
+    }
+    .arrow {
+      text-align: center;
+      font-size: 22px;
+      color: #f0d18f;
+    }
+    .trade-package {
+      display: grid;
+      gap: 10px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px 14px;
+    }
+    .stat-row {
+      display: grid;
+      gap: 6px;
+    }
+    .range-row {
+      display: grid;
+      grid-template-columns: 1fr 74px;
+      gap: 8px;
+      align-items: center;
+    }
+    .range-row input[type="range"] { padding: 0; }
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .quick-links a {
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.05);
+    }
+    .pill-checks {
+      display: grid;
+      gap: 8px;
+    }
+    label.check-row {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 10px;
+      align-items: start;
+      padding: 10px 12px;
+      background: var(--card);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .contract-note {
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(213,170,82,.1);
+      border: 1px solid rgba(213,170,82,.18);
+      color: #f1d9a7;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      background: rgba(4,14,26,.9);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      padding: 12px;
+      font-size: 12px;
+      overflow: auto;
+      color: #d9efff;
+      font-family: "Cascadia Code", Consolas, monospace;
+    }
+    @media (max-width: 1320px) {
+      .content-grid, .screen-grid, .detail-grid, .trade-board, .hero-grid, .dual-grid, .triple-grid, .stat-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 760px) {
+      .shell { padding: 12px; }
+      .topbar { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="topbar">
+      <section class="hero">
+        <h1>NHL Legacy Roster Central</h1>
+        <p class="muted">Separate work screens for player movement, editing, contracts, creation, draft-pick tracking, auto-updates, and final review.</p>
+        {% if message %}
+        <div class="message">{{ message }}</div>
+        {% endif %}
+      </section>
+      <section class="panel">
+        <h2>Workspace</h2>
+        <form method="post" action="/workspace/open">
+          <input type="text" name="roster_path" placeholder="D:\Emulation\...\ROSTER 20260611193707" required>
+          <button type="submit">Open Working Roster</button>
+        </form>
+        {% if workspace %}
+        <div class="hero-grid" style="margin-top:12px;">
+          <div class="info-box"><strong>Name</strong><br><span class="small">{{ workspace.name }}</span></div>
+          <div class="info-box"><strong>Created</strong><br><span class="small">{{ workspace.created_at }}</span></div>
+          <div class="info-box"><strong>Working DB</strong><br><span class="small">{{ workspace.working_db_path }}</span></div>
+          <div class="info-box"><strong>Working Roster</strong><br><span class="small">{{ workspace.working_roster_path }}</span></div>
+        </div>
+        {% endif %}
+      </section>
+    </div>
+
+    <nav class="nav-tabs">
+      {% for key, label in screen_tabs %}
+      <a class="{% if screen == key %}active{% endif %}" href="/?screen={{ key }}&selected_player={{ selected_player|urlencode }}&team_filter={{ team_filter }}&league_filter={{ league_filter }}&lane_left={{ lane_left }}&lane_right={{ lane_right }}">{{ label }}</a>
+      {% endfor %}
+    </nav>
+
+    <div class="content-grid">
+      <aside class="panel">
+        <div class="screen-title">
+          <h2>Roster List</h2>
+          <span class="badge">{{ filtered_players|length }} shown</span>
+        </div>
+        <form method="get" action="/">
+          <input type="hidden" name="screen" value="{{ screen }}">
+          <input type="text" name="player_query" value="{{ selected_player }}" placeholder="Search player name">
+          <div class="dual-grid">
+            <select name="team_filter">
+              <option value="ALL" {% if team_filter == "ALL" %}selected{% endif %}>All Teams</option>
+              <option value="FREE" {% if team_filter == "FREE" %}selected{% endif %}>Free Agency</option>
+              {% for bucket_name, teams in team_collections.items() %}
+                {% for team in teams %}
+                <option value="{{ team.abbrev }}" {% if team_filter == team.abbrev %}selected{% endif %}>{{ team.abbrev }} - {{ team.name }}</option>
+                {% endfor %}
+              {% endfor %}
+            </select>
+            <select name="league_filter">
+              {% for value, label in league_options %}
+              <option value="{{ value }}" {% if league_filter == value %}selected{% endif %}>{{ label }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <input type="hidden" name="lane_left" value="{{ lane_left }}">
+          <input type="hidden" name="lane_right" value="{{ lane_right }}">
+          <button type="submit">Refresh</button>
+        </form>
+        <div class="quick-links" style="margin:12px 0;">
+          <a href="/?screen={{ screen }}&team_filter=ALL&league_filter={{ league_filter }}&lane_left={{ lane_left }}&lane_right={{ lane_right }}">All ({{ team_counts.get('ALL', 0) }})</a>
+          <a href="/?screen={{ screen }}&team_filter=FREE&league_filter={{ league_filter }}&lane_left={{ lane_left }}&lane_right={{ lane_right }}">Free Agency ({{ team_counts.get('FREE', 0) }})</a>
+        </div>
+        <div class="small muted" style="margin-bottom:10px;">NHL {{ league_counts.get('nhl', 0) }} | Prospects {{ league_counts.get('prospects', 0) }} | Other {{ league_counts.get('other_leagues', 0) }} | Free {{ league_counts.get('free_agents', 0) }}</div>
+        <div class="scroll list-stack">
+          {% for player in filtered_players[:500] %}
+          <a class="player-link" href="/?screen={{ screen }}&selected_player={{ player.full_name|urlencode }}&team_filter={{ team_filter }}&league_filter={{ league_filter }}&lane_left={{ lane_left }}&lane_right={{ lane_right }}">
+            <strong>{{ player.full_name }}</strong>
+            <div class="player-meta">
+              <span>{{ player.current_team_abbrev or "FA" }}</span>
+              <span>{{ player.league_name }}</span>
+            </div>
+          </a>
+          {% else %}
+          <div class="info-box small muted">No players match this filter.</div>
+          {% endfor %}
+        </div>
+      </aside>
+
+      <main class="panel">
+        {% if screen == "movement" %}
+        <div class="screen-title">
+          <h2>Player Movement</h2>
+          <span class="badge">{{ lane_left }} vs {{ lane_right }}</span>
+        </div>
+        <form method="get" action="/" style="margin-bottom:16px;">
+          <input type="hidden" name="screen" value="movement">
+          <input type="hidden" name="selected_player" value="{{ selected_player }}">
+          <input type="hidden" name="team_filter" value="{{ team_filter }}">
+          <input type="hidden" name="league_filter" value="{{ league_filter }}">
+          <div class="dual-grid">
+            <select name="lane_left">
+              {% for team in team_collections.nhl %}
+              <option value="{{ team.abbrev }}" {% if lane_left == team.abbrev %}selected{% endif %}>Team 1: {{ team.abbrev }} - {{ team.name }}</option>
+              {% endfor %}
+            </select>
+            <select name="lane_right">
+              {% for team in team_collections.nhl %}
+              <option value="{{ team.abbrev }}" {% if lane_right == team.abbrev %}selected{% endif %}>Team 2: {{ team.abbrev }} - {{ team.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <button type="submit">Load Trade Teams</button>
+        </form>
+        <div class="trade-board">
+          <section class="team-card">
+            <h3>Team 1: {{ lane_left }}</h3>
+            <div class="scroll list-stack" style="max-height:640px;">
+              {% for player in left_lane_players[:150] %}
+              <div class="list-row">
+                <strong>{{ player.full_name }}</strong>
+                <div class="row-meta">
+                  <span>{{ player.current_team_abbrev or "FA" }} | {{ player.league_name }}</span>
+                  <span>
+                    <a href="/?screen=player&selected_player={{ player.full_name|urlencode }}&lane_left={{ lane_left }}&lane_right={{ lane_right }}">Edit</a>
+                  </span>
+                </div>
+                <form method="post" action="/trade/stage-player" style="margin-top:8px;">
+                  <input type="hidden" name="player_name" value="{{ player.full_name }}">
+                  <input type="hidden" name="team_left" value="{{ lane_left }}">
+                  <input type="hidden" name="team_right" value="{{ lane_right }}">
+                  <input type="hidden" name="direction" value="to_right">
+                  <button class="alt" type="submit">Stage To {{ lane_right }}</button>
+                </form>
+              </div>
+              {% endfor %}
+            </div>
+          </section>
+
+          <section class="trade-middle">
+            <div class="queue-card">
+              <h3>{{ lane_left }} Receives</h3>
+              <div class="trade-package">
+                {% for item in trade_state.to_left %}
+                <div class="info-box">
+                  <strong>{{ item.player_name }}</strong>
+                  <form method="post" action="/trade/remove-player" style="margin-top:8px;">
+                    <input type="hidden" name="player_name" value="{{ item.player_name }}">
+                    <input type="hidden" name="bucket" value="to_left">
+                    <button class="danger" type="submit">Remove</button>
+                  </form>
+                </div>
+                {% else %}
+                <div class="small muted">No staged incoming players yet.</div>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="arrow">&#8646;</div>
+            <div class="queue-card">
+              <h3>{{ lane_right }} Receives</h3>
+              <div class="trade-package">
+                {% for item in trade_state.to_right %}
+                <div class="info-box">
+                  <strong>{{ item.player_name }}</strong>
+                  <form method="post" action="/trade/remove-player" style="margin-top:8px;">
+                    <input type="hidden" name="player_name" value="{{ item.player_name }}">
+                    <input type="hidden" name="bucket" value="to_right">
+                    <button class="danger" type="submit">Remove</button>
+                  </form>
+                </div>
+                {% else %}
+                <div class="small muted">No staged incoming players yet.</div>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="queue-card">
+              <h3>Draft Picks In Trade</h3>
+              <div class="pick-stack">
+                {% for item in trade_state.picks %}
+                <div class="pick-card">
+                  <strong>{{ item.year }} Round {{ item.round }}</strong>
+                  <div class="small muted">{{ item.from_team }} -> {{ item.to_team }}{% if item.note %} | {{ item.note }}{% endif %}</div>
+                </div>
+                {% else %}
+                <div class="small muted">No draft picks staged yet.</div>
+                {% endfor %}
+              </div>
+              <form method="post" action="/trade/add-pick" style="margin-top:12px;">
+                <div class="dual-grid">
+                  <input type="text" name="year" placeholder="2027" required>
+                  <input type="text" name="round" placeholder="1" required>
+                </div>
+                <div class="dual-grid">
+                  <input type="text" name="from_team" placeholder="From" required>
+                  <input type="text" name="to_team" placeholder="To" required>
+                </div>
+                <input type="text" name="note" placeholder="Top-10 protected, etc.">
+                <button type="submit">Add Pick</button>
+              </form>
+            </div>
+            {% if snapshot %}
+            <div class="queue-card">
+              <h3>Direct Move</h3>
+              <div class="small muted" style="margin-bottom:10px;">Selected player: {{ selected_player }}</div>
+              <form method="post" action="/player/move">
+                <input type="hidden" name="first_name" value="{{ snapshot.bio.PedH }}">
+                <input type="hidden" name="last_name" value="{{ snapshot.bio.RMbQ }}">
+                <input type="hidden" name="target_team" value="{{ lane_left }}">
+                <button type="submit">Move To {{ lane_left }}</button>
+              </form>
+              <form method="post" action="/player/move">
+                <input type="hidden" name="first_name" value="{{ snapshot.bio.PedH }}">
+                <input type="hidden" name="last_name" value="{{ snapshot.bio.RMbQ }}">
+                <input type="hidden" name="target_team" value="{{ lane_right }}">
+                <button class="alt" type="submit">Move To {{ lane_right }}</button>
+              </form>
+              <form method="post" action="/player/free-agent">
+                <input type="hidden" name="first_name" value="{{ snapshot.bio.PedH }}">
+                <input type="hidden" name="last_name" value="{{ snapshot.bio.RMbQ }}">
+                <button class="danger" type="submit">Send To Free Agency</button>
+              </form>
+            </div>
+            {% endif %}
+            <form method="post" action="/trade/apply">
+              <button class="alt" type="submit">Apply Trade Package</button>
+            </form>
+          </section>
+
+          <section class="team-card">
+            <h3>Team 2: {{ lane_right }}</h3>
+            <div class="scroll list-stack" style="max-height:640px;">
+              {% for player in right_lane_players[:150] %}
+              <div class="list-row">
+                <strong>{{ player.full_name }}</strong>
+                <div class="row-meta">
+                  <span>{{ player.current_team_abbrev or "FA" }} | {{ player.league_name }}</span>
+                  <span>
+                    <a href="/?screen=player&selected_player={{ player.full_name|urlencode }}&lane_left={{ lane_left }}&lane_right={{ lane_right }}">Edit</a>
+                  </span>
+                </div>
+                <form method="post" action="/trade/stage-player" style="margin-top:8px;">
+                  <input type="hidden" name="player_name" value="{{ player.full_name }}">
+                  <input type="hidden" name="team_left" value="{{ lane_left }}">
+                  <input type="hidden" name="team_right" value="{{ lane_right }}">
+                  <input type="hidden" name="direction" value="to_left">
+                  <button class="alt" type="submit">Stage To {{ lane_left }}</button>
+                </form>
+              </div>
+              {% endfor %}
+            </div>
+          </section>
+        </div>
+
+        {% elif screen == "player" %}
+        <div class="screen-title">
+          <h2>Edit Player</h2>
+          {% if selected_player %}<span class="badge">{{ selected_player }}</span>{% endif %}
+        </div>
+        {% if snapshot %}
+        <div class="detail-grid">
+          <section class="queue-card">
+            <h3>Profile</h3>
+            <div class="hero-grid">
+              <div class="info-box"><strong>Current Team</strong><br>{% if current_team and current_team.team %}{{ current_team.team.abbrev }} - {{ current_team.team.name }}{% else %}{{ free_agency_label }}{% endif %}</div>
+              <div class="info-box"><strong>Birthplace</strong><br>{% if official_player_details and official_player_details.birthCity %}{{ official_player_details.birthCity.default }}{% if official_player_details.birthStateProvince %}, {{ official_player_details.birthStateProvince.default }}{% endif %}, {{ official_player_details.birthCountry }}{% elif hockeydb_profile %}{{ hockeydb_profile.birthplace or "Unknown" }}{% else %}{{ snapshot.bio.JzFM or "Unknown" }}{% endif %}</div>
+              <div class="info-box"><strong>Height / Weight</strong><br>{% if official_player_details %}{{ official_player_details.heightInInches or "?" }}" / {{ official_player_details.weightInPounds or "?" }} lbs{% elif hockeydb_profile %}{{ hockeydb_profile.height or "?" }} / {{ hockeydb_profile.weight or "?" }}{% else %}Unknown{% endif %}</div>
+              <div class="info-box"><strong>Shoots</strong><br>{% if official_player_details %}{{ official_player_details.shootsCatches or "Unknown" }}{% elif hockeydb_profile %}{{ hockeydb_profile.shoots or "Unknown" }}{% else %}Unknown{% endif %}</div>
+            </div>
+            <div class="hero-grid" style="margin-top:12px;">
+              <div class="info-box"><strong>Drafted By</strong><br>{% if official_player_details and official_player_details.draftDetails %}{{ official_player_details.draftDetails.teamAbbrev or "Unknown" }}{% else %}Unknown{% endif %}</div>
+              <div class="info-box"><strong>Draft Year</strong><br>{% if official_player_details and official_player_details.draftDetails %}{{ official_player_details.draftDetails.year or "Unknown" }}{% else %}Unknown{% endif %}</div>
+              <div class="info-box"><strong>Draft Slot</strong><br>{% if official_player_details and official_player_details.draftDetails %}R{{ official_player_details.draftDetails.round or "?" }} / {{ official_player_details.draftDetails.overallPick or "?" }}{% else %}Unknown{% endif %}</div>
+              <div class="info-box"><strong>Position</strong><br>{% if official_hits %}{{ official_hits[0].position_code }}{% elif hockeydb_profile %}{{ hockeydb_profile.position or "Unknown" }}{% else %}Unknown{% endif %}</div>
+            </div>
+            <div class="quick-links" style="margin-top:12px;">
+              {% if hockeydb_search_url %}<a href="{{ hockeydb_search_url }}" target="_blank" rel="noreferrer">HockeyDB Search</a>{% endif %}
+              {% for label, link in edge_links %}<a href="{{ link }}" target="_blank" rel="noreferrer">NHL EDGE {{ label }}</a>{% endfor %}
+            </div>
+          </section>
+          <section class="queue-card">
+            <h3>Contract</h3>
+            {% if capwages_player %}
+            <div class="hero-grid">
+              <div class="info-box"><strong>Status</strong><br>{{ capwages_player.status }}</div>
+              <div class="info-box"><strong>Cap Hit</strong><br>{{ capwages_player.cap_hit or "Unknown" }}</div>
+              <div class="info-box"><strong>AAV</strong><br>{{ capwages_player.aav or "Unknown" }}</div>
+              <div class="info-box"><strong>Expiry</strong><br>{{ capwages_player.expiry or "Unknown" }}</div>
+            </div>
+            <div class="hero-grid" style="margin-top:12px;">
+              <div class="info-box"><strong>Clause</strong><br>{{ capwages_player.clause or "None listed" }}</div>
+              <div class="info-box"><strong>Acquired</strong><br>{{ capwages_player.acquired or "Unknown" }}</div>
+              <div class="info-box"><strong>Source Team</strong><br>{{ contract_source_team or "Unknown" }}</div>
+              <div class="info-box"><strong>Draft</strong><br>{% if capwages_player.drafted_by %}{{ capwages_player.drafted_by }}{% if capwages_player.draft_year %} {{ capwages_player.draft_year }}{% endif %}{% else %}Unknown{% endif %}</div>
+            </div>
+            {% if capwages_player.current_detail %}
+            <div class="info-box" style="margin-top:12px;">
+              <strong>Current Season Breakdown</strong>
+              <pre style="margin-top:10px;">{{ capwages_player.current_detail | tojson(indent=2) }}</pre>
+            </div>
+            {% endif %}
+            {% else %}
+            <div class="contract-note">No direct CapWages contract row matched for this player yet.</div>
+            {% endif %}
+          </section>
+        </div>
+        <section class="queue-card" style="margin-top:16px;">
+          <div class="screen-title">
+            <h3>Attribute Editing</h3>
+            <span class="badge">{{ attribute_rows|length }} sliders</span>
+          </div>
+          <form method="post" action="/player/ratings/save">
+            <input type="hidden" name="first_name" value="{{ snapshot.bio.PedH }}">
+            <input type="hidden" name="last_name" value="{{ snapshot.bio.RMbQ }}">
+            <div class="stat-grid">
+              {% for attr in attribute_rows %}
+              <div class="stat-row">
+                <label for="{{ attr.field }}"><strong>{{ attr.label }}</strong></label>
+                <div class="range-row">
+                  <input id="{{ attr.field }}" type="range" name="{{ attr.field }}" min="{{ attr.min_value }}" max="{{ attr.max_value }}" value="{{ attr.display_value }}">
+                  <input type="number" min="{{ attr.min_value }}" max="{{ attr.max_value }}" value="{{ attr.display_value }}" data-sync-number="{{ attr.field }}">
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            <button style="margin-top:14px;" type="submit">Save Attribute Changes</button>
+          </form>
+        </section>
+        {% else %}
+        <div class="info-box muted">Select a player to edit profile, contract context, and attributes.</div>
+        {% endif %}
+
+        {% elif screen == "contracts" %}
+        <div class="screen-title">
+          <h2>Contracts</h2>
+          <span class="badge">Update All Contracts</span>
+        </div>
+        <div class="contract-note">The contract queue is fully batch-oriented. Per-player context stays on the Edit Player screen. Contract write-back fields in the legacy DB still need exact mapping, so this screen currently builds, reviews, and approves the update pass list rather than directly pushing salaries into the DB.</div>
+        <div class="screen-grid" style="margin-top:16px;">
+          <section class="queue-card">
+            <h3>Build Batch Queue</h3>
+            <form method="post" action="/contracts/build">
+              <div class="dual-grid">
+                <input type="number" step="0.01" name="real_cap" value="{{ default_real_cap }}" placeholder="Real cap">
+                <input type="number" step="0.01" name="game_cap" value="78.6" placeholder="Game cap">
+              </div>
+              <button type="submit">Update All Contracts</button>
+            </form>
+          </section>
+          <section class="queue-card">
+            <h3>Queue Summary</h3>
+            <div class="hero-grid">
+              <div class="info-box"><strong>Proposals</strong><br>{{ contract_queue|length }}</div>
+              <div class="info-box"><strong>Team Data</strong><br>CapWages</div>
+              <div class="info-box"><strong>Apply Mode</strong><br>Approval List</div>
+              <div class="info-box"><strong>Profile View</strong><br>Edit Player Screen</div>
+            </div>
+          </section>
+        </div>
+        <section class="queue-card" style="margin-top:16px;">
+          <h3>Contract Approval List</h3>
+          <form method="post" action="/contracts/approve">
+            <div class="pill-checks scroll" style="max-height:640px;">
+              {% for item in contract_queue %}
+              <label class="check-row">
+                <input type="checkbox" name="approved" value="{{ item.player_name }}" checked>
+                <span>
+                  <strong>{{ item.player_name }}</strong><br>
+                  <span class="small">{{ item.current_team or "FA" }} | {{ item.real_aav_millions }}M real -> {{ item.game_aav_millions }}M legacy | {{ item.team }}</span>
+                </span>
+              </label>
+              {% else %}
+              <div class="small muted">Build the contract queue first.</div>
+              {% endfor %}
+            </div>
+            {% if contract_queue %}
+            <button class="alt" style="margin-top:12px;" type="submit">Save Approved Contract Pass</button>
+            {% endif %}
+          </form>
+        </section>
+
+        {% elif screen == "create" %}
+        <div class="screen-title">
+          <h2>Create Player</h2>
+          <span class="badge">{{ create_candidates|length }} queued candidates</span>
+        </div>
+        <div class="screen-grid">
+          <section class="queue-card">
+            <h3>Mass Create Queue</h3>
+            <div class="scroll queue-stack" style="max-height:620px;">
+              {% for item in create_candidates %}
+              <div class="queue-card">
+                <strong>{{ item.player_name }}</strong>
+                <div class="small muted">{{ item.team }} | {{ item.position or "?" }} | drafted by {{ item.drafted_by or "?" }}{% if item.draft_year %} in {{ item.draft_year }}{% endif %}</div>
+              </div>
+              {% else %}
+              <div class="small muted">Auto-update scans will send missing-player candidates here.</div>
+              {% endfor %}
+            </div>
+          </section>
+          <section class="queue-card">
+            <h3>Comparison Builder</h3>
+            <form method="post" action="/comparison/build">
+              <input type="text" name="target_name" placeholder="Prospect name" required>
+              <div class="dual-grid">
+                <select name="archetype">
+                  <option value="playmaker">playmaker</option>
+                  <option value="sniper">sniper</option>
+                  <option value="power_forward">power_forward</option>
+                  <option value="two_way_forward">two_way_forward</option>
+                  <option value="offensive_defenseman">offensive_defenseman</option>
+                  <option value="defensive_defenseman">defensive_defenseman</option>
+                </select>
+                <input type="number" name="target_overall" value="82" min="1" max="99" required>
+              </div>
+              <textarea name="source_names" placeholder="Artemi Panarin&#10;Nikita Kucherov" required></textarea>
+              <button class="alt" type="submit">Build Prospect Blend</button>
+            </form>
+            {% if comparison_result %}
+            <div class="info-box" style="margin-top:12px;">
+              <strong>{{ comparison_result.target_name }}</strong>
+              <pre style="margin-top:10px;">{{ {
+                "archetype": comparison_result.archetype,
+                "target_overall": comparison_result.target_overall,
+                "source_players": comparison_result.source_players,
+                "estimated_before": comparison_result.estimated_overall_before_cap,
+                "estimated_after": comparison_result.estimated_overall_after_cap,
+                "upgraded_ratings": comparison_result.upgraded_ratings
+              } | tojson(indent=2) }}</pre>
+            </div>
+            {% endif %}
+          </section>
+        </div>
+
+        {% elif screen == "draft" %}
+        <div class="screen-title">
+          <h2>Draft Picks</h2>
+          <span class="badge">{{ draft_pick_ledger|length }} logged</span>
+        </div>
+        <div class="contract-note">Draft picks are already flowing through the trade staging board. This screen is the clean ledger for pick movement while we finish mapping any underlying legacy draft-pick ownership structures.</div>
+        <div class="scroll pick-stack" style="max-height:720px; margin-top:16px;">
+          {% for item in draft_pick_ledger %}
+          <div class="pick-card">
+            <strong>{{ item.year }} Round {{ item.round }}</strong>
+            <div class="small muted">{{ item.from_team }} -> {{ item.to_team }}{% if item.note %} | {{ item.note }}{% endif %}</div>
+            <div class="small muted">{{ item.timestamp }}</div>
+          </div>
+          {% else %}
+          <div class="info-box small muted">No draft-pick entries logged yet.</div>
+          {% endfor %}
+        </div>
+
+        {% elif screen == "updates" %}
+        <div class="screen-title">
+          <h2>Roster Updates</h2>
+          <span class="badge">CapWages Sync</span>
+        </div>
+        <div class="screen-grid">
+          <section class="queue-card">
+            <h3>Auto Update Scan</h3>
+            <form method="post" action="/updates/scan">
+              <button type="submit">Scan CapWages Against EA Teams</button>
+            </form>
+            <div class="small muted" style="margin-top:10px;">This compares organization ownership, not just exact NHL club assignment. A player already in an NHL organization's farm or system slot will not be flagged for movement to the parent club. Players without draft info are skipped from create-candidate output.</div>
+          </section>
+          <section class="queue-card">
+            <h3>Queue Summary</h3>
+            <div class="hero-grid">
+              <div class="info-box"><strong>Moves</strong><br>{{ update_queue.moves|length }}</div>
+              <div class="info-box"><strong>Create</strong><br>{{ update_queue.create_candidates|length }}</div>
+              <div class="info-box"><strong>Source</strong><br>CapWages</div>
+              <div class="info-box"><strong>Approval</strong><br>Manual</div>
+            </div>
+          </section>
+        </div>
+        <section class="queue-card" style="margin-top:16px;">
+          <h3>Approval List</h3>
+          <form method="post" action="/updates/apply">
+            <div class="pill-checks scroll" style="max-height:640px;">
+              {% for item in update_queue.moves %}
+              <label class="check-row">
+                <input type="checkbox" name="approved_moves" value="{{ item.player_name }}|{{ item.to_team }}" checked>
+                <span>
+                  <strong>{{ item.player_name }}</strong><br>
+                  <span class="small">{{ item.from_team or "FA" }} -> {{ item.to_team }} | {{ item.reason }}</span>
+                </span>
+              </label>
+              {% else %}
+              <div class="small muted">Run a scan to build the approval list.</div>
+              {% endfor %}
+            </div>
+            {% if update_queue.moves %}
+            <button class="alt" style="margin-top:12px;" type="submit">Apply Approved Moves</button>
+            {% endif %}
+          </form>
+          <div class="queue-card" style="margin-top:16px;">
+            <h3>Create Candidates</h3>
+            <div class="scroll queue-stack" style="max-height:260px;">
+              {% for item in update_queue.create_candidates %}
+              <div class="queue-card">
+                <strong>{{ item.player_name }}</strong>
+                <div class="small muted">{{ item.team }} | {{ item.position or "?" }} | drafted by {{ item.drafted_by or "?" }}{% if item.draft_year %} in {{ item.draft_year }}{% endif %}</div>
+              </div>
+              {% else %}
+              <div class="small muted">No missing-player candidates found.</div>
+              {% endfor %}
+            </div>
+          </div>
+        </section>
+
+        {% elif screen == "review" %}
+        <div class="screen-title">
+          <h2>Final Review</h2>
+          <span class="badge">{{ review_entries|length }} logged edits</span>
+        </div>
+        <div class="screen-grid">
+          <section class="queue-card">
+            <h3>Change Log</h3>
+            <div class="scroll queue-stack" style="max-height:720px;">
+              {% for entry in review_entries %}
+              <div class="queue-card">
+                <strong>{{ entry.type }}</strong>
+                <div class="small muted">{{ entry.timestamp }}</div>
+                <div class="small">
+                  {% if entry.result and entry.result.player %}
+                    {{ entry.result.player }}
+                    {% if entry.result.from_team or entry.result.to_team %}| {{ entry.result.from_team or "Unknown" }} -> {{ entry.result.to_team or "Unknown" }}{% endif %}
+                  {% elif entry.result and entry.result.note %}
+                    {{ entry.result.note }}
+                  {% else %}
+                    Roster edit
+                  {% endif %}
+                </div>
+              </div>
+              {% else %}
+              <div class="small muted">No logged edits yet.</div>
+              {% endfor %}
+            </div>
+          </section>
+          <section class="queue-card">
+            <h3>Trade Feed</h3>
+            <div class="scroll queue-stack" style="max-height:720px;">
+              {% for item in trade_headlines %}
+              <a class="queue-card" href="{{ item.url }}" target="_blank" rel="noreferrer" style="text-decoration:none;">
+                <strong>{{ item.title }}</strong>
+                <div class="small muted">{{ item.url }}</div>
+              </a>
+              {% else %}
+              <div class="small muted">No trade context loaded.</div>
+              {% endfor %}
+            </div>
+          </section>
+        </div>
+        {% endif %}
+      </main>
+    </div>
+  </div>
+  <script>
+    document.querySelectorAll('input[type="range"][name]').forEach((range) => {
+      const key = range.getAttribute('name');
+      const number = document.querySelector(`[data-sync-number="${key}"]`);
+      if (!number) return;
+      range.addEventListener('input', () => { number.value = range.value; });
+      number.addEventListener('input', () => { range.value = number.value; });
+    });
+  </script>
+</body>
+</html>

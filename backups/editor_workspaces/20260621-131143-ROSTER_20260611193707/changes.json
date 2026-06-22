@@ -1,0 +1,349 @@
+[
+  {
+    "timestamp": "2026-06-21T13:13:29.197093",
+    "type": "update-attributes",
+    "result": {
+      "player": "Darren Raddysh",
+      "updated_fields": {
+        "DCvJ": 51,
+        "ShqX": 52,
+        "oRUd": 50,
+        "KQBB": 47,
+        "ObeE": 52,
+        "VlLd": 50,
+        "YqXz": 55,
+        "EksY": 5,
+        "oisw": 51,
+        "ujcW": 51,
+        "bEdA": 60,
+        "ckxF": 53,
+        "pyYq": 52,
+        "Hvje": 52,
+        "iCvN": 51,
+        "fRaZ": 52,
+        "zRrS": 48,
+        "OTvp": 53,
+        "hlsv": 5
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 49,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "EksY",
+          "before": 6,
+          "after": 5
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 49,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 38,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 45,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 38,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "ShqX",
+          "before": 44,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 40,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 40,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 49,
+          "after": 60
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 49,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 34,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "hlsv",
+          "before": 10,
+          "after": 5
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 38,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "oRUd",
+          "before": 42,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "oisw",
+          "before": 48,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 48,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 40,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "zRrS",
+          "before": 45,
+          "after": 48
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-21T13:13:55.797648",
+    "type": "move-player",
+    "result": {
+      "player": "Darren Raddysh",
+      "instance_id": 5063,
+      "from_team": "TB",
+      "to_team": "TOR",
+      "target_team_code": 27,
+      "changes": [
+        {
+          "section": "instance_rows",
+          "field": "rows",
+          "before": [
+            {
+              "AAai": 0,
+              "Adsx": 0,
+              "AkyJ": 0,
+              "Auad": 0,
+              "BSXd": 26,
+              "BWVK": 0,
+              "BcVZ": 0,
+              "BnOW": 0,
+              "BvDt": 1,
+              "CLEN": 0,
+              "EGLX": 0,
+              "EMLM": 0,
+              "FGkk": 0,
+              "FIER": 0,
+              "FMkb": 0,
+              "GtFK": 0,
+              "IkTY": 0,
+              "Imzy": 0,
+              "Jmcc": 0,
+              "Khwp": 0,
+              "MykP": 0,
+              "NYLL": 0,
+              "OQOd": 0,
+              "Onyv": 0,
+              "OsHB": 0,
+              "PGhZ": 0,
+              "Plxr": 0,
+              "PufE": 0,
+              "QHRq": 0,
+              "RNeu": 0,
+              "Sxps": 0,
+              "TWSX": 5063,
+              "TbGw": 0,
+              "VSQu": 0,
+              "WPGf": 0,
+              "WZZk": 0,
+              "Wbtt": 0,
+              "XBWz": 0,
+              "XUMR": 0,
+              "XWot": 1061,
+              "XxCx": 0,
+              "aAvX": 0,
+              "aRgN": 0,
+              "ajIB": 0,
+              "bNDE": 0,
+              "bSAb": 0,
+              "bjni": 0,
+              "ctKP": 0,
+              "gvQw": 0,
+              "hdfs": 1,
+              "iXft": 0,
+              "iiSQ": 0,
+              "jZSh": 1,
+              "jxQx": 0,
+              "kQGw": 0,
+              "knGr": 0,
+              "lcCm": 0,
+              "lxRC": 0,
+              "mxhB": 0,
+              "oOKP": 0,
+              "opNr": 0,
+              "pOUV": 0,
+              "pPkW": 0,
+              "pfiv": 0,
+              "pxVU": 0,
+              "rrTM": 0,
+              "sFgQ": 4,
+              "sKFN": 0,
+              "sNcy": 0,
+              "tIqR": 0,
+              "tRVs": 43,
+              "tmxm": 0,
+              "uAxS": 0,
+              "uklz": 0,
+              "vBOv": 0,
+              "yoNB": 0,
+              "zAcO": 0,
+              "zQng": 0
+            }
+          ],
+          "after": [
+            {
+              "AAai": 0,
+              "Adsx": 0,
+              "AkyJ": 0,
+              "Auad": 0,
+              "BSXd": 27,
+              "BWVK": 0,
+              "BcVZ": 0,
+              "BnOW": 0,
+              "BvDt": 1,
+              "CLEN": 0,
+              "EGLX": 0,
+              "EMLM": 0,
+              "FGkk": 0,
+              "FIER": 0,
+              "FMkb": 0,
+              "GtFK": 0,
+              "IkTY": 0,
+              "Imzy": 0,
+              "Jmcc": 0,
+              "Khwp": 0,
+              "MykP": 0,
+              "NYLL": 0,
+              "OQOd": 0,
+              "Onyv": 0,
+              "OsHB": 0,
+              "PGhZ": 0,
+              "Plxr": 0,
+              "PufE": 0,
+              "QHRq": 0,
+              "RNeu": 0,
+              "Sxps": 0,
+              "TWSX": 5063,
+              "TbGw": 0,
+              "VSQu": 0,
+              "WPGf": 0,
+              "WZZk": 0,
+              "Wbtt": 0,
+              "XBWz": 0,
+              "XUMR": 0,
+              "XWot": 1061,
+              "XxCx": 0,
+              "aAvX": 0,
+              "aRgN": 0,
+              "ajIB": 0,
+              "bNDE": 0,
+              "bSAb": 0,
+              "bjni": 0,
+              "ctKP": 0,
+              "gvQw": 0,
+              "hdfs": 1,
+              "iXft": 0,
+              "iiSQ": 0,
+              "jZSh": 1,
+              "jxQx": 0,
+              "kQGw": 0,
+              "knGr": 0,
+              "lcCm": 0,
+              "lxRC": 0,
+              "mxhB": 0,
+              "oOKP": 0,
+              "opNr": 0,
+              "pOUV": 0,
+              "pPkW": 0,
+              "pfiv": 0,
+              "pxVU": 0,
+              "rrTM": 0,
+              "sFgQ": 4,
+              "sKFN": 0,
+              "sNcy": 0,
+              "tIqR": 0,
+              "tRVs": 43,
+              "tmxm": 0,
+              "uAxS": 0,
+              "uklz": 0,
+              "vBOv": 0,
+              "yoNB": 0,
+              "zAcO": 0,
+              "zQng": 0
+            }
+          ]
+        }
+      ],
+      "team_lookup": {
+        "from": {
+          "code": 26,
+          "abbrev": "TB",
+          "name": "Tampa Bay Lightning\u2122",
+          "city": "Tampa Bay"
+        },
+        "to": {
+          "code": 27,
+          "abbrev": "TOR",
+          "name": "Toronto Maple Leafs\u00ae",
+          "city": "Toronto"
+        }
+      }
+    }
+  },
+  {
+    "timestamp": "2026-06-21T13:14:05.570859",
+    "type": "save-to-game",
+    "result": {
+      "target": "C:\\Users\\jesus\\Downloads\\xenia_manager\\Emulators\\Xenia Canary\\content\\E03000006397D304\\454109EC\\00000001\\ROSTER 20260611193707\\ROSTER 20260611193707",
+      "working_roster": "C:\\Users\\jesus\\OneDrive\\Documents\\NHL legacy mods\\backups\\editor_workspaces\\20260621-131143-ROSTER_20260611193707\\working_roster.bin"
+    }
+  }
+]

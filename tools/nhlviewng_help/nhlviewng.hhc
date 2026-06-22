@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<BODY>
+<OBJECT type="text/site properties">
+	<param name="Window Styles" value="0x800025">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Introduction">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="About NHLView NG">
+	<param name="Local" value="about_nhlview_ng.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="System Requirements">
+	<param name="Local" value="system_requirements.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Installation">
+	<param name="Local" value="installation.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Getting Started">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="PS3">
+	<param name="Local" value="ps3.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="XBox 360">
+	<param name="Local" value="xbox_360.htm">
+</OBJECT>
+</UL>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="User Interface">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Main Window">
+	<param name="Local" value="main_window.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Players Tab">
+	<param name="Local" value="players_tab.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Personal Data">
+	<param name="Local" value="player_personal_data.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Appearance">
+	<param name="Local" value="player_appearance.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Career Data">
+	<param name="Local" value="career_data.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Attributes">
+	<param name="Local" value="attributes.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Teams Tab">
+	<param name="Local" value="teams_tab.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Team Data">
+	<param name="Local" value="team_data.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Line Editor">
+	<param name="Local" value="line_editor.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Arenas Tab">
+	<param name="Local" value="arenas_tab.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Transactions Tab">
+	<param name="Local" value="transactions_tab.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Known Issues">
+	<param name="Local" value="known_issues.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Additional Information">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Contact">
+	<param name="Local" value="contact.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Credits">
+	<param name="Local" value="credits.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Disclamer">
+	<param name="Local" value="disclamer.htm">
+</OBJECT>
+</UL>
+</UL>
+</BODY></HTML>
