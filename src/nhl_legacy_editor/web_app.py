@@ -8,7 +8,7 @@ from flask import Flask, redirect, render_template, request, url_for
 
 from .capwages import fetch_capwages_team_contracts
 from .comparison_tools import build_comparison_blend
-from .contract_models import DEFAULT_REAL_CAP_MILLIONS
+from .contract_models import DEFAULT_GAME_CAP_MILLIONS, DEFAULT_REAL_CAP_MILLIONS
 from .contract_sync import build_contract_update_queue
 from .editor_state import default_trade_state, load_json_state, save_json_state
 from .hockeydb import HOCKEYDB_BASE, fetch_hockeydb_profile_by_name
@@ -246,12 +246,13 @@ def create_app() -> Flask:
         workspace = require_workspace()
         player_index = load_player_index(workspace.working_db)
         real_cap = float(request.form.get("real_cap") or DEFAULT_REAL_CAP_MILLIONS)
-        game_cap = float(request.form.get("game_cap") or 78.6)
+        game_cap = float(request.form.get("game_cap") or DEFAULT_GAME_CAP_MILLIONS)
         queue = build_contract_update_queue(
             player_index,
             team_slugs=TEAM_SLUGS,
             real_cap=real_cap,
             game_cap=game_cap,
+            force_refresh=True,
         )
         save_json_state(workspace, "contract_queue.json", queue)
         return render_app(
@@ -286,7 +287,11 @@ def create_app() -> Flask:
     def updates_scan():
         workspace = require_workspace()
         player_index = load_player_index(workspace.working_db)
-        queue = build_capwages_roster_update(player_index, team_slugs=TEAM_SLUGS)
+        queue = build_capwages_roster_update(
+            player_index,
+            team_slugs=TEAM_SLUGS,
+            force_refresh=True,
+        )
         save_json_state(workspace, "update_queue.json", queue)
         return render_app(
             workspace=workspace,

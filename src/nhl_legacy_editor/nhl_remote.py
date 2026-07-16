@@ -137,8 +137,24 @@ def fetch_player_landing(player_id: int) -> dict:
     return fetch_json(f"{NHL_API_BASE}/player/{player_id}/landing")
 
 
-def fetch_edge_skater_detail(player_id: int) -> dict:
-    return fetch_json(f"{NHL_API_BASE}/edge/skater-detail/{player_id}/now")
+def _edge_season_path(season: str | int | None = None, game_type: int = 2) -> str:
+    if season is None:
+        return "now"
+    text = str(season).strip()
+    if len(text) >= 8 and text[:8].isdigit():
+        season_id = text[:8]
+    else:
+        start = int(text[:4] if len(text) >= 4 else text)
+        season_id = f"{start}{start + 1}"
+    return f"{season_id}/{game_type}"
+
+
+def fetch_edge_skater_detail(player_id: int, season: str | int | None = None, game_type: int = 2) -> dict:
+    return fetch_json(f"{NHL_API_BASE}/edge/skater-detail/{player_id}/{_edge_season_path(season, game_type)}")
+
+
+def fetch_edge_goalie_detail(player_id: int, season: str | int | None = None, game_type: int = 2) -> dict:
+    return fetch_json(f"{NHL_API_BASE}/edge/goalie-detail/{player_id}/{_edge_season_path(season, game_type)}")
 
 
 def fetch_team_roster(team_abbrev: str) -> list[TeamRosterPlayer]:

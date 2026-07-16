@@ -331,5 +331,747 @@
       "target": "C:\\Users\\jesus\\Downloads\\xenia_manager\\Emulators\\Xenia Canary\\content\\E03000006397D304\\454109EC\\00000001\\ROSTER 20260611193707\\ROSTER 20260611193707",
       "working_roster": "C:\\Users\\jesus\\OneDrive\\Documents\\NHL legacy mods\\backups\\editor_workspaces\\20260621-131617-ROSTER_20260611193707\\working_roster.bin"
     }
+  },
+  {
+    "timestamp": "2026-06-22T11:15:01.000625",
+    "type": "update-attributes",
+    "result": {
+      "player": "William Nylander",
+      "updated_fields": {
+        "bEdA": 54,
+        "seUB": 50,
+        "oRUd": 55,
+        "KQBB": 55,
+        "ObeE": 56,
+        "TUty": 48,
+        "kIjD": 47,
+        "oskO": 44,
+        "VlLd": 55,
+        "ShqX": 53,
+        "POYr": 49,
+        "oisw": 45,
+        "YqXz": 51,
+        "DCvJ": 54,
+        "Hvje": 53,
+        "pyYq": 51,
+        "ckxF": 54,
+        "KrwV": 19,
+        "fRaZ": 52,
+        "zRrS": 44,
+        "OTvp": 46,
+        "baRY": 7,
+        "hlsv": 5
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 57,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 48,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "oRUd",
+          "before": 56,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 54,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 55,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "TUty",
+          "before": 49,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "kIjD",
+          "before": 51,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "oskO",
+          "before": 34,
+          "after": 44
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 58,
+          "after": 55
+        },
+        {
+          "section": "ratings",
+          "field": "ShqX",
+          "before": 49,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "POYr",
+          "before": 48,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "oisw",
+          "before": 49,
+          "after": 45
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 59,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 57,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 55,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 56,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 56,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "KrwV",
+          "before": 39,
+          "after": 19
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 48,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "zRrS",
+          "before": 42,
+          "after": 44
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 48,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "baRY",
+          "before": 13,
+          "after": 7
+        },
+        {
+          "section": "ratings",
+          "field": "hlsv",
+          "before": 7,
+          "after": 5
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-22T11:15:41.460810",
+    "type": "update-attributes",
+    "result": {
+      "player": "Simon Benoit",
+      "updated_fields": {
+        "seUB": 49,
+        "oRUd": 41,
+        "KQBB": 41,
+        "ObeE": 42,
+        "TUty": 50,
+        "kIjD": 49,
+        "oskO": 51,
+        "ujcW": 42,
+        "VlLd": 40,
+        "ShqX": 45,
+        "POYr": 43,
+        "oisw": 53,
+        "YqXz": 43,
+        "DCvJ": 41,
+        "Hvje": 41,
+        "pyYq": 44,
+        "fRaZ": 45,
+        "zRrS": 51,
+        "OTvp": 44,
+        "baRY": 4,
+        "hlsv": 5
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 44,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "oRUd",
+          "before": 34,
+          "after": 41
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 34,
+          "after": 41
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 34,
+          "after": 42
+        },
+        {
+          "section": "ratings",
+          "field": "TUty",
+          "before": 48,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "kIjD",
+          "before": 44,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "oskO",
+          "before": 44,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 34,
+          "after": 42
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 34,
+          "after": 40
+        },
+        {
+          "section": "ratings",
+          "field": "ShqX",
+          "before": 34,
+          "after": 45
+        },
+        {
+          "section": "ratings",
+          "field": "POYr",
+          "before": 52,
+          "after": 43
+        },
+        {
+          "section": "ratings",
+          "field": "oisw",
+          "before": 52,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 36,
+          "after": 43
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 51,
+          "after": 41
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 50,
+          "after": 41
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 46,
+          "after": 44
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 39,
+          "after": 45
+        },
+        {
+          "section": "ratings",
+          "field": "zRrS",
+          "before": 48,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 48,
+          "after": 44
+        },
+        {
+          "section": "ratings",
+          "field": "baRY",
+          "before": 3,
+          "after": 4
+        },
+        {
+          "section": "ratings",
+          "field": "hlsv",
+          "before": 12,
+          "after": 5
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-22T11:15:52.335992",
+    "type": "update-attributes",
+    "result": {
+      "player": "Brandon Carlo",
+      "updated_fields": {
+        "bEdA": 43,
+        "seUB": 49,
+        "oRUd": 43,
+        "KQBB": 45,
+        "ObeE": 42,
+        "TUty": 49,
+        "kIjD": 46,
+        "oskO": 49,
+        "ShqX": 45,
+        "POYr": 42,
+        "oisw": 49,
+        "DCvJ": 53,
+        "Hvje": 47,
+        "pyYq": 42,
+        "ckxF": 44,
+        "fRaZ": 46,
+        "OTvp": 44,
+        "baRY": 4
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 48,
+          "after": 43
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 47,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "oRUd",
+          "before": 45,
+          "after": 43
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 46,
+          "after": 45
+        },
+        {
+          "section": "ratings",
+          "field": "ObeE",
+          "before": 47,
+          "after": 42
+        },
+        {
+          "section": "ratings",
+          "field": "TUty",
+          "before": 55,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "kIjD",
+          "before": 51,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "oskO",
+          "before": 43,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "ShqX",
+          "before": 42,
+          "after": 45
+        },
+        {
+          "section": "ratings",
+          "field": "POYr",
+          "before": 53,
+          "after": 42
+        },
+        {
+          "section": "ratings",
+          "field": "oisw",
+          "before": 52,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 52,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "Hvje",
+          "before": 51,
+          "after": 47
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 48,
+          "after": 42
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 48,
+          "after": 44
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 42,
+          "after": 46
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 53,
+          "after": 44
+        },
+        {
+          "section": "ratings",
+          "field": "baRY",
+          "before": 11,
+          "after": 4
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-22T11:18:16.322666",
+    "type": "update-attributes",
+    "result": {
+      "player": "John Tavares",
+      "updated_fields": {
+        "bEdA": 49,
+        "seUB": 56,
+        "oRUd": 50,
+        "KQBB": 49,
+        "TUty": 40,
+        "kIjD": 57,
+        "oskO": 38,
+        "ujcW": 53,
+        "VlLd": 51,
+        "ShqX": 32,
+        "POYr": 48,
+        "oisw": 43,
+        "YqXz": 49,
+        "DCvJ": 50,
+        "pyYq": 52,
+        "ckxF": 54,
+        "iCvN": 49,
+        "fRaZ": 48,
+        "zRrS": 43,
+        "OTvp": 48,
+        "baRY": 9,
+        "hlsv": 11
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "bEdA",
+          "before": 48,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "seUB",
+          "before": 49,
+          "after": 56
+        },
+        {
+          "section": "ratings",
+          "field": "oRUd",
+          "before": 51,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "KQBB",
+          "before": 52,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "TUty",
+          "before": 54,
+          "after": 40
+        },
+        {
+          "section": "ratings",
+          "field": "kIjD",
+          "before": 49,
+          "after": 57
+        },
+        {
+          "section": "ratings",
+          "field": "oskO",
+          "before": 44,
+          "after": 38
+        },
+        {
+          "section": "ratings",
+          "field": "ujcW",
+          "before": 54,
+          "after": 53
+        },
+        {
+          "section": "ratings",
+          "field": "VlLd",
+          "before": 52,
+          "after": 51
+        },
+        {
+          "section": "ratings",
+          "field": "ShqX",
+          "before": 50,
+          "after": 32
+        },
+        {
+          "section": "ratings",
+          "field": "POYr",
+          "before": 51,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "oisw",
+          "before": 48,
+          "after": 43
+        },
+        {
+          "section": "ratings",
+          "field": "YqXz",
+          "before": 55,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "DCvJ",
+          "before": 52,
+          "after": 50
+        },
+        {
+          "section": "ratings",
+          "field": "pyYq",
+          "before": 49,
+          "after": 52
+        },
+        {
+          "section": "ratings",
+          "field": "ckxF",
+          "before": 49,
+          "after": 54
+        },
+        {
+          "section": "ratings",
+          "field": "iCvN",
+          "before": 52,
+          "after": 49
+        },
+        {
+          "section": "ratings",
+          "field": "fRaZ",
+          "before": 44,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "zRrS",
+          "before": 42,
+          "after": 43
+        },
+        {
+          "section": "ratings",
+          "field": "OTvp",
+          "before": 50,
+          "after": 48
+        },
+        {
+          "section": "ratings",
+          "field": "baRY",
+          "before": 12,
+          "after": 9
+        },
+        {
+          "section": "ratings",
+          "field": "hlsv",
+          "before": 6,
+          "after": 11
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-22T11:18:36.269268",
+    "type": "save-to-game",
+    "result": {
+      "target": "D:\\Emulation\\xenia_manager\\Emulators\\Xenia Canary\\content\\E03000006397D304\\454109EC\\00000001\\ROSTER 20260611193707\\ROSTER 20260611193707",
+      "working_roster": "C:\\Users\\jesus\\OneDrive\\Documents\\NHL legacy mods\\backups\\editor_workspaces\\20260621-131617-ROSTER_20260611193707\\working_roster.bin"
+    }
+  },
+  {
+    "timestamp": "2026-06-22T11:19:59.326475",
+    "type": "save-to-game",
+    "result": {
+      "target": "D:\\Emulation\\xenia_manager\\Emulators\\Xenia Canary\\content\\E03000006397D304\\454109EC\\00000001\\ROSTER 20260611193707\\ROSTER 20260611193707",
+      "working_roster": "C:\\Users\\jesus\\OneDrive\\Documents\\NHL legacy mods\\backups\\editor_workspaces\\20260621-131617-ROSTER_20260611193707\\working_roster.bin"
+    }
+  },
+  {
+    "timestamp": "2026-06-22T11:23:42.430173",
+    "type": "save-to-game",
+    "result": {
+      "target": "D:\\Emulation\\xenia_manager\\Emulators\\Xenia Canary\\content\\E03000006397D304\\454109EC\\00000001\\ROSTER 20260611193707\\ROSTER 20260611193707",
+      "working_roster": "C:\\Users\\jesus\\OneDrive\\Documents\\NHL legacy mods\\backups\\editor_workspaces\\20260621-131617-ROSTER_20260611193707\\working_roster.bin"
+    }
+  },
+  {
+    "timestamp": "2026-06-22T11:25:26.328867",
+    "type": "update-attributes",
+    "result": {
+      "player": "John Tavares",
+      "updated_fields": {
+        "KrwV": 0
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "KrwV",
+          "before": 59,
+          "after": 0
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-22T11:25:31.168009",
+    "type": "save-to-game",
+    "result": {
+      "target": "D:\\Emulation\\xenia_manager\\Emulators\\Xenia Canary\\content\\E03000006397D304\\454109EC\\00000001\\ROSTER 20260611193707\\ROSTER 20260611193707",
+      "working_roster": "C:\\Users\\jesus\\OneDrive\\Documents\\NHL legacy mods\\backups\\editor_workspaces\\20260621-131617-ROSTER_20260611193707\\working_roster.bin"
+    }
+  },
+  {
+    "timestamp": "2026-06-22T11:25:41.720315",
+    "type": "save-to-game",
+    "result": {
+      "target": "D:\\Emulation\\xenia_manager\\Emulators\\Xenia Canary\\content\\E03000006397D304\\454109EC\\00000001\\ROSTER 20260611193707\\ROSTER 20260611193707",
+      "working_roster": "C:\\Users\\jesus\\OneDrive\\Documents\\NHL legacy mods\\backups\\editor_workspaces\\20260621-131617-ROSTER_20260611193707\\working_roster.bin"
+    }
+  },
+  {
+    "timestamp": "2026-06-22T11:48:38.675192",
+    "type": "update-attributes",
+    "result": {
+      "player": "John Tavares",
+      "updated_fields": {
+        "KrwV": 19
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "KrwV",
+          "before": 0,
+          "after": 19
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-22T11:48:41.664937",
+    "type": "save-to-game",
+    "result": {
+      "target": "D:\\Emulation\\xenia_manager\\Emulators\\Xenia Canary\\content\\E03000006397D304\\454109EC\\00000001\\ROSTER 20260611193707\\ROSTER 20260611193707",
+      "working_roster": "C:\\Users\\jesus\\OneDrive\\Documents\\NHL legacy mods\\backups\\editor_workspaces\\20260621-131617-ROSTER_20260611193707\\working_roster.bin"
+    }
+  },
+  {
+    "timestamp": "2026-06-22T12:19:51.034992",
+    "type": "update-attributes",
+    "result": {
+      "player": "John Tavares",
+      "updated_fields": {
+        "KrwV": 33
+      },
+      "changes": [
+        {
+          "section": "ratings",
+          "field": "KrwV",
+          "before": 19,
+          "after": 33
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-06-22T12:19:55.343597",
+    "type": "save-to-game",
+    "result": {
+      "target": "D:\\Emulation\\xenia_manager\\Emulators\\Xenia Canary\\content\\E03000006397D304\\454109EC\\00000001\\ROSTER 20260611193707\\ROSTER 20260611193707",
+      "working_roster": "C:\\Users\\jesus\\OneDrive\\Documents\\NHL legacy mods\\backups\\editor_workspaces\\20260621-131617-ROSTER_20260611193707\\working_roster.bin"
+    }
   }
 ]

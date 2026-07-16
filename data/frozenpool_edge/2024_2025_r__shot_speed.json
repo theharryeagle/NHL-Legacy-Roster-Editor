@@ -1,0 +1,11 @@
+{
+  "period": "2024-2025:R",
+  "report": "Shot Speed",
+  "url": "https://frozenpool.dobbersports.com/frozenpool_report_edge.php?pos=Skaters&team=ALL&mingp=20&rookie=All&period=2024-2025%3AR&report=Shot+Speed&reportdata_length=5000",
+  "html": "data\\frozenpool_edge\\2024_2025_r__shot_speed.html",
+  "csv": "data\\frozenpool_edge\\2024_2025_r__shot_speed.csv",
+  "rows": 698,
+  "ok": true,
+  "error": "",
+  "timestamp": "2026-06-22T10:05:33"
+}

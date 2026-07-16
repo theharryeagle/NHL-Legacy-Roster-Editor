@@ -4,6 +4,8 @@ from dataclasses import dataclass
 
 
 DEFAULT_REAL_CAP_MILLIONS = 104.0
+DEFAULT_GAME_CAP_MILLIONS = 71.4
+MINIMUM_GAME_AAV_MILLIONS = 0.675
 
 
 @dataclass(slots=True)
@@ -22,12 +24,13 @@ def scale_contract_by_cap_percentage(
     real_aav_millions: float,
     game_cap_millions: float,
     real_cap_millions: float = DEFAULT_REAL_CAP_MILLIONS,
+    minimum_game_aav_millions: float = MINIMUM_GAME_AAV_MILLIONS,
 ) -> ContractScaleResult:
     if real_cap_millions <= 0 or game_cap_millions <= 0 or real_aav_millions < 0:
         raise ValueError("Cap and AAV values must be positive, and AAV cannot be negative.")
 
     cap_hit_percent = real_aav_millions / real_cap_millions
-    scaled_aav_millions = cap_hit_percent * game_cap_millions
+    scaled_aav_millions = max(minimum_game_aav_millions, cap_hit_percent * game_cap_millions)
     return ContractScaleResult(
         player_name=player_name,
         real_cap_millions=real_cap_millions,
@@ -44,6 +47,7 @@ def scale_contract_by_percent(
     cap_hit_percent: float,
     game_cap_millions: float,
     real_cap_millions: float = DEFAULT_REAL_CAP_MILLIONS,
+    minimum_game_aav_millions: float = MINIMUM_GAME_AAV_MILLIONS,
 ) -> ContractScaleResult:
     if cap_hit_percent < 0:
         raise ValueError("Cap hit percent cannot be negative.")
@@ -53,4 +57,5 @@ def scale_contract_by_percent(
         real_aav_millions=real_aav_millions,
         game_cap_millions=game_cap_millions,
         real_cap_millions=real_cap_millions,
+        minimum_game_aav_millions=minimum_game_aav_millions,
     )

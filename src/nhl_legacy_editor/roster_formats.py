@@ -135,6 +135,52 @@ def extract_roster_payload(path: Path, output_path: Path) -> Path:
     return output_path
 
 
+def validate_rosterfile(path: Path) -> dict[str, object]:
+    data = path.read_bytes()
+    if not data.startswith(b"RosterFile"):
+        raise ValueError(f"Not an NHL Legacy RosterFile: {path}")
+    if len(data) < 0x30:
+        raise ValueError(f"RosterFile is too small: {path}")
+
+    stored_header_crc = int.from_bytes(data[0x10:0x14], "big")
+    calculated_header_crc = zlib.crc32(bytes(data[0x1C:])) & 0xFFFFFFFF
+    if stored_header_crc != calculated_header_crc:
+        raise ValueError(
+            f"RosterFile header CRC mismatch: stored {stored_header_crc:08x}, "
+            f"calculated {calculated_header_crc:08x}"
+        )
+
+    stored_payload_crc = int.from_bytes(data[0x28:0x2C], "big")
+    calculated_payload_crc = _crc32_bzip2(bytes(data[0x2C:]))
+    if stored_payload_crc != calculated_payload_crc:
+        raise ValueError(
+            f"RosterFile payload CRC mismatch: stored {stored_payload_crc:08x}, "
+            f"calculated {calculated_payload_crc:08x}"
+        )
+
+    offset, payload = extract_roster_payload_bytes(path)
+    expected_payload_size = int.from_bytes(data[0x24:0x28], "big")
+    if expected_payload_size and len(payload) != expected_payload_size:
+        raise ValueError(
+            f"RosterFile decompressed payload mismatch: expected {expected_payload_size}, got {len(payload)}"
+        )
+    if not payload.startswith(b"DB"):
+        raise ValueError("RosterFile payload does not start with the expected DB magic.")
+    compressed_size = int.from_bytes(data[0x2C:0x30], "little")
+    if compressed_size <= 0 or offset + compressed_size > len(data):
+        raise ValueError(f"RosterFile compressed size header is invalid: {compressed_size}")
+
+    return {
+        "path": str(path),
+        "size_bytes": len(data),
+        "compression_offset": offset,
+        "compressed_size": compressed_size,
+        "payload_size": len(payload),
+        "header_crc": f"{stored_header_crc:08x}",
+        "payload_crc": f"{stored_payload_crc:08x}",
+    }
+
+
 def replace_roster_payload(path: Path, payload: bytes, output_path: Path | None = None) -> Path:
     data = path.read_bytes()
     offset, old_payload = extract_roster_payload_bytes(path)
@@ -172,4 +218,5 @@ def replace_roster_payload(path: Path, payload: bytes, output_path: Path | None 
         raise ValueError(
             f"Rebuilt roster payload size mismatch: expected {expected_payload_size}, got {len(rebuilt_payload)}."
         )
+    validate_rosterfile(target)
     return target

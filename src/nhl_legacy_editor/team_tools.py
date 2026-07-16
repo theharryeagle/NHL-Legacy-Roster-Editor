@@ -6,8 +6,8 @@ from pathlib import Path
 from .tdb_access import TdbAccess
 
 
-TEAM_TABLE_INDEX = 0
-PLAYER_INSTANCE_TABLE_INDEX = 3
+TEAM_TABLE_INDEX = "ttOk"
+PLAYER_INSTANCE_TABLE_INDEX = "ulGe"
 TEAM_CODE_FIELD = "qEfv"
 TEAM_ABBREV_FIELD = "RPbr"
 INSTANCE_KEY_FIELD = "TWSX"
@@ -26,6 +26,9 @@ NHL_ABBREVS = {
     "ANA", "BOS", "BUF", "CAR", "CBJ", "CGY", "CHI", "COL", "DAL", "DET", "EDM", "FLA",
     "LA", "LAK", "MIN", "MTL", "NSH", "NJ", "NJD", "NYI", "NYR", "OTT", "PHI", "PIT",
     "SJ", "SJS", "STL", "TB", "TOR", "VAN", "WSH", "WPG", "UHC", "UTA", "VGK", "SEA",
+}
+CUSTOM_NHL_ABBREVS = {
+    "SLB", "BST", "VNC", "AND", "LAK", "SEA", "FLP", "OTS", "HTF", "MNW", "CVF", "HSK",
 }
 ORGANIZATION_ALIASES = {
     "ANA": {"ANA", "SD", "ANAS", "AND"},
@@ -104,15 +107,16 @@ def organization_for_abbrev(
     if cleaned in links:
         return links[cleaned]
     normalized = normalize_org_abbrev(cleaned)
-    return normalized if normalized in NHL_ABBREVS else None
+    return normalized if normalized in NHL_ABBREVS or normalized in CUSTOM_NHL_ABBREVS else None
 
 
 def load_teams(db_path: Path) -> list[TeamRecord]:
     access = TdbAccess()
+    team_index = access.resolve_table_index(db_path, TEAM_TABLE_INDEX)
     _table, _fields, rows = access.sample_records(
         db_path,
         TEAM_TABLE_INDEX,
-        limit=access.list_tables(db_path)[TEAM_TABLE_INDEX].record_count,
+        limit=access.list_tables(db_path)[team_index].record_count,
     )
     teams: list[TeamRecord] = []
     for row in rows:
@@ -137,13 +141,48 @@ def get_team_maps(db_path: Path) -> tuple[dict[int, TeamRecord], dict[str, TeamR
     return by_code, by_abbrev
 
 
+def resolve_team_abbrev(
+    target_abbrev: str,
+    teams: list[TeamRecord],
+    custom_links: dict[str, str] | None = None,
+) -> TeamRecord | None:
+    """Resolve modern/external NHL abbreviations to the roster's base team."""
+    cleaned = target_abbrev.upper().strip()
+    normalized_target = normalize_org_abbrev(cleaned)
+    candidates = [
+        team
+        for team in teams
+        if team.abbrev.upper() == cleaned
+        or organization_for_abbrev(team.abbrev, custom_links) == normalized_target
+    ]
+    if not candidates:
+        return None
+    candidates.sort(
+        key=lambda team: (
+            0 if league_name_for_team(team) == "NHL" and 0 <= team.code <= 31 else 1,
+            0 if team.abbrev.upper() == cleaned else 1,
+            0 if league_name_for_team(team) == "NHL" else 1,
+            team.code,
+        )
+    )
+    return candidates[0]
+
+
 def league_name_for_team(team: TeamRecord | None) -> str:
     if team is None:
         return "Free Agents"
     code = team.code
     abbrev = team.abbrev.upper()
     name = team.name.lower()
-    if abbrev in NHL_ABBREVS or 0 <= code <= 31:
+    if code in {30, 31} or abbrev in {"EAS", "WES"}:
+        return "Exhibition"
+    if abbrev in {"VGK", "SEA", "UTA", "UHC"}:
+        return "NHL"
+    # The remaining custom slots mirror NHL organizations and often contain a
+    # second instance of the same player. Keep them in the organization layer.
+    if abbrev in CUSTOM_NHL_ABBREVS or 222 <= code <= 235:
+        return "Organization"
+    if abbrev in NHL_ABBREVS or 0 <= code <= 29:
         return "NHL"
     if 32 <= code <= 61:
         return "AHL"
@@ -161,8 +200,6 @@ def league_name_for_team(team: TeamRecord | None) -> str:
         return "World Cup"
     if 220 <= code <= 221:
         return "EASHL"
-    if 222 <= code <= 235:
-        return "Exhibition"
     return "Other League"
 
 

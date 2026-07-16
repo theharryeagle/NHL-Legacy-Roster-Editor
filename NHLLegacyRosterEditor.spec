@@ -5,7 +5,7 @@ a = Analysis(
     ['desktop_launcher.py'],
     pathex=[],
     binaries=[],
-    datas=[('tools\\tdbaccess\\x64\\tdbaccess.dll', 'tools\\tdbaccess\\x64'), ('tools\\tdbaccess\\x86\\tdbaccess.dll', 'tools\\tdbaccess\\x86')],
+    datas=[('tools\\tdbaccess\\x64\\tdbaccess.dll', 'tools\\tdbaccess\\x64'), ('tools\\tdbaccess\\x86\\tdbaccess.dll', 'tools\\tdbaccess\\x86'), ('data\\2026_draft_class.json', 'data')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},

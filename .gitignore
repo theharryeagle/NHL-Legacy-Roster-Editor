@@ -1,2 +1,20 @@
 __pycache__/
 *.egg-info/
+/.codex-remote-attachments/
+/.pytest_cache/
+/build*/
+/dist*/
+/backups/
+/debug*
+/tmp_*/
+/*.db
+/*.roster
+/ROSTER *
+/game_analysis/
+/franchise_mode_lab/inputs/
+/franchise_mode_lab/working/
+/franchise_mode_lab/tools/XboxToolkit/
+/franchise_mode_lab/tools/.dotnet/
+/franchise_mode_lab/**/bin/
+/franchise_mode_lab/**/obj/
+/data/frozenpool_edge/*.html

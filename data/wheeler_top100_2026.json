@@ -1,0 +1,3430 @@
+{
+  "title": "Top 100 drafted NHL prospects ranking: McKenna, Stenberg, Martone lead summer 2026 list",
+  "source": "https://www.nytimes.com/athletic/7416111/2026/07/14/nhl-prospects-top-100-ranking-2026/",
+  "published": "2026-07-14",
+  "derived": "2026-07-14",
+  "policy": {
+    "attribute_delta_min": -2,
+    "attribute_delta_max": 3,
+    "minimum_potential": "3.5 Yellow",
+    "middle_six_potential": "4.0 Red",
+    "maximum_non_mckenna_potential": "4.5 Green",
+    "mckenna_potential": "5.0 Green"
+  },
+  "prospects": [
+    {
+      "article_player_id": 319154,
+      "rank": 1,
+      "tier": 1,
+      "name": "Gavin McKenna",
+      "source_name": "Gavin McKenna",
+      "team": "TOR",
+      "draft_year": 2026,
+      "position": "LW",
+      "projection": "first_line",
+      "projection_label": "First-line / star",
+      "potential_stars": 5.0,
+      "potential_color": "Green",
+      "potential_reason": "Franchise ceiling; the only 5-star prospect in this set.",
+      "strengths": [
+        "Deking",
+        "Hand-Eye",
+        "Offensive Awareness",
+        "Passing",
+        "Puck Control",
+        "Stick Checking"
+      ],
+      "weaknesses": [
+        "Acceleration",
+        "Aggressiveness",
+        "Defensive Awareness"
+      ],
+      "modifiers": {
+        "acceleration": -2,
+        "aggressiveness": -1,
+        "defensive_awareness": -1,
+        "deking": 1,
+        "hand_eye": 1,
+        "offensive_awareness": 3,
+        "passing": 2,
+        "puck_control": 2,
+        "stick_checking": 2
+      }
+    },
+    {
+      "article_player_id": 38894,
+      "rank": 2,
+      "tier": 1,
+      "name": "Ivar Stenberg",
+      "source_name": "Ivar Stenberg",
+      "team": "SJS",
+      "draft_year": 2026,
+      "position": "RW",
+      "projection": "first_line",
+      "projection_label": "First-line / star",
+      "potential_stars": 4.5,
+      "potential_color": "Green",
+      "potential_reason": "Tier 1 first-line ceiling with high confidence.",
+      "strengths": [
+        "Agility",
+        "Body Checking",
+        "Passing",
+        "Puck Control",
+        "Speed",
+        "Strength",
+        "Wrist Shot Accuracy"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "agility": 3,
+        "body_checking": 3,
+        "passing": 3,
+        "puck_control": 3,
+        "speed": 3,
+        "strength": 3,
+        "wrist_shot_accuracy": 3
+      }
+    },
+    {
+      "article_player_id": 640996,
+      "rank": 3,
+      "tier": 1,
+      "name": "Porter Martone",
+      "source_name": "Porter Martone",
+      "team": "PHI",
+      "draft_year": 2025,
+      "position": "RW",
+      "projection": "first_line",
+      "projection_label": "First-line / star",
+      "potential_stars": 4.5,
+      "potential_color": "Green",
+      "potential_reason": "Tier 1 first-line ceiling with high confidence.",
+      "strengths": [
+        "Aggressiveness",
+        "Body Checking",
+        "Deking",
+        "Passing",
+        "Strength",
+        "Wrist Shot Accuracy",
+        "Wrist Shot Power"
+      ],
+      "weaknesses": [
+        "Discipline",
+        "Endurance",
+        "Speed"
+      ],
+      "modifiers": {
+        "aggressiveness": 2,
+        "body_checking": 2,
+        "deking": 3,
+        "discipline": -2,
+        "endurance": -1,
+        "passing": 2,
+        "speed": -1,
+        "strength": 2,
+        "wrist_shot_accuracy": 3,
+        "wrist_shot_power": 3
+      }
+    },
+    {
+      "article_player_id": 135341,
+      "rank": 4,
+      "tier": 1,
+      "name": "Michael Misa",
+      "source_name": "Michael Misa",
+      "team": "SJS",
+      "draft_year": 2025,
+      "position": "C",
+      "projection": "first_line",
+      "projection_label": "First-line / star",
+      "potential_stars": 4.5,
+      "potential_color": "Green",
+      "potential_reason": "Tier 1 first-line ceiling with high confidence.",
+      "strengths": [
+        "Acceleration",
+        "Aggressiveness",
+        "Agility",
+        "Defensive Awareness",
+        "Passing",
+        "Poise",
+        "Speed"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "acceleration": 2,
+        "aggressiveness": 2,
+        "agility": 3,
+        "defensive_awareness": 2,
+        "passing": 2,
+        "poise": 2,
+        "speed": 2
+      }
+    },
+    {
+      "article_player_id": 901927,
+      "rank": 5,
+      "tier": 2,
+      "name": "Chase Reid",
+      "source_name": "Chase Reid",
+      "team": "SEA",
+      "draft_year": 2026,
+      "position": "RHD",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 4.5,
+      "potential_color": "Yellow",
+      "potential_reason": "Tier 2 impact ceiling; role is not stated firmly enough for Green.",
+      "strengths": [
+        "Defensive Awareness",
+        "Offensive Awareness",
+        "Passing",
+        "Poise",
+        "Wrist Shot Accuracy",
+        "Wrist Shot Power"
+      ],
+      "weaknesses": [
+        "Acceleration",
+        "Agility",
+        "Speed"
+      ],
+      "modifiers": {
+        "acceleration": -2,
+        "agility": -1,
+        "defensive_awareness": 1,
+        "offensive_awareness": 2,
+        "passing": 3,
+        "poise": 1,
+        "speed": -1,
+        "wrist_shot_accuracy": 2,
+        "wrist_shot_power": 2
+      }
+    },
+    {
+      "article_player_id": 312498,
+      "rank": 6,
+      "tier": 2,
+      "name": "Zayne Parekh",
+      "source_name": "Zayne Parekh",
+      "team": "CGY",
+      "draft_year": 2024,
+      "position": "RHD",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 4.5,
+      "potential_color": "Yellow",
+      "potential_reason": "Tier 2 impact ceiling; role is not stated firmly enough for Green.",
+      "strengths": [
+        "Aggressiveness",
+        "Agility",
+        "Balance",
+        "Body Checking",
+        "Offensive Awareness",
+        "Speed",
+        "Strength"
+      ],
+      "weaknesses": [
+        "Discipline",
+        "Passing"
+      ],
+      "modifiers": {
+        "aggressiveness": 1,
+        "agility": 2,
+        "balance": 1,
+        "body_checking": 2,
+        "discipline": -1,
+        "offensive_awareness": 2,
+        "passing": -1,
+        "speed": 2,
+        "strength": 1
+      }
+    },
+    {
+      "article_player_id": 770792,
+      "rank": 7,
+      "tier": 2,
+      "name": "Tij Iginla",
+      "source_name": "Tij Iginla",
+      "team": "UTA",
+      "draft_year": 2024,
+      "position": "LW",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-six forward projection in Tier 2.",
+      "strengths": [
+        "Agility",
+        "Deking",
+        "Hand-Eye",
+        "Offensive Awareness",
+        "Puck Control",
+        "Speed",
+        "Strength"
+      ],
+      "weaknesses": [
+        "Aggressiveness",
+        "Defensive Awareness",
+        "Passing"
+      ],
+      "modifiers": {
+        "aggressiveness": -1,
+        "agility": 2,
+        "defensive_awareness": -1,
+        "deking": 2,
+        "hand_eye": 2,
+        "offensive_awareness": 2,
+        "passing": -1,
+        "puck_control": 2,
+        "speed": 3,
+        "strength": 2
+      }
+    },
+    {
+      "article_player_id": 182032,
+      "rank": 8,
+      "tier": 2,
+      "name": "Caleb Malhotra",
+      "source_name": "Caleb Malhotra",
+      "team": "VAN",
+      "draft_year": 2026,
+      "position": "C",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-six forward projection in Tier 2.",
+      "strengths": [
+        "Body Checking",
+        "Poise",
+        "Speed",
+        "Stick Checking"
+      ],
+      "weaknesses": [
+        "Strength"
+      ],
+      "modifiers": {
+        "body_checking": 1,
+        "poise": 1,
+        "speed": 2,
+        "stick_checking": 1,
+        "strength": -1
+      }
+    },
+    {
+      "article_player_id": 101313,
+      "rank": 9,
+      "tier": 2,
+      "name": "Alberts Šmits",
+      "source_name": "Alberts Šmits",
+      "team": "NYR",
+      "draft_year": 2026,
+      "position": "LHD",
+      "projection": "top_four",
+      "projection_label": "Top-four defenseman",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-four defenseman projection in Tier 2.",
+      "strengths": [
+        "Aggressiveness",
+        "Puck Control",
+        "Stick Checking",
+        "Strength"
+      ],
+      "weaknesses": [
+        "Agility",
+        "Speed"
+      ],
+      "modifiers": {
+        "aggressiveness": 1,
+        "agility": -1,
+        "puck_control": 1,
+        "speed": -1,
+        "stick_checking": 1,
+        "strength": 1
+      }
+    },
+    {
+      "article_player_id": 574189,
+      "rank": 10,
+      "tier": 2,
+      "name": "Viggo Björck",
+      "source_name": "Viggo Björck",
+      "team": "WPG",
+      "draft_year": 2026,
+      "position": "C",
+      "projection": "first_line",
+      "projection_label": "First-line / star",
+      "potential_stars": 4.5,
+      "potential_color": "Yellow",
+      "potential_reason": "First-line / star ceiling in Tier 2.",
+      "strengths": [
+        "Acceleration",
+        "Aggressiveness",
+        "Agility",
+        "Face-offs",
+        "Passing",
+        "Poise",
+        "Strength"
+      ],
+      "weaknesses": [
+        "Defensive Awareness",
+        "Puck Control"
+      ],
+      "modifiers": {
+        "acceleration": 1,
+        "aggressiveness": 2,
+        "agility": 2,
+        "defensive_awareness": -1,
+        "faceoffs": 1,
+        "passing": 2,
+        "poise": 1,
+        "puck_control": -1,
+        "strength": 2
+      }
+    },
+    {
+      "article_player_id": 885797,
+      "rank": 11,
+      "tier": 2,
+      "name": "Carson Carels",
+      "source_name": "Carson Carels",
+      "team": "CGY",
+      "draft_year": 2026,
+      "position": "LHD",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 4.5,
+      "potential_color": "Yellow",
+      "potential_reason": "Tier 2 impact ceiling; role is not stated firmly enough for Green.",
+      "strengths": [
+        "Agility",
+        "Body Checking",
+        "Deking",
+        "Passing",
+        "Puck Control",
+        "Speed",
+        "Strength"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "agility": 2,
+        "body_checking": 1,
+        "deking": 1,
+        "passing": 2,
+        "puck_control": 1,
+        "speed": 2,
+        "strength": 2
+      }
+    },
+    {
+      "article_player_id": 20426,
+      "rank": 12,
+      "tier": 2,
+      "name": "Daxon Rudolph",
+      "source_name": "Daxon Rudolph",
+      "team": "BUF",
+      "draft_year": 2026,
+      "position": "RHD",
+      "projection": "top_four",
+      "projection_label": "Top-four defenseman",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-four defenseman projection in Tier 2.",
+      "strengths": [
+        "Aggressiveness",
+        "Defensive Awareness",
+        "Deking",
+        "Passing",
+        "Stick Checking",
+        "Wrist Shot Accuracy",
+        "Wrist Shot Power"
+      ],
+      "weaknesses": [
+        "Speed"
+      ],
+      "modifiers": {
+        "aggressiveness": 1,
+        "defensive_awareness": 2,
+        "deking": 2,
+        "passing": 1,
+        "speed": -1,
+        "stick_checking": 1,
+        "wrist_shot_accuracy": 2,
+        "wrist_shot_power": 2
+      }
+    },
+    {
+      "article_player_id": 741636,
+      "rank": 13,
+      "tier": 2,
+      "name": "James Hagens",
+      "source_name": "James Hagens",
+      "team": "BOS",
+      "draft_year": 2025,
+      "position": "C",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-six forward projection in Tier 2.",
+      "strengths": [
+        "Passing"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "passing": 1
+      }
+    },
+    {
+      "article_player_id": 165183,
+      "rank": 14,
+      "tier": 2,
+      "name": "Ilya Protas",
+      "source_name": "Ilya Protas",
+      "team": "WSH",
+      "draft_year": 2024,
+      "position": "C",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-six forward projection in Tier 2.",
+      "strengths": [
+        "Aggressiveness",
+        "Balance",
+        "Deking",
+        "Hand-Eye",
+        "Passing",
+        "Strength"
+      ],
+      "weaknesses": [
+        "Speed"
+      ],
+      "modifiers": {
+        "aggressiveness": 1,
+        "balance": 2,
+        "deking": 2,
+        "hand_eye": 2,
+        "passing": 1,
+        "speed": -1,
+        "strength": 1
+      }
+    },
+    {
+      "article_player_id": 673898,
+      "rank": 15,
+      "tier": 2,
+      "name": "Keaton Verhoeff",
+      "source_name": "Keaton Verhoeff",
+      "team": "SJS",
+      "draft_year": 2026,
+      "position": "RHD",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 4.5,
+      "potential_color": "Yellow",
+      "potential_reason": "Tier 2 impact ceiling; role is not stated firmly enough for Green.",
+      "strengths": [
+        "Aggressiveness",
+        "Agility",
+        "Defensive Awareness",
+        "Passing",
+        "Poise",
+        "Puck Control",
+        "Stick Checking"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "aggressiveness": 1,
+        "agility": 1,
+        "defensive_awareness": 2,
+        "passing": 1,
+        "poise": 1,
+        "puck_control": 1,
+        "stick_checking": 1
+      }
+    },
+    {
+      "article_player_id": 431236,
+      "rank": 16,
+      "tier": 2,
+      "name": "Sam Dickinson",
+      "source_name": "Sam Dickinson",
+      "team": "SJS",
+      "draft_year": 2024,
+      "position": "LHD",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 4.5,
+      "potential_color": "Yellow",
+      "potential_reason": "Tier 2 impact ceiling; role is not stated firmly enough for Green.",
+      "strengths": [
+        "Deking",
+        "Endurance",
+        "Passing",
+        "Poise",
+        "Speed",
+        "Strength"
+      ],
+      "weaknesses": [
+        "Agility"
+      ],
+      "modifiers": {
+        "agility": -1,
+        "deking": 1,
+        "endurance": 1,
+        "passing": 1,
+        "poise": 1,
+        "speed": 2,
+        "strength": 1
+      }
+    },
+    {
+      "article_player_id": 45667,
+      "rank": 17,
+      "tier": 2,
+      "name": "Cole Hutson",
+      "source_name": "Cole Hutson",
+      "team": "WSH",
+      "draft_year": 2024,
+      "position": "LHD",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 4.5,
+      "potential_color": "Yellow",
+      "potential_reason": "Tier 2 impact ceiling; role is not stated firmly enough for Green.",
+      "strengths": [
+        "Aggressiveness",
+        "Agility",
+        "Body Checking",
+        "Passing",
+        "Puck Control",
+        "Wrist Shot Accuracy",
+        "Wrist Shot Power"
+      ],
+      "weaknesses": [
+        "Offensive Awareness"
+      ],
+      "modifiers": {
+        "aggressiveness": 1,
+        "agility": 2,
+        "body_checking": 1,
+        "offensive_awareness": -1,
+        "passing": 3,
+        "puck_control": 2,
+        "wrist_shot_accuracy": 2,
+        "wrist_shot_power": 2
+      }
+    },
+    {
+      "article_player_id": 177289,
+      "rank": 18,
+      "tier": 2,
+      "name": "Anton Frondell",
+      "source_name": "Anton Frondell",
+      "team": "CHI",
+      "draft_year": 2025,
+      "position": "C",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-six forward projection in Tier 2.",
+      "strengths": [
+        "Defensive Awareness",
+        "Passing",
+        "Slap Shot Accuracy",
+        "Slap Shot Power",
+        "Speed",
+        "Strength",
+        "Wrist Shot Accuracy"
+      ],
+      "weaknesses": [
+        "Endurance"
+      ],
+      "modifiers": {
+        "defensive_awareness": 1,
+        "endurance": -1,
+        "passing": 2,
+        "slap_shot_accuracy": 1,
+        "slap_shot_power": 1,
+        "speed": 2,
+        "strength": 2,
+        "wrist_shot_accuracy": 1
+      }
+    },
+    {
+      "article_player_id": 682130,
+      "rank": 19,
+      "tier": 2,
+      "name": "Gabe Perreault",
+      "source_name": "Gabe Perreault",
+      "team": "NYR",
+      "draft_year": 2023,
+      "position": "LW",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-six forward projection in Tier 2.",
+      "strengths": [
+        "Aggressiveness",
+        "Agility",
+        "Body Checking",
+        "Deking",
+        "Endurance",
+        "Passing",
+        "Puck Control"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "aggressiveness": 1,
+        "agility": 1,
+        "body_checking": 1,
+        "deking": 1,
+        "endurance": 1,
+        "passing": 3,
+        "puck_control": 2
+      }
+    },
+    {
+      "article_player_id": 650679,
+      "rank": 20,
+      "tier": 2,
+      "name": "Berkly Catton",
+      "source_name": "Berkly Catton",
+      "team": "SEA",
+      "draft_year": 2024,
+      "position": "C",
+      "projection": "first_line",
+      "projection_label": "First-line / star",
+      "potential_stars": 4.5,
+      "potential_color": "Yellow",
+      "potential_reason": "First-line / star ceiling in Tier 2.",
+      "strengths": [
+        "Agility",
+        "Defensive Awareness",
+        "Endurance",
+        "Passing",
+        "Puck Control",
+        "Speed",
+        "Wrist Shot Accuracy"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "agility": 1,
+        "defensive_awareness": 2,
+        "endurance": 1,
+        "passing": 1,
+        "puck_control": 1,
+        "speed": 3,
+        "wrist_shot_accuracy": 1
+      }
+    },
+    {
+      "article_player_id": 898071,
+      "rank": 21,
+      "tier": 2,
+      "name": "Michael Hage",
+      "source_name": "Michael Hage",
+      "team": "MTL",
+      "draft_year": 2024,
+      "position": "C",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-six forward projection in Tier 2.",
+      "strengths": [
+        "Aggressiveness",
+        "Agility",
+        "Balance",
+        "Body Checking",
+        "Endurance",
+        "Passing",
+        "Speed"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "aggressiveness": 1,
+        "agility": 1,
+        "balance": 1,
+        "body_checking": 1,
+        "endurance": 1,
+        "passing": 1,
+        "speed": 2
+      }
+    },
+    {
+      "article_player_id": 462695,
+      "rank": 22,
+      "tier": 2,
+      "name": "Caleb Desnoyers",
+      "source_name": "Caleb Desnoyers",
+      "team": "UTA",
+      "draft_year": 2025,
+      "position": "C",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-six forward projection in Tier 2.",
+      "strengths": [
+        "Acceleration",
+        "Aggressiveness",
+        "Agility",
+        "Defensive Awareness",
+        "Face-offs",
+        "Poise",
+        "Speed"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "acceleration": 2,
+        "aggressiveness": 2,
+        "agility": 2,
+        "defensive_awareness": 1,
+        "faceoffs": 1,
+        "poise": 1,
+        "speed": 3
+      }
+    },
+    {
+      "article_player_id": 185563,
+      "rank": 23,
+      "tier": 2,
+      "name": "Roman Kantserov",
+      "source_name": "Roman Kantserov",
+      "team": "CHI",
+      "draft_year": 2023,
+      "position": "RW",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-six forward projection in Tier 2.",
+      "strengths": [
+        "Deking",
+        "Offensive Awareness",
+        "Slap Shot Accuracy",
+        "Slap Shot Power",
+        "Speed",
+        "Wrist Shot Accuracy",
+        "Wrist Shot Power"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "deking": 1,
+        "offensive_awareness": 1,
+        "slap_shot_accuracy": 1,
+        "slap_shot_power": 1,
+        "speed": 1,
+        "wrist_shot_accuracy": 1,
+        "wrist_shot_power": 1
+      }
+    },
+    {
+      "article_player_id": 319489,
+      "rank": 24,
+      "tier": 2,
+      "name": "Jake O'Brien",
+      "source_name": "Jake O'Brien",
+      "team": "SEA",
+      "draft_year": 2025,
+      "position": "C",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-six forward projection in Tier 2.",
+      "strengths": [
+        "Aggressiveness",
+        "Agility",
+        "Passing",
+        "Poise",
+        "Puck Control",
+        "Speed",
+        "Strength"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "aggressiveness": 1,
+        "agility": 1,
+        "passing": 2,
+        "poise": 2,
+        "puck_control": 1,
+        "speed": 1,
+        "strength": 1
+      }
+    },
+    {
+      "article_player_id": 293243,
+      "rank": 25,
+      "tier": 2,
+      "name": "Ryan Lin",
+      "source_name": "Ryan Lin",
+      "team": "SJS",
+      "draft_year": 2026,
+      "position": "RHD",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 4.5,
+      "potential_color": "Yellow",
+      "potential_reason": "Tier 2 impact ceiling; role is not stated firmly enough for Green.",
+      "strengths": [
+        "Aggressiveness",
+        "Agility",
+        "Defensive Awareness",
+        "Hand-Eye",
+        "Offensive Awareness",
+        "Puck Control",
+        "Speed"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "aggressiveness": 1,
+        "agility": 1,
+        "defensive_awareness": 3,
+        "hand_eye": 2,
+        "offensive_awareness": 2,
+        "puck_control": 2,
+        "speed": 2
+      }
+    },
+    {
+      "article_player_id": 55712,
+      "rank": 26,
+      "tier": 2,
+      "name": "Wyatt Cullen",
+      "source_name": "Wyatt Cullen",
+      "team": "NSH",
+      "draft_year": 2026,
+      "position": "LW",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 4.5,
+      "potential_color": "Yellow",
+      "potential_reason": "Tier 2 impact ceiling; role is not stated firmly enough for Green.",
+      "strengths": [
+        "Aggressiveness",
+        "Agility",
+        "Defensive Awareness",
+        "Deking"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "aggressiveness": 1,
+        "agility": 2,
+        "defensive_awareness": 1,
+        "deking": 2
+      }
+    },
+    {
+      "article_player_id": 702892,
+      "rank": 27,
+      "tier": 2,
+      "name": "Tynan Lawrence",
+      "source_name": "Tynan Lawrence",
+      "team": "STL",
+      "draft_year": 2026,
+      "position": "C",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 4.5,
+      "potential_color": "Yellow",
+      "potential_reason": "Tier 2 impact ceiling; role is not stated firmly enough for Green.",
+      "strengths": [
+        "Aggressiveness",
+        "Defensive Awareness",
+        "Speed",
+        "Strength",
+        "Wrist Shot Accuracy",
+        "Wrist Shot Power"
+      ],
+      "weaknesses": [
+        "Passing"
+      ],
+      "modifiers": {
+        "aggressiveness": 2,
+        "defensive_awareness": 2,
+        "passing": -1,
+        "speed": 1,
+        "strength": 1,
+        "wrist_shot_accuracy": 1,
+        "wrist_shot_power": 1
+      }
+    },
+    {
+      "article_player_id": 20852,
+      "rank": 28,
+      "tier": 2,
+      "name": "Roger McQueen",
+      "source_name": "Roger McQueen",
+      "team": "ANA",
+      "draft_year": 2025,
+      "position": "C",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-six forward projection in Tier 2.",
+      "strengths": [
+        "Body Checking",
+        "Hand-Eye",
+        "Puck Control",
+        "Speed",
+        "Strength",
+        "Wrist Shot Accuracy"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "body_checking": 1,
+        "hand_eye": 1,
+        "puck_control": 1,
+        "speed": 1,
+        "strength": 1,
+        "wrist_shot_accuracy": 1
+      }
+    },
+    {
+      "article_player_id": 682727,
+      "rank": 29,
+      "tier": 3,
+      "name": "Carter Yakemchuk",
+      "source_name": "Carter Yakemchuk",
+      "team": "OTT",
+      "draft_year": 2024,
+      "position": "RHD",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Tier 3 projects above the Top 100 minimum.",
+      "strengths": [
+        "Balance",
+        "Body Checking",
+        "Deking",
+        "Speed",
+        "Strength",
+        "Wrist Shot Accuracy"
+      ],
+      "weaknesses": [
+        "Defensive Awareness"
+      ],
+      "modifiers": {
+        "balance": 1,
+        "body_checking": 1,
+        "defensive_awareness": -1,
+        "deking": 2,
+        "speed": 1,
+        "strength": 1,
+        "wrist_shot_accuracy": 1
+      }
+    },
+    {
+      "article_player_id": 14851,
+      "rank": 30,
+      "tier": 3,
+      "name": "Ethan Belchetz",
+      "source_name": "Ethan Belchetz",
+      "team": "UTA",
+      "draft_year": 2026,
+      "position": "LW",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Tier 3 projects above the Top 100 minimum.",
+      "strengths": [
+        "Balance",
+        "Puck Control",
+        "Strength"
+      ],
+      "weaknesses": [
+        "Endurance"
+      ],
+      "modifiers": {
+        "balance": 1,
+        "endurance": -1,
+        "puck_control": 1,
+        "strength": 1
+      }
+    },
+    {
+      "article_player_id": 86677,
+      "rank": 31,
+      "tier": 3,
+      "name": "Matvei Gridin",
+      "source_name": "Matvei Gridin",
+      "team": "CGY",
+      "draft_year": 2024,
+      "position": "LW",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-six forward projection in Tier 3.",
+      "strengths": [
+        "Poise",
+        "Puck Control",
+        "Speed",
+        "Wrist Shot Accuracy",
+        "Wrist Shot Power"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "poise": 2,
+        "puck_control": 1,
+        "speed": 1,
+        "wrist_shot_accuracy": 1,
+        "wrist_shot_power": 1
+      }
+    },
+    {
+      "article_player_id": 551223,
+      "rank": 32,
+      "tier": 3,
+      "name": "Igor Chernyshov",
+      "source_name": "Igor Chernyshov",
+      "team": "SJS",
+      "draft_year": 2024,
+      "position": "LW",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-six forward projection in Tier 3.",
+      "strengths": [
+        "Offensive Awareness",
+        "Puck Control",
+        "Speed",
+        "Strength",
+        "Wrist Shot Accuracy",
+        "Wrist Shot Power"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "offensive_awareness": 1,
+        "puck_control": 1,
+        "speed": 2,
+        "strength": 1,
+        "wrist_shot_accuracy": 1,
+        "wrist_shot_power": 1
+      }
+    },
+    {
+      "article_player_id": 9037,
+      "rank": 33,
+      "tier": 3,
+      "name": "Alexander Zharovsky",
+      "source_name": "Alexander Zharovsky",
+      "team": "MTL",
+      "draft_year": 2025,
+      "position": "RW",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-six forward projection in Tier 3.",
+      "strengths": [
+        "Agility",
+        "Deking",
+        "Poise",
+        "Puck Control",
+        "Speed",
+        "Strength"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "agility": 1,
+        "deking": 1,
+        "poise": 2,
+        "puck_control": 2,
+        "speed": 1,
+        "strength": 1
+      }
+    },
+    {
+      "article_player_id": 706460,
+      "rank": 34,
+      "tier": 3,
+      "name": "Malte Gustafsson",
+      "source_name": "Malte Gustafsson",
+      "team": "NYI",
+      "draft_year": 2026,
+      "position": "LHD",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Tier 3 projects above the Top 100 minimum.",
+      "strengths": [
+        "Aggressiveness",
+        "Body Checking",
+        "Defensive Awareness",
+        "Endurance",
+        "Stick Checking",
+        "Strength"
+      ],
+      "weaknesses": [
+        "Puck Control",
+        "Speed"
+      ],
+      "modifiers": {
+        "aggressiveness": 1,
+        "body_checking": 1,
+        "defensive_awareness": 3,
+        "endurance": 1,
+        "puck_control": -1,
+        "speed": -1,
+        "stick_checking": 1,
+        "strength": 1
+      }
+    },
+    {
+      "article_player_id": 988737,
+      "rank": 35,
+      "tier": 3,
+      "name": "Brady Martin",
+      "source_name": "Brady Martin",
+      "team": "NSH",
+      "draft_year": 2025,
+      "position": "C",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-six forward projection in Tier 3.",
+      "strengths": [
+        "Aggressiveness",
+        "Body Checking",
+        "Endurance",
+        "Hand-Eye",
+        "Passing",
+        "Poise",
+        "Strength"
+      ],
+      "weaknesses": [
+        "Speed",
+        "Wrist Shot Power"
+      ],
+      "modifiers": {
+        "aggressiveness": 1,
+        "body_checking": 2,
+        "endurance": 1,
+        "hand_eye": 2,
+        "passing": 1,
+        "poise": 1,
+        "speed": -1,
+        "strength": 2,
+        "wrist_shot_power": -1
+      }
+    },
+    {
+      "article_player_id": 54898,
+      "rank": 36,
+      "tier": 3,
+      "name": "Calum Ritchie",
+      "source_name": "Calum Ritchie",
+      "team": "NYI",
+      "draft_year": 2023,
+      "position": "C",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Green",
+      "potential_reason": "Top-six forward projection in Tier 3.",
+      "strengths": [
+        "Acceleration",
+        "Defensive Awareness",
+        "Endurance",
+        "Face-offs",
+        "Passing",
+        "Puck Control",
+        "Strength"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "acceleration": 1,
+        "defensive_awareness": 2,
+        "endurance": 2,
+        "faceoffs": 1,
+        "passing": 2,
+        "puck_control": 2,
+        "strength": 2
+      }
+    },
+    {
+      "article_player_id": 774944,
+      "rank": 37,
+      "tier": 3,
+      "name": "Dalibor Dvorsky",
+      "source_name": "Dalibor Dvorsky",
+      "team": "STL",
+      "draft_year": 2023,
+      "position": "C",
+      "projection": "middle_six",
+      "projection_label": "Middle-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Red",
+      "potential_reason": "Middle-six projection mapped to Top 6 Low/Red.",
+      "strengths": [
+        "Aggressiveness",
+        "Defensive Awareness",
+        "Passing",
+        "Puck Control",
+        "Slap Shot Accuracy",
+        "Slap Shot Power",
+        "Strength"
+      ],
+      "weaknesses": [
+        "Offensive Awareness",
+        "Wrist Shot Accuracy"
+      ],
+      "modifiers": {
+        "aggressiveness": 1,
+        "defensive_awareness": 1,
+        "offensive_awareness": -1,
+        "passing": 1,
+        "puck_control": 2,
+        "slap_shot_accuracy": 1,
+        "slap_shot_power": 1,
+        "strength": 2,
+        "wrist_shot_accuracy": -1
+      }
+    },
+    {
+      "article_player_id": 719041,
+      "rank": 38,
+      "tier": 3,
+      "name": "Cole Reschny",
+      "source_name": "Cole Reschny",
+      "team": "CGY",
+      "draft_year": 2025,
+      "position": "C",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Tier 3 projects above the Top 100 minimum.",
+      "strengths": [
+        "Aggressiveness",
+        "Balance",
+        "Body Checking",
+        "Defensive Awareness",
+        "Endurance",
+        "Puck Control",
+        "Strength"
+      ],
+      "weaknesses": [
+        "Passing",
+        "Poise",
+        "Speed"
+      ],
+      "modifiers": {
+        "aggressiveness": 2,
+        "balance": 1,
+        "body_checking": 1,
+        "defensive_awareness": 1,
+        "endurance": 2,
+        "passing": -1,
+        "poise": -1,
+        "puck_control": 1,
+        "speed": -1,
+        "strength": 2
+      }
+    },
+    {
+      "article_player_id": 19536,
+      "rank": 39,
+      "tier": 3,
+      "name": "Justin Carbonneau",
+      "source_name": "Justin Carbonneau",
+      "team": "STL",
+      "draft_year": 2025,
+      "position": "RW",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-six forward projection in Tier 3.",
+      "strengths": [
+        "Balance",
+        "Body Checking",
+        "Offensive Awareness",
+        "Speed",
+        "Strength",
+        "Wrist Shot Accuracy",
+        "Wrist Shot Power"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "balance": 2,
+        "body_checking": 2,
+        "offensive_awareness": 1,
+        "speed": 2,
+        "strength": 3,
+        "wrist_shot_accuracy": 1,
+        "wrist_shot_power": 1
+      }
+    },
+    {
+      "article_player_id": 801850,
+      "rank": 40,
+      "tier": 3,
+      "name": "Jackson Smith",
+      "source_name": "Jackson Smith",
+      "team": "CBJ",
+      "draft_year": 2025,
+      "position": "LHD",
+      "projection": "top_four",
+      "projection_label": "Top-four defenseman",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-four defenseman projection in Tier 3.",
+      "strengths": [
+        "Aggressiveness",
+        "Agility",
+        "Speed",
+        "Strength"
+      ],
+      "weaknesses": [
+        "Body Checking",
+        "Defensive Awareness",
+        "Offensive Awareness"
+      ],
+      "modifiers": {
+        "aggressiveness": 1,
+        "agility": 1,
+        "body_checking": -1,
+        "defensive_awareness": -1,
+        "offensive_awareness": -1,
+        "speed": 2,
+        "strength": 2
+      }
+    },
+    {
+      "article_player_id": 296647,
+      "rank": 41,
+      "tier": 3,
+      "name": "Dmitri Simashev",
+      "source_name": "Dmitri Simashev",
+      "team": "UTA",
+      "draft_year": 2023,
+      "position": "LHD",
+      "projection": "top_four",
+      "projection_label": "Top-four defenseman",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-four defenseman projection in Tier 3.",
+      "strengths": [
+        "Defensive Awareness",
+        "Puck Control",
+        "Speed",
+        "Stick Checking"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "defensive_awareness": 1,
+        "puck_control": 1,
+        "speed": 2,
+        "stick_checking": 1
+      }
+    },
+    {
+      "article_player_id": 724869,
+      "rank": 42,
+      "tier": 3,
+      "name": "Konsta Helenius",
+      "source_name": "Konsta Helenius",
+      "team": "BUF",
+      "draft_year": 2024,
+      "position": "C",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-six forward projection in Tier 3.",
+      "strengths": [
+        "Aggressiveness",
+        "Defensive Awareness",
+        "Face-offs",
+        "Passing",
+        "Poise",
+        "Strength"
+      ],
+      "weaknesses": [
+        "Endurance",
+        "Offensive Awareness",
+        "Speed"
+      ],
+      "modifiers": {
+        "aggressiveness": 1,
+        "defensive_awareness": 1,
+        "endurance": -1,
+        "faceoffs": 1,
+        "offensive_awareness": -1,
+        "passing": 1,
+        "poise": 1,
+        "speed": -1,
+        "strength": 1
+      }
+    },
+    {
+      "article_player_id": 772872,
+      "rank": 43,
+      "tier": 3,
+      "name": "Victor Eklund",
+      "source_name": "Victor Eklund",
+      "team": "NYI",
+      "draft_year": 2025,
+      "position": "RW",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-six forward projection in Tier 3.",
+      "strengths": [
+        "Aggressiveness",
+        "Agility",
+        "Body Checking",
+        "Endurance",
+        "Puck Control",
+        "Wrist Shot Accuracy",
+        "Wrist Shot Power"
+      ],
+      "weaknesses": [
+        "Speed"
+      ],
+      "modifiers": {
+        "aggressiveness": 2,
+        "agility": 2,
+        "body_checking": 1,
+        "endurance": 2,
+        "puck_control": 2,
+        "speed": -1,
+        "wrist_shot_accuracy": 2,
+        "wrist_shot_power": 2
+      }
+    },
+    {
+      "article_player_id": 846977,
+      "rank": 44,
+      "tier": 3,
+      "name": "Ryker Lee",
+      "source_name": "Ryker Lee",
+      "team": "NSH",
+      "draft_year": 2025,
+      "position": "RW",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-six forward projection in Tier 3.",
+      "strengths": [
+        "Deking"
+      ],
+      "weaknesses": [
+        "Aggressiveness",
+        "Defensive Awareness",
+        "Stick Checking"
+      ],
+      "modifiers": {
+        "aggressiveness": -1,
+        "defensive_awareness": -1,
+        "deking": 2,
+        "stick_checking": -1
+      }
+    },
+    {
+      "article_player_id": 334716,
+      "rank": 45,
+      "tier": 3,
+      "name": "Trevor Connelly",
+      "source_name": "Trevor Connelly",
+      "team": "VGK",
+      "draft_year": 2024,
+      "position": "LW",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-six forward projection in Tier 3.",
+      "strengths": [
+        "Agility",
+        "Defensive Awareness",
+        "Deking",
+        "Offensive Awareness",
+        "Passing",
+        "Speed",
+        "Strength"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "agility": 2,
+        "defensive_awareness": 2,
+        "deking": 2,
+        "offensive_awareness": 2,
+        "passing": 3,
+        "speed": 3,
+        "strength": 2
+      }
+    },
+    {
+      "article_player_id": 380446,
+      "rank": 46,
+      "tier": 3,
+      "name": "Anton Silayev",
+      "source_name": "Anton Silayev",
+      "team": "NJD",
+      "draft_year": 2024,
+      "position": "LHD",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Tier 3 projects above the Top 100 minimum.",
+      "strengths": [
+        "Agility",
+        "Puck Control",
+        "Speed",
+        "Stick Checking"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "agility": 2,
+        "puck_control": 1,
+        "speed": 2,
+        "stick_checking": 2
+      }
+    },
+    {
+      "article_player_id": 965113,
+      "rank": 47,
+      "tier": 3,
+      "name": "Axel Sandin-Pellikka",
+      "source_name": "Axel Sandin-Pellikka",
+      "team": "DET",
+      "draft_year": 2023,
+      "position": "RHD",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Tier 3 projects above the Top 100 minimum.",
+      "strengths": [
+        "Aggressiveness",
+        "Agility",
+        "Defensive Awareness",
+        "Offensive Awareness",
+        "Puck Control",
+        "Speed",
+        "Stick Checking"
+      ],
+      "weaknesses": [
+        "Body Checking",
+        "Strength"
+      ],
+      "modifiers": {
+        "aggressiveness": 1,
+        "agility": 2,
+        "body_checking": -1,
+        "defensive_awareness": 2,
+        "offensive_awareness": 1,
+        "puck_control": 2,
+        "speed": 2,
+        "stick_checking": 1,
+        "strength": -1
+      }
+    },
+    {
+      "article_player_id": 375982,
+      "rank": 48,
+      "tier": 3,
+      "name": "David Reinbacher",
+      "source_name": "David Reinbacher",
+      "team": "MTL",
+      "draft_year": 2023,
+      "position": "RHD",
+      "projection": "top_four",
+      "projection_label": "Top-four defenseman",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-four defenseman projection in Tier 3.",
+      "strengths": [
+        "Defensive Awareness",
+        "Poise",
+        "Puck Control",
+        "Speed",
+        "Strength"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "defensive_awareness": 1,
+        "poise": 2,
+        "puck_control": 1,
+        "speed": 1,
+        "strength": 2
+      }
+    },
+    {
+      "article_player_id": 728140,
+      "rank": 49,
+      "tier": 3,
+      "name": "Sam Rinzel",
+      "source_name": "Sam Rinzel",
+      "team": "CHI",
+      "draft_year": 2022,
+      "position": "RHD",
+      "projection": "top_four",
+      "projection_label": "Top-four defenseman",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-four defenseman projection in Tier 3.",
+      "strengths": [
+        "Offensive Awareness",
+        "Speed",
+        "Stick Checking",
+        "Strength"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "offensive_awareness": 1,
+        "speed": 2,
+        "stick_checking": 1,
+        "strength": 1
+      }
+    },
+    {
+      "article_player_id": 967336,
+      "rank": 50,
+      "tier": 3,
+      "name": "Kashawn Aitcheson",
+      "source_name": "Kashawn Aitcheson",
+      "team": "NYI",
+      "draft_year": 2025,
+      "position": "LHD",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Tier 3 projects above the Top 100 minimum.",
+      "strengths": [
+        "Aggressiveness",
+        "Body Checking",
+        "Defensive Awareness",
+        "Speed",
+        "Stick Checking",
+        "Strength",
+        "Wrist Shot Power"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "aggressiveness": 2,
+        "body_checking": 2,
+        "defensive_awareness": 1,
+        "speed": 1,
+        "stick_checking": 1,
+        "strength": 2,
+        "wrist_shot_power": 1
+      }
+    },
+    {
+      "article_player_id": 206068,
+      "rank": 51,
+      "tier": 3,
+      "name": "Elton Hermansson",
+      "source_name": "Elton Hermansson",
+      "team": "LAK",
+      "draft_year": 2026,
+      "position": "RW",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-six forward projection in Tier 3.",
+      "strengths": [
+        "Deking",
+        "Passing",
+        "Puck Control",
+        "Slap Shot Accuracy",
+        "Slap Shot Power",
+        "Speed",
+        "Wrist Shot Accuracy"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "deking": 1,
+        "passing": 2,
+        "puck_control": 1,
+        "slap_shot_accuracy": 1,
+        "slap_shot_power": 1,
+        "speed": 1,
+        "wrist_shot_accuracy": 2
+      }
+    },
+    {
+      "article_player_id": 966729,
+      "rank": 52,
+      "tier": 3,
+      "name": "Nikita Klepov",
+      "source_name": "Nikita Klepov",
+      "team": "ANA",
+      "draft_year": 2026,
+      "position": "LW",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Tier 3 projects above the Top 100 minimum.",
+      "strengths": [
+        "Aggressiveness",
+        "Body Checking",
+        "Defensive Awareness",
+        "Passing",
+        "Puck Control",
+        "Speed"
+      ],
+      "weaknesses": [
+        "Endurance"
+      ],
+      "modifiers": {
+        "aggressiveness": 2,
+        "body_checking": 1,
+        "defensive_awareness": 1,
+        "endurance": -1,
+        "passing": 2,
+        "puck_control": 1,
+        "speed": 1
+      }
+    },
+    {
+      "article_player_id": 847949,
+      "rank": 53,
+      "tier": 3,
+      "name": "Oscar Hemming",
+      "source_name": "Oscar Hemming",
+      "team": "CBJ",
+      "draft_year": 2026,
+      "position": "LW",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Tier 3 projects above the Top 100 minimum.",
+      "strengths": [
+        "Passing",
+        "Puck Control",
+        "Speed",
+        "Strength",
+        "Wrist Shot Accuracy",
+        "Wrist Shot Power"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "passing": 1,
+        "puck_control": 1,
+        "speed": 1,
+        "strength": 2,
+        "wrist_shot_accuracy": 1,
+        "wrist_shot_power": 1
+      }
+    },
+    {
+      "article_player_id": 14892,
+      "rank": 54,
+      "tier": 3,
+      "name": "Radim Mrtka",
+      "source_name": "Radim Mrtka",
+      "team": "BUF",
+      "draft_year": 2025,
+      "position": "RHD",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Tier 3 projects above the Top 100 minimum.",
+      "strengths": [
+        "Agility",
+        "Body Checking",
+        "Poise",
+        "Puck Control",
+        "Speed",
+        "Stick Checking"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "agility": 1,
+        "body_checking": 1,
+        "poise": 1,
+        "puck_control": 1,
+        "speed": 2,
+        "stick_checking": 1
+      }
+    },
+    {
+      "article_player_id": 879624,
+      "rank": 55,
+      "tier": 4,
+      "name": "Noah Östlund",
+      "source_name": "Noah Östlund",
+      "team": "BUF",
+      "draft_year": 2022,
+      "position": "C",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Tier 4 carries a Top 6/Top 4 medium projection.",
+      "strengths": [
+        "Agility",
+        "Defensive Awareness",
+        "Deking",
+        "Endurance",
+        "Face-offs",
+        "Puck Control",
+        "Speed"
+      ],
+      "weaknesses": [
+        "Strength",
+        "Wrist Shot Accuracy"
+      ],
+      "modifiers": {
+        "agility": 2,
+        "defensive_awareness": 2,
+        "deking": 1,
+        "endurance": 1,
+        "faceoffs": 1,
+        "puck_control": 2,
+        "speed": 3,
+        "strength": -1,
+        "wrist_shot_accuracy": -1
+      }
+    },
+    {
+      "article_player_id": 516425,
+      "rank": 56,
+      "tier": 4,
+      "name": "Bradly Nadeau",
+      "source_name": "Bradly Nadeau",
+      "team": "CAR",
+      "draft_year": 2023,
+      "position": "RW",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-six forward projection in Tier 4.",
+      "strengths": [
+        "Aggressiveness",
+        "Agility",
+        "Slap Shot Accuracy",
+        "Slap Shot Power",
+        "Speed",
+        "Wrist Shot Accuracy"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "aggressiveness": 1,
+        "agility": 1,
+        "slap_shot_accuracy": 1,
+        "slap_shot_power": 1,
+        "speed": 1,
+        "wrist_shot_accuracy": 1
+      }
+    },
+    {
+      "article_player_id": 87873,
+      "rank": 57,
+      "tier": 4,
+      "name": "Nick Lardis",
+      "source_name": "Nick Lardis",
+      "team": "CHI",
+      "draft_year": 2023,
+      "position": "LW",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-six forward projection in Tier 4.",
+      "strengths": [
+        "Hand-Eye",
+        "Passing",
+        "Puck Control",
+        "Slap Shot Accuracy",
+        "Slap Shot Power",
+        "Speed",
+        "Wrist Shot Accuracy"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "hand_eye": 1,
+        "passing": 2,
+        "puck_control": 2,
+        "slap_shot_accuracy": 3,
+        "slap_shot_power": 3,
+        "speed": 3,
+        "wrist_shot_accuracy": 1
+      }
+    },
+    {
+      "article_player_id": 259726,
+      "rank": 58,
+      "tier": 4,
+      "name": "Liam Öhgren",
+      "source_name": "Liam Öhgren",
+      "team": "VAN",
+      "draft_year": 2022,
+      "position": "LW",
+      "projection": "middle_six",
+      "projection_label": "Middle-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Red",
+      "potential_reason": "Middle-six projection mapped to Top 6 Low/Red.",
+      "strengths": [
+        "Aggressiveness",
+        "Agility",
+        "Endurance",
+        "Offensive Awareness",
+        "Speed",
+        "Strength"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "aggressiveness": 1,
+        "agility": 1,
+        "endurance": 1,
+        "offensive_awareness": 1,
+        "speed": 2,
+        "strength": 2
+      }
+    },
+    {
+      "article_player_id": 125998,
+      "rank": 59,
+      "tier": 4,
+      "name": "Carter Bear",
+      "source_name": "Carter Bear",
+      "team": "DET",
+      "draft_year": 2025,
+      "position": "LW",
+      "projection": "first_line",
+      "projection_label": "First-line / star",
+      "potential_stars": 4.5,
+      "potential_color": "Red",
+      "potential_reason": "High first-line / star ceiling with low certainty.",
+      "strengths": [
+        "Aggressiveness",
+        "Endurance",
+        "Passing"
+      ],
+      "weaknesses": [
+        "Speed"
+      ],
+      "modifiers": {
+        "aggressiveness": 2,
+        "endurance": 2,
+        "passing": 1,
+        "speed": -1
+      }
+    },
+    {
+      "article_player_id": 920549,
+      "rank": 60,
+      "tier": 4,
+      "name": "Alexander Command",
+      "source_name": "Alexander Command",
+      "team": "NJD",
+      "draft_year": 2026,
+      "position": "C",
+      "projection": "middle_six",
+      "projection_label": "Middle-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Red",
+      "potential_reason": "Middle-six projection mapped to Top 6 Low/Red.",
+      "strengths": [
+        "Balance",
+        "Body Checking",
+        "Endurance",
+        "Face-offs",
+        "Offensive Awareness",
+        "Speed",
+        "Strength"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "balance": 2,
+        "body_checking": 1,
+        "endurance": 1,
+        "faceoffs": 2,
+        "offensive_awareness": 1,
+        "speed": 1,
+        "strength": 3
+      }
+    },
+    {
+      "article_player_id": 304497,
+      "rank": 61,
+      "tier": 4,
+      "name": "Elias Salomonsson",
+      "source_name": "Elias Salomonsson",
+      "team": "WPG",
+      "draft_year": 2022,
+      "position": "RHD",
+      "projection": "top_four",
+      "projection_label": "Top-four defenseman",
+      "potential_stars": 4.0,
+      "potential_color": "Green",
+      "potential_reason": "Top-four defenseman projection in Tier 4.",
+      "strengths": [
+        "Body Checking",
+        "Defensive Awareness",
+        "Poise",
+        "Puck Control",
+        "Speed",
+        "Strength"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "body_checking": 1,
+        "defensive_awareness": 2,
+        "poise": 1,
+        "puck_control": 1,
+        "speed": 1,
+        "strength": 1
+      }
+    },
+    {
+      "article_player_id": 444831,
+      "rank": 62,
+      "tier": 4,
+      "name": "Oliver Moore",
+      "source_name": "Oliver Moore",
+      "team": "CHI",
+      "draft_year": 2023,
+      "position": "C",
+      "projection": "middle_six",
+      "projection_label": "Middle-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Red",
+      "potential_reason": "Middle-six projection mapped to Top 6 Low/Red.",
+      "strengths": [
+        "Acceleration",
+        "Aggressiveness",
+        "Agility",
+        "Endurance",
+        "Face-offs",
+        "Speed",
+        "Strength"
+      ],
+      "weaknesses": [
+        "Deking"
+      ],
+      "modifiers": {
+        "acceleration": 1,
+        "aggressiveness": 1,
+        "agility": 1,
+        "deking": -1,
+        "endurance": 1,
+        "faceoffs": 1,
+        "speed": 2,
+        "strength": 3
+      }
+    },
+    {
+      "article_player_id": 769714,
+      "rank": 63,
+      "tier": 4,
+      "name": "Adam Novotný",
+      "source_name": "Adam Novotný",
+      "team": "VAN",
+      "draft_year": 2026,
+      "position": "LW",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Tier 4 carries a Top 6/Top 4 medium projection.",
+      "strengths": [
+        "Aggressiveness",
+        "Balance",
+        "Body Checking",
+        "Speed",
+        "Strength",
+        "Wrist Shot Accuracy",
+        "Wrist Shot Power"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "aggressiveness": 1,
+        "balance": 1,
+        "body_checking": 1,
+        "speed": 1,
+        "strength": 2,
+        "wrist_shot_accuracy": 2,
+        "wrist_shot_power": 2
+      }
+    },
+    {
+      "article_player_id": 863154,
+      "rank": 64,
+      "tier": 4,
+      "name": "JP Hurlbert",
+      "source_name": "JP Hurlbert",
+      "team": "DET",
+      "draft_year": 2026,
+      "position": "LW",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Tier 4 carries a Top 6/Top 4 medium projection.",
+      "strengths": [
+        "Aggressiveness",
+        "Deking",
+        "Endurance",
+        "Speed"
+      ],
+      "weaknesses": [
+        "Face-offs"
+      ],
+      "modifiers": {
+        "aggressiveness": 1,
+        "deking": 1,
+        "endurance": 1,
+        "faceoffs": -1,
+        "speed": 1
+      }
+    },
+    {
+      "article_player_id": 361443,
+      "rank": 65,
+      "tier": 4,
+      "name": "Sam O'Reilly",
+      "source_name": "Sam O'Reilly",
+      "team": "TBL",
+      "draft_year": 2024,
+      "position": "C",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Tier 4 carries a Top 6/Top 4 medium projection.",
+      "strengths": [
+        "Agility",
+        "Face-offs",
+        "Puck Control",
+        "Shot Blocking",
+        "Speed",
+        "Stick Checking",
+        "Strength"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "agility": 1,
+        "faceoffs": 1,
+        "puck_control": 1,
+        "shot_blocking": 1,
+        "speed": 1,
+        "stick_checking": 1,
+        "strength": 2
+      }
+    },
+    {
+      "article_player_id": 671915,
+      "rank": 66,
+      "tier": 4,
+      "name": "Michael Brandsegg-Nygård",
+      "source_name": "Michael Brandsegg-Nygård",
+      "team": "DET",
+      "draft_year": 2024,
+      "position": "RW",
+      "projection": "depth",
+      "projection_label": "NHL depth role",
+      "potential_stars": 3.5,
+      "potential_color": "Green",
+      "potential_reason": "Likely NHL depth outcome with meaningful role certainty.",
+      "strengths": [
+        "Aggressiveness",
+        "Balance",
+        "Body Checking",
+        "Endurance",
+        "Passing",
+        "Speed",
+        "Wrist Shot Accuracy"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "aggressiveness": 1,
+        "balance": 1,
+        "body_checking": 1,
+        "endurance": 1,
+        "passing": 2,
+        "speed": 1,
+        "wrist_shot_accuracy": 1
+      }
+    },
+    {
+      "article_player_id": 523325,
+      "rank": 67,
+      "tier": 4,
+      "name": "Matthew Wood",
+      "source_name": "Matthew Wood",
+      "team": "NSH",
+      "draft_year": 2023,
+      "position": "RW",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-six forward projection in Tier 4.",
+      "strengths": [
+        "Aggressiveness",
+        "Agility",
+        "Defensive Awareness",
+        "Deking",
+        "Hand-Eye",
+        "Speed",
+        "Wrist Shot Accuracy"
+      ],
+      "weaknesses": [
+        "Endurance",
+        "Puck Control"
+      ],
+      "modifiers": {
+        "aggressiveness": 1,
+        "agility": 1,
+        "defensive_awareness": 1,
+        "deking": 2,
+        "endurance": -1,
+        "hand_eye": 1,
+        "puck_control": -1,
+        "speed": 2,
+        "wrist_shot_accuracy": 1
+      }
+    },
+    {
+      "article_player_id": 304906,
+      "rank": 68,
+      "tier": 4,
+      "name": "Yegor Surin",
+      "source_name": "Yegor Surin",
+      "team": "NSH",
+      "draft_year": 2024,
+      "position": "C",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Tier 4 carries a Top 6/Top 4 medium projection.",
+      "strengths": [
+        "Aggressiveness",
+        "Passing",
+        "Speed",
+        "Wrist Shot Accuracy",
+        "Wrist Shot Power"
+      ],
+      "weaknesses": [
+        "Agility",
+        "Body Checking",
+        "Deking"
+      ],
+      "modifiers": {
+        "aggressiveness": 1,
+        "agility": -1,
+        "body_checking": -1,
+        "deking": -1,
+        "passing": 1,
+        "speed": 1,
+        "wrist_shot_accuracy": 1,
+        "wrist_shot_power": 1
+      }
+    },
+    {
+      "article_player_id": 531049,
+      "rank": 69,
+      "tier": 4,
+      "name": "Andrew Cristall",
+      "source_name": "Andrew Cristall",
+      "team": "WSH",
+      "draft_year": 2023,
+      "position": "LW",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-six forward projection in Tier 4.",
+      "strengths": [
+        "Aggressiveness",
+        "Endurance",
+        "Offensive Awareness",
+        "Passing",
+        "Puck Control"
+      ],
+      "weaknesses": [
+        "Agility",
+        "Defensive Awareness",
+        "Speed"
+      ],
+      "modifiers": {
+        "aggressiveness": 1,
+        "agility": -1,
+        "defensive_awareness": -1,
+        "endurance": 1,
+        "offensive_awareness": 2,
+        "passing": 1,
+        "puck_control": 2,
+        "speed": -1
+      }
+    },
+    {
+      "article_player_id": 580161,
+      "rank": 70,
+      "tier": 4,
+      "name": "Easton Cowan",
+      "source_name": "Easton Cowan",
+      "team": "TOR",
+      "draft_year": 2023,
+      "position": "RW",
+      "projection": "middle_six",
+      "projection_label": "Middle-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Red",
+      "potential_reason": "Middle-six projection mapped to Top 6 Low/Red.",
+      "strengths": [
+        "Aggressiveness",
+        "Agility",
+        "Balance",
+        "Defensive Awareness",
+        "Endurance",
+        "Speed",
+        "Strength"
+      ],
+      "weaknesses": [
+        "Offensive Awareness"
+      ],
+      "modifiers": {
+        "aggressiveness": 1,
+        "agility": 1,
+        "balance": 1,
+        "defensive_awareness": 1,
+        "endurance": 1,
+        "offensive_awareness": -1,
+        "speed": 2,
+        "strength": 1
+      }
+    },
+    {
+      "article_player_id": 599520,
+      "rank": 71,
+      "tier": 4,
+      "name": "Jonathan Lekkerimäki",
+      "source_name": "Jonathan Lekkerimäki",
+      "team": "VAN",
+      "draft_year": 2022,
+      "position": "RW",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Yellow",
+      "potential_reason": "Top-six forward projection in Tier 4.",
+      "strengths": [
+        "Aggressiveness",
+        "Deking",
+        "Endurance",
+        "Slap Shot Accuracy",
+        "Slap Shot Power",
+        "Wrist Shot Accuracy",
+        "Wrist Shot Power"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "aggressiveness": 1,
+        "deking": 2,
+        "endurance": 2,
+        "slap_shot_accuracy": 2,
+        "slap_shot_power": 2,
+        "wrist_shot_accuracy": 3,
+        "wrist_shot_power": 2
+      }
+    },
+    {
+      "article_player_id": 15732,
+      "rank": 72,
+      "tier": 5,
+      "name": "Cole Eiserman",
+      "source_name": "Cole Eiserman",
+      "team": "NYI",
+      "draft_year": 2024,
+      "position": "LW",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 3.5,
+      "potential_color": "Green",
+      "potential_reason": "Tier 5 prospect with an NHL projection above the minimum floor.",
+      "strengths": [
+        "Aggressiveness",
+        "Passing",
+        "Puck Control",
+        "Slap Shot Accuracy",
+        "Slap Shot Power",
+        "Wrist Shot Accuracy",
+        "Wrist Shot Power"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "aggressiveness": 1,
+        "passing": 1,
+        "puck_control": 1,
+        "slap_shot_accuracy": 2,
+        "slap_shot_power": 2,
+        "wrist_shot_accuracy": 2,
+        "wrist_shot_power": 2
+      }
+    },
+    {
+      "article_player_id": 294294,
+      "rank": 73,
+      "tier": 5,
+      "name": "Tom Willander",
+      "source_name": "Tom Willander",
+      "team": "VAN",
+      "draft_year": 2023,
+      "position": "RHD",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 3.5,
+      "potential_color": "Green",
+      "potential_reason": "Tier 5 prospect with an NHL projection above the minimum floor.",
+      "strengths": [
+        "Aggressiveness",
+        "Defensive Awareness",
+        "Offensive Awareness",
+        "Passing",
+        "Puck Control",
+        "Speed",
+        "Strength"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "aggressiveness": 1,
+        "defensive_awareness": 1,
+        "offensive_awareness": 2,
+        "passing": 1,
+        "puck_control": 2,
+        "speed": 2,
+        "strength": 2
+      }
+    },
+    {
+      "article_player_id": 325340,
+      "rank": 74,
+      "tier": 5,
+      "name": "Harrison Brunicke",
+      "source_name": "Harrison Brunicke",
+      "team": "PIT",
+      "draft_year": 2024,
+      "position": "RHD",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 3.5,
+      "potential_color": "Green",
+      "potential_reason": "Tier 5 prospect with an NHL projection above the minimum floor.",
+      "strengths": [
+        "Defensive Awareness",
+        "Endurance",
+        "Offensive Awareness",
+        "Poise",
+        "Puck Control",
+        "Speed",
+        "Strength"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "defensive_awareness": 2,
+        "endurance": 1,
+        "offensive_awareness": 1,
+        "poise": 2,
+        "puck_control": 2,
+        "speed": 3,
+        "strength": 2
+      }
+    },
+    {
+      "article_player_id": 151393,
+      "rank": 75,
+      "tier": 5,
+      "name": "Kevin Korchinski",
+      "source_name": "Kevin Korchsinki",
+      "team": "CHI",
+      "draft_year": 2022,
+      "position": "LHD",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 3.5,
+      "potential_color": "Green",
+      "potential_reason": "Tier 5 prospect with an NHL projection above the minimum floor.",
+      "strengths": [
+        "Agility",
+        "Balance",
+        "Body Checking",
+        "Defensive Awareness",
+        "Deking",
+        "Passing",
+        "Puck Control"
+      ],
+      "weaknesses": [
+        "Endurance",
+        "Strength"
+      ],
+      "modifiers": {
+        "agility": 2,
+        "balance": 1,
+        "body_checking": 1,
+        "defensive_awareness": 1,
+        "deking": 2,
+        "endurance": -1,
+        "passing": 2,
+        "puck_control": 3,
+        "strength": -1
+      }
+    },
+    {
+      "article_player_id": 686852,
+      "rank": 76,
+      "tier": 5,
+      "name": "Lynden Lakovic",
+      "source_name": "Lynden Lakovic",
+      "team": "WSH",
+      "draft_year": 2025,
+      "position": "LW",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 3.5,
+      "potential_color": "Green",
+      "potential_reason": "Tier 5 prospect with an NHL projection above the minimum floor.",
+      "strengths": [
+        "Balance",
+        "Deking",
+        "Puck Control",
+        "Speed",
+        "Strength",
+        "Wrist Shot Accuracy"
+      ],
+      "weaknesses": [
+        "Body Checking",
+        "Defensive Awareness",
+        "Endurance"
+      ],
+      "modifiers": {
+        "balance": 2,
+        "body_checking": -1,
+        "defensive_awareness": -1,
+        "deking": 1,
+        "endurance": -1,
+        "puck_control": 2,
+        "speed": 1,
+        "strength": 2,
+        "wrist_shot_accuracy": 1
+      }
+    },
+    {
+      "article_player_id": 14363,
+      "rank": 77,
+      "tier": 5,
+      "name": "Daniil But",
+      "source_name": "Daniil But",
+      "team": "UTA",
+      "draft_year": 2023,
+      "position": "LW",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 3.5,
+      "potential_color": "Green",
+      "potential_reason": "Tier 5 prospect with an NHL projection above the minimum floor.",
+      "strengths": [
+        "Balance",
+        "Body Checking",
+        "Puck Control",
+        "Strength",
+        "Wrist Shot Accuracy"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "balance": 2,
+        "body_checking": 1,
+        "puck_control": 2,
+        "strength": 2,
+        "wrist_shot_accuracy": 1
+      }
+    },
+    {
+      "article_player_id": 568933,
+      "rank": 78,
+      "tier": 5,
+      "name": "Marcus Nordmark",
+      "source_name": "Marcus Nordmark",
+      "team": "ANA",
+      "draft_year": 2026,
+      "position": "LW",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 3.5,
+      "potential_color": "Green",
+      "potential_reason": "Tier 5 prospect with an NHL projection above the minimum floor.",
+      "strengths": [
+        "Balance",
+        "Passing",
+        "Puck Control",
+        "Strength"
+      ],
+      "weaknesses": [
+        "Aggressiveness",
+        "Endurance"
+      ],
+      "modifiers": {
+        "aggressiveness": -1,
+        "balance": 1,
+        "endurance": -1,
+        "passing": 1,
+        "puck_control": 1,
+        "strength": 1
+      }
+    },
+    {
+      "article_player_id": 587743,
+      "rank": 79,
+      "tier": 5,
+      "name": "Xavier Villeneuve",
+      "source_name": "Xavier Villeneuve",
+      "team": "CHI",
+      "draft_year": 2026,
+      "position": "LHD",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 3.5,
+      "potential_color": "Green",
+      "potential_reason": "Tier 5 prospect with an NHL projection above the minimum floor.",
+      "strengths": [
+        "Acceleration",
+        "Agility",
+        "Deking",
+        "Offensive Awareness",
+        "Speed",
+        "Stick Checking",
+        "Wrist Shot Accuracy"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "acceleration": 1,
+        "agility": 2,
+        "deking": 1,
+        "offensive_awareness": 2,
+        "speed": 1,
+        "stick_checking": 1,
+        "wrist_shot_accuracy": 1
+      }
+    },
+    {
+      "article_player_id": 407895,
+      "rank": 80,
+      "tier": 5,
+      "name": "Cameron Reid",
+      "source_name": "Cameron Reid",
+      "team": "NSH",
+      "draft_year": 2025,
+      "position": "LHD",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 3.5,
+      "potential_color": "Green",
+      "potential_reason": "Tier 5 prospect with an NHL projection above the minimum floor.",
+      "strengths": [
+        "Agility",
+        "Defensive Awareness",
+        "Puck Control",
+        "Speed",
+        "Stick Checking"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "agility": 1,
+        "defensive_awareness": 1,
+        "puck_control": 1,
+        "speed": 2,
+        "stick_checking": 1
+      }
+    },
+    {
+      "article_player_id": 477723,
+      "rank": 81,
+      "tier": 5,
+      "name": "Dean Letourneau",
+      "source_name": "Dean Letourneau",
+      "team": "BOS",
+      "draft_year": 2024,
+      "position": "C",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 3.5,
+      "potential_color": "Green",
+      "potential_reason": "Tier 5 prospect with an NHL projection above the minimum floor.",
+      "strengths": [
+        "Agility",
+        "Hand-Eye",
+        "Passing",
+        "Puck Control",
+        "Speed",
+        "Stick Checking"
+      ],
+      "weaknesses": [
+        "Aggressiveness",
+        "Body Checking"
+      ],
+      "modifiers": {
+        "aggressiveness": -1,
+        "agility": 1,
+        "body_checking": -1,
+        "hand_eye": 1,
+        "passing": 1,
+        "puck_control": 2,
+        "speed": 1,
+        "stick_checking": 1
+      }
+    },
+    {
+      "article_player_id": 763226,
+      "rank": 82,
+      "tier": 5,
+      "name": "Adam Jiricek",
+      "source_name": "Adam Jiricek",
+      "team": "STL",
+      "draft_year": 2024,
+      "position": "RHD",
+      "projection": "top_four",
+      "projection_label": "Top-four defenseman",
+      "potential_stars": 4.0,
+      "potential_color": "Red",
+      "potential_reason": "Top-four defenseman ceiling with low certainty.",
+      "strengths": [
+        "Agility",
+        "Defensive Awareness"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "agility": 1,
+        "defensive_awareness": 1
+      }
+    },
+    {
+      "article_player_id": 562743,
+      "rank": 83,
+      "tier": 5,
+      "name": "Conor Geekie",
+      "source_name": "Conor Geekie",
+      "team": "TBL",
+      "draft_year": 2022,
+      "position": "C",
+      "projection": "middle_six",
+      "projection_label": "Middle-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Red",
+      "potential_reason": "Middle-six projection mapped to Top 6 Low/Red.",
+      "strengths": [
+        "Defensive Awareness",
+        "Deking",
+        "Face-offs",
+        "Passing",
+        "Wrist Shot Accuracy",
+        "Wrist Shot Power"
+      ],
+      "weaknesses": [
+        "Speed"
+      ],
+      "modifiers": {
+        "defensive_awareness": 1,
+        "deking": 1,
+        "faceoffs": 1,
+        "passing": 1,
+        "speed": -1,
+        "wrist_shot_accuracy": 1,
+        "wrist_shot_power": 1
+      }
+    },
+    {
+      "article_player_id": 354619,
+      "rank": 84,
+      "tier": 5,
+      "name": "Rutger McGroarty",
+      "source_name": "Rutger McGroarty",
+      "team": "PIT",
+      "draft_year": 2022,
+      "position": "LW",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 3.5,
+      "potential_color": "Green",
+      "potential_reason": "Tier 5 prospect with an NHL projection above the minimum floor.",
+      "strengths": [
+        "Aggressiveness",
+        "Hand-Eye",
+        "Passing",
+        "Puck Control",
+        "Speed",
+        "Strength",
+        "Wrist Shot Accuracy"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "aggressiveness": 1,
+        "hand_eye": 2,
+        "passing": 2,
+        "puck_control": 2,
+        "speed": 2,
+        "strength": 2,
+        "wrist_shot_accuracy": 1
+      }
+    },
+    {
+      "article_player_id": 306944,
+      "rank": 85,
+      "tier": 5,
+      "name": "Nate Danielson",
+      "source_name": "Nate Danielson",
+      "team": "DET",
+      "draft_year": 2023,
+      "position": "C",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 3.5,
+      "potential_color": "Green",
+      "potential_reason": "Tier 5 prospect with an NHL projection above the minimum floor.",
+      "strengths": [
+        "Aggressiveness",
+        "Agility",
+        "Defensive Awareness",
+        "Endurance",
+        "Speed"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "aggressiveness": 2,
+        "agility": 1,
+        "defensive_awareness": 2,
+        "endurance": 2,
+        "speed": 1
+      }
+    },
+    {
+      "article_player_id": 395162,
+      "rank": 86,
+      "tier": 5,
+      "name": "Cullen Potter",
+      "source_name": "Cullen Potter",
+      "team": "CGY",
+      "draft_year": 2025,
+      "position": "C",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 3.5,
+      "potential_color": "Green",
+      "potential_reason": "Tier 5 prospect with an NHL projection above the minimum floor.",
+      "strengths": [
+        "Agility",
+        "Deking",
+        "Puck Control",
+        "Speed",
+        "Wrist Shot Accuracy",
+        "Wrist Shot Power"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "agility": 1,
+        "deking": 1,
+        "puck_control": 1,
+        "speed": 2,
+        "wrist_shot_accuracy": 2,
+        "wrist_shot_power": 2
+      }
+    },
+    {
+      "article_player_id": 403743,
+      "rank": 87,
+      "tier": 5,
+      "name": "Mathis Preston",
+      "source_name": "Mathis Preston",
+      "team": "ANA",
+      "draft_year": 2026,
+      "position": "RW",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 3.5,
+      "potential_color": "Green",
+      "potential_reason": "Tier 5 prospect with an NHL projection above the minimum floor.",
+      "strengths": [
+        "Aggressiveness",
+        "Agility",
+        "Defensive Awareness",
+        "Deking",
+        "Offensive Awareness",
+        "Passing",
+        "Speed"
+      ],
+      "weaknesses": [
+        "Endurance"
+      ],
+      "modifiers": {
+        "aggressiveness": 1,
+        "agility": 1,
+        "defensive_awareness": 1,
+        "deking": 1,
+        "endurance": -1,
+        "offensive_awareness": 1,
+        "passing": 1,
+        "speed": 1
+      }
+    },
+    {
+      "article_player_id": 221556,
+      "rank": 88,
+      "tier": 5,
+      "name": "Tommy Bleyl",
+      "source_name": "Tommy Bleyl",
+      "team": "NSH",
+      "draft_year": 2026,
+      "position": "RHD",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 3.5,
+      "potential_color": "Green",
+      "potential_reason": "Tier 5 prospect with an NHL projection above the minimum floor.",
+      "strengths": [
+        "Agility",
+        "Defensive Awareness",
+        "Puck Control",
+        "Speed"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "agility": 1,
+        "defensive_awareness": 1,
+        "puck_control": 1,
+        "speed": 2
+      }
+    },
+    {
+      "article_player_id": 466712,
+      "rank": 89,
+      "tier": 6,
+      "name": "Max Plante",
+      "source_name": "Max Plante",
+      "team": "DET",
+      "draft_year": 2024,
+      "position": "LW",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 3.5,
+      "potential_color": "Yellow",
+      "potential_reason": "Top 100 floor: Top 9/Top 6 D with medium certainty.",
+      "strengths": [
+        "Body Checking",
+        "Puck Control"
+      ],
+      "weaknesses": [
+        "Passing",
+        "Speed"
+      ],
+      "modifiers": {
+        "body_checking": 1,
+        "passing": -1,
+        "puck_control": 2,
+        "speed": -1
+      }
+    },
+    {
+      "article_player_id": 548596,
+      "rank": 90,
+      "tier": 6,
+      "name": "Hunter Brzustewicz",
+      "source_name": "Hunter Brzustewicz",
+      "team": "CGY",
+      "draft_year": 2023,
+      "position": "RHD",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 3.5,
+      "potential_color": "Yellow",
+      "potential_reason": "Top 100 floor: Top 9/Top 6 D with medium certainty.",
+      "strengths": [
+        "Agility",
+        "Defensive Awareness",
+        "Offensive Awareness",
+        "Poise",
+        "Strength",
+        "Wrist Shot Accuracy"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "agility": 2,
+        "defensive_awareness": 1,
+        "offensive_awareness": 1,
+        "poise": 1,
+        "strength": 2,
+        "wrist_shot_accuracy": 1
+      }
+    },
+    {
+      "article_player_id": 310486,
+      "rank": 91,
+      "tier": 6,
+      "name": "Liam Greentree",
+      "source_name": "Liam Greentree",
+      "team": "NYR",
+      "draft_year": 2024,
+      "position": "RW",
+      "projection": "middle_six",
+      "projection_label": "Middle-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Red",
+      "potential_reason": "Middle-six projection mapped to Top 6 Low/Red.",
+      "strengths": [
+        "Aggressiveness",
+        "Body Checking",
+        "Strength",
+        "Wrist Shot Accuracy",
+        "Wrist Shot Power"
+      ],
+      "weaknesses": [
+        "Endurance",
+        "Hand-Eye",
+        "Puck Control"
+      ],
+      "modifiers": {
+        "aggressiveness": 1,
+        "body_checking": 1,
+        "endurance": -1,
+        "hand_eye": -1,
+        "puck_control": -1,
+        "strength": 1,
+        "wrist_shot_accuracy": 1,
+        "wrist_shot_power": 1
+      }
+    },
+    {
+      "article_player_id": 271700,
+      "rank": 92,
+      "tier": 6,
+      "name": "Will Horcoff",
+      "source_name": "Will Horcoff",
+      "team": "PIT",
+      "draft_year": 2025,
+      "position": "LW",
+      "projection": "depth",
+      "projection_label": "NHL depth role",
+      "potential_stars": 3.5,
+      "potential_color": "Green",
+      "potential_reason": "Lower ceiling but comparatively clear NHL-role path.",
+      "strengths": [
+        "Aggressiveness",
+        "Balance",
+        "Body Checking",
+        "Endurance",
+        "Hand-Eye",
+        "Offensive Awareness",
+        "Wrist Shot Accuracy"
+      ],
+      "weaknesses": [
+        "Speed",
+        "Strength"
+      ],
+      "modifiers": {
+        "aggressiveness": 2,
+        "balance": 1,
+        "body_checking": 2,
+        "endurance": 1,
+        "hand_eye": 1,
+        "offensive_awareness": 1,
+        "speed": -2,
+        "strength": -1,
+        "wrist_shot_accuracy": 1
+      }
+    },
+    {
+      "article_player_id": 805608,
+      "rank": 93,
+      "tier": 6,
+      "name": "Vaclav Nestrasil",
+      "source_name": "Vaclav Nestrasil",
+      "team": "CHI",
+      "draft_year": 2025,
+      "position": "RW",
+      "projection": "middle_six",
+      "projection_label": "Middle-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Red",
+      "potential_reason": "Middle-six projection mapped to Top 6 Low/Red.",
+      "strengths": [
+        "Aggressiveness",
+        "Body Checking",
+        "Endurance",
+        "Passing"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "aggressiveness": 2,
+        "body_checking": 1,
+        "endurance": 1,
+        "passing": 2
+      }
+    },
+    {
+      "article_player_id": 667417,
+      "rank": 94,
+      "tier": 6,
+      "name": "Charlie Stramel",
+      "source_name": "Charlie Stramel",
+      "team": "MIN",
+      "draft_year": 2023,
+      "position": "C",
+      "projection": "depth",
+      "projection_label": "NHL depth role",
+      "potential_stars": 3.5,
+      "potential_color": "Green",
+      "potential_reason": "Lower ceiling but comparatively clear NHL-role path.",
+      "strengths": [
+        "Aggressiveness",
+        "Body Checking",
+        "Passing",
+        "Strength",
+        "Wrist Shot Accuracy",
+        "Wrist Shot Power"
+      ],
+      "weaknesses": [
+        "Offensive Awareness"
+      ],
+      "modifiers": {
+        "aggressiveness": 1,
+        "body_checking": 1,
+        "offensive_awareness": -1,
+        "passing": 1,
+        "strength": 1,
+        "wrist_shot_accuracy": 1,
+        "wrist_shot_power": 1
+      }
+    },
+    {
+      "article_player_id": 414936,
+      "rank": 95,
+      "tier": 6,
+      "name": "Braeden Cootes",
+      "source_name": "Braeden Cootes",
+      "team": "VAN",
+      "draft_year": 2025,
+      "position": "C",
+      "projection": "top_six",
+      "projection_label": "Top-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Red",
+      "potential_reason": "Top-six forward ceiling with low certainty.",
+      "strengths": [
+        "Offensive Awareness",
+        "Speed",
+        "Strength",
+        "Wrist Shot Accuracy",
+        "Wrist Shot Power"
+      ],
+      "weaknesses": [
+        "Aggressiveness",
+        "Endurance"
+      ],
+      "modifiers": {
+        "aggressiveness": -1,
+        "endurance": -1,
+        "offensive_awareness": 1,
+        "speed": 1,
+        "strength": 1,
+        "wrist_shot_accuracy": 1,
+        "wrist_shot_power": 1
+      }
+    },
+    {
+      "article_player_id": 732661,
+      "rank": 96,
+      "tier": 6,
+      "name": "Stian Solberg",
+      "source_name": "Stian Solberg",
+      "team": "ANA",
+      "draft_year": 2024,
+      "position": "LHD",
+      "projection": "depth",
+      "projection_label": "NHL depth role",
+      "potential_stars": 3.5,
+      "potential_color": "Green",
+      "potential_reason": "Lower ceiling but comparatively clear NHL-role path.",
+      "strengths": [
+        "Aggressiveness",
+        "Body Checking",
+        "Defensive Awareness",
+        "Deking",
+        "Speed",
+        "Strength"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "aggressiveness": 1,
+        "body_checking": 2,
+        "defensive_awareness": 1,
+        "deking": 1,
+        "speed": 2,
+        "strength": 2
+      }
+    },
+    {
+      "article_player_id": 406880,
+      "rank": 97,
+      "tier": 6,
+      "name": "David Jiricek",
+      "source_name": "David Jiricek",
+      "team": "PHI",
+      "draft_year": 2022,
+      "position": "RHD",
+      "projection": "depth",
+      "projection_label": "NHL depth role",
+      "potential_stars": 3.5,
+      "potential_color": "Green",
+      "potential_reason": "Lower ceiling but comparatively clear NHL-role path.",
+      "strengths": [
+        "Agility",
+        "Defensive Awareness",
+        "Hand-Eye",
+        "Puck Control",
+        "Slap Shot Accuracy",
+        "Slap Shot Power",
+        "Strength"
+      ],
+      "weaknesses": [
+        "Aggressiveness",
+        "Speed"
+      ],
+      "modifiers": {
+        "aggressiveness": -1,
+        "agility": 2,
+        "defensive_awareness": 1,
+        "hand_eye": 1,
+        "puck_control": 2,
+        "slap_shot_accuracy": 2,
+        "slap_shot_power": 2,
+        "speed": -1,
+        "strength": 1
+      }
+    },
+    {
+      "article_player_id": 29571,
+      "rank": 98,
+      "tier": 6,
+      "name": "Ivan Ryabkin",
+      "source_name": "Ivan Ryabkin",
+      "team": "CAR",
+      "draft_year": 2025,
+      "position": "C",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 3.5,
+      "potential_color": "Yellow",
+      "potential_reason": "Top 100 floor: Top 9/Top 6 D with medium certainty.",
+      "strengths": [
+        "Aggressiveness",
+        "Agility",
+        "Body Checking",
+        "Defensive Awareness",
+        "Deking",
+        "Discipline",
+        "Speed"
+      ],
+      "weaknesses": [
+        "Endurance"
+      ],
+      "modifiers": {
+        "aggressiveness": 1,
+        "agility": 1,
+        "body_checking": 1,
+        "defensive_awareness": 1,
+        "deking": 1,
+        "discipline": 1,
+        "endurance": -1,
+        "speed": 1
+      }
+    },
+    {
+      "article_player_id": 338680,
+      "rank": 99,
+      "tier": 6,
+      "name": "Ike Howard",
+      "source_name": "Ike Howard",
+      "team": "EDM",
+      "draft_year": 2022,
+      "position": "LW",
+      "projection": "middle_six",
+      "projection_label": "Middle-six forward",
+      "potential_stars": 4.0,
+      "potential_color": "Red",
+      "potential_reason": "Middle-six projection mapped to Top 6 Low/Red.",
+      "strengths": [
+        "Acceleration",
+        "Aggressiveness",
+        "Agility",
+        "Defensive Awareness",
+        "Offensive Awareness",
+        "Puck Control",
+        "Speed"
+      ],
+      "weaknesses": [],
+      "modifiers": {
+        "acceleration": 1,
+        "aggressiveness": 1,
+        "agility": 2,
+        "defensive_awareness": 1,
+        "offensive_awareness": 1,
+        "puck_control": 2,
+        "speed": 1
+      }
+    },
+    {
+      "article_player_id": 48585,
+      "rank": 100,
+      "tier": 6,
+      "name": "Ethan Wyttenbach",
+      "source_name": "Ethan Wyttenbach",
+      "team": "CGY",
+      "draft_year": 2025,
+      "position": "LW",
+      "projection": "unspecified",
+      "projection_label": "Tier-based NHL projection",
+      "potential_stars": 3.5,
+      "potential_color": "Yellow",
+      "potential_reason": "Top 100 floor: Top 9/Top 6 D with medium certainty.",
+      "strengths": [
+        "Defensive Awareness",
+        "Deking",
+        "Offensive Awareness",
+        "Passing",
+        "Speed",
+        "Wrist Shot Accuracy",
+        "Wrist Shot Power"
+      ],
+      "weaknesses": [
+        "Agility"
+      ],
+      "modifiers": {
+        "agility": -1,
+        "defensive_awareness": 1,
+        "deking": 2,
+        "offensive_awareness": 2,
+        "passing": 2,
+        "speed": 1,
+        "wrist_shot_accuracy": 2,
+        "wrist_shot_power": 2
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "period": "2025-2026:R",
+  "report": "Skating Distance",
+  "url": "https://frozenpool.dobbersports.com/frozenpool_report_edge.php?pos=Skaters&team=ALL&mingp=20&rookie=All&period=2025-2026%3AR&report=Skating+Distance&reportdata_length=5000",
+  "html": "data\\frozenpool_edge\\2025_2026_r__skating_distance.html",
+  "csv": "data\\frozenpool_edge\\2025_2026_r__skating_distance.csv",
+  "rows": 716,
+  "ok": true,
+  "error": "",
+  "timestamp": "2026-06-22T10:05:32"
+}

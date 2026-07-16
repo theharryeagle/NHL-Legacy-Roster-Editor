@@ -1,0 +1,35 @@
+[
+  {
+    "player": "Drew Helleson",
+    "position": "D",
+    "player_type": "Defensive Defenseman",
+    "overall": 75,
+    "attributes": {
+      "slap_shot_accuracy": 70,
+      "slap_shot_power": 85,
+      "wrist_shot_accuracy": 70,
+      "wrist_shot_power": 84,
+      "deking": 70,
+      "hand_eye": 72,
+      "passing": 75,
+      "puck_control": 75,
+      "discipline": 77,
+      "offensive_awareness": 71,
+      "poise": 75,
+      "acceleration": 84,
+      "agility": 84,
+      "balance": 84,
+      "endurance": 80,
+      "speed": 84,
+      "aggressiveness": 75,
+      "body_checking": 84,
+      "durability": 80,
+      "fighting_skill": 75,
+      "strength": 84,
+      "defensive_awareness": 82,
+      "faceoffs": 36,
+      "shot_blocking": 82,
+      "stick_checking": 85
+    }
+  }
+]

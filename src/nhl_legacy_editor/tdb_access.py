@@ -23,6 +23,19 @@ def _project_root() -> Path:
 
 DEFAULT_DLL_PATH = _project_root() / "tools" / "tdbaccess" / "x64" / "tdbaccess.dll"
 
+TABLE_NAME_FALLBACK_INDEXES = {
+    "ttOk": 0,   # teams
+    "caBZ": 2,   # player-to-instance relations
+    "ulGe": 3,   # player instances
+    "vbHh": 4,   # player instance aux rows
+    "ajmx": 5,   # player flags
+    "yvSd": 6,   # skater ratings
+    "cPbu": 7,   # player bio
+    "vuqu": 8,   # small player links
+    "FSzD": 9,   # wide player links
+    "yuHm": 15,  # goalie ratings
+}
+
 
 class TdbFieldType(IntEnum):
     STRING = 0
@@ -104,6 +117,20 @@ class TdbAccess:
             ctypes.POINTER(TdbTablePropertiesStruct),
         ]
         self.dll.TDBTableGetProperties.restype = wintypes.BOOL
+
+        self.dll.TDBTableRecordAdd.argtypes = [
+            ctypes.c_int,
+            wintypes.LPCWSTR,
+            wintypes.BOOL,
+        ]
+        self.dll.TDBTableRecordAdd.restype = ctypes.c_int
+
+        self.dll.TDBTableRecordRemove.argtypes = [
+            ctypes.c_int,
+            wintypes.LPCWSTR,
+            ctypes.c_int,
+        ]
+        self.dll.TDBTableRecordRemove.restype = wintypes.BOOL
 
         self.dll.TDBFieldGetProperties.argtypes = [
             ctypes.c_int,
@@ -225,6 +252,19 @@ class TdbAccess:
                 for table_index in range(self.get_table_count(db_index))
             ]
 
+    def resolve_table_index(self, db_path: Path, table_ref: int | str) -> int:
+        if isinstance(table_ref, int):
+            return table_ref
+        table_name = str(table_ref)
+        tables = self.list_tables(db_path)
+        for index, table in enumerate(tables):
+            if table.name == table_name:
+                return index
+        fallback = TABLE_NAME_FALLBACK_INDEXES.get(table_name)
+        if fallback is not None and 0 <= fallback < len(tables):
+            return fallback
+        raise RuntimeError(f"Table not found: {table_name}")
+
     def list_fields(self, db_path: Path, table_name: str) -> list[TdbFieldProperties]:
         with self.open_database(db_path) as db_index:
             tables = [
@@ -239,7 +279,8 @@ class TdbAccess:
                 for field_index in range(table.field_count)
             ]
 
-    def list_fields_by_index(self, db_path: Path, table_index: int) -> list[TdbFieldProperties]:
+    def list_fields_by_index(self, db_path: Path, table_index: int | str) -> list[TdbFieldProperties]:
+        table_index = self.resolve_table_index(db_path, table_index)
         with self.open_database(db_path) as db_index:
             table = self.get_table_properties(db_index, table_index)
             table_name = table.name
@@ -268,9 +309,10 @@ class TdbAccess:
     def sample_records(
         self,
         db_path: Path,
-        table_index: int,
+        table_index: int | str,
         limit: int = 5,
     ) -> tuple[TdbTableProperties, list[TdbFieldProperties], list[dict[str, object]]]:
+        table_index = self.resolve_table_index(db_path, table_index)
         with self.open_database(db_path) as db_index:
             table = self.get_table_properties(db_index, table_index)
             fields = [
@@ -289,6 +331,51 @@ class TdbAccess:
         ok = self.dll.TDBSave(db_index)
         if not ok:
             raise RuntimeError("Failed to save TDB database.")
+
+    def add_record(self, db_index: int, table_name: str, *, allow_expand: bool = True) -> int:
+        record_index = int(self.dll.TDBTableRecordAdd(db_index, table_name, bool(allow_expand)))
+        if record_index < 0:
+            raise RuntimeError(f"Failed to add a record to {table_name}.")
+        return record_index
+
+    def remove_record(self, db_index: int, table_name: str, record_index: int) -> None:
+        ok = self.dll.TDBTableRecordRemove(db_index, table_name, record_index)
+        if not ok:
+            raise RuntimeError(f"Failed to remove {table_name} record {record_index}.")
+
+    def copy_record_fields(
+        self,
+        db_index: int,
+        table_name: str,
+        source: dict[str, object],
+        record_index: int,
+        *,
+        overrides: dict[str, object] | None = None,
+    ) -> None:
+        table_index = next(
+            (
+                index
+                for index in range(self.get_table_count(db_index))
+                if self.get_table_properties(db_index, index).name == table_name
+            ),
+            None,
+        )
+        if table_index is None:
+            raise RuntimeError(f"Table not found: {table_name}")
+        table = self.get_table_properties(db_index, table_index)
+        fields = {
+            field.name: field
+            for field in (
+                self.get_field_properties(db_index, table_name, field_index)
+                for field_index in range(table.field_count)
+            )
+        }
+        values = dict(source)
+        values.update(overrides or {})
+        for field_name, field in fields.items():
+            if field_name not in values or values[field_name] is None:
+                continue
+            self.set_field_value(db_index, table_name, field, record_index, values[field_name])
 
     def set_field_value(
         self,
@@ -330,10 +417,11 @@ class TdbAccess:
     def update_record_fields(
         self,
         db_path: Path,
-        table_index: int,
+        table_index: int | str,
         record_index: int,
         updates: dict[str, object],
     ) -> None:
+        table_index = self.resolve_table_index(db_path, table_index)
         with self.open_database(db_path) as db_index:
             table = self.get_table_properties(db_index, table_index)
             fields = {

@@ -1,0 +1,84 @@
+{
+  "cache_dir": "data\\frozenpool_edge",
+  "periods": [
+    "2025-2026:R",
+    "2024-2025:R"
+  ],
+  "reports": [
+    "Shot Speed",
+    "Skating Speed",
+    "Skating Distance"
+  ],
+  "ok_reports": 6,
+  "total_reports": 6,
+  "rows": 4241,
+  "items": [
+    {
+      "period": "2025-2026:R",
+      "report": "Shot Speed",
+      "url": "https://frozenpool.dobbersports.com/frozenpool_report_edge.php?pos=Skaters&team=ALL&mingp=20&rookie=All&period=2025-2026%3AR&report=Shot+Speed&reportdata_length=5000",
+      "html": "data\\frozenpool_edge\\2025_2026_r__shot_speed.html",
+      "csv": "data\\frozenpool_edge\\2025_2026_r__shot_speed.csv",
+      "rows": 715,
+      "ok": true,
+      "error": "",
+      "timestamp": "2026-06-22T10:05:29"
+    },
+    {
+      "period": "2025-2026:R",
+      "report": "Skating Speed",
+      "url": "https://frozenpool.dobbersports.com/frozenpool_report_edge.php?pos=Skaters&team=ALL&mingp=20&rookie=All&period=2025-2026%3AR&report=Skating+Speed&reportdata_length=5000",
+      "html": "data\\frozenpool_edge\\2025_2026_r__skating_speed.html",
+      "csv": "data\\frozenpool_edge\\2025_2026_r__skating_speed.csv",
+      "rows": 715,
+      "ok": true,
+      "error": "",
+      "timestamp": "2026-06-22T10:05:31"
+    },
+    {
+      "period": "2025-2026:R",
+      "report": "Skating Distance",
+      "url": "https://frozenpool.dobbersports.com/frozenpool_report_edge.php?pos=Skaters&team=ALL&mingp=20&rookie=All&period=2025-2026%3AR&report=Skating+Distance&reportdata_length=5000",
+      "html": "data\\frozenpool_edge\\2025_2026_r__skating_distance.html",
+      "csv": "data\\frozenpool_edge\\2025_2026_r__skating_distance.csv",
+      "rows": 716,
+      "ok": true,
+      "error": "",
+      "timestamp": "2026-06-22T10:05:32"
+    },
+    {
+      "period": "2024-2025:R",
+      "report": "Shot Speed",
+      "url": "https://frozenpool.dobbersports.com/frozenpool_report_edge.php?pos=Skaters&team=ALL&mingp=20&rookie=All&period=2024-2025%3AR&report=Shot+Speed&reportdata_length=5000",
+      "html": "data\\frozenpool_edge\\2024_2025_r__shot_speed.html",
+      "csv": "data\\frozenpool_edge\\2024_2025_r__shot_speed.csv",
+      "rows": 698,
+      "ok": true,
+      "error": "",
+      "timestamp": "2026-06-22T10:05:33"
+    },
+    {
+      "period": "2024-2025:R",
+      "report": "Skating Speed",
+      "url": "https://frozenpool.dobbersports.com/frozenpool_report_edge.php?pos=Skaters&team=ALL&mingp=20&rookie=All&period=2024-2025%3AR&report=Skating+Speed&reportdata_length=5000",
+      "html": "data\\frozenpool_edge\\2024_2025_r__skating_speed.html",
+      "csv": "data\\frozenpool_edge\\2024_2025_r__skating_speed.csv",
+      "rows": 698,
+      "ok": true,
+      "error": "",
+      "timestamp": "2026-06-22T10:05:34"
+    },
+    {
+      "period": "2024-2025:R",
+      "report": "Skating Distance",
+      "url": "https://frozenpool.dobbersports.com/frozenpool_report_edge.php?pos=Skaters&team=ALL&mingp=20&rookie=All&period=2024-2025%3AR&report=Skating+Distance&reportdata_length=5000",
+      "html": "data\\frozenpool_edge\\2024_2025_r__skating_distance.html",
+      "csv": "data\\frozenpool_edge\\2024_2025_r__skating_distance.csv",
+      "rows": 699,
+      "ok": true,
+      "error": "",
+      "timestamp": "2026-06-22T10:05:36"
+    }
+  ],
+  "timestamp": "2026-06-22T10:05:37"
+}
