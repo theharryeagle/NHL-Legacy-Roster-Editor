@@ -1,12 +1,10 @@
-
-
-> Windows roster editor for NHL Legacy Edition, tested exclusively with Xenia. Safely edit players, teams, ratings, contracts, and roster assignments with automatic backups and validation. Franchise draft-pick ownership and other engine-level modifications are not currently supported.
-
-And here is a detailed, copy-ready README:
-
 # NHL Legacy Roster Editor
 
 A Windows desktop application for inspecting and editing NHL Legacy Edition roster files.
+
+## AI Disclaimer
+
+I have no coding knowledge. This app was coded using Codex to see if I could get the idea running and running well. 
 
 > **Compatibility notice:** This application has only been tested with NHL Legacy Edition running through Xenia Canary on Windows. It has not been tested on a physical Xbox 360, other emulators, or PlayStation versions of the game.
 
