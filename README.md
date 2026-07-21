@@ -1,193 +1,401 @@
+
+
+> Windows roster editor for NHL Legacy Edition, tested exclusively with Xenia. Safely edit players, teams, ratings, contracts, and roster assignments with automatic backups and validation. Franchise draft-pick ownership and other engine-level modifications are not currently supported.
+
+And here is a detailed, copy-ready README:
+
 # NHL Legacy Roster Editor
 
-Yes, we can build a PC program for editing `NHL Legacy Edition` rosters from Xbox 360 saves.
+A Windows desktop application for inspecting and editing NHL Legacy Edition roster files.
 
-The good news is that this has already been proven possible by older community tools, which means the project is realistic. The hard part is making a modern, reliable workflow for:
+> **Compatibility notice:** This application has only been tested with NHL Legacy Edition running through Xenia Canary on Windows. It has not been tested on a physical Xbox 360, other emulators, or PlayStation versions of the game.
 
-1. Opening the Xbox 360 `CON`/`STFS` save container.
-2. Extracting the internal roster database.
-3. Understanding and editing the EA roster data safely.
-4. Repacking the save without corrupting it.
+The editor works with Xenia-exposed `RosterFile` saves. It extracts the embedded EA roster database, creates a separate working copy, applies supported edits, validates the resulting database, and rebuilds the roster container.
 
-## What We Know
+The project does not include NHL Legacy Edition, copyrighted game archives, roster saves, player photographs, or Xbox system files. Users must provide their own legally obtained game and roster files.
 
-- Xbox 360 roster saves are typically stored in `CON` packages, which are a type of `STFS` content container.
-- Older NHL modding tools and forum posts show that Xbox 360 roster files can be extracted, edited, and repacked.
-- Artem Khassanov's NHL tools document that newer NHL console rosters use EA `TDB` database files.
+## Current status
 
-## Practical Plan
+The editor is usable for supported roster changes, but it is not a complete editor for every NHL Legacy or Franchise Mode system.
 
-### Phase 1: Inspect and extract
+Some screens provide working roster-editing tools. Others are research, planning, or read-only reference tools. Features that cannot yet be written safely are identified below.
 
-Goal: reliably detect and inspect Xbox 360 roster containers on PC.
+## Working and validated features
 
-- Read the package header.
-- Confirm `CON` / `PIRS` / `LIVE`.
-- Locate likely embedded roster payloads.
-- Export data for analysis.
+### Xenia roster support
 
-### Phase 2: Map the roster database
+The editor can:
 
-Goal: identify player/team tables and fields.
+- Open Xenia `RosterFile` saves.
+- Detect and decompress the embedded EA roster database.
+- Create a separate editing workspace.
+- Preserve the original roster while changes are being prepared.
+- Rebuild a valid `RosterFile` after supported edits.
+- Validate the rebuilt roster structure.
+- Maintain an edit-review trail.
+- Create backups before replacing files.
 
-- Compare two roster files with known changes.
-- Find player names, ratings, jersey numbers, handedness, contracts, etc.
-- Build a schema map.
+The primary tested format is a roster saved by NHL Legacy Edition under Xenia Canary.
 
-### Phase 3: Safe editing
+### Player search and roster inspection
 
-Goal: edit values and write them back.
+Users can:
 
-- Validate field sizes and offsets.
-- Preserve container integrity.
-- Add sanity checks to avoid broken saves.
+- Search for players by name.
+- View player IDs and database records.
+- Inspect current club and organization assignments.
+- Distinguish NHL, minor-league, prospect, and inactive player relationships.
+- Review bio, rating, contract, and team-assignment information.
+- Compare local players with available real-world reference information.
 
-### Phase 4: Friendly desktop UI
+### Player movement
 
-Goal: provide a real editor instead of hex tools.
+Supported player movement includes:
 
-- Search players
-- Edit ratings and bio data
-- Edit rosters/lines
-- Import/export CSV
+- Moving an existing player between mapped NHL organizations.
+- Updating the player’s primary team-assignment record.
+- Preserving unrelated player records.
+- Showing the before-and-after team values in the review screen.
+- Writing the supported move back into the roster database.
 
-### Phase 5: Smart real-world sync
+Team movement has been tested using the player-instance team field used by NHL Legacy.
 
-Goal: make roster maintenance much faster than doing it in-game.
+This does not change the game’s hardcoded league size or Franchise Mode structure.
 
-- Pull current official NHL team rosters from the public NHL web API.
-- Pull NHL.com trade coverage headlines for recent move context.
-- Compare official roster assignments with your local roster database.
-- Show suggested moves like `Player X: TOR -> PHI`.
-- Let you accept/reject moves in batches.
+### Player information and ratings
 
-### Phase 6: Weighted overall planner
+The desktop application includes tools for reviewing and editing supported player information, including:
 
-Goal: support the kind of rating workflow you described.
+- Player names and biographical information.
+- Jersey numbers.
+- Positions and player types.
+- Skater ratings.
+- Goaltender ratings.
+- Player overall planning.
+- Potential and development-related values where mapped.
+- Contract-related values where mapped.
 
-- Pick a player archetype like `sniper` or `playmaker`.
-- Set a target overall cap, for example `83 -> 87`.
-- Show how many rating points are available to spend.
-- Weight key stats more heavily for overall, such as offensive and defensive awareness.
-- Drive future UI sliders from the same budget engine.
+The application includes guardrails intended to prevent invalid field sizes and obviously unsafe values.
 
-### Phase 7: Contract normalization
+### Overall-rating tools
 
-Goal: keep NHL Legacy contracts aligned with the modern NHL cap even when the in-game cap is lower.
+The editor includes weighted rating tools that can:
 
-- Set the real NHL cap upper limit for the target season.
-- Set the in-game salary cap used by NHL Legacy.
-- Scale a player's contract by cap-hit percentage instead of copying raw dollars.
-- Preserve contract length unless a real extension/signing changed the term.
+- Estimate a player’s overall rating.
+- Plan rating changes toward a target overall.
+- Use different player archetypes.
+- Give greater weight to important attributes.
+- Compare a target player with selected NHL players.
+- Preview rating changes before applying them.
 
-## Included Starter
+The calculated result is an estimate based on the mapped NHL Legacy attributes. It should be reviewed in-game after saving.
 
-This repo now includes a small Python CLI that can:
+### Contract tools
 
-- Inspect Xbox 360 `STFS` containers
-- Inspect Xenia-exposed `RosterFile` saves directly
-- Detect the compressed roster payload inside a `RosterFile`
-- Extract the decompressed database payload to a separate file
-- Fetch current official NHL rosters by team
-- Fetch recent NHL.com trade coverage headlines
-- Plan weighted overall upgrades for future slider-based editing
-- Scale contracts by cap-hit percentage into the NHL Legacy cap environment
+The editor can help with:
 
-It is intentionally a first step, not a full editor yet.
+- Viewing mapped contract information.
+- Comparing contract data with available real-world references.
+- Scaling contracts to NHL Legacy’s lower in-game salary-cap environment.
+- Preserving contract length when appropriate.
+- Preparing contract updates for review.
+- Applying supported contract-field changes to a roster workspace.
 
-There is now also a local web app shell with:
+Real-world contract amounts can be normalized by salary-cap percentage instead of being copied directly into the game.
 
-- workspace creation from a Xenia `RosterFile`
-- player search
-- inferred current-team lookup
-- manual team moves against the player instance row
-- NHL.com trade context
-- HockeyDB profile lookup for height/weight reference
-- contract scaling planner
-- create-player comparison planner
-- final review log of app-driven edits
+Contract data from external websites may change or become unavailable. Users should review all proposed values before applying them.
 
-## Run It
+### Current-roster reference tools
+
+Where an internet connection is available, the application can retrieve or display information from sources such as:
+
+- The official NHL roster API.
+- NHL transaction and trade coverage.
+- HockeyDB player profiles.
+- CapWages contract information.
+- MoneyPuck-derived statistical data used by supported comparison tools.
+
+External data is used as reference material. The editor does not guarantee that automatically matched players are correct, so proposed changes should be reviewed before they are written.
+
+### Backups and review
+
+The editor is designed around reversible editing:
+
+- Original roster files are preserved.
+- Work is performed in a separate workspace.
+- Important operations create backups.
+- Changes can be reviewed before rebuilding the roster.
+- Supported operations validate the temporary database before it replaces a working copy.
+- The final review screen records app-driven changes.
+
+Keep additional manual backups of important roster and Dynasty saves.
+
+## Available but experimental
+
+The following features are implemented or partially implemented but should be treated as experimental.
+
+### Bulk roster synchronization
+
+The editor can compare the local roster with current NHL organization data and prepare batches of:
+
+- Team changes.
+- Contract changes.
+- Player updates.
+- Potential create-player candidates.
+
+Automatic matching is not perfect. Players with similar names, stale organization relationships, custom records, or incomplete external data may require manual review.
+
+Do not apply a large automatic update without reviewing every proposed change and retaining a backup.
+
+### Player creation
+
+The application contains tools for creating or synchronizing players using available roster slots and mapped database relationships.
+
+Player creation is more complex than editing an existing player. NHL Legacy contains relationships between bio, rating, team, contract, presentation, and other records. Although the editor validates mapped structures, every created player has not been tested through every game mode.
+
+After creating players, test:
+
+- Roster management.
+- Exhibition games.
+- Player information screens.
+- A newly started Franchise.
+- Saving and reloading.
+
+### 2026 draft class
+
+The application includes a 2026 draft-class dataset and tools for:
+
+- Scanning the roster for listed prospects.
+- Identifying present or missing prospects.
+- Reviewing draft information.
+- Creating or synchronizing selected prospects.
+- Assigning mapped draft-rights information.
+- Applying scouting-based rating profiles.
+- Validating the temporary database before installation.
+
+This feature concerns player and prospect records. It is not the same as editing future Franchise Mode draft-pick ownership.
+
+Draft-class creation remains experimental and should be tested on a copied roster before starting a new Franchise.
+
+### Advanced statistical updates
+
+The application contains tools for building rating suggestions from external performance data.
+
+These tools can help prepare rating changes, but they are not an official recreation of EA’s overall-rating formula. Statistical matching and rating translations require user review.
+
+## Not working or not supported
+
+### Franchise draft-pick ownership
+
+Writing traded future draft picks into a Franchise save is not currently supported.
+
+The application may display draft-pick information from CapWages or allow users to record picks in a planning or trade ledger. Those entries are informational only.
+
+They do not alter the underlying NHL Legacy Franchise Mode draft-pick ownership table.
+
+This feature is intentionally disabled because the relevant Dynasty database structure has not been mapped safely enough. Guessing at these records could produce a damaged save or cause the game to crash.
+
+To be clear:
+
+- Viewing real-world draft-pick ownership: available as reference information.
+- Recording a draft pick in an app ledger: available for planning.
+- Changing ownership of a future pick inside NHL Legacy Franchise Mode: not working.
+- Injecting a traded pick into an existing Dynasty save: not supported.
+
+### Existing Dynasty or Franchise saves
+
+The primary supported target is a roster file used before starting a new Franchise.
+
+Existing Dynasty saves contain their own copies of player, team, contract, schedule, and league information. Editing the standalone roster does not automatically update an existing Dynasty.
+
+The editor should not be assumed to support arbitrary Dynasty-save modifications.
+
+### League expansion and 32-team Franchise Mode
+
+The editor does not convert NHL Legacy’s original Franchise Mode into a fully working modern 32-team league.
+
+It does not safely provide:
+
+- A true 32-team Dynasty initializer.
+- Fully integrated Vegas and Seattle expansion.
+- A rebuilt league alignment.
+- A new playoff structure.
+- A modern Franchise schedule generator.
+
+Research exists in related projects, but executable patching remains separate from the supported roster editor.
+
+### 84-game schedules
+
+The editor does not change the game’s schedule generator or create a working 84-game NHL season.
+
+Season length and schedule generation appear to require executable-level research outside the roster database.
+
+### Executable and gameplay modifications
+
+This application is not intended to patch `default.xex`.
+
+It does not officially modify:
+
+- Gameplay logic.
+- AI behavior.
+- Physics.
+- Franchise initialization.
+- Salary-cap engine logic.
+- League-size limits.
+- Playoff logic.
+- Schedule-generation code.
+
+Experimental executable patches from other projects should not be confused with supported roster-editor features.
+
+### Player portraits
+
+Portrait installation is handled by a separate NHL Legacy modding workflow.
+
+The roster editor may preserve or edit mapped Portrait ID fields, but the editor package does not include player photographs or modified game archives.
+
+Displaying a new portrait requires compatible portrait assets in the game’s `cache.big` and `nocache.big` archives in addition to the correct roster Portrait ID.
+
+### Physical Xbox 360 support
+
+The application has not been validated for deployment to a physical Xbox 360.
+
+Xbox `CON`/STFS containers may require additional extraction, rebuilding, signing, or resigning steps that are not part of the tested Xenia workflow.
+
+## Tested environment
+
+The current tested environment is:
+
+- Windows 11.
+- Xenia Canary.
+- NHL Legacy Edition for Xbox 360.
+- Xenia-exposed `RosterFile` saves.
+- Python 3.11 for source installations.
+
+Other configurations may work, but they have not been validated.
+
+## Installation
+
+### Portable Windows package
+
+When a packaged release is available:
+
+1. Download the latest Windows ZIP from the GitHub Releases page.
+2. Extract the entire ZIP to a normal writable folder.
+3. Run `NHLLegacyRosterEditor.exe`.
+4. Do not run the program directly from inside the ZIP.
+5. Keep Xenia closed while the editor is rebuilding or replacing a roster.
+
+Windows may display a SmartScreen warning because community builds are not code-signed.
+
+### Running from source
+
+Requirements:
+
+- Windows.
+- Python 3.11 or newer.
+- The repository’s bundled TDB access libraries.
+
+Install:
 
 ```powershell
-python -m src.nhl_legacy_editor.cli inspect "C:\path\to\your\roster.con"
+git clone https://github.com/theharryeagle/NHL-Legacy-Roster-Editor.git
+cd NHL-Legacy-Roster-Editor
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -e .
 ```
 
-For a Xenia roster file:
+Start the desktop application:
 
 ```powershell
-nhl-legacy-editor inspect "D:\Emulation\xenia_manager\Emulators\Xenia Canary\content\E03000006397D304\454109EC\00000001\ROSTER 20260611193707\ROSTER 20260611193707"
-nhl-legacy-editor extract-db "D:\Emulation\xenia_manager\Emulators\Xenia Canary\content\E03000006397D304\454109EC\00000001\ROSTER 20260611193707\ROSTER 20260611193707"
-nhl-legacy-editor fetch-roster TOR -o ".\backups\toronto_roster.csv"
-nhl-legacy-editor fetch-trades --limit 5
-nhl-legacy-editor plan-overall power_forward 87 --stat offensive_awareness=83 --stat body_checking=84 --stat strength=85 --stat puck_control=82 --stat wrist_shot_power=83 --stat hand_eye=82 --stat aggressiveness=80 --stat defensive_awareness=79
-nhl-legacy-editor contract-scale "Matthew Knies" --real-cap 104.0 --game-cap 78.6 --cap-hit-percent 0.14
-nhl-legacy-editor contract-scale "Matthew Knies" --real-cap 104.0 --game-cap 78.6 --real-aav 7.75
-nhl-legacy-editor workspace-open "D:\Emulation\xenia_manager\Emulators\Xenia Canary\content\E03000006397D304\454109EC\00000001\ROSTER 20260611193707\ROSTER 20260611193707"
-nhl-legacy-editor app
+.\.venv\Scripts\nhl-legacy-desktop.exe
 ```
 
-Or after install:
+Display command-line help:
 
 ```powershell
-python -m pip install -e .
-nhl-legacy-editor inspect "C:\path\to\your\roster.con"
+.\.venv\Scripts\nhl-legacy-editor.exe --help
 ```
 
-## Feature Direction
+## Basic Xenia workflow
 
-The strongest version of this editor would use two separate real-world data modes:
+1. Close Xenia and the roster editor.
+2. Locate the roster you want to edit in Xenia’s content directory.
+3. Make a manual backup of the entire roster folder.
+4. Open the roster in NHL Legacy Roster Editor.
+5. Review the detected workspace and player data.
+6. Make only supported changes.
+7. Review the final change list.
+8. Rebuild or install the edited roster.
+9. Start Xenia.
+10. Load the edited roster inside NHL Legacy Edition.
+11. Test roster management and an exhibition game.
+12. Start a new Franchise if you want the edited roster incorporated into Franchise Mode.
 
-1. `Roster sync mode`
-   Compare the in-game roster against the current official NHL team rosters and suggest moves automatically.
+Do not overwrite an important roster or Dynasty save without a separate backup.
 
-2. `Transaction context mode`
-   Show the latest NHL.com trade headlines so you can understand why a suggested move appeared.
+## Command-line examples
 
-For player editing, the weighted-overall planner should be the basis for the UI:
+Inspect a Xenia roster:
 
-- Archetype dropdown
-- Current overall
-- Target overall cap
-- Remaining points counter
-- Sliders for weighted stats
-- Lock/unlock specific attributes
+```powershell
+nhl-legacy-editor inspect "C:\path\to\ROSTER NAME"
+```
 
-For contracts, the editor should support a salary-cap normalization mode:
+Extract its embedded database:
 
-- Use the real NHL cap for the chosen season.
-- Use the actual in-game NHL Legacy cap.
-- Recalculate AAV by cap-hit percentage.
-- Keep term unchanged unless there was a real new contract.
+```powershell
+nhl-legacy-editor extract-db "C:\path\to\ROSTER NAME"
+```
 
-## What We Need Next
+Create an editing workspace:
 
-The next real unlock is mapping the decompressed payload schema so we can connect these new features to the actual NHL Legacy database:
+```powershell
+nhl-legacy-editor workspace-open "C:\path\to\ROSTER NAME"
+```
 
-- Match official NHL player names/IDs to in-game players
-- Identify player team assignment fields
-- Identify player type/archetype fields
-- Identify rating/stat fields and overall logic
-- Write changes back into the roster file safely
+Open the desktop editor:
 
-## Current Move Breakthrough
+```powershell
+nhl-legacy-desktop
+```
 
-The biggest roster-editing roadblock is now partly solved for team moves:
+## Safety recommendations
 
-- the main player-instance row lives in table `ulGe`
-- field `BSXd` appears to hold the current team code for that instance
-- those codes line up with the team table values for clubs like `TB = 26` and `TOR = 27`
-- a controlled Darren Raddysh test successfully changed `BSXd` from `26` to `27`
-- the edited DB was then repacked back into a valid `RosterFile`
+- Keep Xenia closed while writing roster files.
+- Keep the editor closed while another tool modifies the same roster.
+- Back up the complete Xenia save folder, including its header.
+- Test large changes on a copied roster.
+- Start a new Franchise after major roster edits.
+- Do not assume a standalone roster change will update an existing Dynasty.
+- Treat automatic player matching as a suggestion until reviewed.
+- Avoid experimental draft, expansion, or executable modifications on valuable saves.
+- Never distribute copyrighted game archives or another user’s roster without permission.
 
-That means the app can now make at least some real player team moves in a working roster copy, with a review trail showing the `BSXd` field change before and after.
+## Test status
 
-## Sources
+The current automated test suite contains 47 passing tests covering supported editor logic such as:
 
-- [Artem Khassanov NHL tools](https://www.artemkh.com/nhl/)
-- [Artem developer tools / TDB docs](https://www.artemkh.com/nhl/devtools/)
-- [Free60 STFS overview](https://free60.org/STFS/)
-- [Operation Sports NHL roster tools thread](https://forums.operationsports.com/forums/forum/hockey/ea-sports-nhl/ea-sports-nhl-legacy/590157-nhl-14-roster-tools)
-- [Official NHL roster API example](https://api-web.nhle.com/v1/roster/TOR/current)
-- [Official NHL trade coverage topic page](https://www.nhl.com/news/topic/trade-coverage/)
-- [Official 2025-26 NHL Trade Tracker](https://www.nhl.com/news/2025-26-nhl-trades)
+- Attribute and overall calculations.
+- Contract normalization.
+- Player matching.
+- Organization handling.
+- Workspace paths.
+- Draft-name matching and selected draft-class logic.
+- Supported roster data transformations.
+
+Automated tests do not replace in-game testing. The application has only been tested with Xenia.
+
+## Project scope
+
+The goal of this project is to provide a safer and more approachable way to maintain NHL Legacy rosters on Windows while clearly separating validated roster editing from unfinished Franchise Mode and executable research.
+
+Contributions are welcome, particularly for:
+
+- Additional roster-field validation.
+- Reproducible Xenia testing.
+- Improved player matching.
+- Safer created-player workflows.
+- Documented Dynasty database research.
+- Packaging and installer improvements.
+
+Please do not submit copyrighted game files, player-photo archives, roster saves containing personal data, or Xbox system files.
