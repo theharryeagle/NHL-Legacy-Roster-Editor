@@ -110,6 +110,36 @@ def organization_for_abbrev(
     return normalized if normalized in NHL_ABBREVS or normalized in CUSTOM_NHL_ABBREVS else None
 
 
+def franchise_rights_code(target_team: TeamRecord, teams: list[TeamRecord]) -> int:
+    """Encode an organization in the roster's narrow 5-bit rights fields."""
+    organization = organization_for_abbrev(target_team.abbrev)
+    playable = sorted(
+        (
+            team
+            for team in teams
+            if 0 <= team.code <= 29
+            and organization_for_abbrev(team.abbrev) == organization
+        ),
+        key=lambda team: team.code,
+    )
+    if playable:
+        return playable[0].code + 1
+    return target_team.code + 1 if 0 <= target_team.code <= 30 else 0
+
+
+def franchise_contract_team_code(target_team: TeamRecord, teams: list[TeamRecord]) -> int:
+    """Return the NHL organization code used by contract ownership fields.
+
+    A player's roster instance may live on an AHL affiliate, but cPbu.BSXd
+    must continue to identify the parent NHL organization. Writing the AHL
+    team code here makes NHL Legacy reinterpret some one-way contracts as
+    minor-league deals when Franchise Mode is created.
+    """
+    if league_name_for_team(target_team) in {"NHL", "AHL", "Organization"}:
+        return franchise_rights_code(target_team, teams)
+    return target_team.code + 1
+
+
 def load_teams(db_path: Path) -> list[TeamRecord]:
     access = TdbAccess()
     team_index = access.resolve_table_index(db_path, TEAM_TABLE_INDEX)
@@ -159,13 +189,32 @@ def resolve_team_abbrev(
         return None
     candidates.sort(
         key=lambda team: (
-            0 if league_name_for_team(team) == "NHL" and 0 <= team.code <= 31 else 1,
             0 if team.abbrev.upper() == cleaned else 1,
+            0 if league_name_for_team(team) == "NHL" and 0 <= team.code <= 31 else 1,
             0 if league_name_for_team(team) == "NHL" else 1,
             team.code,
         )
     )
     return candidates[0]
+
+
+def resolve_playable_nhl_team(
+    target_abbrev: str,
+    teams: list[TeamRecord],
+    custom_links: dict[str, str] | None = None,
+) -> TeamRecord | None:
+    """Prefer the legacy 0-29 franchise slot for a modern NHL identity."""
+    organization = organization_for_abbrev(target_abbrev, custom_links)
+    playable = sorted(
+        (
+            team
+            for team in teams
+            if 0 <= team.code <= 29
+            and organization_for_abbrev(team.abbrev, custom_links) == organization
+        ),
+        key=lambda team: team.code,
+    )
+    return playable[0] if playable else resolve_team_abbrev(target_abbrev, teams, custom_links)
 
 
 def league_name_for_team(team: TeamRecord | None) -> str:

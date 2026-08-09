@@ -65,13 +65,31 @@ DISPLAY_TO_SEMANTIC = {
 }
 
 
-def calculate_goalie_overall(display_values: dict[str, int], style: str = "Hybrid Goalie") -> int:
+def calculate_unrounded_goalie_overall(display_values: dict[str, int], style: str = "Hybrid Goalie") -> float:
     if not display_values:
-        return 0
-    value = GOALIE_OVERALL_INTERCEPT + sum(
+        return 0.0
+    return GOALIE_OVERALL_INTERCEPT + sum(
         float(display_values.get(label, 36)) * coefficient
         for label, coefficient in GOALIE_OVERALL_COEFFICIENTS.items()
     )
+
+
+def calculate_goalie_overall(display_values: dict[str, int], style: str = "Hybrid Goalie") -> int:
+    value = calculate_unrounded_goalie_overall(display_values, style)
+    return max(36, min(99, int(value + 0.5)))
+
+
+def calculate_anchored_goalie_overall(
+    current_values: dict[str, int],
+    suggested_values: dict[str, int],
+    stored_overall: int | None,
+    style: str = "Hybrid Goalie",
+) -> int:
+    suggested = calculate_unrounded_goalie_overall(suggested_values, style)
+    if stored_overall is None:
+        return max(36, min(99, int(suggested + 0.5)))
+    current = calculate_unrounded_goalie_overall(current_values, style)
+    value = float(stored_overall) + (suggested - current)
     return max(36, min(99, int(value + 0.5)))
 
 
@@ -147,6 +165,81 @@ def clone_recommendation_set(value: RecommendationSet) -> RecommendationSet:
         overall_baseline=value.overall_baseline,
         overall_note=value.overall_note,
     )
+
+
+def faceoff_effective_percentage(
+    won: float | None,
+    taken: float | None,
+    position: str | None,
+) -> tuple[float | None, float | None, float]:
+    """Return raw %, confidence-adjusted %, and sample participation.
+
+    Results are shrunk toward 50 percent using 100 prior draws for centers and
+    250 for wingers. Full sample credit requires 100 center draws or 200 wing
+    draws, preventing tiny samples from generating elite ratings.
+    """
+    normalized_position = str(position or "").strip().upper()
+    if won is None or taken is None or taken <= 0:
+        return None, None, 0.0
+    percentage = max(0.0, min(100.0, (float(won) / float(taken)) * 100.0))
+    is_winger = normalized_position in {"LW", "RW", "L", "R"}
+    prior_draws = 250.0 if is_winger else 100.0
+    full_sample = 200.0 if is_winger else 100.0
+    confidence = float(taken) / (float(taken) + prior_draws)
+    effective_percentage = 50.0 + ((percentage - 50.0) * confidence)
+    participation = max(0.0, min(1.0, float(taken) / full_sample))
+    return percentage, effective_percentage, participation
+
+
+def faceoff_rating_from_percentage(
+    won: float | None,
+    taken: float | None,
+    position: str | None,
+    *,
+    league_rank: int | None = None,
+) -> tuple[int, float | None]:
+    """Map faceoff results to 60-99 with only five elite league ratings."""
+    normalized_position = str(position or "").strip().upper()
+    if normalized_position == "D":
+        return 36, None
+    percentage, effective_percentage, participation = faceoff_effective_percentage(
+        won,
+        taken,
+        normalized_position,
+    )
+    if percentage is None or effective_percentage is None:
+        return 60, None
+    # The five best qualified players receive the only 96-99 ratings.
+    if league_rank is not None and 1 <= league_rank <= 5 and float(taken or 0) >= 200:
+        return (99, 98, 98, 97, 96)[league_rank - 1], percentage
+    # Flatten the average-to-good range so modest percentage differences do
+    # not create exaggerated rating gaps. The curve gets steeper again near
+    # the extremes, while 96-99 remain exclusive to the qualified top five.
+    rating_points = (
+        (45.0, 60),
+        (47.5, 66),
+        (50.0, 72),
+        (52.5, 78),
+        (55.0, 85),
+        (57.5, 89),
+        (60.0, 95),
+    )
+    if effective_percentage <= rating_points[0][0]:
+        qualified_rating = rating_points[0][1]
+    elif effective_percentage >= rating_points[-1][0]:
+        qualified_rating = rating_points[-1][1]
+    else:
+        qualified_rating = rating_points[-1][1]
+        for (left_pct, left_rating), (right_pct, right_rating) in zip(
+            rating_points,
+            rating_points[1:],
+        ):
+            if left_pct <= effective_percentage <= right_pct:
+                ratio = (effective_percentage - left_pct) / (right_pct - left_pct)
+                qualified_rating = round(left_rating + ((right_rating - left_rating) * ratio))
+                break
+    rating = round(60 + ((qualified_rating - 60) * participation))
+    return max(60, min(95, rating)), percentage
 
 
 def nhl_role_overall_from_score(score: float) -> int:
@@ -487,6 +580,34 @@ class LegacyAttributeMapper:
     def __init__(self, model: MoneyPuckPercentileModel) -> None:
         self.model = model
         self._recommendation_cache: dict[tuple[object, ...], RecommendationSet] = {}
+        qualified: dict[str, tuple[float, float]] = {}
+        for row in model.rows:
+            position = self._position(row)
+            if position == "D":
+                continue
+            won, taken = faceoff_won_taken(row)
+            _raw, effective, _participation = faceoff_effective_percentage(won, taken, position)
+            if effective is None or taken is None or taken < 200:
+                continue
+            identity = self._faceoff_identity(row)
+            previous = qualified.get(identity)
+            candidate = (effective, float(taken))
+            if previous is None or candidate > previous:
+                qualified[identity] = candidate
+        ordered = sorted(qualified.items(), key=lambda item: (-item[1][0], -item[1][1], item[0]))
+        self._faceoff_rank_by_identity = {
+            identity: rank
+            for rank, (identity, _value) in enumerate(ordered, start=1)
+        }
+
+    @staticmethod
+    def _faceoff_identity(row: dict[str, Any]) -> str:
+        player_id = row.get("playerId") or row.get("player_id") or row.get("nhl_player_id")
+        if player_id not in (None, ""):
+            return f"id:{player_id}"
+        name = row.get("name") or row.get("playerName") or row.get("skaterFullName") or ""
+        team = row.get("team") or row.get("teamAbbrev") or ""
+        return f"name:{str(name).strip().casefold()}|team:{str(team).strip().upper()}"
 
     def _p(
         self,
@@ -597,9 +718,9 @@ class LegacyAttributeMapper:
         if position == "D":
             rec.add("Face-offs", 36, "defenseman fixed value")
         elif won is not None and taken is not None and taken > 0:
-            pct_score = max(0.0, min(1.0, (((won / taken) * 100.0) - 45.0) / 15.0))
-            volume_score = max(0.0, min(1.0, taken / 800.0))
-            faceoff_defense_score = (pct_score * 0.62) + (volume_score * 0.38)
+            _raw_percentage, adjusted_percentage, _participation = faceoff_effective_percentage(won, taken, position)
+            effective_percentage = adjusted_percentage or 0.0
+            faceoff_defense_score = max(0.0, min(1.0, (effective_percentage - 40.0) / 20.0))
 
         add(rec, row, "Wrist Shot Accuracy", [(("_goals_per60",), 0.20, False), (("_xgoals_per60",), 0.24, False), (("_shooting_pct",), 0.18, False), (("_shots_per60",), 0.14, False), (("I_F_highDangerGoals",), 0.14, False), (("_goals_above_expected",), 0.10, False)], 64, 98, "finishing: goals/xG rates, shooting pct, shot volume, high-danger goals")
         add(rec, row, "Slap Shot Accuracy", [(("_shot_attempts_per60",), 0.24, False), (("_xgoals_per60",), 0.22, False), (("_shots_per60",), 0.20, False), (("I_F_rebounds",), 0.14, False), (("_goals_per60",), 0.12, False), (("I_F_mediumDangerShots",), 0.08, False)], 54, 96, "shot generation, xG rate, rebound creation, medium-range volume")
@@ -621,33 +742,26 @@ class LegacyAttributeMapper:
         add(rec, row, "Strength", [(("_toi_per_gp",), 0.14, False), (("_giveaways_per60",), 0.14, True), (("_xgoals_per60",), 0.10, False), (("_blocks",), 0.08, False), (("_hits",), 0.08, False), (("_hits_per60",), 0.06, False)], 58, 99, "size-weighted strength: player size, puck protection, workload, net-front xG, physical play", extras=((size_score, 0.50),))
         add(rec, row, "Deking", [(("_points_per60",), 0.24, False), (("onIce_corsiPercentage",), 0.20, False), (("_giveaways_per60",), 0.18, True), (("_primary_assists_per60",), 0.16, False), (("_shots_per60",), 0.12, False), (("gameScore",), 0.10, False)], 56, 98, "puck skill proxy: production rate, possession, low giveaways, creation")
 
-        if won is not None and taken is not None and taken > 0:
-            pct_percent = max(0.0, min(100.0, (won / taken) * 100.0))
-            points = [(42.0, 48), (45.0, 58), (48.0, 68), (50.0, 76), (52.0, 84), (54.0, 90), (56.0, 94), (58.0, 96), (60.0, 98), (62.0, 99)]
-            if pct_percent <= points[0][0]:
-                faceoff_rating = points[0][1]
-            elif pct_percent >= points[-1][0]:
-                faceoff_rating = points[-1][1]
+        if position != "D":
+            faceoff_rank = self._faceoff_rank_by_identity.get(self._faceoff_identity(row))
+            faceoff_rating, pct_percent = faceoff_rating_from_percentage(
+                won,
+                taken,
+                position,
+                league_rank=faceoff_rank,
+            )
+            if pct_percent is None:
+                rec.add("Face-offs", 60, "forward base: no recorded faceoffs")
             else:
-                faceoff_rating = 76
-                for (x1, y1), (x2, y2) in zip(points, points[1:]):
-                    if x1 <= pct_percent <= x2:
-                        faceoff_rating = round(y1 + (((pct_percent - x1) / (x2 - x1)) * (y2 - y1)))
-                        break
-            if taken < 50:
-                volume_cap = 76
-            elif taken < 100:
-                volume_cap = 84
-            elif taken < 250:
-                volume_cap = 90
-            elif taken < 500:
-                volume_cap = 94
-            else:
-                volume_cap = 99
-            faceoff_rating = max(60, min(volume_cap, int(faceoff_rating)))
-            rec.add("Face-offs", faceoff_rating, f"{int(won)}/{int(taken)} faceoffs ({pct_percent:.1f}%); volume cap {volume_cap}")
-        else:
-            rec.add("Face-offs", 60, "forward minimum: no recorded faceoffs")
+                _raw, adjusted, participation = faceoff_effective_percentage(won, taken, position)
+                rank_note = f"; qualified league rank {faceoff_rank}" if faceoff_rank is not None else ""
+                rec.add(
+                    "Face-offs",
+                    faceoff_rating,
+                    f"{int(won)}/{int(taken)} faceoffs ({pct_percent:.1f}%); "
+                    f"confidence-adjusted {float(adjusted or 50.0):.1f}%; "
+                    f"sample credit {participation:.0%}{rank_note}",
+                )
 
         shots = number(row, "_shots", default=0) or 0
         goals = number(row, "_goals", default=0) or 0

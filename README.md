@@ -10,7 +10,7 @@ I have no coding knowledge. This app was coded using Codex to see if I could get
 
 The editor works with Xenia-exposed `RosterFile` saves. It extracts the embedded EA roster database, creates a separate working copy, applies supported edits, validates the resulting database, and rebuilds the roster container.
 
-The project does not include NHL Legacy Edition, copyrighted game archives, roster saves, player photographs, or Xbox system files. Users must provide their own legally obtained game and roster files.
+The project does not include NHL Legacy Edition, copyrighted game archives, player photographs, or Xbox system files. Optional community roster releases contain only an edited NHL Legacy roster save and still require a legally obtained copy of the game.
 
 ## Current status
 
@@ -273,17 +273,36 @@ Other configurations may work, but they have not been validated.
 
 ## Installation
 
-### Portable Windows package
+### Windows installer
 
-When a packaged release is available:
+1. Open the latest application release on the GitHub Releases page.
+2. Download `NHLLegacyRosterEditor-Setup-0.2.0.exe`.
+3. Close Xenia, run the installer, and launch NHL Legacy Roster Editor from the Start menu or optional desktop shortcut.
+4. Windows may display a SmartScreen warning because community builds are not code-signed.
 
-1. Download the latest Windows ZIP from the GitHub Releases page.
-2. Extract the entire ZIP to a normal writable folder.
-3. Run `NHLLegacyRosterEditor.exe`.
-4. Do not run the program directly from inside the ZIP.
-5. Keep Xenia closed while the editor is rebuilding or replacing a roster.
+The installer is per-user, does not require administrator access, and includes an uninstaller in Windows Settings.
+
+### Portable Windows executable
+
+1. Download `NHLLegacyRosterEditor.exe` from the latest application release.
+2. Place it in a normal writable folder.
+3. Run the executable directly; installation is not required.
+4. Keep Xenia closed while the editor is rebuilding or replacing a roster.
 
 Windows may display a SmartScreen warning because community builds are not code-signed.
+
+### Optional updated roster
+
+The updated roster is published as a separate GitHub release so it is not confused with the application installer.
+
+1. Download the roster archive from the latest roster-only release.
+2. Close Xenia and back up the roster folder you currently use.
+3. Extract the archive. Keep the outer roster folder and inner roster file names unchanged.
+4. Copy the extracted roster folder under Xenia's NHL Legacy content path:
+   `content\E03000006397D304\454109EC\00000001\`
+5. Start NHL Legacy Edition and load roster `20260608152448`.
+
+The roster release includes the calibrated future draft classes and the updated league-wide faceoff ratings. Franchise Mode changes require starting a new Franchise after loading the roster.
 
 ### Running from source
 

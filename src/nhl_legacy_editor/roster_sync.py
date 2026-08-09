@@ -2,13 +2,18 @@ from __future__ import annotations
 
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import asdict, dataclass
+import unicodedata
+from typing import Iterable
 
 from .capwages import fetch_capwages_team_contracts
-from .team_tools import normalize_org_abbrev, organization_for_abbrev
+from .nhl_remote import TEAM_ABBREVIATIONS, fetch_league_rosters
+from .team_tools import TeamRecord, league_name_for_team, normalize_org_abbrev, organization_for_abbrev, resolve_playable_nhl_team, resolve_team_abbrev
 
 EXPANSION_TEAM_ABBREVS = {"SEA", "VGK"}
 EXPANSION_DESTINATION_TEAMS = "teams"
 EXPANSION_DESTINATION_FREE_AGENCY = "free_agency"
+EXPANSION_DESTINATION_SEATTLE_FREE_AGENCY = "seattle_free_agency"
+EXPANSION_DESTINATION_VEGAS_FREE_AGENCY = "vegas_free_agency"
 FREE_AGENCY_TARGET = "FREE_AGENCY"
 FIRST_NAME_EQUIVALENTS = {
     "alex": "alexander",
@@ -23,6 +28,16 @@ FIRST_NAME_EQUIVALENTS = {
     "vinnie": "vincent",
     "zach": "zachary",
 }
+
+
+def expansion_free_agent_teams(destination: str) -> set[str]:
+    if destination == EXPANSION_DESTINATION_FREE_AGENCY:
+        return {"SEA", "VGK"}
+    if destination == EXPANSION_DESTINATION_SEATTLE_FREE_AGENCY:
+        return {"SEA"}
+    if destination == EXPANSION_DESTINATION_VEGAS_FREE_AGENCY:
+        return {"VGK"}
+    return set()
 
 
 def can_auto_apply_move_on_save(row: dict[str, object]) -> bool:
@@ -53,7 +68,12 @@ class CreateCandidate:
 
 
 def normalize_name(value: str) -> str:
-    cleaned = " ".join(value.lower().split())
+    folded = unicodedata.normalize("NFKD", value.casefold())
+    folded = "".join(character for character in folded if not unicodedata.combining(character))
+    folded = folded.translate(
+        str.maketrans({"ı": "y", "ø": "o", "ł": "l", "đ": "d", "ß": "ss", "æ": "ae", "œ": "oe"})
+    )
+    cleaned = " ".join(folded.split())
     if "," in cleaned:
         last, first = [part.strip() for part in cleaned.split(",", 1)]
         return " ".join((first, last)).strip()
@@ -134,6 +154,9 @@ def move_is_already_satisfied(
     target = str(row.get("to_team") or "").strip()
     if not target:
         return False
+    if str(row.get("source") or "") == "Franchise Roster Builder":
+        current = str(getattr(player, "current_team_abbrev", None) or "").strip().upper()
+        return current == target.upper()
     if target == FREE_AGENCY_TARGET:
         if bool(getattr(player, "is_hidden", False)):
             return False
@@ -227,7 +250,7 @@ def build_capwages_roster_update(
         is_expansion_team = team_abbrev in EXPANSION_TEAM_ABBREVS
         target_team_abbrev = (
             FREE_AGENCY_TARGET
-            if is_expansion_team and expansion_destination == EXPANSION_DESTINATION_FREE_AGENCY
+            if is_expansion_team and team_abbrev in expansion_free_agent_teams(expansion_destination)
             else team_abbrev
         )
         for row in contracts.get("signed", []):
@@ -318,4 +341,298 @@ def build_capwages_roster_update(
             asdict(item)
             for item in sorted(dedup_creates.values(), key=lambda item: (item.team, item.player_name))
         ],
+    }
+
+
+def build_official_nhl_roster_update(
+    player_index,
+    *,
+    teams: Iterable[TeamRecord] = (),
+    organization_links: dict[str, str] | None = None,
+    expansion_destination: str = EXPANSION_DESTINATION_TEAMS,
+    free_agent_organizations: set[str] | None = None,
+    protected_player_ids: set[int] | None = None,
+    force_refresh: bool = False,
+    official_rows=None,
+) -> dict[str, list[dict[str, object]]]:
+    """Build exact NHL-roster proposals from the league's current rosters.
+
+    Unlike contract/depth-chart sources, the NHL endpoint represents active
+    NHL placement. A player found on an affiliate therefore still receives a
+    promotion proposal. Missing players are reported conservatively and are
+    never auto-created from a name-only match.
+    """
+    players_by_name, players_by_equivalent_name = build_player_name_indexes(player_index)
+    player_index = tuple(player_index)
+    teams = tuple(teams)
+    protected_player_ids = {int(value) for value in (protected_player_ids or set())}
+    if free_agent_organizations is None:
+        free_agent_organizations = expansion_free_agent_teams(expansion_destination)
+    else:
+        free_agent_organizations = {value.upper() for value in free_agent_organizations}
+    proposals: dict[int, MoveProposal] = {}
+    unmatched: list[dict[str, object]] = []
+    official_target_by_player_id: dict[int, str] = {}
+    protected_ambiguous_ids: set[int] = set()
+    if official_rows is None:
+        official_rows = fetch_league_rosters(TEAM_ABBREVIATIONS, use_cache=not force_refresh)
+    for row in official_rows:
+        matches = find_player_name_matches(
+            row.full_name,
+            players_by_name,
+            players_by_equivalent_name,
+        )
+        eligible = [player for player in matches if not bool(getattr(player, "is_hidden", False))]
+        if len({int(getattr(player, "player_id", -1)) for player in eligible}) != 1:
+            protected_ambiguous_ids.update(int(getattr(player, "player_id", -1)) for player in eligible)
+            unmatched.append(
+                {
+                    "player_name": row.full_name,
+                    "team": row.team_abbrev,
+                    "reason": "missing or ambiguous roster identity",
+                    "source": "NHL.com Active Roster",
+                }
+            )
+            continue
+        player = eligible[0]
+        official_target_by_player_id[int(player.player_id)] = row.team_abbrev
+        target = (
+            FREE_AGENCY_TARGET
+            if row.team_abbrev in free_agent_organizations
+            else (
+                resolve_playable_nhl_team(row.team_abbrev, list(teams), organization_links).abbrev
+                if teams and resolve_playable_nhl_team(row.team_abbrev, list(teams), organization_links) is not None
+                else row.team_abbrev
+            )
+        )
+        current = str(getattr(player, "current_team_abbrev", None) or "").upper()
+        already_exact = (
+            target == FREE_AGENCY_TARGET
+            and str(getattr(player, "league_name", "")).lower() == "free agents"
+        ) or current == target.upper()
+        if already_exact:
+            continue
+        proposals[int(player.player_id)] = MoveProposal(
+            player_name=player.full_name,
+            player_id=int(player.player_id),
+            from_team=getattr(player, "current_team_abbrev", None),
+            to_team=target,
+            source="NHL.com Active Roster",
+            reason=(
+                f"Official NHL active roster lists {row.full_name} on {row.team_abbrev}."
+                if target != FREE_AGENCY_TARGET
+                else f"Expansion policy releases official {row.team_abbrev} roster players to free agency."
+            ),
+        )
+
+    affiliate_by_organization: dict[str, TeamRecord] = {}
+    for team in sorted(
+        teams,
+        key=lambda item: (
+            0 if league_name_for_team(item) == "AHL" else 1,
+            item.code,
+        ),
+    ):
+        league = league_name_for_team(team)
+        if league not in {"AHL", "Organization"}:
+            continue
+        organization = organization_for_abbrev(team.abbrev, organization_links)
+        if organization:
+            affiliate_by_organization.setdefault(organization, team)
+
+    # Apply the configured expansion release to the whole organization, not
+    # only to names exposed by the NHL endpoint.
+    for player in player_index:
+        player_id = int(getattr(player, "player_id", -1))
+        organization = organization_for_abbrev(
+            getattr(player, "organization_abbrev", None),
+            organization_links,
+        )
+        if (
+            organization in free_agent_organizations
+            and not bool(getattr(player, "is_hidden", False))
+        ):
+            if str(getattr(player, "league_name", "")).lower() != "free agents":
+                proposals[player_id] = MoveProposal(
+                    player_name=player.full_name,
+                    player_id=player_id,
+                    from_team=getattr(player, "current_team_abbrev", None),
+                    to_team=FREE_AGENCY_TARGET,
+                    source="NHL.com Active Roster",
+                    reason=f"Expansion policy releases the {organization} organization to free agency.",
+                )
+
+    def physical_abbrev(value: str | None) -> str | None:
+        if not value or value == FREE_AGENCY_TARGET:
+            return value
+        resolved = resolve_team_abbrev(value, list(teams), organization_links)
+        return value.upper() if resolved is None else resolved.abbrev.upper()
+
+    # Promotions must remain within the game's native 40-slot team blocks.
+    # Demote only the minimum number of stale NHL occupants needed to make the
+    # complete proposal batch safe; broader depth-chart decisions stay manual.
+    projected_counts: dict[str, int] = {}
+    for player in player_index:
+        current = str(getattr(player, "current_team_abbrev", None) or "").upper()
+        if current:
+            projected_counts[current] = projected_counts.get(current, 0) + 1
+    for proposal in proposals.values():
+        source = str(proposal.from_team or "").upper()
+        destination = physical_abbrev(proposal.to_team)
+        if source:
+            projected_counts[source] = projected_counts.get(source, 0) - 1
+        if destination and destination != FREE_AGENCY_TARGET:
+            projected_counts[destination] = projected_counts.get(destination, 0) + 1
+
+    for official_abbrev in sorted(set(official_target_by_player_id.values())):
+        target_abbrev = physical_abbrev(official_abbrev)
+        if not target_abbrev:
+            continue
+        overflow = projected_counts.get(target_abbrev, 0) - 40
+        if overflow <= 0:
+            continue
+        organization = organization_for_abbrev(official_abbrev, organization_links)
+        affiliate = affiliate_by_organization.get(organization or "")
+        if affiliate is None:
+            unmatched.append(
+                {
+                    "player_name": "Team capacity",
+                    "team": official_abbrev,
+                    "reason": f"projected {projected_counts[target_abbrev]} players and no safe affiliate mapping",
+                    "source": "NHL.com Active Roster",
+                }
+            )
+            continue
+        candidates = sorted(
+            (
+                player
+                for player in player_index
+                if str(getattr(player, "current_team_abbrev", None) or "").upper() == target_abbrev
+                and int(getattr(player, "player_id", -1)) not in proposals
+                and int(getattr(player, "player_id", -1)) not in protected_ambiguous_ids
+                and int(getattr(player, "player_id", -1)) not in protected_player_ids
+                and official_target_by_player_id.get(int(getattr(player, "player_id", -1))) != official_abbrev
+            ),
+            key=lambda player: (int(getattr(player, "player_id", -1)), player.full_name),
+            reverse=True,
+        )
+        for player in candidates[:overflow]:
+            player_id = int(player.player_id)
+            proposals[player_id] = MoveProposal(
+                player_name=player.full_name,
+                player_id=player_id,
+                from_team=target_abbrev,
+                to_team=affiliate.abbrev,
+                source="NHL.com Active Roster",
+                reason=(
+                    f"Capacity-safe demotion: not on the official {official_abbrev} active roster; "
+                    f"retain in the organization on {affiliate.abbrev}."
+                ),
+            )
+            projected_counts[target_abbrev] -= 1
+            projected_counts[affiliate.abbrev.upper()] = projected_counts.get(affiliate.abbrev.upper(), 0) + 1
+    return {
+        "moves": [
+            asdict(item)
+            for item in sorted(proposals.values(), key=lambda item: (item.to_team, item.player_name))
+        ],
+        "create_candidates": [],
+        "unmatched_official_players": sorted(
+            unmatched,
+            key=lambda item: (str(item["team"]), str(item["player_name"])),
+        ),
+    }
+
+
+def build_puckpedia_assignment_update(
+    player_index,
+    charts,
+    *,
+    teams: Iterable[TeamRecord],
+    organization_links: dict[str, str] | None = None,
+    protected_nhl_names: set[str] | None = None,
+    free_agent_organizations: set[str] | None = None,
+) -> dict[str, list[dict[str, object]]]:
+    """Translate PuckPedia depth sections into conservative assignments.
+
+    NHL.com-active names are protected from a PuckPedia demotion. Minor
+    leaguers go to the AHL affiliate; reserve/prospect/loaned players go to
+    the organization's system team when available. Matching is exact and
+    ambiguous identities are review items rather than guesses.
+    """
+    teams = tuple(teams)
+    protected_nhl_names = {normalize_name(value) for value in (protected_nhl_names or set())}
+    free_agent_organizations = {value.upper() for value in (free_agent_organizations or set())}
+    exact, equivalent = build_player_name_indexes(player_index)
+    player_index = tuple(player_index)
+    ahl_by_org: dict[str, TeamRecord] = {}
+    system_by_org: dict[str, TeamRecord] = {}
+    for team in sorted(teams, key=lambda item: item.code):
+        organization = organization_for_abbrev(team.abbrev, organization_links)
+        if not organization:
+            continue
+        if league_name_for_team(team) == "AHL":
+            ahl_by_org.setdefault(organization, team)
+        elif league_name_for_team(team) == "Organization":
+            system_by_org.setdefault(organization, team)
+
+    proposals: dict[int, MoveProposal] = {}
+    unmatched: list[dict[str, object]] = []
+    for chart in charts:
+        chart_abbrev = str(getattr(chart, "team_abbrev", "") or "").upper()
+        organization = organization_for_abbrev(chart_abbrev, organization_links)
+        if not organization:
+            continue
+        nhl_team = resolve_playable_nhl_team(chart_abbrev, list(teams), organization_links)
+        for row in getattr(chart, "players", ()):
+            name = str(getattr(row, "full_name", "") or "")
+            status = str(getattr(row, "status", "") or "")
+            if status != "nhl" and normalize_name(name) in protected_nhl_names:
+                continue
+            matches = [player for player in find_player_name_matches(name, exact, equivalent) if not player.is_hidden]
+            if len({int(player.player_id) for player in matches}) != 1:
+                unmatched.append({
+                    "player_name": name,
+                    "team": chart_abbrev,
+                    "section": getattr(row, "section", ""),
+                    "reason": "missing or ambiguous roster identity",
+                    "source": "PuckPedia Depth Charts",
+                })
+                continue
+            player = matches[0]
+            if organization in free_agent_organizations:
+                target = FREE_AGENCY_TARGET
+            elif status == "nhl":
+                target = None if nhl_team is None else nhl_team.abbrev
+            elif status == "minors":
+                target = None if organization not in ahl_by_org else ahl_by_org[organization].abbrev
+            else:
+                depth_team = system_by_org.get(organization) or ahl_by_org.get(organization)
+                target = None if depth_team is None else depth_team.abbrev
+            if target is None:
+                unmatched.append({
+                    "player_name": name,
+                    "team": chart_abbrev,
+                    "section": getattr(row, "section", ""),
+                    "reason": "no playable destination for depth-chart section",
+                    "source": "PuckPedia Depth Charts",
+                })
+                continue
+            current = str(player.current_team_abbrev or "").upper()
+            if current == target.upper() or (
+                target == FREE_AGENCY_TARGET and str(player.league_name).lower() == "free agents"
+            ):
+                continue
+            proposals[int(player.player_id)] = MoveProposal(
+                player_name=player.full_name,
+                player_id=int(player.player_id),
+                from_team=player.current_team_abbrev,
+                to_team=target,
+                source="PuckPedia Depth Charts",
+                reason=f"PuckPedia lists {name} in {getattr(row, 'section', status)} for {chart_abbrev}.",
+            )
+    return {
+        "moves": [asdict(item) for item in sorted(proposals.values(), key=lambda item: (item.to_team, item.player_name))],
+        "create_candidates": [],
+        "unmatched_puckpedia_players": sorted(unmatched, key=lambda item: (str(item["team"]), str(item["player_name"]))),
     }

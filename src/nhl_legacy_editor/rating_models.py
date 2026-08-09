@@ -3,6 +3,16 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 
+def stored_overall_from_ratings_row(ratings_row: dict[str, object] | None) -> int | None:
+    """Return no baseline because NHL Legacy does not store display OVR here.
+
+    ``koEt`` was briefly mistaken for an encoded overall. Real roster checks
+    disproved that mapping (it made replacement-level players rate in the
+    mid-80s), so display OVR must continue to use the calibrated attribute
+    formula. The compatibility function remains while callers transition.
+    """
+    return None
+
 # Player type still controls how an upgrade plan distributes points. NHL
 # Legacy's displayed overall, however, is based on position rather than type.
 ARCHETYPE_WEIGHTS: dict[str, dict[str, float]] = {
@@ -226,6 +236,29 @@ def calculate_weighted_overall(
     position: str | None = None,
 ) -> int:
     value = calculate_unrounded_overall(ratings, archetype, position=position)
+    return max(36, min(99, int(value + 0.5)))
+
+
+def calculate_anchored_overall(
+    current_ratings: dict[str, int],
+    suggested_ratings: dict[str, int],
+    archetype: str,
+    stored_overall: int | None,
+    *,
+    position: str | None = None,
+) -> int:
+    """Estimate an edit by applying the model delta to EA's stored baseline.
+
+    The reverse-engineered formula is useful at estimating how an attribute
+    change moves OVR, but its absolute result is less reliable. Anchoring that
+    delta to the overall calculated by the game preserves the exact starting
+    value and prevents systematic formula error from moving every player.
+    """
+    suggested = calculate_unrounded_overall(suggested_ratings, archetype, position=position)
+    if stored_overall is None:
+        return max(36, min(99, int(suggested + 0.5)))
+    current = calculate_unrounded_overall(current_ratings, archetype, position=position)
+    value = float(stored_overall) + (suggested - current)
     return max(36, min(99, int(value + 0.5)))
 
 

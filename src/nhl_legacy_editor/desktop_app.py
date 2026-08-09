@@ -11,30 +11,42 @@ import threading
 import tkinter as tk
 import tkinter.font as tkfont
 from tkinter import filedialog, messagebox, ttk
+try:
+    import winreg
+except ImportError:  # pragma: no cover - Windows application
+    winreg = None
 
 from .attribute_map import SKATER_ATTRIBUTE_SPECS, attribute_specs_by_field, display_to_raw, raw_to_display, specs_for_player_kind
-from .attribute_mapper import LegacyAttributeMapper, RecommendationSet, blend_season_recommendations, calculate_goalie_overall, stabilize_recommendations
+from .attribute_mapper import LegacyAttributeMapper, RecommendationSet, blend_season_recommendations, calculate_anchored_goalie_overall, calculate_goalie_overall, stabilize_recommendations
 from .capwages import CapWagesDraftPick, fetch_capwages_team_contracts, fetch_capwages_team_draft_picks
 from .contract_models import DEFAULT_GAME_CAP_MILLIONS, DEFAULT_REAL_CAP_MILLIONS, scale_contract_by_cap_percentage
 from .contract_sync import build_contract_update_queue
 from .draft_class import DraftRosterStatus, apply_draft_class, apply_elite_prospects_scouting, load_2026_draft_class, scan_draft_class, validate_draft_players
 from .editor_state import load_json_state, save_json_state
+from .franchise_rosters import build_franchise_roster_update
+from .future_prospects import calibrate_future_draft_classes
 from .hockeydb import fetch_hockeydb_profile_by_name
-from .move_tools import move_player_to_team, move_player_to_team_code, move_players_to_free_agency, move_players_to_teams
+from .move_tools import move_player_to_team, move_player_to_team_code, move_players_to_free_agency, move_players_to_teams, repair_ahl_contract_ownership
 from .moneypuck_scraper import MoneyPuckCSVClient, games_played, number, player_name, player_team
-from .nhl_remote import fetch_edge_goalie_detail, fetch_edge_skater_detail, fetch_player_landing, find_player_on_official_rosters
+from .nhl_remote import TEAM_ABBREVIATIONS, fetch_edge_goalie_detail, fetch_edge_skater_detail, fetch_league_rosters, fetch_player_landing, find_player_on_official_rosters
 from .player_editing import contract_cap_hit_millions_from_raw, update_many_player_contract_cap_hits, update_many_player_goalie_ratings, update_many_player_ratings, update_player_bio, update_player_contract_cap_hit, update_player_contract_details, update_player_flags, update_player_goalie_ratings, update_player_instance_fields, update_player_ratings
 from .player_tools import PlayerSnapshotCache, build_player_snapshot_cache, get_player_snapshot
-from .rating_models import ARCHETYPE_WEIGHTS, calculate_weighted_overall, fit_ratings_to_overall
+from .puckpedia import fetch_puckpedia_league_depth_charts
+from .rating_models import ARCHETYPE_WEIGHTS, calculate_anchored_overall, calculate_weighted_overall, fit_ratings_to_overall, stored_overall_from_ratings_row
 from .roster_formats import validate_rosterfile
 from .roster_sync import (
     EXPANSION_DESTINATION_FREE_AGENCY,
+    EXPANSION_DESTINATION_SEATTLE_FREE_AGENCY,
     EXPANSION_DESTINATION_TEAMS,
+    EXPANSION_DESTINATION_VEGAS_FREE_AGENCY,
     FREE_AGENCY_TARGET,
     build_capwages_roster_update,
+    build_official_nhl_roster_update,
+    build_puckpedia_assignment_update,
     can_auto_apply_move_on_save,
     canonical_abbrev,
     equivalent_name_key,
+    expansion_free_agent_teams,
     filter_redundant_organization_moves,
     move_is_already_satisfied,
     normalize_name,
@@ -48,6 +60,7 @@ from .team_tools import (
     normalize_org_abbrev,
     organization_for_abbrev,
 )
+from .ui_state import MultiSortState, SelectionState, SortKey
 from .workspace import (
     ACTIVE_WORKSPACE_PATH,
     EditorWorkspace,
@@ -73,6 +86,7 @@ FONT_SCALE_CHOICES = {
     "Extra Large (125%)": 1.25,
 }
 DENSITY_CHOICES = ("Auto", "Compact", "Comfortable")
+THEME_CHOICES = ("System", "Light", "Dark")
 WINDOW_SIZE_CHOICES: dict[str, tuple[int, int] | None] = {
     "Keep current size": None,
     "Handheld 16:10 (1280 x 800)": (1280, 800),
@@ -86,17 +100,58 @@ ROSTER_COLUMN_LABELS = {
     "team": "Team",
     "league": "League",
     "org": "Organization",
+    "potential": "Potential",
+    "cap_hit": "Cap Hit",
 }
-ROSTER_DEFAULT_COLUMNS = tuple(ROSTER_COLUMN_LABELS)
+ROSTER_DEFAULT_COLUMNS = ("overall", "position", "team", "potential")
+
+LIGHT_PALETTE = {
+    "ice": "#102335", "ink": "#263b4d", "muted": "#667b8d",
+    "panel": "#e9f0f5", "panel2": "#f5f8fa", "panel3": "#d8e4ec",
+    "raised": "#c8dce8", "line": "#b7cad6", "accent": "#168fc1",
+    "accent_hover": "#38add8", "blue": "#168fc1", "danger": "#c64752",
+    "success": "#24865d", "bar": "#dce8ef", "field": "#ffffff",
+    "tree": "#f8fafb", "selection": "#a9d9ee",
+}
+DARK_PALETTE = {
+    "ice": "#f4fbff", "ink": "#dceaf5", "muted": "#8299aa",
+    "panel": "#06111d", "panel2": "#0d2135", "panel3": "#163d5d",
+    "raised": "#1d5477", "line": "#2b5872", "accent": "#38c3f2",
+    "accent_hover": "#74d9fa", "blue": "#3eb9e8", "danger": "#e45f68",
+    "success": "#4fc18c", "bar": "#091625", "field": "#07101a",
+    "tree": "#081622", "selection": "#205a79",
+}
+
+
+def _windows_prefers_light_theme() -> bool:
+    if winreg is None:
+        return False
+    try:
+        with winreg.OpenKey(
+            winreg.HKEY_CURRENT_USER,
+            r"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize",
+        ) as key:
+            value, _kind = winreg.QueryValueEx(key, "AppsUseLightTheme")
+            return bool(value)
+    except OSError:
+        return False
 
 
 def _load_app_settings() -> dict[str, object]:
     defaults: dict[str, object] = {
         "font_scale": 1.0,
         "density": "Auto",
+        "theme_mode": "System",
+        "advanced_mode": False,
+        "advanced_navigation_open": False,
+        "utility_menu_open": False,
+        "player_drawer_open": True,
         "window_width": None,
         "window_height": None,
         "roster_columns": list(ROSTER_DEFAULT_COLUMNS),
+        "hide_hidden_players": False,
+        "list_sorts": {"players": [{"column": "#0", "descending": False}]},
+        "disclosures": {"player_filters": True, "player_sort": False},
     }
     try:
         saved = json.loads(APP_SETTINGS_PATH.read_text(encoding="utf-8"))
@@ -104,6 +159,7 @@ def _load_app_settings() -> dict[str, object]:
         return defaults
     if not isinstance(saved, dict):
         return defaults
+    defaults.update(saved)
     scale = saved.get("font_scale", defaults["font_scale"])
     try:
         defaults["font_scale"] = max(0.85, min(1.25, float(scale)))
@@ -111,6 +167,10 @@ def _load_app_settings() -> dict[str, object]:
         pass
     density = str(saved.get("density") or "Auto")
     defaults["density"] = density if density in DENSITY_CHOICES else "Auto"
+    theme_mode = str(saved.get("theme_mode") or "System")
+    defaults["theme_mode"] = theme_mode if theme_mode in THEME_CHOICES else "System"
+    defaults["advanced_mode"] = bool(saved.get("advanced_mode", False))
+    defaults["advanced_navigation_open"] = bool(saved.get("advanced_navigation_open", False))
     for key, minimum in (("window_width", 920), ("window_height", 620)):
         try:
             defaults[key] = max(minimum, int(saved[key])) if saved.get(key) is not None else None
@@ -515,12 +575,32 @@ class ScrollFrame(ttk.Frame):
         self.rowconfigure(0, weight=1)
         self.inner.bind("<Configure>", self._on_inner_configure)
         self.canvas.bind("<Configure>", self._on_canvas_configure)
+        self.inner.bind("<Configure>", self._bind_mousewheel_children, add="+")
+        self.canvas.bind("<MouseWheel>", self._on_mousewheel, add="+")
 
     def _on_inner_configure(self, _event=None):
         self.canvas.configure(scrollregion=self.canvas.bbox("all"))
 
     def _on_canvas_configure(self, event):
         self.canvas.itemconfigure(self.window_id, width=event.width)
+
+    def _bind_mousewheel_children(self, _event=None):
+        pending = list(self.inner.winfo_children())
+        while pending:
+            widget = pending.pop()
+            pending.extend(widget.winfo_children())
+            if isinstance(widget, (ttk.Treeview, tk.Text, tk.Listbox, tk.Canvas, ttk.Combobox)):
+                continue
+            widget.bind("<MouseWheel>", self._on_mousewheel, add="+")
+
+    def _on_mousewheel(self, event):
+        if not self.canvas.winfo_viewable():
+            return None
+        delta = int(event.delta)
+        if delta:
+            self.canvas.yview_scroll(-1 if delta > 0 else 1, "units")
+            return "break"
+        return None
 
 
 class NhlLegacyDesktopApp:
@@ -530,6 +610,11 @@ class NhlLegacyDesktopApp:
         self.ui_settings = _load_app_settings()
         self.font_scale = float(self.ui_settings.get("font_scale", 1.0))
         self.ui_density = str(self.ui_settings.get("density") or "Auto")
+        self.theme_mode = str(self.ui_settings.get("theme_mode") or "System")
+        self.advanced_mode = bool(self.ui_settings.get("advanced_mode", False))
+        self.advanced_navigation_open = bool(self.ui_settings.get("advanced_navigation_open", False))
+        self.utility_menu_open = bool(self.ui_settings.get("utility_menu_open", False))
+        self.player_drawer_open = bool(self.ui_settings.get("player_drawer_open", True))
         screen_width = self.root.winfo_screenwidth()
         screen_height = self.root.winfo_screenheight()
         saved_width = self.ui_settings.get("window_width")
@@ -546,8 +631,19 @@ class NhlLegacyDesktopApp:
         self.player_overall_by_id: dict[int, int] = {}
         self.player_position_by_id: dict[int, str] = {}
         self.player_type_by_id: dict[int, str] = {}
-        self.roster_sort_column = "#0"
-        self.roster_sort_descending = False
+        saved_sorts = self.ui_settings.get("list_sorts")
+        player_sort_setting = saved_sorts.get("players") if isinstance(saved_sorts, dict) else None
+        self.roster_sort = MultiSortState.from_setting(
+            player_sort_setting,
+            default=(SortKey("#0"),),
+            allowed_columns={"#0", *ROSTER_COLUMN_LABELS},
+        )
+        self.list_selections: dict[str, SelectionState] = {
+            name: SelectionState()
+            for name in ("players", "movement_left", "movement_right", "potential", "contracts", "metrics", "sync", "draft", "review")
+        }
+        self.player_potential_by_id: dict[int, str] = {}
+        self.player_cap_hit_by_id: dict[int, float] = {}
         self.players_by_team_abbrev: dict[str, list[PlayerListEntry]] = {}
         self.players_by_org_abbrev: dict[str, list[PlayerListEntry]] = {}
         self.potential_sorted_players: list[PlayerListEntry] = []
@@ -628,21 +724,11 @@ class NhlLegacyDesktopApp:
                 self.activity_progress.stop()
 
     def _configure_style(self) -> None:
-        self.colors = {
-            "ice": "#f4fbff",
-            "ink": "#dceaf5",
-            "muted": "#8299aa",
-            "panel": "#06111d",
-            "panel2": "#0d2135",
-            "panel3": "#163d5d",
-            "raised": "#1d5477",
-            "line": "#2b5872",
-            "accent": "#38c3f2",
-            "accent_hover": "#74d9fa",
-            "blue": "#3eb9e8",
-            "danger": "#e45f68",
-            "success": "#4fc18c",
-        }
+        resolved_theme = self.theme_mode
+        if resolved_theme == "System":
+            resolved_theme = "Light" if _windows_prefers_light_theme() else "Dark"
+        self.resolved_theme = resolved_theme
+        self.colors = dict(LIGHT_PALETTE if resolved_theme == "Light" else DARK_PALETTE)
         families = set(tkfont.families(self.root))
         self.body_font = next(
             (name for name in ("Aptos", "Segoe UI Variable Text", "Segoe UI") if name in families),
@@ -677,18 +763,19 @@ class NhlLegacyDesktopApp:
             font=(self.body_font, font_size(10)),
         )
         style.configure("TFrame", background=self.colors["panel"])
-        style.configure("AppBar.TFrame", background="#091625")
+        style.configure("AppBar.TFrame", background=self.colors["bar"])
+        style.configure("Nav.TFrame", background=self.colors["bar"])
         style.configure("AccentRail.TFrame", background=self.colors["accent"])
-        style.configure("Status.TFrame", background="#091625")
-        style.configure("Card.TFrame", background=self.colors["panel2"], relief="flat", borderwidth=1)
+        style.configure("Status.TFrame", background=self.colors["bar"])
+        style.configure("Card.TFrame", background=self.colors["panel2"], relief="flat", borderwidth=0)
         style.configure("TLabel", background=self.colors["panel"], foreground=self.colors["ink"])
         style.configure("Muted.TLabel", background=self.colors["panel"], foreground=self.colors["muted"])
         style.configure("Card.TLabel", background=self.colors["panel2"], foreground=self.colors["ink"])
         style.configure("CardMuted.TLabel", background=self.colors["panel2"], foreground=self.colors["muted"])
-        style.configure("Bar.TLabel", background="#091625", foreground=self.colors["ink"])
-        style.configure("Status.TLabel", background="#091625", foreground=self.colors["muted"])
-        style.configure("Eyebrow.TLabel", background="#091625", foreground=self.colors["accent"], font=(self.body_font, font_size(9), "bold"))
-        style.configure("Title.TLabel", background="#091625", foreground=self.colors["ice"], font=(self.display_font, font_size(21), "bold"))
+        style.configure("Bar.TLabel", background=self.colors["bar"], foreground=self.colors["ink"])
+        style.configure("Status.TLabel", background=self.colors["bar"], foreground=self.colors["muted"])
+        style.configure("Eyebrow.TLabel", background=self.colors["bar"], foreground=self.colors["accent"], font=(self.body_font, font_size(9), "bold"))
+        style.configure("Title.TLabel", background=self.colors["bar"], foreground=self.colors["ice"], font=(self.display_font, font_size(21), "bold"))
         style.configure("Player.TLabel", background=self.colors["panel"], foreground=self.colors["ice"], font=(self.display_font, font_size(24), "bold"))
         style.configure("CardTitle.TLabel", background=self.colors["panel2"], foreground=self.colors["ice"], font=(self.display_font, font_size(14), "bold"))
         style.configure("Section.TLabel", background=self.colors["panel"], foreground=self.colors["ice"], font=(self.display_font, font_size(14), "bold"))
@@ -712,11 +799,16 @@ class NhlLegacyDesktopApp:
             foreground=[("disabled", self.colors["muted"])],
             bordercolor=[("focus", self.colors["accent"]), ("active", "#35546c")],
         )
-        style.configure("Toolbar.TButton", padding=(10, 6), background="#102438")
+        style.configure("Toolbar.TButton", padding=(14, 10), background=self.colors["panel3"])
+        style.configure("Nav.TButton", padding=(18, 14), background=self.colors["bar"], foreground=self.colors["muted"], borderwidth=0, anchor="w")
+        style.map("Nav.TButton", background=[("active", self.colors["panel3"])], foreground=[("active", self.colors["ice"])])
+        style.configure("NavSelected.TButton", padding=(18, 14), background=self.colors["raised"], foreground=self.colors["ice"], borderwidth=0, anchor="w")
+        style.map("NavSelected.TButton", background=[("active", self.colors["raised"])])
+        style.configure("Icon.TButton", padding=(14, 10), background=self.colors["panel3"], borderwidth=0, font=(self.body_font, font_size(12), "bold"))
         style.configure(
             "Toolbar.TMenubutton",
             padding=(9, 5),
-            background="#102438",
+            background=self.colors["panel3"],
             foreground=self.colors["ink"],
             arrowcolor=self.colors["accent"],
             bordercolor=self.colors["line"],
@@ -728,18 +820,21 @@ class NhlLegacyDesktopApp:
         style.map("Accent.TButton", background=[("active", self.colors["accent_hover"]), ("pressed", "#2999c4")])
         style.configure("Danger.TButton", background=self.colors["danger"], foreground="#fff8f8", bordercolor=self.colors["danger"])
         style.map("Danger.TButton", background=[("active", "#f1777f")])
-        style.configure("TEntry", fieldbackground="#07101a", foreground=self.colors["ice"], insertcolor=self.colors["ice"], bordercolor=self.colors["line"], padding=7)
+        style.configure("TEntry", fieldbackground=self.colors["field"], foreground=self.colors["ice"], insertcolor=self.colors["ice"], bordercolor=self.colors["line"], padding=10)
         style.map("TEntry", bordercolor=[("focus", self.colors["accent"])])
-        style.configure("TCombobox", fieldbackground="#07101a", background=self.colors["panel3"], foreground=self.colors["ice"], arrowcolor=self.colors["accent"], bordercolor=self.colors["line"], padding=6)
-        style.map("TCombobox", bordercolor=[("focus", self.colors["accent"])], fieldbackground=[("readonly", "#07101a")])
-        style.configure("TSpinbox", fieldbackground="#07101a", foreground=self.colors["ice"], arrowcolor=self.colors["accent"], bordercolor=self.colors["line"], padding=5)
-        style.configure("Treeview", background="#081622", fieldbackground="#081622", foreground=self.colors["ink"], rowheight=font_size(29), borderwidth=0, relief="flat", font=(self.body_font, font_size(10)))
+        style.configure("TCombobox", fieldbackground=self.colors["field"], background=self.colors["panel3"], foreground=self.colors["ice"], arrowcolor=self.colors["accent"], bordercolor=self.colors["line"], padding=9)
+        style.map("TCombobox", bordercolor=[("focus", self.colors["accent"])], fieldbackground=[("readonly", self.colors["field"])])
+        style.configure("TSpinbox", fieldbackground=self.colors["field"], foreground=self.colors["ice"], arrowcolor=self.colors["accent"], bordercolor=self.colors["line"], padding=8)
+        row_height = 32 if self.ui_density == "Compact" else 44
+        style.configure("Treeview", background=self.colors["tree"], fieldbackground=self.colors["tree"], foreground=self.colors["ink"], rowheight=row_height, borderwidth=0, relief="flat", font=(self.body_font, font_size(10)))
         style.configure("Treeview.Heading", background=self.colors["panel3"], foreground=self.colors["ice"], borderwidth=0, relief="flat", padding=(8, 8), font=(self.body_font, font_size(9), "bold"))
-        style.map("Treeview", background=[("selected", "#205a79")], foreground=[("selected", "#ffffff")])
+        style.map("Treeview", background=[("selected", self.colors["selection"])], foreground=[("selected", self.colors["ice"])])
         style.map("Treeview.Heading", background=[("active", self.colors["raised"])])
         style.configure("TNotebook", background=self.colors["panel"], borderwidth=0, tabmargins=(0, 0, 0, 0))
         style.configure("TNotebook.Tab", background=self.colors["panel2"], foreground=self.colors["muted"], borderwidth=0, padding=(12, 10), font=(self.body_font, font_size(9), "bold"))
         style.map("TNotebook.Tab", background=[("selected", self.colors["raised"]), ("active", self.colors["panel3"])], foreground=[("selected", "#ffffff"), ("active", self.colors["ink"])])
+        style.configure("Utility.TNotebook", background=self.colors["panel"], borderwidth=0, tabmargins=(0, 0, 0, 0))
+        style.layout("Utility.TNotebook.Tab", [])
         style.configure("TPanedwindow", background=self.colors["line"], sashwidth=5)
         style.configure("TProgressbar", background=self.colors["accent"], troughcolor=self.colors["panel2"], borderwidth=0)
         style.configure(
@@ -757,7 +852,7 @@ class NhlLegacyDesktopApp:
             bordercolor=[("active", self.colors["accent"]), ("focus", self.colors["ice"])],
         )
         style.configure("TScrollbar", background=self.colors["panel3"], troughcolor=self.colors["panel"], bordercolor=self.colors["panel"])
-        style.configure("TLabelframe", background=self.colors["panel2"], bordercolor=self.colors["line"], relief="flat")
+        style.configure("TLabelframe", background=self.colors["panel2"], borderwidth=0, relief="flat", padding=10)
         style.configure("TLabelframe.Label", background=self.colors["panel2"], foreground=self.colors["ice"], font=(self.body_font, font_size(10), "bold"))
         style.configure("TCheckbutton", background=self.colors["panel"], foreground=self.colors["ink"])
         style.configure("TRadiobutton", background=self.colors["panel"], foreground=self.colors["ink"])
@@ -765,8 +860,14 @@ class NhlLegacyDesktopApp:
     def _build_ui(self) -> None:
         self.top_bar = ttk.Frame(self.root, style="AppBar.TFrame")
         self.top_bar.pack(fill="x")
+        shell_controls = ttk.Frame(self.top_bar, style="AppBar.TFrame")
+        shell_controls.pack(side="left", padx=(16, 0), pady=16)
+        self.utility_menu_button = ttk.Button(shell_controls, text="☰", style="Icon.TButton", command=self._toggle_utility_menu)
+        self.utility_menu_button.pack(side="left")
+        self.player_drawer_button_var = tk.StringVar(value="PLAYERS ◀")
+        ttk.Button(shell_controls, textvariable=self.player_drawer_button_var, style="Toolbar.TButton", command=self._toggle_player_drawer).pack(side="left", padx=(8, 0))
         brand = ttk.Frame(self.top_bar, style="AppBar.TFrame")
-        brand.pack(side="left", padx=18, pady=11)
+        brand.pack(side="left", padx=16, pady=11)
         ttk.Frame(brand, width=5, style="AccentRail.TFrame").grid(row=0, column=0, rowspan=2, sticky="ns", padx=(0, 11))
         ttk.Label(brand, text="ROSTER WORKBENCH", style="Eyebrow.TLabel").grid(row=0, column=1, sticky="w")
         ttk.Label(brand, text="NHL LEGACY", style="Title.TLabel").grid(row=1, column=1, sticky="w")
@@ -775,11 +876,18 @@ class NhlLegacyDesktopApp:
 
         actions = ttk.Frame(self.top_bar, style="AppBar.TFrame")
         actions.pack(side="right", padx=20, pady=16)
-        ttk.Button(actions, text="SAVE TO GAME", style="Accent.TButton", command=self._save_to_game).pack(side="right", padx=(8, 0))
-        self.open_roster_button = ttk.Button(actions, text="OPEN ROSTER", style="Toolbar.TButton", command=self._open_roster)
-        self.open_roster_button.pack(side="right", padx=(8, 0))
-        self.reload_game_button = ttk.Button(actions, text="RELOAD GAME FILE", style="Toolbar.TButton", command=self._reload_from_game_file)
-        self.reload_game_button.pack(side="right", padx=(8, 0))
+        self.save_game_button = ttk.Button(actions, text="SAVE TO GAME", style="Accent.TButton", command=self._save_to_game)
+        self.save_game_button.pack(side="right", padx=(8, 0))
+        self.file_overflow_button = ttk.Menubutton(actions, text="⋯", style="Toolbar.TMenubutton")
+        self.file_overflow_button.pack(side="right", padx=(8, 0))
+        self.file_overflow_menu = self._native_menu(self.file_overflow_button)
+        self.file_overflow_menu.add_command(label="Open roster…", command=self._open_roster)
+        self.file_overflow_menu.add_command(label="Reload game file", command=self._reload_from_game_file)
+        self.file_overflow_menu.add_command(label="Choose game save target…", command=self._choose_game_target_from_settings)
+        self.file_overflow_menu.add_separator()
+        self.file_overflow_menu.add_command(label="Settings", command=lambda: self._select_utility(self.settings_tab))
+        self.file_overflow_button.configure(menu=self.file_overflow_menu)
+        self.reload_game_button = self.file_overflow_button
         self.workspace_badge_var = tk.StringVar(value="NO ROSTER LOADED")
         self.workspace_badge = ttk.Label(actions, textvariable=self.workspace_badge_var, style="Badge.TLabel")
         self.workspace_badge.pack(side="right", padx=(0, 14))
@@ -793,8 +901,13 @@ class NhlLegacyDesktopApp:
         self.activity_progress = ttk.Progressbar(status_bar, mode="indeterminate", length=180)
         self.activity_progress.pack(side="right", padx=(12, 0), pady=8)
 
+        self.main_shell = ttk.Frame(self.root)
+        self.main_shell.pack(fill="both", expand=True)
+        self.utility_nav = ttk.Frame(self.main_shell, style="Nav.TFrame", width=215)
+        self.utility_nav.pack_propagate(False)
+
         self.body_pane = tk.PanedWindow(
-            self.root,
+            self.main_shell,
             orient="horizontal",
             background=self.colors["line"],
             borderwidth=0,
@@ -802,18 +915,62 @@ class NhlLegacyDesktopApp:
             sashrelief="flat",
             opaqueresize=True,
         )
-        self.body_pane.pack(fill="both", expand=True, padx=16, pady=14)
+        self.body_pane.pack(side="left", fill="both", expand=True, padx=12, pady=12)
 
-        left = ttk.Frame(self.body_pane, width=300, style="Card.TFrame")
-        right = ttk.Frame(self.body_pane, width=650)
-        self.body_pane.add(left, minsize=230, width=300, stretch="never")
-        self.body_pane.add(right, minsize=600, stretch="always")
-        self._build_roster_panel(left)
-        self._build_editor_panel(right)
+        self.roster_panel = ttk.Frame(self.body_pane, width=340, style="Card.TFrame")
+        self.editor_panel = ttk.Frame(self.body_pane, width=650)
+        self.body_pane.add(self.roster_panel, minsize=260, width=340, stretch="never")
+        self.body_pane.add(self.editor_panel, minsize=600, stretch="always")
+        self._build_roster_panel(self.roster_panel)
+        self._build_editor_panel(self.editor_panel)
+        self._build_utility_navigation()
+        self._set_utility_menu(self.utility_menu_open)
+        self._set_player_drawer(self.player_drawer_open)
+        self._apply_native_theme()
         self._bind_keyboard_navigation()
         self._update_workspace_badge()
         self.root.bind("<Configure>", self._on_root_configure, add="+")
         self.root.after_idle(lambda: self._apply_responsive_layout(force=True))
+
+    def _native_menu(self, parent) -> tk.Menu:
+        return tk.Menu(
+            parent,
+            tearoff=False,
+            background=self.colors["panel2"],
+            foreground=self.colors["ink"],
+            activebackground=self.colors["raised"],
+            activeforeground=self.colors["ice"],
+            selectcolor=self.colors["accent"],
+            borderwidth=1,
+        )
+
+    def _apply_native_theme(self) -> None:
+        pending = [self.root]
+        while pending:
+            widget = pending.pop()
+            try:
+                pending.extend(widget.winfo_children())
+            except tk.TclError:
+                continue
+            try:
+                if isinstance(widget, tk.Menu):
+                    widget.configure(
+                        background=self.colors["panel2"], foreground=self.colors["ink"],
+                        activebackground=self.colors["raised"], activeforeground=self.colors["ice"],
+                        selectcolor=self.colors["accent"],
+                    )
+                elif isinstance(widget, (tk.Text, tk.Listbox)):
+                    widget.configure(
+                        background=self.colors["field"], foreground=self.colors["ink"],
+                        insertbackground=self.colors["ink"], selectbackground=self.colors["selection"],
+                        selectforeground=self.colors["ice"],
+                    )
+                elif isinstance(widget, tk.Canvas):
+                    widget.configure(background=self.colors["panel"], highlightbackground=self.colors["line"])
+                elif isinstance(widget, tk.PanedWindow):
+                    widget.configure(background=self.colors["line"])
+            except tk.TclError:
+                pass
 
     def _update_workspace_badge(self) -> None:
         if not hasattr(self, "workspace_badge_var"):
@@ -825,6 +982,164 @@ class NhlLegacyDesktopApp:
         source = self.workspace.source_roster
         self.workspace_badge_var.set(source.parent.name.upper() if source is not None else "WORKSPACE ACTIVE")
         self._refresh_settings_paths()
+
+    def _toggle_utility_menu(self) -> None:
+        self._set_utility_menu(not self.utility_menu_open)
+
+    def _set_utility_menu(self, visible: bool) -> None:
+        self.utility_menu_open = bool(visible)
+        if not hasattr(self, "utility_nav"):
+            return
+        if visible:
+            if not self.utility_nav.winfo_manager():
+                self.utility_nav.pack(side="left", fill="y", before=self.body_pane)
+        else:
+            self.utility_nav.pack_forget()
+
+    def _toggle_player_drawer(self) -> None:
+        self._set_player_drawer(not self.player_drawer_open)
+
+    def _set_player_drawer(self, visible: bool) -> None:
+        self.player_drawer_open = bool(visible)
+        if not hasattr(self, "body_pane"):
+            return
+        panes = {str(pane) for pane in self.body_pane.panes()}
+        roster_path = str(self.roster_panel)
+        if visible and roster_path not in panes:
+            self.body_pane.add(
+                self.roster_panel,
+                before=self.editor_panel,
+                minsize=260,
+                width=340,
+                stretch="never",
+            )
+            self.root.after_idle(lambda: self._set_initial_sash(340))
+        elif not visible and roster_path in panes:
+            self.body_pane.forget(self.roster_panel)
+        if hasattr(self, "player_drawer_button_var"):
+            self.player_drawer_button_var.set("PLAYERS ◀" if visible else "PLAYERS ▶")
+
+    def _build_utility_navigation(self) -> None:
+        for child in self.utility_nav.winfo_children():
+            child.destroy()
+        ttk.Label(self.utility_nav, text="WORKSPACES", style="Eyebrow.TLabel").pack(anchor="w", padx=16, pady=(20, 8))
+        self.utility_nav_buttons: dict[str, ttk.Button] = {}
+        core_rows = (
+            (self.player_tab, "Players"),
+            (self.movement_tab, "Movement"),
+            (self.updates_tab, "Roster Sync"),
+            (self.review_tab, "Review & Save"),
+            (self.settings_tab, "Settings"),
+        )
+        for tab, label in core_rows:
+            button = ttk.Button(
+                self.utility_nav,
+                text=label,
+                style="Nav.TButton",
+                command=lambda selected_tab=tab: self._select_utility(selected_tab),
+            )
+            button.pack(fill="x")
+            self.utility_nav_buttons[str(tab)] = button
+
+        if self.advanced_mode:
+            ttk.Separator(self.utility_nav).pack(fill="x", padx=16, pady=(18, 8))
+            ttk.Button(
+                self.utility_nav,
+                text=f"{'▾' if self.advanced_navigation_open else '▸'}  Advanced",
+                style="Nav.TButton",
+                command=self._toggle_advanced_navigation,
+            ).pack(fill="x")
+            if self.advanced_navigation_open:
+                for tab, label in (
+                    (self.draft_class_tab, "Draft Class"),
+                    (self.create_tab, "Comparison Builder"),
+                    (self.advanced_tab, "Raw / Research"),
+                ):
+                    button = ttk.Button(
+                        self.utility_nav,
+                        text=f"   {label}",
+                        style="Nav.TButton",
+                        command=lambda selected_tab=tab: self._select_utility(selected_tab),
+                    )
+                    button.pack(fill="x")
+                    self.utility_nav_buttons[str(tab)] = button
+        self._sync_utility_navigation()
+
+    def _toggle_advanced_navigation(self) -> None:
+        self.advanced_navigation_open = not self.advanced_navigation_open
+        self.ui_settings["advanced_navigation_open"] = self.advanced_navigation_open
+        _save_app_settings(self.ui_settings)
+        self._build_utility_navigation()
+
+    def _select_utility(self, tab) -> None:
+        self.tabs.select(tab)
+        self._sync_utility_navigation()
+        self._set_player_drawer(tab in self.player_workspace_tabs)
+        if self._use_compact_layout():
+            self._set_utility_menu(False)
+
+    def _sync_utility_navigation(self, _event=None) -> None:
+        if not hasattr(self, "tabs") or not self.tabs.tabs():
+            return
+        selected = str(self.tabs.select())
+        selected_widget = self.tabs.nametowidget(selected)
+        if selected_widget in self.player_workspace_tabs:
+            label = "PLAYER"
+        elif selected_widget in self.sync_workspace_tabs:
+            label = "ROSTER SYNC"
+        else:
+            label = self.full_tab_labels.get(selected_widget, "UTILITY")
+        if hasattr(self, "utility_name_var"):
+            self.utility_name_var.set(label)
+        if hasattr(self, "player_title_var"):
+            if selected_widget in self.player_workspace_tabs:
+                if self.selected_player is None:
+                    self.player_title_var.set("Select a player")
+                    self.player_subtitle_var.set("Choose a league/team on the left, then click a player.")
+                else:
+                    self.player_title_var.set(self.selected_player.full_name)
+                    self.player_subtitle_var.set(
+                        f"{self.selected_player.current_team_abbrev or ('Hidden' if self.selected_player.is_hidden else 'FA')} | "
+                        f"{self.selected_player.league_name} | Organization: {self.selected_player.organization_abbrev or 'None'}"
+                    )
+            elif selected_widget is self.updates_tab:
+                self.player_title_var.set("Roster Sync")
+                self.player_subtitle_var.set("Build cap-compliant franchise rosters, review every proposal, then apply selected changes or all changes.")
+            elif selected_widget is self.contracts_tab:
+                self.player_title_var.set("Mass Contract Changes")
+                self.player_subtitle_var.set("Import current contracts and scale salary values to the NHL Legacy salary cap.")
+            elif selected_widget is self.edge_tab:
+                self.player_title_var.set("Advanced Metrics")
+                self.player_subtitle_var.set("Preview league-wide attribute updates and fine-tune individual players before applying them.")
+            elif selected_widget is self.movement_tab:
+                self.player_title_var.set("Movement")
+                self.player_subtitle_var.set("Move one player or a checked group between teams and free agency.")
+            elif selected_widget is self.review_tab:
+                self.player_title_var.set("Review & Save")
+                self.player_subtitle_var.set("Review pending changes, errors, and history before saving to the game roster.")
+            elif selected_widget is self.settings_tab:
+                self.player_title_var.set("Settings")
+                self.player_subtitle_var.set("Display, file, organization, and roster-sync preferences.")
+        if hasattr(self, "player_segment_buttons"):
+            if selected_widget in self.player_workspace_tabs:
+                if not self.player_segment_bar.winfo_manager():
+                    self.player_segment_bar.pack(fill="x", padx=(18, 0), pady=(0, 10), before=self.tabs)
+            else:
+                self.player_segment_bar.pack_forget()
+            for tab, button in self.player_segment_buttons.items():
+                button.configure(style="NavSelected.TButton" if tab is selected_widget else "Toolbar.TButton")
+        if hasattr(self, "sync_segment_buttons"):
+            if selected_widget in self.sync_workspace_tabs:
+                if not self.sync_segment_bar.winfo_manager():
+                    self.sync_segment_bar.pack(fill="x", padx=(18, 0), pady=(0, 10), before=self.tabs)
+            else:
+                self.sync_segment_bar.pack_forget()
+            for tab, button in self.sync_segment_buttons.items():
+                button.configure(style="NavSelected.TButton" if tab is selected_widget else "Toolbar.TButton")
+        for tab_path, button in getattr(self, "utility_nav_buttons", {}).items():
+            is_player_destination = selected_widget in self.player_workspace_tabs and tab_path == str(self.player_tab)
+            is_sync_destination = selected_widget in self.sync_workspace_tabs and tab_path == str(self.updates_tab)
+            button.configure(style="NavSelected.TButton" if tab_path == selected or is_player_destination or is_sync_destination else "Nav.TButton")
 
     def _bind_keyboard_navigation(self) -> None:
         self.root.bind_all("<Control-s>", lambda _event: self._save_to_game())
@@ -843,8 +1158,13 @@ class NhlLegacyDesktopApp:
     def _on_close(self) -> None:
         self.ui_settings["font_scale"] = self.font_scale
         self.ui_settings["density"] = self.ui_density
+        self.ui_settings["theme_mode"] = self.theme_mode
+        self.ui_settings["advanced_mode"] = self.advanced_mode
+        self.ui_settings["advanced_navigation_open"] = self.advanced_navigation_open
         self.ui_settings["window_width"] = self.root.winfo_width()
         self.ui_settings["window_height"] = self.root.winfo_height()
+        self.ui_settings["utility_menu_open"] = self.utility_menu_open
+        self.ui_settings["player_drawer_open"] = self.player_drawer_open
         try:
             _save_app_settings(self.ui_settings)
         finally:
@@ -888,7 +1208,8 @@ class NhlLegacyDesktopApp:
         for tab, label in labels.items():
             if str(tab) in self.tabs.tabs():
                 self.tabs.tab(tab, text=label)
-        self.root.after_idle(lambda: self._set_initial_sash(300 if compact else 390))
+        if self.player_drawer_open:
+            self.root.after_idle(lambda: self._set_initial_sash(300 if compact else 390))
         if hasattr(self, "attribute_scroll") and self.attribute_vars:
             self._populate_attributes()
 
@@ -932,6 +1253,7 @@ class NhlLegacyDesktopApp:
         tabs = self.tabs.tabs()
         if 0 <= index < len(tabs):
             self.tabs.select(tabs[index])
+            self._sync_utility_navigation()
 
     def _select_relative_tab(self, delta: int) -> None:
         if not hasattr(self, "tabs"):
@@ -941,6 +1263,7 @@ class NhlLegacyDesktopApp:
             return
         current = self.tabs.index(self.tabs.select())
         self.tabs.select(tabs[(current + delta) % len(tabs)])
+        self._sync_utility_navigation()
 
     def _activate_focused_widget(self, event=None):
         widget = self.root.focus_get()
@@ -967,16 +1290,17 @@ class NhlLegacyDesktopApp:
         ttk.Label(header, text="PLAYERS", style="CardTitle.TLabel").grid(row=0, column=0, sticky="w")
         self.roster_count_var = tk.StringVar(value="0 players")
         ttk.Label(header, textvariable=self.roster_count_var, style="CardMuted.TLabel").grid(row=0, column=1, sticky="e")
-        ttk.Label(header, text="Filter the entire database by league, club, organization, or name.", style="CardMuted.TLabel").grid(row=1, column=0, columnspan=2, sticky="w", pady=(4, 0))
+        ttk.Label(header, text="Search and filter the roster.", style="CardMuted.TLabel").grid(row=1, column=0, columnspan=2, sticky="w", pady=(4, 0))
         header.columnconfigure(0, weight=1)
 
-        filters = ttk.Frame(parent, style="Card.TFrame")
+        self.roster_filters_frame = filters = ttk.Frame(parent, style="Card.TFrame")
         filters.pack(fill="x", padx=14, pady=(0, 10))
         ttk.Label(filters, text="League", style="Card.TLabel").grid(row=0, column=0, sticky="w", pady=(0, 3))
         ttk.Label(filters, text="Team / organization (type to search)", style="Card.TLabel").grid(row=0, column=1, sticky="w", padx=(8, 0), pady=(0, 3))
         self.league_var = tk.StringVar(value="All Leagues")
         self.team_var = tk.StringVar(value="All Teams")
         self.search_var = tk.StringVar(value="")
+        self.hide_hidden_players_var = tk.BooleanVar(value=bool(self.ui_settings.get("hide_hidden_players", False)))
         league_combo = ttk.Combobox(filters, textvariable=self.league_var, values=LEAGUE_FILTERS, state="readonly", width=18)
         self.team_combo = ttk.Combobox(filters, textvariable=self.team_var, values=["All Teams"], state="normal", width=28)
         league_combo.grid(row=1, column=0, sticky="ew")
@@ -984,14 +1308,7 @@ class NhlLegacyDesktopApp:
         ttk.Label(filters, text="Player search  (Ctrl+F)", style="Card.TLabel").grid(row=2, column=0, sticky="w", pady=(10, 3))
         self.roster_columns_button = ttk.Menubutton(filters, text="COLUMNS", style="Toolbar.TMenubutton")
         self.roster_columns_button.grid(row=2, column=1, sticky="e", pady=(7, 3))
-        self.roster_columns_menu = tk.Menu(
-            self.roster_columns_button,
-            tearoff=False,
-            background=self.colors["panel2"],
-            foreground=self.colors["ink"],
-            activebackground=self.colors["raised"],
-            activeforeground=self.colors["ice"],
-        )
+        self.roster_columns_menu = self._native_menu(self.roster_columns_button)
         self.roster_columns_button.configure(menu=self.roster_columns_menu)
         saved_columns = self.ui_settings.get("roster_columns")
         visible_columns = set(saved_columns if isinstance(saved_columns, list) else ROSTER_DEFAULT_COLUMNS)
@@ -1022,24 +1339,63 @@ class NhlLegacyDesktopApp:
         self.search_var.trace_add("write", lambda *_: self._debounce("roster-filter", 140, self._refresh_player_list))
         self.team_combo.bind("<KeyRelease>", self._filter_roster_team_combo)
 
+        self.roster_list_toolbar = list_toolbar = ttk.Frame(parent, style="Card.TFrame")
+        list_toolbar.pack(fill="x", padx=14, pady=(0, 8))
+        self.roster_selection_var = tk.StringVar(value="0 selected")
+        ttk.Button(list_toolbar, text="Select all", command=self._select_visible_roster_players).grid(row=0, column=0, sticky="ew")
+        ttk.Button(list_toolbar, text="Clear", command=self._clear_roster_selection).grid(row=0, column=1, sticky="ew", padx=(6, 0))
+        ttk.Label(list_toolbar, textvariable=self.roster_selection_var, style="CardMuted.TLabel", wraplength=160).grid(row=1, column=0, columnspan=2, sticky="w", pady=(6, 0))
+        ttk.Button(list_toolbar, text="Filters", command=self._toggle_roster_filters).grid(row=2, column=0, sticky="ew", pady=(6, 0))
+        ttk.Button(list_toolbar, text="Sort", command=self._toggle_roster_sort_panel).grid(row=2, column=1, sticky="ew", padx=(6, 0), pady=(6, 0))
+        ttk.Button(list_toolbar, text="⋯", width=3, style="Icon.TButton", command=self._show_roster_touch_menu).grid(row=2, column=2, sticky="e", padx=(6, 0), pady=(6, 0))
+        list_toolbar.columnconfigure(0, weight=1)
+        list_toolbar.columnconfigure(1, weight=1)
+
+        self.roster_sort_panel = ttk.Frame(parent, style="Card.TFrame")
+        sort_labels = {"Player": "#0", **{label: column for column, label in ROSTER_COLUMN_LABELS.items()}}
+        self.roster_sort_label_to_column = sort_labels
+        current_keys = self.roster_sort.keys + [SortKey("")] * (2 - len(self.roster_sort.keys))
+        self.roster_primary_sort_var = tk.StringVar(value=next((label for label, col in sort_labels.items() if col == current_keys[0].column), "Player"))
+        self.roster_primary_direction_var = tk.StringVar(value="Descending" if current_keys[0].descending else "Ascending")
+        self.roster_secondary_sort_var = tk.StringVar(value=next((label for label, col in sort_labels.items() if col == current_keys[1].column), "None"))
+        self.roster_secondary_direction_var = tk.StringVar(value="Descending" if current_keys[1].descending else "Ascending")
+        ttk.Label(self.roster_sort_panel, text="Primary", style="Card.TLabel").grid(row=0, column=0, sticky="w")
+        ttk.Label(self.roster_sort_panel, text="Secondary", style="Card.TLabel").grid(row=0, column=2, sticky="w", padx=(10, 0))
+        ttk.Combobox(self.roster_sort_panel, textvariable=self.roster_primary_sort_var, values=list(sort_labels), state="readonly").grid(row=1, column=0, sticky="ew")
+        ttk.Combobox(self.roster_sort_panel, textvariable=self.roster_primary_direction_var, values=("Ascending", "Descending"), state="readonly", width=11).grid(row=1, column=1, sticky="ew", padx=(6, 0))
+        ttk.Combobox(self.roster_sort_panel, textvariable=self.roster_secondary_sort_var, values=("None", *sort_labels), state="readonly").grid(row=1, column=2, sticky="ew", padx=(10, 0))
+        ttk.Combobox(self.roster_sort_panel, textvariable=self.roster_secondary_direction_var, values=("Ascending", "Descending"), state="readonly", width=11).grid(row=1, column=3, sticky="ew", padx=(6, 0))
+        ttk.Button(self.roster_sort_panel, text="Apply sort", style="Accent.TButton", command=self._apply_roster_sort_panel).grid(row=1, column=4, sticky="ew", padx=(10, 0))
+        self.roster_sort_panel.columnconfigure(0, weight=1)
+        self.roster_sort_panel.columnconfigure(2, weight=1)
+        disclosures = self.ui_settings.get("disclosures")
+        if isinstance(disclosures, dict) and disclosures.get("player_sort"):
+            self.roster_sort_panel.pack(fill="x", padx=14, pady=(0, 8))
+        if isinstance(disclosures, dict) and not disclosures.get("player_filters", True):
+            self.roster_filters_frame.pack_forget()
+
         tree_frame = ttk.Frame(parent, style="Card.TFrame")
         tree_frame.pack(fill="both", expand=True, padx=14, pady=(0, 14))
-        columns = tuple(ROSTER_COLUMN_LABELS)
-        self.player_tree = ttk.Treeview(tree_frame, columns=columns, show="tree headings", selectmode="browse")
+        columns = ("checked", *ROSTER_COLUMN_LABELS)
+        self.player_tree = ttk.Treeview(tree_frame, columns=columns, show="tree headings", selectmode="extended")
         self.player_tree.heading("#0", text="Player", command=lambda: self._sort_roster_players("#0"))
+        self.player_tree.heading("checked", text="✓", command=self._select_visible_roster_players)
         for column, label in ROSTER_COLUMN_LABELS.items():
             self.player_tree.heading(
                 column,
                 text=label,
                 command=lambda selected_column=column: self._sort_roster_players(selected_column),
             )
-        self.player_tree.column("#0", width=175, minwidth=135, stretch=True)
+        self.player_tree.column("#0", width=165, minwidth=125, stretch=False)
+        self.player_tree.column("checked", width=48, minwidth=48, anchor="center", stretch=False)
         self.player_tree.column("overall", width=52, minwidth=48, anchor="center", stretch=False)
         self.player_tree.column("position", width=48, minwidth=42, anchor="center", stretch=False)
         self.player_tree.column("player_type", width=145, minwidth=105, anchor="w", stretch=False)
         self.player_tree.column("team", width=64, minwidth=52, anchor="center", stretch=False)
         self.player_tree.column("league", width=110, minwidth=80, anchor="center", stretch=False)
         self.player_tree.column("org", width=92, minwidth=70, anchor="center", stretch=False)
+        self.player_tree.column("potential", width=72, minwidth=66, anchor="center", stretch=False)
+        self.player_tree.column("cap_hit", width=82, minwidth=74, anchor="e", stretch=False)
         player_scroll = ttk.Scrollbar(tree_frame, orient="vertical", command=self.player_tree.yview)
         player_x_scroll = ttk.Scrollbar(tree_frame, orient="horizontal", command=self.player_tree.xview)
         self.player_tree.configure(yscrollcommand=player_scroll.set, xscrollcommand=player_x_scroll.set)
@@ -1051,6 +1407,7 @@ class NhlLegacyDesktopApp:
         self._apply_roster_columns(save=False)
         self._update_roster_sort_headings()
         self.player_tree.bind("<<TreeviewSelect>>", self._on_player_selected)
+        self.player_tree.bind("<Button-1>", self._on_roster_tree_click, add="+")
         self.player_tree.bind("<Button-3>", self._show_roster_context_menu)
         self.player_tree.tag_configure("elite", foreground="#6edcff")
         self.player_tree.tag_configure("nhl", foreground=self.colors["ice"])
@@ -1064,7 +1421,7 @@ class NhlLegacyDesktopApp:
             if self.roster_column_vars.get(column) is not None and self.roster_column_vars[column].get()
         )
         if hasattr(self, "player_tree"):
-            self.player_tree.configure(displaycolumns=visible_columns)
+            self.player_tree.configure(displaycolumns=("checked", *visible_columns))
         self.ui_settings["roster_columns"] = list(visible_columns)
         if save:
             _save_app_settings(self.ui_settings)
@@ -1076,11 +1433,8 @@ class NhlLegacyDesktopApp:
         self._apply_roster_columns()
 
     def _sort_roster_players(self, column: str) -> None:
-        if column == self.roster_sort_column:
-            self.roster_sort_descending = not self.roster_sort_descending
-        else:
-            self.roster_sort_column = column
-            self.roster_sort_descending = column == "overall"
+        self.roster_sort.quick_sort(column, descending_default=column in {"overall", "potential", "cap_hit"})
+        self._save_list_sort("players", self.roster_sort)
         self._update_roster_sort_headings()
         self._refresh_player_list()
 
@@ -1089,13 +1443,10 @@ class NhlLegacyDesktopApp:
             return
         labels = {"#0": "Player", **ROSTER_COLUMN_LABELS}
         for column, label in labels.items():
-            suffix = ""
-            if column == self.roster_sort_column:
-                suffix = " v" if self.roster_sort_descending else " ^"
-            self.player_tree.heading(column, text=f"{label}{suffix}")
+            indicator = self.roster_sort.indicator(column)
+            self.player_tree.heading(column, text=f"{label} {indicator}".rstrip())
 
-    def _roster_sort_value(self, entry: PlayerListEntry):
-        column = self.roster_sort_column
+    def _roster_sort_value(self, entry: PlayerListEntry, column: str):
         if column == "#0":
             return (entry.last_name.casefold(), entry.first_name.casefold(), entry.player_id)
         if column == "overall":
@@ -1110,7 +1461,172 @@ class NhlLegacyDesktopApp:
             return entry.league_name.casefold()
         if column == "org":
             return (entry.organization_abbrev or "").casefold()
+        if column == "potential":
+            try:
+                return float(self.player_potential_by_id.get(entry.player_id, 0))
+            except (TypeError, ValueError):
+                return 0.0
+        if column == "cap_hit":
+            return self.player_cap_hit_by_id.get(entry.player_id, 0.0)
         return entry.full_name.casefold()
+
+    def _save_list_sort(self, list_name: str, state: MultiSortState) -> None:
+        saved = self.ui_settings.get("list_sorts")
+        list_sorts = dict(saved) if isinstance(saved, dict) else {}
+        list_sorts[list_name] = state.to_setting()
+        self.ui_settings["list_sorts"] = list_sorts
+        _save_app_settings(self.ui_settings)
+
+    def _toggle_roster_filters(self) -> None:
+        if self.roster_filters_frame.winfo_manager():
+            self.roster_filters_frame.pack_forget()
+            visible = False
+        else:
+            self.roster_filters_frame.pack(fill="x", padx=14, pady=(0, 10), before=self.roster_list_toolbar)
+            visible = True
+        self._save_disclosure("player_filters", visible)
+
+    def _toggle_roster_sort_panel(self) -> None:
+        if self.roster_sort_panel.winfo_manager():
+            self.roster_sort_panel.pack_forget()
+            visible = False
+        else:
+            self.roster_sort_panel.pack(fill="x", padx=14, pady=(0, 8), before=self.player_tree.master)
+            visible = True
+        self._save_disclosure("player_sort", visible)
+
+    def _save_disclosure(self, name: str, visible: bool) -> None:
+        saved = self.ui_settings.get("disclosures")
+        disclosures = dict(saved) if isinstance(saved, dict) else {}
+        disclosures[name] = bool(visible)
+        self.ui_settings["disclosures"] = disclosures
+        _save_app_settings(self.ui_settings)
+
+    def _on_hide_hidden_players_changed(self) -> None:
+        self.ui_settings["hide_hidden_players"] = bool(self.hide_hidden_players_var.get())
+        _save_app_settings(self.ui_settings)
+        self._refresh_player_list()
+
+    def _apply_roster_sort_panel(self) -> None:
+        primary = self.roster_sort_label_to_column[self.roster_primary_sort_var.get()]
+        keys = [SortKey(primary, self.roster_primary_direction_var.get() == "Descending")]
+        secondary_label = self.roster_secondary_sort_var.get()
+        if secondary_label != "None":
+            secondary = self.roster_sort_label_to_column[secondary_label]
+            if secondary != primary:
+                keys.append(SortKey(secondary, self.roster_secondary_direction_var.get() == "Descending"))
+        self.roster_sort.set_keys(keys)
+        self._save_list_sort("players", self.roster_sort)
+        self._update_roster_sort_headings()
+        self._refresh_player_list()
+
+    def _select_visible_roster_players(self) -> None:
+        self.list_selections["players"].select_visible(entry.player_id for entry in self.player_iid_to_entry.values())
+        self._refresh_player_checkmarks()
+
+    def _clear_roster_selection(self) -> None:
+        self.list_selections["players"].clear()
+        self._refresh_player_checkmarks()
+
+    def _refresh_player_checkmarks(self) -> None:
+        state = self.list_selections["players"]
+        for iid, entry in getattr(self, "player_iid_to_entry", {}).items():
+            if not self.player_tree.exists(iid):
+                continue
+            values = list(self.player_tree.item(iid, "values"))
+            if values:
+                values[0] = "☑" if entry.player_id in state.checked else "☐"
+                self.player_tree.item(iid, values=values)
+        visible = [entry.player_id for entry in getattr(self, "player_iid_to_entry", {}).values()]
+        self.roster_selection_var.set(state.summary(visible))
+
+    def _on_roster_tree_click(self, event):
+        if self.player_tree.identify_region(event.x, event.y) != "cell":
+            return None
+        if self.player_tree.identify_column(event.x) != "#1":
+            return None
+        iid = self.player_tree.identify_row(event.y)
+        entry = self.player_iid_to_entry.get(iid)
+        if entry is not None:
+            self.list_selections["players"].toggle(entry.player_id)
+            self._refresh_player_checkmarks()
+        return "break"
+
+    def _show_roster_touch_menu(self) -> None:
+        iid = self.player_tree.focus() or next(iter(self.player_tree.selection()), "")
+        if not iid:
+            self._set_status("Select a player first.")
+            return
+        bbox = self.player_tree.bbox(iid)
+        x = self.player_tree.winfo_rootx() + (bbox[0] if bbox else 0) + 24
+        y = self.player_tree.winfo_rooty() + (bbox[1] + bbox[3] if bbox else 44)
+        self._popup_roster_menu(iid, x, y)
+
+    def _tree_list_details(self, list_name: str):
+        if list_name == "movement_left":
+            return self.move_left_tree, getattr(self, "move_left_iid_to_entry", {}), lambda entry: entry.player_id
+        if list_name == "movement_right":
+            return self.move_right_tree, getattr(self, "move_right_iid_to_entry", {}), lambda entry: entry.player_id
+        if list_name == "potential":
+            return self.potential_tree, getattr(self, "potential_iid_to_entry", {}), lambda entry: entry.player_id
+        if list_name == "sync":
+            return self.update_tree, getattr(self, "update_iid_to_token", {}), lambda token: token
+        if list_name == "review":
+            return self.review_tree, getattr(self, "review_iid_to_key", {}), lambda key: key
+        raise KeyError(list_name)
+
+    def _select_visible_list(self, list_name: str) -> None:
+        _tree, mapping, key_for = self._tree_list_details(list_name)
+        self.list_selections[list_name].select_visible(key_for(value) for value in mapping.values())
+        self._refresh_tree_checks(list_name)
+
+    def _clear_list_selection(self, list_name: str) -> None:
+        self.list_selections[list_name].clear()
+        self._refresh_tree_checks(list_name)
+
+    def _refresh_tree_checks(self, list_name: str) -> None:
+        tree, mapping, key_for = self._tree_list_details(list_name)
+        state = self.list_selections[list_name]
+        selected_iids: list[str] = []
+        visible_keys: list[object] = []
+        for iid, value in mapping.items():
+            if not tree.exists(iid):
+                continue
+            key = key_for(value)
+            visible_keys.append(key)
+            checked = key in state.checked
+            text_value = str(tree.item(iid, "text"))
+            if text_value.startswith(("☐ ", "☑ ")):
+                text_value = text_value[2:]
+            tree.item(iid, text=f"{'☑' if checked else '☐'} {text_value}")
+            if checked:
+                selected_iids.append(iid)
+        tree.selection_set(selected_iids)
+        count_var = getattr(self, f"{list_name}_selection_var", None)
+        if count_var is not None:
+            count_var.set(state.summary(visible_keys))
+
+    def _on_checkable_tree_click(self, event, list_name: str):
+        tree, mapping, key_for = self._tree_list_details(list_name)
+        iid = tree.identify_row(event.y)
+        if not iid or iid not in mapping or tree.identify_column(event.x) != "#0":
+            return None
+        bbox = tree.bbox(iid, "#0")
+        if bbox and event.x > bbox[0] + 34:
+            return None
+        self.list_selections[list_name].toggle(key_for(mapping[iid]))
+        self._refresh_tree_checks(list_name)
+        return "break"
+
+    def _prepare_context_targets(self, list_name: str, iid: str) -> None:
+        tree, mapping, key_for = self._tree_list_details(list_name)
+        value = mapping.get(iid)
+        if value is None:
+            return
+        targets = set(self.list_selections[list_name].context_targets(key_for(value)))
+        selected = [row_iid for row_iid, row_value in mapping.items() if key_for(row_value) in targets]
+        tree.selection_set(selected or (iid,))
+        tree.focus(iid)
 
     def _build_editor_panel(self, parent: ttk.Frame) -> None:
         player_header = ttk.Frame(parent)
@@ -1119,19 +1635,11 @@ class NhlLegacyDesktopApp:
         self.player_subtitle_var = tk.StringVar(value="Choose a league/team on the left, then click a player.")
         ttk.Label(player_header, textvariable=self.player_title_var, style="Player.TLabel").grid(row=0, column=0, sticky="w")
         ttk.Label(player_header, textvariable=self.player_subtitle_var, style="Muted.TLabel").grid(row=1, column=0, sticky="w")
+        self.utility_name_var = tk.StringVar(value="PLAYER")
+        ttk.Label(player_header, textvariable=self.utility_name_var, style="Accent.TLabel").grid(row=0, column=1, rowspan=2, sticky="e", padx=(20, 8))
         player_header.columnconfigure(0, weight=1)
 
-        movement = ttk.Frame(parent, style="Card.TFrame")
-        movement.pack(fill="x", padx=(18, 0), pady=(0, 12))
-        ttk.Label(movement, text="QUICK MOVE", style="CardTitle.TLabel").grid(row=0, column=0, sticky="w", padx=(14, 12), pady=12)
-        self.target_team_var = tk.StringVar(value="")
-        self.target_team_combo = ttk.Combobox(movement, textvariable=self.target_team_var, values=[], state="normal", width=34)
-        self.target_team_combo.grid(row=0, column=1, sticky="ew", pady=9)
-        ttk.Button(movement, text="Move Player", style="Accent.TButton", command=self._move_selected_player).grid(row=0, column=2, sticky="ew", padx=8, pady=9)
-        ttk.Button(movement, text="Free Agency", style="Danger.TButton", command=self._send_selected_to_free_agency).grid(row=0, column=3, sticky="ew", padx=(0, 12), pady=9)
-        movement.columnconfigure(1, weight=1)
-
-        self.tabs = ttk.Notebook(parent)
+        self.tabs = ttk.Notebook(parent, style="Utility.TNotebook")
         self.tabs.pack(fill="both", expand=True, padx=(18, 0))
         self.movement_tab = ttk.Frame(self.tabs)
         self.player_tab = ttk.Frame(self.tabs)
@@ -1144,6 +1652,13 @@ class NhlLegacyDesktopApp:
         self.create_tab = ttk.Frame(self.tabs)
         self.review_tab = ttk.Frame(self.tabs)
         self.settings_tab = ttk.Frame(self.tabs)
+        self.advanced_tab = ttk.Frame(self.tabs)
+        self.player_workspace_tabs = (
+            self.player_tab,
+            self.attributes_tab,
+            self.potential_tab,
+        )
+        self.sync_workspace_tabs = (self.updates_tab, self.contracts_tab, self.edge_tab)
         ordered_tabs = (
             (self.player_tab, "PLAYER"),
             (self.attributes_tab, "ATTRIBUTES"),
@@ -1156,9 +1671,11 @@ class NhlLegacyDesktopApp:
             (self.create_tab, "CREATE PLAYER"),
             (self.review_tab, "FINAL REVIEW"),
             (self.settings_tab, "SETTINGS"),
+            (self.advanced_tab, "RAW / RESEARCH"),
         )
         for tab, label in ordered_tabs:
             self.tabs.add(tab, text=label)
+        self.utility_tabs = ordered_tabs
         self.full_tab_labels = {tab: label for tab, label in ordered_tabs}
         self.compact_tab_labels = {
             self.player_tab: "INFO",
@@ -1172,7 +1689,40 @@ class NhlLegacyDesktopApp:
             self.create_tab: "NEW",
             self.review_tab: "REVIEW",
             self.settings_tab: "SET",
+            self.advanced_tab: "RAW",
         }
+        self.player_segment_bar = ttk.Frame(parent)
+        self.player_segment_bar.pack(fill="x", padx=(18, 0), pady=(0, 10), before=self.tabs)
+        self.player_segment_buttons: dict[ttk.Frame, ttk.Button] = {}
+        for tab, label in (
+            (self.player_tab, "Overview"),
+            (self.attributes_tab, "Attributes"),
+            (self.potential_tab, "Potential"),
+        ):
+            button = ttk.Button(
+                self.player_segment_bar,
+                text=label,
+                style="Toolbar.TButton",
+                command=lambda selected_tab=tab: self._select_utility(selected_tab),
+            )
+            button.pack(side="left", padx=(0, 6))
+            self.player_segment_buttons[tab] = button
+        self.sync_segment_bar = ttk.Frame(parent)
+        self.sync_segment_buttons: dict[ttk.Frame, ttk.Button] = {}
+        for tab, label in (
+            (self.updates_tab, "Franchise & Proposals"),
+            (self.contracts_tab, "Contracts"),
+            (self.edge_tab, "Advanced Metrics"),
+        ):
+            button = ttk.Button(
+                self.sync_segment_bar,
+                text=label,
+                style="Toolbar.TButton",
+                command=lambda selected_tab=tab: self._select_utility(selected_tab),
+            )
+            button.pack(side="left", padx=(0, 6))
+            self.sync_segment_buttons[tab] = button
+        self.tabs.bind("<<NotebookTabChanged>>", self._sync_utility_navigation)
         self._build_movement_tab()
         self._build_player_info_tab()
         self._build_potential_tab()
@@ -1184,9 +1734,13 @@ class NhlLegacyDesktopApp:
         self._build_create_tab()
         self._build_review_tab()
         self._build_settings_tab()
+        self._build_advanced_tab()
 
     def _build_movement_tab(self) -> None:
-        controls = ttk.Frame(self.movement_tab)
+        wrapper = ScrollFrame(self.movement_tab, background=self.colors["panel"])
+        wrapper.pack(fill="both", expand=True)
+        content = wrapper.inner
+        controls = ttk.Frame(content)
         controls.pack(fill="x", padx=12, pady=12)
         self.move_left_team_var = tk.StringVar(value="")
         self.move_right_team_var = tk.StringVar(value="")
@@ -1201,22 +1755,34 @@ class NhlLegacyDesktopApp:
         controls.columnconfigure(2, weight=1)
         self.move_left_team_var.trace_add("write", lambda *_: self._debounce("trade-lanes", 80, self._refresh_trade_lanes))
         self.move_right_team_var.trace_add("write", lambda *_: self._debounce("trade-lanes", 80, self._refresh_trade_lanes))
-        for combo in (self.target_team_combo, self.move_left_combo, self.move_right_combo):
+        for combo in (self.move_left_combo, self.move_right_combo):
             combo.bind("<KeyRelease>", self._filter_team_combo)
 
-        lanes = ttk.PanedWindow(self.movement_tab, orient="horizontal")
+        lanes = ttk.PanedWindow(content, orient="horizontal")
         lanes.pack(fill="both", expand=True, padx=12, pady=(0, 12))
         left_frame = ttk.Frame(lanes)
-        middle_frame = ttk.Frame(lanes, width=180)
         right_frame = ttk.Frame(lanes)
         lanes.add(left_frame, weight=1)
-        lanes.add(middle_frame, weight=0)
         lanes.add(right_frame, weight=1)
 
         self.move_left_title_var = tk.StringVar(value="Team 1")
         self.move_right_title_var = tk.StringVar(value="Team 2")
-        ttk.Label(left_frame, textvariable=self.move_left_title_var, style="Section.TLabel").pack(anchor="w", pady=(0, 6))
-        ttk.Label(right_frame, textvariable=self.move_right_title_var, style="Section.TLabel").pack(anchor="w", pady=(0, 6))
+        left_header = ttk.Frame(left_frame)
+        left_header.pack(fill="x", pady=(0, 6))
+        ttk.Label(left_header, textvariable=self.move_left_title_var, style="Section.TLabel").pack(side="left")
+        self.movement_left_selection_var = tk.StringVar(value="0 selected")
+        ttk.Label(left_header, textvariable=self.movement_left_selection_var, style="Muted.TLabel").pack(side="left", padx=10)
+        ttk.Button(left_header, text="Clear", command=lambda: self._clear_list_selection("movement_left")).pack(side="right", padx=(6, 0))
+        ttk.Button(left_header, text="Select visible", command=lambda: self._select_visible_list("movement_left")).pack(side="right", padx=(6, 0))
+        ttk.Button(left_header, text="⋯", style="Icon.TButton", command=lambda: self._show_trade_touch_menu("left_to_right")).pack(side="right")
+        right_header = ttk.Frame(right_frame)
+        right_header.pack(fill="x", pady=(0, 6))
+        ttk.Label(right_header, textvariable=self.move_right_title_var, style="Section.TLabel").pack(side="left")
+        self.movement_right_selection_var = tk.StringVar(value="0 selected")
+        ttk.Label(right_header, textvariable=self.movement_right_selection_var, style="Muted.TLabel").pack(side="left", padx=10)
+        ttk.Button(right_header, text="Clear", command=lambda: self._clear_list_selection("movement_right")).pack(side="right", padx=(6, 0))
+        ttk.Button(right_header, text="Select visible", command=lambda: self._select_visible_list("movement_right")).pack(side="right", padx=(6, 0))
+        ttk.Button(right_header, text="⋯", style="Icon.TButton", command=lambda: self._show_trade_touch_menu("right_to_left")).pack(side="right")
         columns = ("team", "league", "org")
         self.move_left_tree = ttk.Treeview(left_frame, columns=columns, show="tree headings", selectmode="extended")
         self.move_right_tree = ttk.Treeview(right_frame, columns=columns, show="tree headings", selectmode="extended")
@@ -1232,25 +1798,27 @@ class NhlLegacyDesktopApp:
             tree.pack(fill="both", expand=True)
             tree.bind("<Double-1>", self._on_trade_lane_double_click)
             tree.bind("<Button-3>", self._show_trade_context_menu)
-
-        ttk.Label(middle_frame, text="TRADE", style="Section.TLabel").pack(pady=(48, 12))
-        ttk.Button(middle_frame, text="Team 1  ->  Team 2", style="Accent.TButton", command=lambda: self._move_between_lanes("left_to_right")).pack(fill="x", padx=12, pady=6)
-        ttk.Button(middle_frame, text="Team 1  <-  Team 2", style="Accent.TButton", command=lambda: self._move_between_lanes("right_to_left")).pack(fill="x", padx=12, pady=6)
-        ttk.Button(middle_frame, text="Drop Selected To FA", style="Danger.TButton", command=self._drop_lane_selection_to_fa).pack(fill="x", padx=12, pady=(20, 6))
-        ttk.Label(
-            middle_frame,
-            text="Select one or more players in either list. Double-click also moves across.",
-            style="Muted.TLabel",
-            wraplength=150,
-            justify="center",
-        ).pack(fill="x", padx=12, pady=12)
+        self.move_left_tree.bind("<Button-1>", lambda event: self._on_checkable_tree_click(event, "movement_left"), add="+")
+        self.move_right_tree.bind("<Button-1>", lambda event: self._on_checkable_tree_click(event, "movement_right"), add="+")
 
     def _build_player_info_tab(self) -> None:
-        wrapper = ScrollFrame(self.player_tab)
-        wrapper.pack(fill="both", expand=True)
+        self.player_info_scroll = wrapper = ScrollFrame(self.player_tab)
         frame = wrapper.inner
 
-        confirmed = ttk.LabelFrame(frame, text="Confirmed / Useful Fields")
+        self.player_welcome = ttk.Frame(self.player_tab)
+        self.player_welcome.pack(fill="both", expand=True)
+        welcome_card = ttk.Frame(self.player_welcome, style="Card.TFrame")
+        welcome_card.place(relx=0.5, rely=0.42, anchor="center")
+        ttk.Label(welcome_card, text="Choose a player to begin", style="CardTitle.TLabel").pack(padx=42, pady=(32, 8))
+        ttk.Label(
+            welcome_card,
+            text="Search the player list, then tap a name to view details, attributes, potential, and contract.",
+            style="CardMuted.TLabel",
+            wraplength=520,
+            justify="center",
+        ).pack(padx=42, pady=(0, 32))
+
+        confirmed = ttk.LabelFrame(frame, text="Player Details")
         confirmed.pack(fill="x", padx=12, pady=12)
         self.info_vars = {
             "first_name": tk.StringVar(),
@@ -1269,8 +1837,9 @@ class NhlLegacyDesktopApp:
         }
         self._field(confirmed, "First Name", self.info_vars["first_name"], row=0, column=0, readonly=True)
         self._field(confirmed, "Last Name", self.info_vars["last_name"], row=0, column=1, readonly=True)
-        self._field(confirmed, "Player ID", self.info_vars["player_id"], row=1, column=0, readonly=True)
-        self._field(confirmed, "Instance ID", self.info_vars["instance_id"], row=1, column=1, readonly=True)
+        if self.advanced_mode:
+            self._field(confirmed, "Player ID", self.info_vars["player_id"], row=1, column=0, readonly=True)
+            self._field(confirmed, "Instance ID", self.info_vars["instance_id"], row=1, column=1, readonly=True)
         self._field(confirmed, "Team", self.info_vars["team"], row=2, column=0, readonly=True)
         self._field(confirmed, "Organization", self.info_vars["organization"], row=2, column=1, readonly=True)
         self._field(confirmed, "League", self.info_vars["league"], row=3, column=0, readonly=True)
@@ -1317,8 +1886,23 @@ class NhlLegacyDesktopApp:
         potential.columnconfigure(1, weight=1)
         potential.columnconfigure(2, weight=1)
 
+    def _show_player_welcome(self, visible: bool) -> None:
+        if not hasattr(self, "player_info_scroll"):
+            return
+        if visible:
+            self.player_info_scroll.pack_forget()
+            if not self.player_welcome.winfo_manager():
+                self.player_welcome.pack(fill="both", expand=True)
+        else:
+            self.player_welcome.pack_forget()
+            if not self.player_info_scroll.winfo_manager():
+                self.player_info_scroll.pack(fill="both", expand=True)
+
     def _build_potential_tab(self) -> None:
-        controls = ttk.Frame(self.potential_tab)
+        wrapper = ScrollFrame(self.potential_tab, background=self.colors["panel"])
+        wrapper.pack(fill="both", expand=True)
+        content = wrapper.inner
+        controls = ttk.Frame(content)
         controls.pack(fill="x", padx=12, pady=12)
         self.potential_league_filter_var = tk.StringVar(value="NHL")
         self.potential_team_filter_var = tk.StringVar(value="All Teams")
@@ -1351,6 +1935,10 @@ class NhlLegacyDesktopApp:
             command=self._save_all_pending_potentials,
         )
         self.save_pending_potentials_button.grid(row=3, column=2, sticky="ew", padx=(10, 0))
+        self.potential_selection_var = tk.StringVar(value="0 selected")
+        ttk.Button(controls, text="Select visible", command=lambda: self._select_visible_list("potential")).grid(row=4, column=0, sticky="ew", pady=(8, 0))
+        ttk.Button(controls, text="Clear selection", command=lambda: self._clear_list_selection("potential")).grid(row=4, column=1, sticky="ew", padx=(10, 0), pady=(8, 0))
+        ttk.Label(controls, textvariable=self.potential_selection_var, style="Muted.TLabel").grid(row=4, column=2, sticky="w", padx=(10, 0), pady=(8, 0))
         controls.columnconfigure(0, weight=1)
         controls.columnconfigure(1, weight=1)
         controls.columnconfigure(2, weight=1)
@@ -1360,7 +1948,7 @@ class NhlLegacyDesktopApp:
         self.potential_min_stars_var.trace_add("write", lambda *_: self._debounce("potential-filter", 50, self._refresh_potential_tree))
         self.potential_max_stars_var.trace_add("write", lambda *_: self._debounce("potential-filter", 50, self._refresh_potential_tree))
 
-        editor = ttk.LabelFrame(self.potential_tab, text="Selected Player Potential")
+        editor = ttk.LabelFrame(content, text="Selected Player Potential")
         editor.pack(fill="x", padx=12, pady=(0, 12))
         ttk.Label(editor, text="Role").grid(row=0, column=0, sticky="w", padx=10, pady=(8, 2))
         ttk.Label(editor, text="Stars").grid(row=0, column=1, sticky="w", padx=10, pady=(8, 2))
@@ -1382,7 +1970,7 @@ class NhlLegacyDesktopApp:
             editor.columnconfigure(column, weight=1)
 
         columns = ("league", "team", "organization", "position", "stars", "color", "role", "status")
-        potential_tree_frame = ttk.Frame(self.potential_tab)
+        potential_tree_frame = ttk.Frame(content)
         potential_tree_frame.pack(fill="both", expand=True, padx=12, pady=(0, 12))
         self.potential_tree = ttk.Treeview(
             potential_tree_frame,
@@ -1428,6 +2016,7 @@ class NhlLegacyDesktopApp:
         self.potential_tree.bind("<Control-a>", lambda _event: self._select_all_potentials())
         self.potential_tree.bind("<Control-A>", lambda _event: self._select_all_potentials())
         self.potential_tree.bind("<Button-3>", self._show_potential_context_menu)
+        self.potential_tree.bind("<Button-1>", lambda event: self._on_checkable_tree_click(event, "potential"), add="+")
 
     def _field(self, parent, label: str, variable: tk.StringVar, *, row: int, column: int, readonly: bool = False):
         box = ttk.Frame(parent)
@@ -1535,7 +2124,7 @@ class NhlLegacyDesktopApp:
         wrapper = ScrollFrame(self.contracts_tab, background=self.colors["panel"])
         wrapper.pack(fill="both", expand=True)
         content = wrapper.inner
-        controls = ttk.Frame(content)
+        controls = ttk.LabelFrame(content, text="Mass Contract Sync")
         controls.pack(fill="x", padx=12, pady=12)
         self.real_cap_var = tk.StringVar(value=str(DEFAULT_REAL_CAP_MILLIONS))
         self.game_cap_var = tk.StringVar(value=str(DEFAULT_GAME_CAP_MILLIONS))
@@ -1548,6 +2137,12 @@ class NhlLegacyDesktopApp:
         ttk.Button(controls, text="Update All Contracts From CapWages", style="Accent.TButton", command=self._build_all_contracts).grid(row=3, column=0, columnspan=2, sticky="ew", pady=(8, 0))
         ttk.Button(controls, text="Apply Selected Queue", command=lambda: self._approve_contract_queue_selection(apply_all=False)).grid(row=4, column=0, sticky="ew", pady=(8, 0))
         ttk.Button(controls, text="Apply All Queue", command=lambda: self._approve_contract_queue_selection(apply_all=True)).grid(row=4, column=1, sticky="ew", padx=(8, 0), pady=(8, 0))
+        ttk.Label(
+            controls,
+            text="CapWages values are converted by salary-cap percentage so the full league fits NHL Legacy's lower cap while preserving relative contract value.",
+            style="CardMuted.TLabel",
+            wraplength=900,
+        ).grid(row=5, column=0, columnspan=2, sticky="w", pady=(8, 0))
         controls.columnconfigure(0, weight=1)
         controls.columnconfigure(1, weight=1)
 
@@ -1674,7 +2269,10 @@ class NhlLegacyDesktopApp:
         self.draft_pick_tree.pack(fill="both", expand=True, padx=12, pady=(0, 12))
 
     def _build_draft_class_tab(self) -> None:
-        controls = ttk.Frame(self.draft_class_tab)
+        wrapper = ScrollFrame(self.draft_class_tab, background=self.colors["panel"])
+        wrapper.pack(fill="both", expand=True)
+        content = wrapper.inner
+        controls = ttk.Frame(content)
         controls.pack(fill="x", padx=12, pady=12)
         self.draft_class_round_var = tk.StringVar(value="All Rounds")
         self.draft_class_team_var = tk.StringVar(value="All Teams")
@@ -1725,11 +2323,16 @@ class NhlLegacyDesktopApp:
             text="Apply Elite Prospects Scouting",
             command=self._apply_2026_elite_prospects,
         ).grid(row=3, column=2, columnspan=2, sticky="ew", padx=(8, 0), pady=(8, 0))
+        ttk.Button(
+            controls,
+            text="Calibrate 2027–2030 Draft Classes",
+            command=self._calibrate_future_draft_classes,
+        ).grid(row=4, column=0, columnspan=4, sticky="ew", pady=(8, 0))
         controls.columnconfigure(1, weight=1)
         controls.columnconfigure(3, weight=2)
         self.draft_class_count_var = tk.StringVar(value="223 confirmed selections | scan the loaded roster to compare")
         ttk.Label(controls, textvariable=self.draft_class_count_var, style="Muted.TLabel").grid(
-            row=4, column=0, columnspan=4, sticky="w", pady=(8, 0)
+            row=5, column=0, columnspan=4, sticky="w", pady=(8, 0)
         )
         for variable in (
             self.draft_class_round_var,
@@ -1740,7 +2343,7 @@ class NhlLegacyDesktopApp:
             variable.trace_add("write", lambda *_: self._render_2026_draft_class())
 
         columns = ("round", "team", "position", "status", "roster_team", "overall", "archetype", "potential", "club")
-        draft_tree_frame = ttk.Frame(self.draft_class_tab)
+        draft_tree_frame = ttk.Frame(content)
         draft_tree_frame.pack(fill="both", expand=True, padx=12, pady=(0, 8))
         self.draft_class_tree = ttk.Treeview(
             draft_tree_frame,
@@ -1785,7 +2388,7 @@ class NhlLegacyDesktopApp:
         self.draft_class_tree.bind("<<TreeviewSelect>>", self._show_2026_draft_details)
 
         self.draft_class_details = tk.Text(
-            self.draft_class_tab,
+            content,
             height=3,
             wrap="word",
             background="#0b1118",
@@ -1802,16 +2405,19 @@ class NhlLegacyDesktopApp:
         content = wrapper.inner
         top = ttk.Frame(content)
         top.pack(fill="x", padx=12, pady=12)
-        ttk.Button(top, text="Load Advanced Metrics For Selected Player", style="Accent.TButton", command=self._load_edge_for_selected).grid(row=0, column=0, sticky="ew")
+        ttk.Label(top, text="LEAGUE-WIDE ADVANCED METRICS", style="Section.TLabel").grid(row=0, column=0, columnspan=2, sticky="w")
         ttk.Label(
             top,
-            text="Suggestions are staged into sliders only. Use Save Attributes to write them.",
+            text="Preview an NHL league or organization, review every suggested rating change, then apply selected players or the full preview. Individual edits remain available from the Player workspace.",
             style="Muted.TLabel",
-            wraplength=780,
-        ).grid(row=1, column=0, sticky="w", pady=(7, 0))
+            wraplength=950,
+        ).grid(row=1, column=0, columnspan=2, sticky="w", pady=(7, 8))
+        ttk.Button(top, text="Load Metrics For Selected Player", command=self._load_edge_for_selected).grid(row=2, column=0, sticky="ew")
+        ttk.Button(top, text="Edit Selected Player Manually", command=lambda: self._select_utility(self.attributes_tab)).grid(row=2, column=1, sticky="ew", padx=(8, 0))
         top.columnconfigure(0, weight=1)
+        top.columnconfigure(1, weight=1)
 
-        bulk = ttk.LabelFrame(content, text="Organization Advanced Metrics Preview")
+        bulk = ttk.LabelFrame(content, text="League / Organization Metrics Preview")
         bulk.pack(fill="x", padx=12, pady=(0, 12))
         self.bulk_org_var = tk.StringVar(value="")
         self.bulk_league_var = tk.StringVar(value="NHL")
@@ -1892,61 +2498,38 @@ class NhlLegacyDesktopApp:
         self.edge_text.pack(fill="both", expand=True, padx=12, pady=(0, 12))
 
     def _build_updates_tab(self) -> None:
-        controls = ttk.Frame(self.updates_tab)
+        wrapper = ScrollFrame(self.updates_tab, background=self.colors["panel"])
+        wrapper.pack(fill="both", expand=True)
+        content = wrapper.inner
+        controls = ttk.LabelFrame(content, text="Build Mass Roster Changes")
         controls.pack(fill="x", padx=12, pady=12)
-        ttk.Button(controls, text="Scan CapWages", style="Accent.TButton", command=self._scan_capwages_updates).grid(row=0, column=0, sticky="ew")
-        ttk.Button(controls, text="Apply Selected", command=self._apply_selected_update_moves).grid(row=0, column=1, sticky="ew", padx=(8, 0))
-        ttk.Button(controls, text="Apply All", command=lambda: self._apply_update_moves(apply_all=True)).grid(row=0, column=2, sticky="ew", padx=(8, 0))
-        ttk.Button(controls, text="Veto Selected", command=self._veto_selected_update_moves).grid(row=0, column=3, sticky="ew", padx=(8, 0))
+        ttk.Label(controls, text="NHL Legacy salary cap (M)").grid(row=0, column=0, sticky="w", padx=10, pady=(8, 2))
+        ttk.Label(controls, text="Generate proposals").grid(row=0, column=1, columnspan=2, sticky="w", padx=10, pady=(8, 2))
+        ttk.Entry(controls, textvariable=self.game_cap_var, width=14).grid(row=1, column=0, sticky="ew", padx=10, pady=(0, 8))
+        ttk.Button(controls, text="Build Franchise Mode Rosters", style="Accent.TButton", command=self._scan_franchise_rosters).grid(row=1, column=1, sticky="ew", padx=10, pady=(0, 8))
+        ttk.Button(controls, text="Check NHL + PuckPedia Assignments", command=self._scan_official_nhl_updates).grid(row=1, column=2, sticky="ew", padx=10, pady=(0, 8))
         ttk.Label(
             controls,
-            text="Organization-aware: AHL, system, and prospect players already inside their NHL organization are not flagged.",
+            text="Franchise Builder selects the best 12 forwards, 6 defensemen, and 2 goalies. It adds up to 3 backup skaters only when cap space permits; the CPU may resolve an over-cap core.",
             style="Muted.TLabel",
             wraplength=900,
-        ).grid(row=1, column=0, columnspan=4, sticky="w", pady=(8, 0))
-        for column in range(4):
+        ).grid(row=2, column=0, columnspan=3, sticky="w", padx=10, pady=(0, 8))
+        for column in range(3):
             controls.columnconfigure(column, weight=1)
 
-        expansion_frame = ttk.LabelFrame(self.updates_tab, text="Expansion Team Handling")
-        expansion_frame.pack(fill="x", padx=12, pady=(0, 12))
-        ttk.Radiobutton(
-            expansion_frame,
-            text="Put Seattle/Vegas players on their expansion teams",
-            variable=self.expansion_destination_var,
-            value=EXPANSION_DESTINATION_TEAMS,
-            command=self._save_expansion_destination,
-        ).grid(row=0, column=0, sticky="w", padx=10, pady=(8, 2))
-        ttk.Radiobutton(
-            expansion_frame,
-            text="Release Seattle/Vegas signed players to Free Agency",
-            variable=self.expansion_destination_var,
-            value=EXPANSION_DESTINATION_FREE_AGENCY,
-            command=self._save_expansion_destination,
-        ).grid(row=1, column=0, sticky="w", padx=10, pady=2)
-        ttk.Label(
-            expansion_frame,
-            text="Used by Scan CapWages / auto-update. Flip this when your native expansion-team mod is ready.",
-            style="Muted.TLabel",
-            wraplength=880,
-        ).grid(row=2, column=0, sticky="w", padx=10, pady=(2, 8))
-        expansion_frame.columnconfigure(0, weight=1)
+        proposal_controls = ttk.LabelFrame(content, text="Generated Proposals")
+        proposal_controls.pack(fill="x", padx=12, pady=(0, 12))
+        self.sync_selection_var = tk.StringVar(value="0 selected")
+        ttk.Button(proposal_controls, text="Select visible", command=lambda: self._select_visible_list("sync")).grid(row=0, column=0, sticky="ew", padx=10, pady=(8, 4))
+        ttk.Button(proposal_controls, text="Clear selection", command=lambda: self._clear_list_selection("sync")).grid(row=0, column=1, sticky="ew", padx=(0, 10), pady=(8, 4))
+        ttk.Label(proposal_controls, textvariable=self.sync_selection_var, style="CardMuted.TLabel").grid(row=0, column=2, sticky="w", padx=(0, 10), pady=(8, 4))
+        ttk.Button(proposal_controls, text="Apply Selected", command=self._apply_selected_update_moves).grid(row=1, column=0, sticky="ew", padx=10, pady=(4, 10))
+        ttk.Button(proposal_controls, text="APPLY ALL", style="Accent.TButton", command=lambda: self._apply_update_moves(apply_all=True)).grid(row=1, column=1, sticky="ew", padx=(0, 10), pady=(4, 10))
+        ttk.Button(proposal_controls, text="Veto Selected", command=self._veto_selected_update_moves).grid(row=1, column=2, sticky="ew", padx=(0, 10), pady=(4, 10))
+        for column in range(3):
+            proposal_controls.columnconfigure(column, weight=1)
 
-        org_frame = ttk.LabelFrame(self.updates_tab, text="Organization Links")
-        org_frame.pack(fill="x", padx=12, pady=(0, 12))
-        self.org_team_var = tk.StringVar(value="")
-        self.org_parent_var = tk.StringVar(value="TOR")
-        ttk.Label(org_frame, text="Team / league code (type to search)").grid(row=0, column=0, sticky="w", padx=10, pady=(8, 2))
-        ttk.Label(org_frame, text="Belongs to NHL organization").grid(row=0, column=1, sticky="w", padx=10, pady=(8, 2))
-        self.org_team_combo = ttk.Combobox(org_frame, textvariable=self.org_team_var, values=[], state="normal")
-        self.org_parent_combo = ttk.Combobox(org_frame, textvariable=self.org_parent_var, values=sorted(TEAM_SLUGS.keys()), state="readonly")
-        self.org_team_combo.grid(row=1, column=0, sticky="ew", padx=10, pady=(0, 8))
-        self.org_parent_combo.grid(row=1, column=1, sticky="ew", padx=10, pady=(0, 8))
-        ttk.Button(org_frame, text="Link Organization", command=self._save_organization_link).grid(row=1, column=2, sticky="ew", padx=10, pady=(0, 8))
-        org_frame.columnconfigure(0, weight=1)
-        org_frame.columnconfigure(1, weight=1)
-        self.org_team_combo.bind("<KeyRelease>", self._filter_team_combo)
-
-        update_pane = ttk.PanedWindow(self.updates_tab, orient="vertical")
+        update_pane = ttk.PanedWindow(content, orient="vertical")
         update_pane.pack(fill="both", expand=True, padx=12, pady=(0, 12))
         move_frame = ttk.Frame(update_pane)
         create_frame = ttk.Frame(update_pane)
@@ -1974,6 +2557,7 @@ class NhlLegacyDesktopApp:
         move_frame.columnconfigure(0, weight=1)
         move_frame.rowconfigure(0, weight=1)
         self.update_tree.bind("<Button-3>", self._show_update_context_menu)
+        self.update_tree.bind("<Button-1>", lambda event: self._on_checkable_tree_click(event, "sync"), add="+")
 
         ttk.Label(create_frame, text="Create candidates from CapWages (players missing in roster with draft info)", style="Muted.TLabel").pack(anchor="w", pady=(8, 4))
         self.create_candidate_list = tk.Listbox(create_frame, background="#0b1118", foreground=self.colors["ink"], selectbackground="#244e76", relief="flat", height=8, selectmode="extended")
@@ -2034,24 +2618,38 @@ class NhlLegacyDesktopApp:
         ).pack(anchor="w", padx=12, pady=(0, 12))
 
     def _build_review_tab(self) -> None:
-        controls = ttk.Frame(self.review_tab)
+        wrapper = ScrollFrame(self.review_tab, background=self.colors["panel"])
+        wrapper.pack(fill="both", expand=True)
+        content = wrapper.inner
+        controls = ttk.Frame(content)
         controls.pack(fill="x", padx=12, pady=12)
-        ttk.Button(controls, text="Reload Review", command=self._refresh_review).grid(row=0, column=0, sticky="ew")
-        ttk.Button(controls, text="Apply Selected Pending Move", command=self._apply_selected_review_move).grid(row=0, column=1, sticky="ew", padx=8)
-        ttk.Button(controls, text="Veto Selected Pending Move", command=self._veto_selected_review_move).grid(row=0, column=2, sticky="ew")
-        ttk.Button(controls, text="Revert Selected Logged Edit", command=self._revert_selected_review_change).grid(row=1, column=0, sticky="ew", pady=(8, 0))
-        ttk.Button(controls, text="Save To Game", style="Accent.TButton", command=self._save_to_game).grid(row=1, column=1, columnspan=2, sticky="ew", padx=(8, 0), pady=(8, 0))
+        self.review_filter_var = tk.StringVar(value="Pending")
+        ttk.Label(controls, text="Show").grid(row=0, column=0, sticky="w")
+        ttk.Combobox(
+            controls,
+            textvariable=self.review_filter_var,
+            values=("Pending", "Errors", "History", "All"),
+            state="readonly",
+            width=16,
+        ).grid(row=0, column=1, sticky="ew", padx=(8, 0))
+        ttk.Button(controls, text="⋯", style="Icon.TButton", command=self._show_review_touch_menu).grid(row=0, column=2, sticky="e", padx=(8, 0))
+        ttk.Button(controls, text="SAVE TO GAME", style="Accent.TButton", command=self._save_to_game).grid(row=0, column=3, sticky="ew", padx=(8, 0))
         ttk.Label(
             controls,
             text="Save applies every non-vetoed pending move, writes the roster to Xenia, and keeps only unresolved errors in this list.",
             style="Muted.TLabel",
             wraplength=880,
-        ).grid(row=2, column=0, columnspan=3, sticky="w", pady=(8, 0))
-        for column in range(3):
-            controls.columnconfigure(column, weight=1)
+        ).grid(row=1, column=0, columnspan=4, sticky="w", pady=(8, 0))
+        self.review_selection_var = tk.StringVar(value="0 selected")
+        ttk.Button(controls, text="Select visible", command=lambda: self._select_visible_list("review")).grid(row=2, column=0, sticky="ew", pady=(8, 0))
+        ttk.Button(controls, text="Clear selection", command=lambda: self._clear_list_selection("review")).grid(row=2, column=1, sticky="ew", padx=(8, 0), pady=(8, 0))
+        ttk.Label(controls, textvariable=self.review_selection_var, style="Muted.TLabel").grid(row=2, column=2, columnspan=2, sticky="w", padx=(8, 0), pady=(8, 0))
+        controls.columnconfigure(1, weight=1)
+        controls.columnconfigure(3, weight=1)
+        self.review_filter_var.trace_add("write", lambda *_: self._refresh_review())
         columns = ("time", "type", "details")
         self.review_tree = ttk.Treeview(
-            ttk.Frame(self.review_tab),
+            ttk.Frame(content),
             columns=columns,
             show="tree headings",
             selectmode="extended",
@@ -2075,6 +2673,7 @@ class NhlLegacyDesktopApp:
         review_tree_frame.columnconfigure(0, weight=1)
         review_tree_frame.rowconfigure(0, weight=1)
         self.review_tree.bind("<Button-3>", self._show_review_context_menu)
+        self.review_tree.bind("<Button-1>", lambda event: self._on_checkable_tree_click(event, "review"), add="+")
 
     def _build_settings_tab(self) -> None:
         wrapper = ScrollFrame(self.settings_tab, background=self.colors["panel"])
@@ -2086,6 +2685,8 @@ class NhlLegacyDesktopApp:
         appearance.pack(fill="x", padx=14, pady=(0, 14))
         self.settings_font_scale_var = tk.StringVar(value=self._font_scale_label())
         self.settings_density_var = tk.StringVar(value=self.ui_density)
+        self.settings_theme_var = tk.StringVar(value=self.theme_mode)
+        self.settings_advanced_var = tk.BooleanVar(value=self.advanced_mode)
         self.settings_window_profile_var = tk.StringVar(value="Keep current size")
         self.window_size_var = tk.StringVar(value=f"{self.root.winfo_width()} x {self.root.winfo_height()}")
         ttk.Label(appearance, text="Font size").grid(row=0, column=0, sticky="w", padx=10, pady=(10, 3))
@@ -2111,8 +2712,21 @@ class NhlLegacyDesktopApp:
             state="readonly",
         ).grid(row=3, column=0, sticky="ew", padx=10, pady=(0, 10))
         ttk.Label(appearance, textvariable=self.window_size_var, style="CardMuted.TLabel").grid(row=3, column=1, sticky="w", padx=10, pady=(0, 10))
+        ttk.Label(appearance, text="Color theme").grid(row=4, column=0, sticky="w", padx=10, pady=(0, 3))
+        ttk.Label(appearance, text="Advanced tools").grid(row=4, column=1, sticky="w", padx=10, pady=(0, 3))
+        ttk.Combobox(
+            appearance,
+            textvariable=self.settings_theme_var,
+            values=THEME_CHOICES,
+            state="readonly",
+        ).grid(row=5, column=0, sticky="ew", padx=10, pady=(0, 10))
+        ttk.Checkbutton(
+            appearance,
+            text="Show Metrics, Draft Class, and Comparison Builder",
+            variable=self.settings_advanced_var,
+        ).grid(row=5, column=1, sticky="w", padx=10, pady=(0, 10))
         ttk.Button(appearance, text="APPLY DISPLAY SETTINGS", style="Accent.TButton", command=self._apply_ui_preferences).grid(
-            row=4,
+            row=6,
             column=0,
             columnspan=2,
             sticky="ew",
@@ -2124,9 +2738,24 @@ class NhlLegacyDesktopApp:
             text="Auto switches to the compact one-column editor on smaller 16:10 screens. Every pane remains resizable by dragging its divider.",
             style="CardMuted.TLabel",
             wraplength=900,
-        ).grid(row=5, column=0, columnspan=2, sticky="w", padx=10, pady=(0, 10))
+        ).grid(row=7, column=0, columnspan=2, sticky="w", padx=10, pady=(0, 10))
         for column in range(2):
             appearance.columnconfigure(column, weight=1)
+
+        player_visibility = ttk.LabelFrame(frame, text="Player Visibility")
+        player_visibility.pack(fill="x", padx=14, pady=(0, 14))
+        ttk.Checkbutton(
+            player_visibility,
+            text="Hide hidden players from normal player lists",
+            variable=self.hide_hidden_players_var,
+            command=self._on_hide_hidden_players_changed,
+        ).pack(anchor="w", padx=10, pady=(10, 2))
+        ttk.Label(
+            player_visibility,
+            text="Hidden players remain available when you explicitly choose the Hidden league or Hidden Players filter.",
+            style="CardMuted.TLabel",
+            wraplength=900,
+        ).pack(anchor="w", padx=10, pady=(0, 10))
 
         ttk.Label(frame, text="ROSTER FILES", style="Section.TLabel").pack(anchor="w", padx=14, pady=(2, 8))
         roster = ttk.LabelFrame(frame, text="Active Load / Save Paths")
@@ -2143,6 +2772,53 @@ class NhlLegacyDesktopApp:
         roster.columnconfigure(0, weight=1)
         roster.columnconfigure(1, weight=1)
         roster.columnconfigure(2, weight=1)
+
+        ttk.Label(frame, text="ROSTER SYNC RULES", style="Section.TLabel").pack(anchor="w", padx=14, pady=(2, 8))
+        expansion_frame = ttk.LabelFrame(frame, text="Expansion Team Handling")
+        expansion_frame.pack(fill="x", padx=14, pady=(0, 14))
+        ttk.Radiobutton(
+            expansion_frame,
+            text="Keep Seattle and Vegas on their expansion teams",
+            variable=self.expansion_destination_var,
+            value=EXPANSION_DESTINATION_TEAMS,
+            command=self._save_expansion_destination,
+        ).pack(anchor="w", padx=10, pady=(10, 2))
+        ttk.Radiobutton(
+            expansion_frame,
+            text="Release Seattle players; keep Vegas",
+            variable=self.expansion_destination_var,
+            value=EXPANSION_DESTINATION_SEATTLE_FREE_AGENCY,
+            command=self._save_expansion_destination,
+        ).pack(anchor="w", padx=10, pady=(2, 2))
+        ttk.Radiobutton(
+            expansion_frame,
+            text="Release Vegas players; keep Seattle",
+            variable=self.expansion_destination_var,
+            value=EXPANSION_DESTINATION_VEGAS_FREE_AGENCY,
+            command=self._save_expansion_destination,
+        ).pack(anchor="w", padx=10, pady=(2, 2))
+        ttk.Radiobutton(
+            expansion_frame,
+            text="Release both Seattle and Vegas players",
+            variable=self.expansion_destination_var,
+            value=EXPANSION_DESTINATION_FREE_AGENCY,
+            command=self._save_expansion_destination,
+        ).pack(anchor="w", padx=10, pady=(2, 10))
+
+        org_frame = ttk.LabelFrame(frame, text="Organization Links")
+        org_frame.pack(fill="x", padx=14, pady=(0, 14))
+        self.org_team_var = tk.StringVar(value="")
+        self.org_parent_var = tk.StringVar(value="TOR")
+        ttk.Label(org_frame, text="Team / league code").grid(row=0, column=0, sticky="w", padx=10, pady=(10, 3))
+        ttk.Label(org_frame, text="Belongs to NHL organization").grid(row=0, column=1, sticky="w", padx=10, pady=(10, 3))
+        self.org_team_combo = ttk.Combobox(org_frame, textvariable=self.org_team_var, values=[], state="normal")
+        self.org_parent_combo = ttk.Combobox(org_frame, textvariable=self.org_parent_var, values=sorted(TEAM_SLUGS.keys()), state="readonly")
+        self.org_team_combo.grid(row=1, column=0, sticky="ew", padx=10, pady=(0, 10))
+        self.org_parent_combo.grid(row=1, column=1, sticky="ew", padx=10, pady=(0, 10))
+        ttk.Button(org_frame, text="Link Organization", command=self._save_organization_link).grid(row=1, column=2, sticky="ew", padx=10, pady=(0, 10))
+        org_frame.columnconfigure(0, weight=1)
+        org_frame.columnconfigure(1, weight=1)
+        self.org_team_combo.bind("<KeyRelease>", self._filter_team_combo)
 
         ttk.Label(frame, text="FEATURE STATUS", style="Section.TLabel").pack(anchor="w", padx=14, pady=(2, 8))
         feature = ttk.LabelFrame(frame, text="Franchise Draft Pick Ownership")
@@ -2162,6 +2838,10 @@ class NhlLegacyDesktopApp:
         self.font_scale = FONT_SCALE_CHOICES.get(self.settings_font_scale_var.get(), 1.0)
         density = self.settings_density_var.get()
         self.ui_density = density if density in DENSITY_CHOICES else "Auto"
+        theme_mode = self.settings_theme_var.get()
+        self.theme_mode = theme_mode if theme_mode in THEME_CHOICES else "System"
+        advanced_changed = self.advanced_mode != bool(self.settings_advanced_var.get())
+        self.advanced_mode = bool(self.settings_advanced_var.get())
         window_size = WINDOW_SIZE_CHOICES.get(self.settings_window_profile_var.get())
         if window_size is not None:
             width, height = window_size
@@ -2172,12 +2852,17 @@ class NhlLegacyDesktopApp:
             {
                 "font_scale": self.font_scale,
                 "density": self.ui_density,
+                "theme_mode": self.theme_mode,
+                "advanced_mode": self.advanced_mode,
                 "window_width": self.root.winfo_width(),
                 "window_height": self.root.winfo_height(),
             }
         )
         _save_app_settings(self.ui_settings)
         self._configure_style()
+        self._apply_native_theme()
+        if advanced_changed:
+            self._build_utility_navigation()
         self._apply_responsive_layout(force=True)
         self._set_status("Display settings applied.")
 
@@ -2336,6 +3021,8 @@ class NhlLegacyDesktopApp:
         self.player_overall_by_id = {}
         self.player_position_by_id = {}
         self.player_type_by_id = {}
+        self.player_potential_by_id = {}
+        self.player_cap_hit_by_id = {}
         if self.player_snapshot_cache is not None:
             for player_id, entry in self.player_by_id.items():
                 snapshot = self.player_snapshot_cache.get_player_snapshot(
@@ -2348,6 +3035,11 @@ class NhlLegacyDesktopApp:
                     self.player_overall_by_id[player_id] = overall
                 self.player_position_by_id[player_id] = position
                 self.player_type_by_id[player_id] = player_type
+                if snapshot is not None:
+                    ratings = snapshot.goalie_ratings_row if position == "G" else snapshot.ratings_row
+                    potential = POTENTIAL_STAR_CODE_TO_STARS.get(_safe_int((ratings or {}).get("AMoQ"), -1))
+                    self.player_potential_by_id[player_id] = potential or "—"
+                    self.player_cap_hit_by_id[player_id] = contract_cap_hit_millions_from_raw(snapshot.bio.get("dhKk"))
         self.players_by_team_abbrev = {}
         self.players_by_org_abbrev = {}
         for entry in self.player_index:
@@ -2389,10 +3081,10 @@ class NhlLegacyDesktopApp:
             if visible_entry.player_id != player_id or not self.player_tree.exists(iid):
                 continue
             values = list(self.player_tree.item(iid, "values"))
-            if len(values) >= 3:
-                values[0] = overall if overall is not None else "--"
-                values[1] = position
-                values[2] = player_type
+            if len(values) >= 4:
+                values[1] = overall if overall is not None else "--"
+                values[2] = position
+                values[3] = player_type
                 self.player_tree.item(iid, values=values, tags=(self._overall_row_tag(overall),))
 
     def _team_json(self, team: TeamRecord) -> dict[str, object]:
@@ -2557,9 +3249,6 @@ class NhlLegacyDesktopApp:
             self.team_display_to_abbrev[display] = team.abbrev
             target_values.append(display)
         self.team_choice_values = target_values
-        self.target_team_combo.configure(values=target_values)
-        if target_values and not self.target_team_var.get():
-            self.target_team_var.set(target_values[0])
         if hasattr(self, "move_left_combo"):
             self.move_left_combo.configure(values=target_values)
             self.move_right_combo.configure(values=target_values)
@@ -2682,6 +3371,7 @@ class NhlLegacyDesktopApp:
             if typed_team:
                 filter_kind, filter_value = ("exact", typed_team.upper())
         search = self.search_var.get().strip().lower()
+        hide_hidden_players = self.hide_hidden_players_var.get()
         inserted = 0
         self.player_iid_to_entry: dict[str, PlayerListEntry] = {}
         if filter_kind == "exact" and filter_value:
@@ -2692,6 +3382,8 @@ class NhlLegacyDesktopApp:
             source_entries = self.player_index
         visible_entries: list[PlayerListEntry] = []
         for entry in source_entries:
+            if hide_hidden_players and filter_kind != "hidden" and league != "Hidden" and entry.is_hidden:
+                continue
             if filter_kind not in {"org"} and league != "All Leagues" and entry.league_name != league:
                 continue
             if filter_kind == "free" and entry.league_name != "Free Agents":
@@ -2705,7 +3397,11 @@ class NhlLegacyDesktopApp:
             if search and search not in entry.full_name.lower():
                 continue
             visible_entries.append(entry)
-        visible_entries.sort(key=self._roster_sort_value, reverse=self.roster_sort_descending)
+        visible_entries = self.roster_sort.sort_rows(
+            visible_entries,
+            self._roster_sort_value,
+            lambda entry: (entry.last_name.casefold(), entry.first_name.casefold(), entry.player_id),
+        )
         selected_iid = None
         selected_player_id = self.selected_player.player_id if self.selected_player is not None else None
         for entry in visible_entries:
@@ -2721,12 +3417,15 @@ class NhlLegacyDesktopApp:
                 iid=iid,
                 text=entry.full_name,
                 values=(
+                    "☑" if entry.player_id in self.list_selections["players"].checked else "☐",
                     overall if overall is not None else "--",
                     self.player_position_by_id.get(entry.player_id, "Unknown"),
                     self.player_type_by_id.get(entry.player_id, "Unknown"),
                     entry.current_team_abbrev or ("Hidden" if entry.is_hidden else "FA"),
                     entry.league_name,
                     entry.organization_abbrev or "",
+                    self.player_potential_by_id.get(entry.player_id, "—"),
+                    f"${self.player_cap_hit_by_id.get(entry.player_id, 0.0):.2f}M",
                 ),
                 tags=(self._overall_row_tag(overall),),
             )
@@ -2739,6 +3438,9 @@ class NhlLegacyDesktopApp:
             self.player_tree.focus(selected_iid)
             self.player_tree.see(selected_iid)
         self.roster_count_var.set(f"{inserted} shown / {len(self.player_index)} players")
+        self.roster_selection_var.set(
+            self.list_selections["players"].summary(entry.player_id for entry in visible_entries)
+        )
 
     def _team_abbrev_from_display(self, display: str) -> str | None:
         if display in self.team_display_to_abbrev:
@@ -2770,6 +3472,8 @@ class NhlLegacyDesktopApp:
         self.move_right_title_var.set(f"{right_abbrev or 'Team 2'} Players")
         self.move_left_iid_to_entry = self._fill_trade_tree(self.move_left_tree, self._players_for_exact_team(left_abbrev), "L")
         self.move_right_iid_to_entry = self._fill_trade_tree(self.move_right_tree, self._players_for_exact_team(right_abbrev), "R")
+        self._refresh_tree_checks("movement_left")
+        self._refresh_tree_checks("movement_right")
 
     def _fill_trade_tree(self, tree: ttk.Treeview, players: list[PlayerListEntry], prefix: str) -> dict[str, PlayerListEntry]:
         self._clear_tree(tree)
@@ -2828,6 +3532,10 @@ class NhlLegacyDesktopApp:
                 f"Moved {len(results)} player(s) to {target}.",
                 results=results,
             )
+            self.list_selections["movement_left"].discard(entry.player_id for entry in entries)
+            self.list_selections["movement_right"].discard(entry.player_id for entry in entries)
+            self._refresh_tree_checks("movement_left")
+            self._refresh_tree_checks("movement_right")
             if errors:
                 messagebox.showwarning("Some moves failed", "\n".join(errors[:8]))
 
@@ -2847,7 +3555,10 @@ class NhlLegacyDesktopApp:
         def worker():
             results = move_players_to_free_agency(
                 self.workspace.working_db,
-                [(entry.first_name, entry.last_name, entry.player_id) for entry in entries],
+                [
+                    (entry.first_name, entry.last_name, entry.player_id, entry.current_team_abbrev or "")
+                    for entry in entries
+                ],
                 snapshot_cache=self.player_snapshot_cache,
                 cached_team_by_code=self.team_by_code,
             )
@@ -2881,42 +3592,90 @@ class NhlLegacyDesktopApp:
 
     def _show_roster_context_menu(self, event) -> None:
         iid = self.player_tree.identify_row(event.y)
-        if iid:
-            self.player_tree.selection_set(iid)
-            self._on_player_selected()
-        menu = tk.Menu(self.root, tearoff=0)
-        menu.add_command(label="Edit Player", command=lambda: self.tabs.select(self.player_tab))
-        menu.add_command(label="Attributes", command=lambda: self.tabs.select(self.attributes_tab))
+        if not iid:
+            return
+        self._popup_roster_menu(iid, event.x_root, event.y_root)
+
+    def _popup_roster_menu(self, iid: str, x_root: int, y_root: int) -> None:
+        entry = self.player_iid_to_entry.get(iid)
+        if entry is None:
+            return
+        target_ids = set(self.list_selections["players"].context_targets(entry.player_id))
+        target_iids = [row_iid for row_iid, row in self.player_iid_to_entry.items() if row.player_id in target_ids]
+        self.player_tree.selection_set(target_iids or (iid,))
+        self.player_tree.focus(iid)
+        self._on_player_selected()
+        menu = self._native_menu(self.root)
+        menu.add_command(label="Player Overview", command=lambda: self._select_utility(self.player_tab))
+        menu.add_command(label="Attributes", command=lambda: self._select_utility(self.attributes_tab))
+        menu.add_separator()
+        self._add_move_destination_menus(menu)
         menu.add_command(label="Send To Free Agency", command=self._send_selected_to_free_agency)
         menu.add_separator()
-        menu.add_command(label="Move With Two-Team Screen", command=lambda: self.tabs.select(self.movement_tab))
-        menu.tk_popup(event.x_root, event.y_root)
+        menu.add_command(label="Open Two-Team Movement", command=lambda: self._select_utility(self.movement_tab))
+        menu.tk_popup(x_root, y_root)
+
+    def _add_move_destination_menus(self, menu: tk.Menu) -> None:
+        groups = (
+            ("Move to NHL Team", [team for team in self.teams if 0 <= team.code <= 29 or team.abbrev.upper() in {"SEA", "VGK"}]),
+            ("Move to AHL Team", [team for team in self.teams if league_name_for_team(team) == "AHL"]),
+            (
+                "Move to Organization / Prospects",
+                [team for team in self.teams if league_name_for_team(team) in {"Organization", "Prospects"}],
+            ),
+        )
+        for label, teams in groups:
+            submenu = tk.Menu(menu, tearoff=0)
+            for team in sorted(teams, key=lambda item: (item.city, item.name, item.code)):
+                submenu.add_command(
+                    label=f"{team.abbrev}  {team.city} {team.name}",
+                    command=lambda target=team.abbrev: self._move_selected_player_to(target),
+                )
+            menu.add_cascade(label=label, menu=submenu)
 
     def _show_trade_context_menu(self, event) -> None:
         tree = event.widget
         iid = tree.identify_row(event.y)
         if iid:
-            tree.selection_set(iid)
+            list_name = "movement_left" if tree == self.move_left_tree else "movement_right"
+            self._prepare_context_targets(list_name, iid)
         direction = "left_to_right" if tree == self.move_left_tree else "right_to_left"
-        menu = tk.Menu(self.root, tearoff=0)
+        menu = self._native_menu(self.root)
         menu.add_command(label="Move Across", command=lambda: self._move_between_lanes(direction))
         menu.add_command(label="Drop To Free Agency", command=self._drop_lane_selection_to_fa)
         menu.tk_popup(event.x_root, event.y_root)
 
+    def _show_trade_touch_menu(self, direction: str) -> None:
+        tree = self.move_left_tree if direction == "left_to_right" else self.move_right_tree
+        menu = self._native_menu(self.root)
+        menu.add_command(label="Move selected across", command=lambda: self._move_between_lanes(direction))
+        menu.add_command(label="Move selected to Free Agency", command=self._drop_lane_selection_to_fa)
+        menu.tk_popup(tree.winfo_rootx() + max(12, tree.winfo_width() - 72), tree.winfo_rooty() + 44)
+
     def _show_update_context_menu(self, event) -> None:
         iid = self.update_tree.identify_row(event.y)
         if iid:
-            self.update_tree.selection_set(iid)
-        menu = tk.Menu(self.root, tearoff=0)
+            self._prepare_context_targets("sync", iid)
+        menu = self._native_menu(self.root)
         menu.add_command(label="Apply Selected Move(s)", command=self._apply_selected_update_moves)
         menu.add_command(label="Veto Selected Move(s)", command=self._veto_selected_update_moves)
         menu.tk_popup(event.x_root, event.y_root)
 
+    def _show_update_touch_menu(self) -> None:
+        menu = self._native_menu(self.root)
+        menu.add_command(label="Apply selected proposal(s)", command=self._apply_selected_update_moves)
+        menu.add_command(label="Veto selected proposal(s)", command=self._veto_selected_update_moves)
+        menu.add_separator()
+        menu.add_command(label="Apply all visible proposals", command=lambda: self._apply_update_moves(apply_all=True))
+        x = self.update_tree.winfo_rootx() + max(12, self.update_tree.winfo_width() - 72)
+        y = self.update_tree.winfo_rooty() + 44
+        menu.tk_popup(x, y)
+
     def _show_review_context_menu(self, event) -> None:
         iid = self.review_tree.identify_row(event.y)
         if iid:
-            self.review_tree.selection_set(iid)
-        menu = tk.Menu(self.root, tearoff=0)
+            self._prepare_context_targets("review", iid)
+        menu = self._native_menu(self.root)
         menu.add_command(label="Apply Pending Move Now", command=self._apply_selected_review_move)
         menu.add_command(label="Veto Pending Move", command=self._veto_selected_review_move)
         menu.add_command(label="Revert Logged Edit", command=self._revert_selected_review_change)
@@ -2924,10 +3683,23 @@ class NhlLegacyDesktopApp:
         menu.add_command(label="Save To Game", command=self._save_to_game)
         menu.tk_popup(event.x_root, event.y_root)
 
+    def _show_review_touch_menu(self) -> None:
+        menu = self._native_menu(self.root)
+        menu.add_command(label="Apply pending move", command=self._apply_selected_review_move)
+        menu.add_command(label="Veto pending move", command=self._veto_selected_review_move)
+        menu.add_command(label="Revert logged edit", command=self._revert_selected_review_change)
+        menu.add_separator()
+        menu.add_command(label="Save to game", command=self._save_to_game)
+        menu.tk_popup(
+            self.review_tree.winfo_rootx() + max(12, self.review_tree.winfo_width() - 72),
+            self.review_tree.winfo_rooty() + 44,
+        )
+
     def _load_player(self, entry: PlayerListEntry) -> None:
         if self.workspace is None:
             return
         try:
+            self._show_player_welcome(False)
             self.selected_player = entry
             if self.player_snapshot_cache is not None:
                 self.snapshot = self.player_snapshot_cache.get_player_snapshot(entry.first_name, entry.last_name, entry.player_id)
@@ -3250,6 +4022,10 @@ class NhlLegacyDesktopApp:
         if not self.attribute_vars:
             return
         if self._player_kind() == "goalie":
+            original_values = {
+                spec.label: self.attribute_original_values.get(spec.field, 0)
+                for spec in self._attribute_specs_for_selected_player()
+            }
             display_values = {
                 spec.label: _safe_int(self.attribute_vars[spec.field].get(), 0)
                 for spec in self._attribute_specs_for_selected_player()
@@ -3258,19 +4034,33 @@ class NhlLegacyDesktopApp:
             style = self.info_vars["style_label"].get()
             if style not in GOALIE_STYLE_CODES:
                 style = "Hybrid Goalie"
-            overall = calculate_goalie_overall(display_values, style)
+            stored_overall = stored_overall_from_ratings_row(self._ratings_row_for_selected_player())
+            overall = calculate_anchored_goalie_overall(
+                original_values,
+                display_values,
+                stored_overall,
+                style,
+            )
             self.attribute_summary_var.set(
-                f"EA OVR ESTIMATE  {overall}   |   {style}"
+                f"ESTIMATED OVR  {overall}   |   {style}"
             )
             return
         archetype = self.archetype_var.get()
         if archetype not in ARCHETYPE_WEIGHTS:
             return
         current = self._ratings_as_semantic(current=True)
+        original = self._ratings_as_semantic(current=False)
         position = self.info_vars["position_label"].get()
-        current_overall = calculate_weighted_overall(current, archetype, position=position)
+        stored_overall = stored_overall_from_ratings_row(self._ratings_row_for_selected_player())
+        current_overall = calculate_anchored_overall(
+            original,
+            current,
+            archetype,
+            stored_overall,
+            position=position,
+        )
         self.attribute_summary_var.set(
-            f"EA OVR ESTIMATE  {current_overall}   |   {archetype.replace('_', ' ').title()}"
+            f"ESTIMATED OVR  {current_overall}   |   {archetype.replace('_', ' ').title()}"
         )
 
     def _save_attributes(self) -> None:
@@ -3470,22 +4260,28 @@ class NhlLegacyDesktopApp:
                 target.update(updates)
 
         instance_id = _safe_int(results.get("instance_id"), -1)
+        instance_record_index = _safe_int(results.get("instance_record_index"), -1)
         target_team_code = _safe_int(results.get("target_team_code"), -1)
         if instance_id >= 0 and target_team_code >= 0:
-            instance_row = cache.instance_by_id.get(instance_id)
+            instance_row = (
+                cache.instance_rows[instance_record_index]
+                if 0 <= instance_record_index < len(cache.instance_rows)
+                else cache.instance_by_id.get(instance_id)
+            )
             if instance_row is not None:
                 instance_row["BSXd"] = target_team_code
+                if results.get("target_roster_slot") is not None:
+                    instance_row["XWot"] = _safe_int(results.get("target_roster_slot"), instance_row.get("XWot", 0))
+                if isinstance(results.get("lineup_updates"), dict):
+                    instance_row.update(results["lineup_updates"])
                 if target_team_code == FREE_AGENCY_CODE:
                     instance_row["jZSh"] = 0
             if target_team_code == FREE_AGENCY_CODE:
-                for aux_row in cache.instance_aux_by_id.get(instance_id, []):
-                    for field in tuple(aux_row):
-                        if field != "qEfv":
-                            aux_row[field] = FREE_AGENCY_CODE if field == "BSXd" else 0
+                pass
+            else:
                 bio = cache.bio_by_player_id.get(player_id)
                 if bio is not None:
-                    for field in ("dhKk", "GDhI", "NYKk", "DVoL", "IzRv", "IrlK", "xdoJ", "LcvS", "WBbd", "uWgv"):
-                        bio[field] = 0
+                    bio["BSXd"] = target_team_code + 1
 
     def _reload_after_player_write(
         self,
@@ -3512,14 +4308,10 @@ class NhlLegacyDesktopApp:
         self._refresh_review()
         self._set_status(status)
 
-    def _move_selected_player(self) -> None:
+    def _move_selected_player_to(self, target: str) -> None:
         if self.workspace is None or self.selected_player is None:
             return
-        display = self.target_team_var.get()
-        target = self.team_display_to_abbrev.get(display)
-        if not target:
-            self._set_status("Choose a target team first.")
-            return
+        target = str(target).upper().strip()
         player = self.selected_player
 
         def worker():
@@ -3551,7 +4343,7 @@ class NhlLegacyDesktopApp:
         def worker():
             result = move_players_to_free_agency(
                 self.workspace.working_db,
-                [(player.first_name, player.last_name, player.player_id)],
+                [(player.first_name, player.last_name, player.player_id, player.current_team_abbrev or "")],
                 snapshot_cache=self.player_snapshot_cache,
                 cached_team_by_code=self.team_by_code,
             )[0]
@@ -3786,6 +4578,7 @@ class NhlLegacyDesktopApp:
             self._set_status("Select one or more draft rows first.")
             return
         workspace = self.workspace
+        free_agent_teams = expansion_free_agent_teams(self.expansion_destination_var.get())
 
         def worker():
             timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
@@ -3798,8 +4591,16 @@ class NhlLegacyDesktopApp:
                 temp_db.unlink()
             try:
                 shutil.copy2(workspace.working_db, temp_db)
-                results = apply_draft_class(temp_db, prospects)
-                errors = validate_draft_players(temp_db, prospects)
+                results = apply_draft_class(
+                    temp_db,
+                    prospects,
+                    free_agent_teams=free_agent_teams,
+                )
+                errors = validate_draft_players(
+                    temp_db,
+                    prospects,
+                    free_agent_teams=free_agent_teams,
+                )
                 if errors:
                     raise RuntimeError("Draft validation failed:\n" + "\n".join(errors[:12]))
                 os.replace(temp_db, workspace.working_db)
@@ -3835,6 +4636,7 @@ class NhlLegacyDesktopApp:
             return
         workspace = self.workspace
         profiled = [row for row in self.draft_class_prospects if row.scouting_source]
+        free_agent_teams = expansion_free_agent_teams(self.expansion_destination_var.get())
 
         def worker():
             timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
@@ -3849,7 +4651,11 @@ class NhlLegacyDesktopApp:
             try:
                 shutil.copy2(workspace.working_db, temp_db)
                 results = apply_elite_prospects_scouting(temp_db, profiled)
-                errors = validate_draft_players(temp_db, profiled)
+                errors = validate_draft_players(
+                    temp_db,
+                    profiled,
+                    free_agent_teams=free_agent_teams,
+                )
                 if errors:
                     raise RuntimeError("Scouting validation failed:\n" + "\n".join(errors[:12]))
                 if temp_db.stat().st_size != original_size:
@@ -3878,6 +4684,53 @@ class NhlLegacyDesktopApp:
             )
 
         self._run_background("Applying Elite Prospects scouting", worker, success)
+
+    def _calibrate_future_draft_classes(self) -> None:
+        if self.workspace is None:
+            self._set_status("Open a roster before calibrating future draft classes.")
+            return
+        workspace = self.workspace
+
+        def worker():
+            timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+            backup_dir = workspace.root / "draft_sync_backups"
+            backup_dir.mkdir(parents=True, exist_ok=True)
+            backup_path = backup_dir / f"before-future-prospect-calibration-{timestamp}.db"
+            shutil.copy2(workspace.working_db, backup_path)
+            temp_db = workspace.root / "future-prospect-calibration.tmp.db"
+            if temp_db.exists():
+                temp_db.unlink()
+            try:
+                shutil.copy2(workspace.working_db, temp_db)
+                original_size = temp_db.stat().st_size
+                results = calibrate_future_draft_classes(temp_db)
+                if temp_db.stat().st_size != original_size:
+                    raise RuntimeError("Future prospect calibration changed the fixed roster payload size.")
+                os.replace(temp_db, workspace.working_db)
+                sync_working_db_to_roster(workspace)
+                return results, backup_path
+            finally:
+                if temp_db.exists():
+                    temp_db.unlink()
+
+        def success(payload):
+            results, backup_path = payload
+            self._log_actions("calibrate-future-draft-classes", results)
+            self._rebuild_player_cache()
+            self._refresh_player_list()
+            self._refresh_potential_tree()
+            self._refresh_review()
+            by_year: dict[int, int] = {}
+            for result in results:
+                year = int(result.get("class_year") or 0)
+                by_year[year] = by_year.get(year, 0) + 1
+            summary = ", ".join(f"{year}: {count}" for year, count in sorted(by_year.items()))
+            self._set_status(
+                f"Future draft calibration updated {len(results)} prospects ({summary}). "
+                f"Backup: {backup_path.name}"
+            )
+
+        self._run_background("Calibrating future draft classes", worker, success)
 
     def _populate_manual_contract_editor(self) -> None:
         if self.snapshot is None or not hasattr(self, "manual_contract_aav_var"):
@@ -4356,6 +5209,9 @@ class NhlLegacyDesktopApp:
             ratings_row = snapshot.goalie_ratings_row
             if ratings_row is None:
                 return None, position, display_style
+            stored_overall = stored_overall_from_ratings_row(ratings_row)
+            if stored_overall is not None:
+                return stored_overall, position, display_style
             display_values = {
                 spec.label: raw_to_display(spec, _safe_int(ratings_row.get(spec.field), 0))
                 for spec in specs_for_player_kind("goalie")
@@ -4366,6 +5222,9 @@ class NhlLegacyDesktopApp:
             return calculate_goalie_overall(display_values, style), position, display_style
         if snapshot.ratings_row is None:
             return None, position, display_style
+        stored_overall = stored_overall_from_ratings_row(snapshot.ratings_row)
+        if stored_overall is not None:
+            return stored_overall, position, display_style
         archetype = STYLE_TO_ARCHETYPE.get(style_label)
         if archetype not in ARCHETYPE_WEIGHTS:
             archetype = "two_way_defenseman" if position_code == POSITION_CODES["D"] else "two_way_forward"
@@ -5027,12 +5886,27 @@ class NhlLegacyDesktopApp:
                     style_label = self._style_label_for_position_code(POSITION_CODES["G"], style_code)
                     if style_label not in GOALIE_STYLE_CODES:
                         style_label = "Hybrid Goalie"
-                    current_overall = calculate_goalie_overall(current_display_map, style_label)
-                    suggested_overall = calculate_goalie_overall(suggested_display_map, style_label)
+                    current_overall = stored_overall_from_ratings_row(ratings_row)
+                    if current_overall is None:
+                        current_overall = calculate_goalie_overall(current_display_map, style_label)
+                    suggested_overall = calculate_anchored_goalie_overall(
+                        current_display_map,
+                        suggested_display_map,
+                        current_overall,
+                        style_label,
+                    )
                     archetype = style_label
                 else:
-                    current_overall = calculate_weighted_overall(current_semantic, archetype, position=position)
-                    suggested_overall = calculate_weighted_overall(suggested_semantic, archetype, position=position)
+                    current_overall = stored_overall_from_ratings_row(ratings_row)
+                    if current_overall is None:
+                        current_overall = calculate_weighted_overall(current_semantic, archetype, position=position)
+                    suggested_overall = calculate_anchored_overall(
+                        current_semantic,
+                        suggested_semantic,
+                        archetype,
+                        current_overall,
+                        position=position,
+                    )
                 preview.append(
                     {
                         "player_name": entry.full_name,
@@ -6190,20 +7064,102 @@ class NhlLegacyDesktopApp:
         else:
             self._set_status("This player already matches the loaded Advanced Metrics target.")
 
-    def _scan_capwages_updates(self) -> None:
+    def _scan_official_nhl_updates(self) -> None:
         if self.workspace is None:
             return
         player_index = tuple(self.player_index)
+        teams = tuple(self.teams)
+        draft_name_keys = {normalize_name(row.name) for row in self.draft_class_prospects}
+        protected_player_ids = {
+            int(player.player_id)
+            for player in player_index
+            if normalize_name(player.full_name) in draft_name_keys
+        } | {
+            int(status.player_id)
+            for status in self.draft_class_statuses
+            if status.player_id is not None
+        }
         organization_links = dict(self.organization_links)
         expansion_destination = self.expansion_destination_var.get()
 
         def worker():
-            return build_capwages_roster_update(
+            official_rows = fetch_league_rosters(TEAM_ABBREVIATIONS, use_cache=False)
+            charts, chart_errors = fetch_puckpedia_league_depth_charts(
+                TEAM_ABBREVIATIONS,
+                use_cache=False,
+            )
+            official = build_official_nhl_roster_update(
                 player_index,
-                team_slugs=TEAM_SLUGS,
+                teams=teams,
                 organization_links=organization_links,
                 expansion_destination=expansion_destination,
+                protected_player_ids=protected_player_ids,
                 force_refresh=True,
+                official_rows=official_rows,
+            )
+            puckpedia = build_puckpedia_assignment_update(
+                player_index,
+                charts,
+                teams=teams,
+                organization_links=organization_links,
+                protected_nhl_names={row.full_name for row in official_rows},
+                free_agent_organizations=expansion_free_agent_teams(expansion_destination),
+            )
+            # The official active NHL endpoint wins any disagreement. PuckPedia
+            # fills affiliate/system assignments that the NHL endpoint omits.
+            official_ids = {int(row["player_id"]) for row in official.get("moves", [])}
+            official["moves"].extend(
+                row for row in puckpedia.get("moves", [])
+                if int(row["player_id"]) not in official_ids
+            )
+            official["moves"].sort(key=lambda row: (str(row["to_team"]), str(row["player_name"])))
+            official["unmatched_puckpedia_players"] = puckpedia.get("unmatched_puckpedia_players", [])
+            official["puckpedia_errors"] = chart_errors
+            return official
+
+        def success(queue):
+            self.update_queue = queue
+            self.update_errors = {}
+            save_json_state(self.workspace, "update_queue.json", queue)
+            save_json_state(self.workspace, "update_errors.json", {})
+            self._render_update_queue()
+            self._refresh_review()
+            unmatched = len(queue.get("unmatched_official_players", []))
+            puck_unmatched = len(queue.get("unmatched_puckpedia_players", []))
+            message = f"NHL/PuckPedia assignment check found {len(queue.get('moves', []))} exact roster move proposals."
+            if unmatched:
+                message += f" {unmatched} missing/ambiguous identities were left unchanged."
+            if puck_unmatched:
+                message += f" {puck_unmatched} PuckPedia identities need review."
+            if queue.get("puckpedia_errors"):
+                message += f" PuckPedia failed for {len(queue['puckpedia_errors'])} team(s)."
+            self._set_status(message)
+
+        self._run_background("Checking NHL and PuckPedia assignments", worker, success)
+
+    def _scan_franchise_rosters(self) -> None:
+        if self.workspace is None or self.player_snapshot_cache is None:
+            return
+        try:
+            game_cap = float(self.game_cap_var.get())
+        except (TypeError, ValueError):
+            self._set_status("Game salary cap must be a number before building franchise rosters.")
+            return
+        if game_cap <= 0:
+            self._set_status("Game salary cap must be greater than zero.")
+            return
+        player_index = tuple(self.player_index)
+        snapshot_cache = self.player_snapshot_cache
+        overalls = dict(self.player_overall_by_id)
+        teams = tuple(self.teams)
+
+        def worker():
+            return build_franchise_roster_update(
+                player_index,
+                snapshot_cache,
+                overalls,
+                teams,
+                cap_millions=game_cap,
             )
 
         def success(queue):
@@ -6213,9 +7169,17 @@ class NhlLegacyDesktopApp:
             save_json_state(self.workspace, "update_errors.json", {})
             self._render_update_queue()
             self._refresh_review()
-            self._set_status(f"Found {len(queue.get('moves', []))} move proposals and {len(queue.get('create_candidates', []))} create candidates.")
+            summaries = queue.get("franchise_summaries", [])
+            errors = queue.get("franchise_errors", [])
+            message = (
+                f"Built {len(summaries)} best-available franchise rosters with "
+                f"{len(queue.get('moves', []))} proposed moves at a ${game_cap:.3f}M cap."
+            )
+            if errors:
+                message += f" {len(errors)} team(s) need manual review."
+            self._set_status(message)
 
-        self._run_background("Scanning CapWages", worker, success)
+        self._run_background("Building best-available franchise rosters", worker, success)
 
     def _refresh_update_queue(self) -> None:
         if self.workspace is None:
@@ -6246,6 +7210,7 @@ class NhlLegacyDesktopApp:
 
     def _render_update_queue(self) -> None:
         self._clear_tree(self.update_tree)
+        self.update_iid_to_token: dict[str, str] = {}
         for index, row in enumerate(self.update_queue.get("moves", [])):
             token = self._update_move_token(row)
             if token in self.update_vetoes or token in self.update_applied:
@@ -6253,13 +7218,16 @@ class NhlLegacyDesktopApp:
             reason = str(row.get("reason") or "")
             if token in self.update_errors:
                 reason = f"ERROR: {self.update_errors[token]} | {reason}"
+            iid = f"move-{index}"
             self.update_tree.insert(
                 "",
                 "end",
-                iid=f"move-{index}",
+                iid=iid,
                 text=str(row.get("player_name") or ""),
                 values=(row.get("from_team") or "", row.get("to_team") or "", row.get("source") or "", reason),
             )
+            self.update_iid_to_token[iid] = token
+        self._refresh_tree_checks("sync")
         self.create_candidate_list.delete(0, "end")
         for row in self.update_queue.get("create_candidates", []):
             self.create_candidate_list.insert(
@@ -6330,7 +7298,10 @@ class NhlLegacyDesktopApp:
             return
         for index in indices:
             if 0 <= index < len(moves):
-                self.update_vetoes.add(self._update_move_token(moves[index]))
+                token = self._update_move_token(moves[index])
+                self.update_vetoes.add(token)
+                self.list_selections["sync"].discard((token,))
+                self.list_selections["review"].discard((f"pending:{token}",))
                 self._log_action("veto-auto-update-move", moves[index])
         self._save_update_vetoes()
         self._render_update_queue()
@@ -6374,7 +7345,13 @@ class NhlLegacyDesktopApp:
             {"destination": EXPANSION_DESTINATION_TEAMS},
         )
         destination = str(saved.get("destination") or EXPANSION_DESTINATION_TEAMS)
-        if destination not in {EXPANSION_DESTINATION_TEAMS, EXPANSION_DESTINATION_FREE_AGENCY}:
+        valid_destinations = {
+            EXPANSION_DESTINATION_TEAMS,
+            EXPANSION_DESTINATION_SEATTLE_FREE_AGENCY,
+            EXPANSION_DESTINATION_VEGAS_FREE_AGENCY,
+            EXPANSION_DESTINATION_FREE_AGENCY,
+        }
+        if destination not in valid_destinations:
             destination = EXPANSION_DESTINATION_TEAMS
         self.expansion_destination_var.set(destination)
 
@@ -6382,11 +7359,22 @@ class NhlLegacyDesktopApp:
         if self.workspace is None:
             return
         destination = self.expansion_destination_var.get()
-        if destination not in {EXPANSION_DESTINATION_TEAMS, EXPANSION_DESTINATION_FREE_AGENCY}:
+        valid_destinations = {
+            EXPANSION_DESTINATION_TEAMS,
+            EXPANSION_DESTINATION_SEATTLE_FREE_AGENCY,
+            EXPANSION_DESTINATION_VEGAS_FREE_AGENCY,
+            EXPANSION_DESTINATION_FREE_AGENCY,
+        }
+        if destination not in valid_destinations:
             destination = EXPANSION_DESTINATION_TEAMS
             self.expansion_destination_var.set(destination)
         save_json_state(self.workspace, "expansion_settings.json", {"destination": destination})
-        label = "expansion teams" if destination == EXPANSION_DESTINATION_TEAMS else "free agency"
+        label = {
+            EXPANSION_DESTINATION_TEAMS: "Seattle and Vegas on their expansion teams",
+            EXPANSION_DESTINATION_SEATTLE_FREE_AGENCY: "Seattle in free agency and Vegas on its expansion team",
+            EXPANSION_DESTINATION_VEGAS_FREE_AGENCY: "Vegas in free agency and Seattle on its expansion team",
+            EXPANSION_DESTINATION_FREE_AGENCY: "Seattle and Vegas in free agency",
+        }[destination]
         self._set_status(f"Expansion auto-update destination set to {label}. Re-scan CapWages to rebuild proposals.")
 
     def _apply_selected_update_moves(self) -> None:
@@ -6435,8 +7423,8 @@ class NhlLegacyDesktopApp:
             self._set_status("No update moves selected.")
             return
         errors: list[str] = []
-        prepared: list[tuple[str, str, str] | tuple[str, str, str, int]] = []
-        free_agency_moves: list[tuple[str, str, int | None, str]] = []
+        prepared: list[tuple[str, str, str] | tuple[str, str, str, int, str]] = []
+        free_agency_moves: list[tuple[str, str, int | None, str, str]] = []
         tokens: list[str] = []
         for index in indices:
             row = moves[index]
@@ -6448,9 +7436,14 @@ class NhlLegacyDesktopApp:
                 player_id = _safe_int(row.get("player_id"), -1)
                 target = str(row["to_team"])
                 if target == FREE_AGENCY_TARGET:
-                    free_agency_moves.append((first, last, player_id if player_id >= 0 else None, token))
+                    free_agency_moves.append(
+                        (first, last, player_id if player_id >= 0 else None, token, str(row.get("from_team") or ""))
+                    )
                 else:
-                    prepared.append((first, last, target, player_id) if player_id >= 0 else (first, last, target))
+                    prepared.append(
+                        (first, last, target, player_id, str(row.get("from_team") or ""))
+                        if player_id >= 0 else (first, last, target)
+                    )
                     tokens.append(token)
             except Exception as exc:
                 errors.append(f"{row.get('player_name')}: {exc}")
@@ -6458,6 +7451,7 @@ class NhlLegacyDesktopApp:
         def worker():
             worker_errors = list(errors)
             applied_pairs: list[tuple[str, dict[str, object]]] = []
+            ownership_repairs = 0
             if prepared:
                 try:
                     batch_results = move_players_to_teams(
@@ -6474,31 +7468,37 @@ class NhlLegacyDesktopApp:
                     batch_results = move_players_to_free_agency(
                         self.workspace.working_db,
                         [
-                            (first, last, player_id) if player_id is not None else (first, last)
-                            for first, last, player_id, _token in free_agency_moves
+                            (first, last, player_id, source) if player_id is not None else (first, last)
+                            for first, last, player_id, _token, source in free_agency_moves
                         ],
                         snapshot_cache=self.player_snapshot_cache,
                         cached_team_by_code=self.team_by_code,
                     )
                     applied_pairs.extend(
                         (token, result)
-                        for (_first, _last, _player_id, token), result in zip(free_agency_moves, batch_results)
+                        for (_first, _last, _player_id, token, _source), result in zip(free_agency_moves, batch_results)
                     )
                 except Exception as exc:
                     worker_errors.append(str(exc))
             if applied_pairs:
+                try:
+                    ownership_repairs = len(repair_ahl_contract_ownership(self.workspace.working_db))
+                except Exception as exc:
+                    worker_errors.append(f"AHL contract ownership repair failed: {exc}")
                 sync_working_db_to_roster(self.workspace)
-            return applied_pairs, worker_errors
+            return applied_pairs, worker_errors, ownership_repairs
 
         def success(payload):
-            applied_pairs, worker_errors = payload
+            applied_pairs, worker_errors, ownership_repairs = payload
             results = [result for _token, result in applied_pairs]
             for token, result in applied_pairs:
                 self.update_applied.add(token)
+                self.list_selections["sync"].discard((token,))
+                self.list_selections["review"].discard((f"pending:{token}",))
                 self._log_action("auto-update-move", result)
             self._save_update_applied()
             self._reload_after_player_write(
-                f"Applied {len(results)} CapWages roster moves.",
+                f"Applied {len(results)} roster moves and normalized {ownership_repairs} AHL contract owner(s).",
                 results=results,
             )
             if worker_errors:
@@ -6648,6 +7648,7 @@ class NhlLegacyDesktopApp:
                 ),
             )
             self.potential_iid_to_entry[iid] = entry
+        self._refresh_tree_checks("potential")
 
     def _on_potential_selected(self, _event=None) -> None:
         if not hasattr(self, "potential_iid_to_entry"):
@@ -6763,14 +7764,14 @@ class NhlLegacyDesktopApp:
     def _select_all_potentials(self):
         if not hasattr(self, "potential_tree"):
             return "break"
-        self.potential_tree.selection_set(self.potential_tree.get_children())
+        self._select_visible_list("potential")
         self._set_status(f"Selected {len(self.potential_tree.selection())} visible player(s).")
         return "break"
 
     def _show_potential_context_menu(self, event) -> None:
         iid = self.potential_tree.identify_row(event.y)
-        if iid and iid not in self.potential_tree.selection():
-            self.potential_tree.selection_set(iid)
+        if iid:
+            self._prepare_context_targets("potential", iid)
         menu = tk.Menu(self.root, tearoff=0)
         star_menu = tk.Menu(menu, tearoff=0)
         for star_value in reversed(POTENTIAL_STARS):
@@ -6875,6 +7876,7 @@ class NhlLegacyDesktopApp:
             self._log_actions("update-potential", logged_results)
             for player_id in saved_ids:
                 self.potential_pending_updates.pop(player_id, None)
+            self.list_selections["potential"].discard(saved_ids)
             self._update_pending_potential_button()
             self._refresh_potential_tree()
             self._refresh_review()
@@ -6949,6 +7951,7 @@ class NhlLegacyDesktopApp:
         if self.workspace is None:
             return
         self._clear_tree(self.review_tree)
+        self.review_iid_to_key: dict[str, str] = {}
         self._load_update_vetoes()
         self._load_update_applied()
         self.update_errors = {
@@ -6956,23 +7959,31 @@ class NhlLegacyDesktopApp:
             for key, value in load_json_state(self.workspace, "update_errors.json", {}).items()
         }
         self.update_queue = load_json_state(self.workspace, "update_queue.json", {"moves": [], "create_candidates": []})
+        review_filter = self.review_filter_var.get() if hasattr(self, "review_filter_var") else "All"
         for index, move in enumerate(self.update_queue.get("moves", [])):
             token = self._update_move_token(move)
             if token in self.update_vetoes or token in self.update_applied:
                 continue
             error = self.update_errors.get(token)
+            if review_filter == "History" or (review_filter == "Errors" and not error):
+                continue
             detail = f"{move.get('from_team') or 'None'} -> {move.get('to_team')} | {move.get('reason') or ''}"
             change_type = "pending-auto-update"
             if error:
                 change_type = "pending-error"
                 detail = f"{detail} | ERROR: {error}"
+            iid = f"pending-{index}"
             self.review_tree.insert(
                 "",
                 "end",
-                iid=f"pending-{index}",
+                iid=iid,
                 text=str(move.get("player_name") or ""),
                 values=("", change_type, detail),
             )
+            self.review_iid_to_key[iid] = f"pending:{token}"
+        if review_filter in {"Pending", "Errors"}:
+            self._refresh_tree_checks("review")
+            return
         for index, entry in enumerate(read_change_log(self.workspace)):
             result = entry.get("result", {}) if isinstance(entry, dict) else {}
             player = ""
@@ -6981,13 +7992,16 @@ class NhlLegacyDesktopApp:
                 if not player and "bio" in result and isinstance(result["bio"], dict):
                     player = str(result["bio"].get("player") or "")
             details = self._review_details(result)
+            iid = f"review-{index}"
             self.review_tree.insert(
                 "",
                 "end",
-                iid=f"review-{index}",
+                iid=iid,
                 text=player or "Workspace",
                 values=(str(entry.get("timestamp", ""))[:19], entry.get("type", ""), details),
             )
+            self.review_iid_to_key[iid] = f"history:{entry.get('timestamp', '')}:{entry.get('type', '')}:{index}"
+        self._refresh_tree_checks("review")
 
     def _review_details(self, result: object) -> str:
         if not isinstance(result, dict):
@@ -7044,7 +8058,10 @@ class NhlLegacyDesktopApp:
             return
         for index in indices:
             if 0 <= index < len(moves):
-                self.update_vetoes.add(self._update_move_token(moves[index]))
+                token = self._update_move_token(moves[index])
+                self.update_vetoes.add(token)
+                self.list_selections["review"].discard((f"pending:{token}",))
+                self.list_selections["sync"].discard((token,))
                 self._log_action("veto-auto-update-move", moves[index])
         self._save_update_vetoes()
         self._render_update_queue()
@@ -7279,8 +8296,9 @@ class NhlLegacyDesktopApp:
                 batch_results = move_players_to_teams(
                     self.workspace.working_db,
                     [
-                        (first, last, target, player_id) if player_id is not None else (first, last, target)
-                        for first, last, target, player_id, _token, _row in team_moves
+                        (first, last, target, player_id, str(row.get("from_team") or ""))
+                        if player_id is not None else (first, last, target)
+                        for first, last, target, player_id, _token, row in team_moves
                     ],
                     snapshot_cache=self.player_snapshot_cache,
                     cached_team_by_code=self.team_by_code,
@@ -7296,7 +8314,10 @@ class NhlLegacyDesktopApp:
                     try:
                         result = move_players_to_teams(
                             self.workspace.working_db,
-                            [(first, last, target, player_id) if player_id is not None else (first, last, target)],
+                            [
+                                (first, last, target, player_id, str(row.get("from_team") or ""))
+                                if player_id is not None else (first, last, target)
+                            ],
                             snapshot_cache=self.player_snapshot_cache,
                             cached_team_by_code=self.team_by_code,
                         )[0]
@@ -7311,8 +8332,9 @@ class NhlLegacyDesktopApp:
                 batch_results = move_players_to_free_agency(
                     self.workspace.working_db,
                     [
-                        (first, last, player_id) if player_id is not None else (first, last)
-                        for first, last, player_id, _token, _row in free_agent_moves
+                        (first, last, player_id, str(row.get("from_team") or ""))
+                        if player_id is not None else (first, last)
+                        for first, last, player_id, _token, row in free_agent_moves
                     ],
                     snapshot_cache=self.player_snapshot_cache,
                     cached_team_by_code=self.team_by_code,
@@ -7326,7 +8348,10 @@ class NhlLegacyDesktopApp:
                     try:
                         result = move_players_to_free_agency(
                             self.workspace.working_db,
-                            [(first, last, player_id) if player_id is not None else (first, last)],
+                            [
+                                (first, last, player_id, str(row.get("from_team") or ""))
+                                if player_id is not None else (first, last)
+                            ],
                             snapshot_cache=self.player_snapshot_cache,
                             cached_team_by_code=self.team_by_code,
                         )[0]

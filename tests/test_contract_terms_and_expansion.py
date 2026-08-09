@@ -2,13 +2,23 @@ from nhl_legacy_editor.capwages import estimate_remaining_contract_years
 from nhl_legacy_editor.contract_models import DEFAULT_GAME_CAP_MILLIONS
 from nhl_legacy_editor.roster_sync import (
     EXPANSION_DESTINATION_FREE_AGENCY,
+    EXPANSION_DESTINATION_SEATTLE_FREE_AGENCY,
     EXPANSION_DESTINATION_TEAMS,
+    EXPANSION_DESTINATION_VEGAS_FREE_AGENCY,
     FREE_AGENCY_TARGET,
     build_capwages_roster_update,
     can_auto_apply_move_on_save,
+    expansion_free_agent_teams,
     filter_redundant_organization_moves,
     move_is_already_satisfied,
 )
+
+
+def test_expansion_destination_selects_exact_organizations_to_release():
+    assert expansion_free_agent_teams(EXPANSION_DESTINATION_TEAMS) == set()
+    assert expansion_free_agent_teams(EXPANSION_DESTINATION_SEATTLE_FREE_AGENCY) == {"SEA"}
+    assert expansion_free_agent_teams(EXPANSION_DESTINATION_VEGAS_FREE_AGENCY) == {"VGK"}
+    assert expansion_free_agent_teams(EXPANSION_DESTINATION_FREE_AGENCY) == {"SEA", "VGK"}
 
 
 def test_contract_editor_defaults_to_stock_legacy_cap():

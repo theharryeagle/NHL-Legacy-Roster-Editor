@@ -4,6 +4,7 @@ from nhl_legacy_editor.attribute_mapper import (
     nhl_role_overall_from_score,
     stabilize_recommendations,
     workload_adjusted_skater_overall,
+    faceoff_rating_from_percentage,
 )
 from nhl_legacy_editor.rating_models import calculate_weighted_overall
 
@@ -17,6 +18,44 @@ def test_defenseman_faceoffs_are_fixed_at_36() -> None:
 
     assert result["Face-offs"] == 36
     assert result["Body Checking"] == 81
+
+
+def test_faceoff_rating_uses_percentage_without_volume_caps() -> None:
+    small_sample, _ = faceoff_rating_from_percentage(30, 50, "C")
+    large_sample, _ = faceoff_rating_from_percentage(600, 1000, "C")
+    assert small_sample < large_sample
+    assert large_sample == 93
+    assert faceoff_rating_from_percentage(None, None, "C") == (60, None)
+
+
+def test_winger_faceoff_results_are_compressed_toward_average() -> None:
+    low_center, _ = faceoff_rating_from_percentage(40, 100, "C")
+    low_winger, _ = faceoff_rating_from_percentage(40, 100, "LW")
+    high_center, _ = faceoff_rating_from_percentage(60, 100, "C")
+    high_winger, _ = faceoff_rating_from_percentage(60, 100, "RW")
+    assert low_winger > low_center
+    assert high_winger < high_center
+    assert faceoff_rating_from_percentage(0, 0, "D") == (36, None)
+
+
+def test_only_top_five_qualified_faceoff_players_reach_96_to_99() -> None:
+    assert [
+        faceoff_rating_from_percentage(600, 1000, "C", league_rank=rank)[0]
+        for rank in range(1, 7)
+    ] == [99, 98, 98, 97, 96, 93]
+
+
+def test_tiny_winger_sample_stays_near_the_forward_base() -> None:
+    rating, percentage = faceoff_rating_from_percentage(5, 6, "RW")
+    assert percentage == 5 / 6 * 100
+    assert rating == 60
+
+
+def test_middle_faceoff_curve_keeps_star_comparison_proportional() -> None:
+    draisaitl, _ = faceoff_rating_from_percentage(628, 1103, "C", league_rank=17)
+    crosby, _ = faceoff_rating_from_percentage(773, 1401, "C", league_rank=28)
+    assert draisaitl == 87
+    assert crosby == 85
 
 
 def test_goalie_changes_are_confidence_limited() -> None:
