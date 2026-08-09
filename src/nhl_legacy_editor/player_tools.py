@@ -15,6 +15,10 @@ GOALIE_RATINGS_TABLE_INDEX = "yuHm"
 PLAYER_SMALL_LINK_TABLE_INDEX = "vuqu"
 PLAYER_WIDE_LINK_TABLE_INDEX = "FSzD"
 PLAYER_INSTANCE_TABLE_INDEX = "ulGe"
+# ``vbHh`` was previously labelled as an instance auxiliary table because it
+# also has a qEfv field.  In NHL Legacy qEfv is only that table's sequential
+# row key; it is not a foreign key to ulGe.TWSX.  The 6,000-row table contains
+# skater appearance/equipment data and must never be changed by transactions.
 PLAYER_INSTANCE_AUX_TABLE_INDEX = "vbHh"
 
 
@@ -67,13 +71,11 @@ class PlayerSnapshotCache:
             return None
         player_id = bio.get("zIBw")
         long_id = bio.get("DaPp")
+        # qFky links player instances to the bio zIBw ID. DaPp belongs to
+        # separate auxiliary/link tables and is not an alternate player ID.
+        # Treating it as one can attach several unrelated players to the same
+        # instance and produces "Player Undefined" entries in NHL Legacy.
         relation_rows = list(self.relation_by_player_key.get(player_id, []))
-        if long_id != player_id:
-            relation_rows.extend(
-                row
-                for row in self.relation_by_player_key.get(long_id, [])
-                if row not in relation_rows
-            )
         instance_ids = {row.get("qEfv") for row in relation_rows}
         return PlayerSnapshot(
             bio=bio,
@@ -84,11 +86,7 @@ class PlayerSnapshotCache:
                 for row in [self.instance_by_id.get(instance_id)]
                 if row is not None
             ],
-            instance_aux_rows=[
-                row
-                for instance_id in instance_ids
-                for row in self.instance_aux_by_id.get(instance_id, [])
-            ],
+            instance_aux_rows=[],
             flags_row=self.flags_by_player_id.get(player_id),
             ratings_row=self.ratings_by_player_id.get(player_id),
             goalie_ratings_row=self.goalie_ratings_by_player_id.get(player_id),
@@ -144,9 +142,9 @@ def build_player_snapshot_cache(db_path: Path) -> PlayerSnapshotCache:
     for row in relation_rows:
         _append_lookup(relation_by_player_key, row.get("qFky"), row)
     instance_by_id = {row.get("TWSX"): row for row in instance_rows if row.get("TWSX") is not None}
+    # vbHh.qEfv is the vbHh row key, not an ulGe instance ID.  Keep the raw
+    # rows available for database research, but expose no false relationship.
     instance_aux_by_id: dict[object, list[dict[str, object]]] = {}
-    for row in instance_aux_rows:
-        _append_lookup(instance_aux_by_id, row.get("qEfv"), row)
     flags_by_player_id = {row.get("zIBw"): row for row in flags_rows if row.get("zIBw") is not None}
     ratings_by_player_id = {row.get("zIBw"): row for row in ratings_rows if row.get("zIBw") is not None}
     goalie_ratings_by_player_id = {
@@ -249,7 +247,7 @@ def get_player_snapshot(
     relation_rows = [
         row
         for row in _read_full_table(access, db_path, PLAYER_RELATION_TABLE_INDEX)
-        if row.get("qFky") in {player_id, long_id}
+        if row.get("qFky") == player_id
     ]
     instance_ids = {row.get("qEfv") for row in relation_rows}
     instance_rows = [
@@ -257,11 +255,7 @@ def get_player_snapshot(
         for row in _read_full_table(access, db_path, PLAYER_INSTANCE_TABLE_INDEX)
         if row.get("TWSX") in instance_ids
     ]
-    instance_aux_rows = [
-        row
-        for row in _read_full_table(access, db_path, PLAYER_INSTANCE_AUX_TABLE_INDEX)
-        if row.get("qEfv") in instance_ids
-    ]
+    instance_aux_rows: list[dict[str, object]] = []
     flags_row = next(
         (row for row in _read_full_table(access, db_path, PLAYER_FLAGS_TABLE_INDEX) if row.get("zIBw") == player_id),
         None,

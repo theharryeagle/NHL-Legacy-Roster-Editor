@@ -61,7 +61,10 @@ GOALIE_ATTRIBUTE_SPECS: list[AttributeSpec] = [
     AttributeSpec("pyYq", "Agility"),
     AttributeSpec("bEdA", "Speed"),
     AttributeSpec("UqhP", "Poke Check"),
-    AttributeSpec("koEt", "Consistency"),
+    # Goalie consistency is the game's 0-2 tendency value. ``koEt`` was
+    # previously mapped here, but that field is the stored EA overall shared
+    # by both skater and goalie rating tables.
+    AttributeSpec("KzvQ", "Consistency", mode="raw", min_value=0, max_value=2),
     AttributeSpec("Nhuq", "Breakaway"),
     AttributeSpec("kIjD", "Endurance"),
     AttributeSpec("oLxj", "Shot Recovery"),

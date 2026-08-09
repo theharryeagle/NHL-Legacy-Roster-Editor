@@ -15,11 +15,13 @@ from .attribute_map import (
 from .player_tools import build_player_snapshot_cache
 from .rating_models import fit_ratings_to_overall
 from .tdb_access import TdbAccess
-from .team_tools import TeamRecord, load_teams, resolve_team_abbrev
+from .team_tools import TeamRecord, franchise_rights_code, league_name_for_team, load_teams, organization_for_abbrev, resolve_playable_nhl_team, resolve_team_abbrev
 
 
 POSITION_CODES = {"C": 0, "LW": 1, "RW": 2, "D": 3, "G": 4}
-MAX_EXPANSION_AFFILIATE_INSTANCES = 44
+MAX_TEAM_INSTANCES = 40
+DRAFT_ELC_CAP_HIT_RAW = 190  # $950,000 in NHL Legacy's $5,000 units.
+DRAFT_ELC_YEARS = 3
 STYLE_CODES = {
     "Defensive Defenseman": 1,
     "Offensive Defenseman": 2,
@@ -343,7 +345,11 @@ def scan_draft_class(db_path: Path, prospects: list[DraftProspect] | None = None
         name = f"{bio.get('PedH') or ''} {bio.get('RMbQ') or ''}".strip()
         if name:
             by_name.setdefault(_draft_name_key(name), []).append(bio)
-    instance_team_by_id = {int(row.get("TWSX") or -1): int(row.get("BSXd") or -1) for row in cache.instance_rows}
+    instance_teams_by_id: dict[int, list[int]] = {}
+    for row in cache.instance_rows:
+        instance_teams_by_id.setdefault(int(row.get("TWSX") or -1), []).append(
+            int(row["BSXd"]) if row.get("BSXd") is not None else -1
+        )
     relation_by_player: dict[int, list[int]] = {}
     for relation in cache.relation_rows:
         relation_by_player.setdefault(int(relation.get("qFky") or -1), []).append(int(relation.get("qEfv") or -1))
@@ -358,9 +364,13 @@ def scan_draft_class(db_path: Path, prospects: list[DraftProspect] | None = None
         player_id = int(bio.get("zIBw") or -1)
         team_names = []
         for instance_id in relation_by_player.get(player_id, []):
-            team = team_by_code.get(instance_team_by_id.get(instance_id, -1))
-            if team and team.abbrev not in team_names:
-                team_names.append(team.abbrev)
+            for team_code in instance_teams_by_id.get(instance_id, []):
+                if team_code == 255 and "Free Agents" not in team_names:
+                    team_names.append("Free Agents")
+                    continue
+                team = team_by_code.get(team_code)
+                if team and team.abbrev not in team_names:
+                    team_names.append(team.abbrev)
         statuses.append(DraftRosterStatus(prospect, "Present", player_id, ", ".join(team_names)))
     return statuses
 
@@ -508,7 +518,7 @@ def _goalie_raw_updates(prospect: DraftProspect) -> dict[str, int]:
     displays = {
         "Glove Side Low": overall, "Glove Side High": overall, "Stick Side High": overall,
         "Stick Side Low": overall, "Five Hole": overall, "Agility": overall + 5, "Speed": overall + 4,
-        "Poke Check": overall, "Consistency": overall + 2, "Breakaway": overall, "Endurance": overall + 4,
+        "Poke Check": overall, "Consistency": 1, "Breakaway": overall, "Endurance": overall + 4,
         "Shot Recovery": overall + 1, "Rebound Control": overall + 1, "Poise": overall - 1,
         "Passing": overall - 2, "Angles": overall + 2, "Puck Play Frequency": overall,
         "Aggressiveness": overall, "Durability": overall + 7, "Vision": overall,
@@ -523,19 +533,296 @@ def _goalie_raw_updates(prospect: DraftProspect) -> dict[str, int]:
         label = modifier_labels.get(key)
         if label in displays:
             displays[label] += delta
-    return {
-        spec.field: display_to_raw(spec, max(36, min(91, displays[spec.label] + 3)))
-        for spec in GOALIE_ATTRIBUTE_SPECS
-    }
+    updates: dict[str, int] = {}
+    for spec in GOALIE_ATTRIBUTE_SPECS:
+        value = displays[spec.label]
+        if spec.mode == "raw":
+            # Goalie consistency is a native 0-2 tendency, not an EA-style
+            # 36-99 attribute.  Applying the usual display offset here wrote
+            # values around 80 and caused TDB to reject created goalies.
+            updates[spec.field] = max(spec.min_value, min(spec.max_value, int(value)))
+        else:
+            updates[spec.field] = display_to_raw(spec, max(36, min(91, value + 3)))
+    return updates
 
 
 def _find_template(cache, goalie: bool):
     names = [("Tobias", "Trejbal"), ("Kevin", "Mandolese")] if goalie else [("Gavin", "McKenna"), ("Ivar", "Stenberg")]
     for first_name, last_name in names:
         snapshot = cache.get_player_snapshot(first_name, last_name)
-        if snapshot is not None and snapshot.instance_rows:
+        ratings = None if snapshot is None else (
+            snapshot.goalie_ratings_row if goalie else snapshot.ratings_row
+        )
+        if snapshot is not None and snapshot.instance_rows and ratings is not None:
+            return snapshot
+    # Roster revisions can hide or repurpose the preferred placeholders.  A
+    # template only needs a valid bio, matching ratings row and one real team
+    # instance; select the first stable matching player instead of failing the
+    # entire draft sync because a particular name is absent.
+    for bio in cache.bio_rows:
+        if (int(bio.get("aljv") or -1) == POSITION_CODES["G"]) != goalie:
+            continue
+        snapshot = cache.get_player_snapshot(
+            str(bio.get("PedH") or ""),
+            str(bio.get("RMbQ") or ""),
+            int(bio.get("zIBw") or -1),
+        )
+        ratings = None if snapshot is None else (
+            snapshot.goalie_ratings_row if goalie else snapshot.ratings_row
+        )
+        if snapshot is not None and snapshot.instance_rows and ratings is not None:
             return snapshot
     raise RuntimeError("A safe prospect template could not be found in this roster.")
+
+
+def _franchise_rights_code(target_team: TeamRecord, teams: list[TeamRecord]) -> int:
+    """Return the 5-bit NHL organization code used by franchise imports.
+
+    WBbd/uWgv can only store 0-31. Modern display/system teams such as LAK
+    and SJS can use higher roster codes, but their franchise rights must point
+    at the playable legacy organization (LA and SJ). Seattle and Vegas have
+    no legacy 0-29 counterpart, so their custom-team instance and cPbu.BSXd
+    ownership remain authoritative and the narrow rights fields stay zero.
+    """
+    return franchise_rights_code(target_team, teams)
+
+
+def _franchise_prospect_team(target_team: TeamRecord, teams: list[TeamRecord]) -> TeamRecord:
+    """Place drafted prospects in the organization's franchise system pool."""
+    organization = organization_for_abbrev(target_team.abbrev)
+    candidates = sorted(
+        (
+            team for team in teams
+            if league_name_for_team(team) == "Organization"
+            and organization_for_abbrev(team.abbrev) == organization
+        ),
+        key=lambda team: team.code,
+    )
+    return candidates[0] if candidates else target_team
+
+
+def _draft_contract_updates(*, is_undrafted: bool, force_free_agent: bool) -> dict[str, int]:
+    """Return a franchise-stable contract state for a newly drafted player.
+
+    Existing prospect records often carry a zero-term placeholder contract.
+    Franchise initialization treats those players as free agents even when
+    their rights and roster instance point at the correct organization.  A
+    consistent three-year, two-way entry-level deal keeps every supported-team
+    selection in organizational depth.  Expansion teams intentionally routed
+    to free agency retain an uncontracted state.
+    """
+    if is_undrafted or force_free_agent:
+        return {"QwoG": 0, "dhKk": 0, "GDhI": 0, "gHmt": 0, "yvUt": 0, "DVoL": 0}
+    return {
+        "QwoG": 1,
+        "dhKk": DRAFT_ELC_CAP_HIT_RAW,
+        "GDhI": DRAFT_ELC_YEARS,
+        "gHmt": 1,
+        "yvUt": 1,
+        "DVoL": 1,
+    }
+
+
+def _draft_metadata_updates(
+    prospect: DraftProspect,
+    *,
+    is_undrafted: bool,
+) -> dict[str, int]:
+    """Return the actual cPbu draft-history fields for a selection.
+
+    WzKY is draft year, Ujcc is draft round, and WfTt is the overall pick.
+    QDTK is skin colour and must never be changed by the draft importer.
+    """
+    if is_undrafted:
+        return {"WzKY": 255, "Ujcc": 0, "WfTt": 0, "QPrV": 0}
+    return {
+        "WzKY": 126,
+        "Ujcc": prospect.round,
+        "WfTt": prospect.pick,
+        "QPrV": 0,
+    }
+
+
+def _consolidate_draft_player_instances(
+    db_path: Path,
+    prospects: list[DraftProspect],
+    *,
+    free_agent_teams: set[str],
+) -> None:
+    """Leave each drafted player with one unambiguous active roster instance.
+
+    A player may legitimately have NHL rights while playing in junior, but the
+    retail roster format does not safely represent that by linking the same
+    bio to two active ulGe rows. Franchise import treats both rows as players,
+    producing visible duplicates. Rights remain in cPbu; ulGe is consolidated
+    to the requested NHL team (or free agency for disabled expansion teams).
+    """
+    cache = build_player_snapshot_cache(db_path)
+    teams = load_teams(db_path)
+    bio_by_name: dict[str, tuple[int, dict[str, object]]] = {}
+    for bio_index, bio in enumerate(cache.bio_rows):
+        name = f"{bio.get('PedH') or ''} {bio.get('RMbQ') or ''}".strip()
+        if name:
+            key = _draft_name_key(name)
+            previous = bio_by_name.get(key)
+            if previous is None or _draft_match_priority(bio, name) > _draft_match_priority(previous[1], name):
+                bio_by_name[key] = (bio_index, bio)
+
+    relations_by_player: dict[int, list[tuple[int, int]]] = {}
+    relation_indexes_by_instance: dict[int, set[int]] = {}
+    for relation_index, relation in enumerate(cache.relation_rows):
+        player_id = int(relation.get("qFky") or -1)
+        instance_id = int(relation.get("qEfv") or -1)
+        relations_by_player.setdefault(player_id, []).append((relation_index, instance_id))
+        relation_indexes_by_instance.setdefault(instance_id, set()).add(relation_index)
+    instance_rows_by_id: dict[int, list[tuple[int, dict[str, object]]]] = {}
+    for instance_index, instance in enumerate(cache.instance_rows):
+        instance_id = int(instance.get("TWSX") or -1)
+        instance_rows_by_id.setdefault(instance_id, []).append((instance_index, instance))
+
+    plans: list[dict[str, object]] = []
+    relation_indexes_to_remove: set[int] = set()
+    instance_indexes_to_remove: set[int] = set()
+    keep_instance_indexes: set[int] = set()
+    for prospect in sorted(prospects, key=lambda item: item.pick):
+        bio_match = bio_by_name.get(_draft_name_key(prospect.name))
+        if bio_match is None:
+            continue
+        bio_index, bio = bio_match
+        player_id = int(bio.get("zIBw") or -1)
+        target_team = resolve_playable_nhl_team(prospect.team, teams)
+        if target_team is None:
+            raise RuntimeError(f"Roster team not found for {prospect.team} ({prospect.name}).")
+        placement_team = _franchise_prospect_team(target_team, teams)
+        desired_team_code = 255 if prospect.team.upper() in free_agent_teams else placement_team.code
+        player_relations = relations_by_player.get(player_id, [])
+        occurrences = [
+            (relation_index, instance_id, instance_index, instance)
+            for relation_index, instance_id in player_relations
+            for instance_index, instance in instance_rows_by_id.get(instance_id, [])
+        ]
+        if not occurrences:
+            raise RuntimeError(f"{prospect.name} has no roster instance to consolidate.")
+        keep = min(
+            occurrences,
+            key=lambda item: (
+                0 if int(item[3].get("BSXd", -1)) == desired_team_code else 1,
+                item[2],
+            ),
+        )
+        keep_relation_index, keep_instance_id, keep_instance_index, keep_instance = keep
+        keep_instance_indexes.add(keep_instance_index)
+        kept_relation = False
+        removed_player_relation_indexes: set[int] = set()
+        for relation_index, instance_id in player_relations:
+            if instance_id == keep_instance_id and not kept_relation:
+                kept_relation = True
+                continue
+            relation_indexes_to_remove.add(relation_index)
+            removed_player_relation_indexes.add(relation_index)
+        for _relation_index, instance_id, instance_index, _instance in occurrences:
+            if instance_index == keep_instance_index:
+                continue
+            external_relations = relation_indexes_by_instance.get(instance_id, set()) - removed_player_relation_indexes
+            if instance_id == keep_instance_id:
+                external_relations.discard(keep_relation_index)
+            if external_relations:
+                raise RuntimeError(
+                    f"{prospect.name} shares roster instance {instance_id}; refusing unsafe consolidation."
+                )
+            instance_indexes_to_remove.add(instance_index)
+        plans.append(
+            {
+                "bio_index": bio_index,
+                "instance_index": keep_instance_index,
+                "instance": keep_instance,
+                "team_code": desired_team_code,
+                "ownership_code": 0 if desired_team_code == 255 else _franchise_rights_code(target_team, teams),
+            }
+        )
+
+    occupied_xwot = {
+        int(row["XWot"])
+        for index, row in enumerate(cache.instance_rows)
+        if index not in instance_indexes_to_remove
+        and index not in keep_instance_indexes
+        and row.get("XWot") is not None
+    }
+    planned_xwot: dict[int, int] = {}
+    for plan in plans:
+        instance_index = int(plan["instance_index"])
+        instance = plan["instance"]
+        team_code = int(plan["team_code"])
+        current_xwot = int(instance.get("XWot", -1))
+        if team_code == 255:
+            if current_xwot in occupied_xwot:
+                raise RuntimeError(f"Free-agent roster slot collision at XWot {current_xwot}.")
+            planned_xwot[instance_index] = current_xwot
+            occupied_xwot.add(current_xwot)
+            continue
+        block_start = team_code * MAX_TEAM_INSTANCES
+        preferred_valid = block_start <= current_xwot < block_start + MAX_TEAM_INSTANCES
+        if preferred_valid and current_xwot not in occupied_xwot:
+            roster_slot = current_xwot
+        else:
+            roster_slot = next(
+                (
+                    value
+                    for value in range(block_start, block_start + MAX_TEAM_INSTANCES)
+                    if value not in occupied_xwot
+                ),
+                None,
+            )
+            if roster_slot is None:
+                raise RuntimeError(f"No safe roster slot remains for team code {team_code}.")
+        planned_xwot[instance_index] = roster_slot
+        occupied_xwot.add(roster_slot)
+
+    access = TdbAccess()
+    instance_specs = access.list_fields_by_index(db_path, "ulGe")
+    lineup_fields = {field.name for field in instance_specs if field.size == 1}
+    lineup_fields.add("lcCm")
+    table_indexes = {table.name: index for index, table in enumerate(access.list_tables(db_path))}
+    with access.open_database(db_path) as db_index:
+        instance_table = access.get_table_properties(db_index, table_indexes["ulGe"])
+        instance_fields = {
+            access.get_field_properties(db_index, "ulGe", index).name:
+            access.get_field_properties(db_index, "ulGe", index)
+            for index in range(instance_table.field_count)
+        }
+        bio_table = access.get_table_properties(db_index, table_indexes["cPbu"])
+        bio_fields = {
+            access.get_field_properties(db_index, "cPbu", index).name:
+            access.get_field_properties(db_index, "cPbu", index)
+            for index in range(bio_table.field_count)
+        }
+        for plan in plans:
+            instance_index = int(plan["instance_index"])
+            team_code = int(plan["team_code"])
+            access.set_field_value(db_index, "ulGe", instance_fields["BSXd"], instance_index, team_code)
+            access.set_field_value(
+                db_index,
+                "ulGe",
+                instance_fields["XWot"],
+                instance_index,
+                planned_xwot[instance_index],
+            )
+            for field_name in lineup_fields:
+                field = instance_fields.get(field_name)
+                if field is not None:
+                    access.set_field_value(db_index, "ulGe", field, instance_index, 0)
+            access.set_field_value(
+                db_index,
+                "cPbu",
+                bio_fields["BSXd"],
+                int(plan["bio_index"]),
+                int(plan["ownership_code"]),
+            )
+        for relation_index in sorted(relation_indexes_to_remove, reverse=True):
+            access.remove_record(db_index, "caBZ", relation_index)
+        for instance_index in sorted(instance_indexes_to_remove, reverse=True):
+            access.remove_record(db_index, "ulGe", instance_index)
+        access.save_database(db_index)
 
 
 def apply_draft_class(
@@ -543,11 +830,13 @@ def apply_draft_class(
     prospects: list[DraftProspect],
     *,
     undrafted_teams: set[str] | None = None,
+    free_agent_teams: set[str] | None = None,
 ) -> list[dict[str, object]]:
     if not prospects:
         return []
     access = TdbAccess()
     undrafted_teams = {team.upper() for team in (undrafted_teams or set())}
+    free_agent_teams = {team.upper() for team in (free_agent_teams or set())}
     cache = build_player_snapshot_cache(db_path)
     teams = load_teams(db_path)
     prospect_teams = [team for team in teams if team.abbrev.upper() in {"P261", "P262", "P263"}]
@@ -584,9 +873,25 @@ def apply_draft_class(
     }
     available_instance_ids = iter(value for value in range(1, 6000) if value not in used_instance_ids)
     team_instance_load: dict[int, int] = {}
+    used_roster_slots: dict[int, set[int]] = {}
     for row in cache.instance_rows:
-        team_code = int(row.get("BSXd") or -1)
+        team_code = int(row["BSXd"]) if row.get("BSXd") is not None else -1
         team_instance_load[team_code] = team_instance_load.get(team_code, 0) + 1
+        roster_slot_value = int(row["XWot"]) if row.get("XWot") is not None else -1
+        roster_slot = roster_slot_value - team_code * MAX_TEAM_INSTANCES
+        if 0 <= roster_slot < MAX_TEAM_INSTANCES:
+            used_roster_slots.setdefault(team_code, set()).add(roster_slot)
+
+    instance_rows_by_id: dict[int, list[dict[str, object]]] = {}
+    for row in cache.instance_rows:
+        instance_rows_by_id.setdefault(int(row.get("TWSX") or -1), []).append(row)
+    relation_ids_by_player: dict[int, set[int]] = {}
+    for row in cache.relation_rows:
+        relation_ids_by_player.setdefault(int(row.get("qFky") or -1), set()).add(int(row.get("qEfv") or -1))
+
+    instance_field_specs = access.list_fields_by_index(db_path, "ulGe")
+    lineup_fields = {field.name for field in instance_field_specs if field.size == 1}
+    lineup_fields.add("lcCm")
 
     def least_loaded_prospect_team() -> TeamRecord:
         return min(prospect_teams, key=lambda team: (team_instance_load.get(team.code, 0), team.code))
@@ -617,14 +922,36 @@ def apply_draft_class(
             style_code: int,
             reserved_relation_index: int | None = None,
         ) -> int:
+            if team_instance_load.get(team.code, 0) >= MAX_TEAM_INSTANCES:
+                raise RuntimeError(
+                    f"{team.abbrev} already has {MAX_TEAM_INSTANCES} player instances; "
+                    "no safe roster slot remains."
+                )
+            available_slots = [
+                slot
+                for slot in range(MAX_TEAM_INSTANCES)
+                if slot not in used_roster_slots.setdefault(team.code, set())
+            ]
+            if not available_slots:
+                raise RuntimeError(f"No safe roster slot remains on {team.abbrev}.")
+            roster_slot = available_slots[0]
+            used_roster_slots[team.code].add(roster_slot)
             instance_id = next(available_instance_ids)
             instance_record_index = access.add_record(db_index, "ulGe")
+            instance_overrides = {
+                "TWSX": instance_id,
+                "BSXd": team.code,
+                "XWot": team.code * MAX_TEAM_INSTANCES + roster_slot,
+                "sFgQ": style_code,
+                "tRVs": 0,
+                **{field: 0 for field in lineup_fields},
+            }
             access.copy_record_fields(
                 db_index,
                 "ulGe",
                 source_snapshot.instance_rows[0],
                 instance_record_index,
-                overrides={"TWSX": instance_id, "BSXd": team.code, "sFgQ": style_code, "tRVs": 0},
+                overrides=instance_overrides,
             )
             relation_record_index = (
                 reserved_relation_index
@@ -638,37 +965,40 @@ def apply_draft_class(
                 relation_record_index,
                 overrides={"BERR": 0, "qFky": player_id, "qEfv": instance_id},
             )
-            if instance_id < len(cache.instance_aux_rows) and source_snapshot.instance_aux_rows:
-                access.copy_record_fields(
-                    db_index,
-                    "vbHh",
-                    source_snapshot.instance_aux_rows[0],
-                    instance_id,
-                    overrides={"qEfv": instance_id},
-                )
             team_instance_load[team.code] = team_instance_load.get(team.code, 0) + 1
             return instance_id
 
         for prospect in sorted(prospects, key=lambda item: item.pick):
-            target_team = resolve_team_abbrev(prospect.team, teams)
+            target_team = resolve_playable_nhl_team(prospect.team, teams)
             if target_team is None:
                 raise RuntimeError(f"Roster team not found for {prospect.team} ({prospect.name}).")
             existing = bio_by_name.get(_draft_name_key(prospect.name), [])
             is_undrafted = prospect.team.upper() in undrafted_teams
-            native_rights_code = target_team.code + 1 if 0 <= target_team.code <= 30 else 0
+            force_free_agent = prospect.team.upper() in free_agent_teams
+            franchise_team = _franchise_prospect_team(target_team, teams)
+            native_rights_code = _franchise_rights_code(target_team, teams)
             rights_updates = {
                 "WBbd": 0 if is_undrafted else native_rights_code,
                 "uWgv": 0 if is_undrafted else native_rights_code,
-                "WfTt": 0 if is_undrafted else prospect.pick,
-                "QDTK": 0 if is_undrafted else prospect.round,
-                "Ujcc": 0 if is_undrafted else 1,
+                **_draft_metadata_updates(prospect, is_undrafted=is_undrafted),
+            }
+            canonical_first_name, _, canonical_last_name = prospect.name.partition(" ")
+            bio_draft_updates = {
+                **rights_updates,
+                **_draft_contract_updates(
+                    is_undrafted=is_undrafted,
+                    force_free_agent=force_free_agent,
+                ),
+                **({"BSXd": target_team.code + 1} if not is_undrafted else {}),
+                "PedH": canonical_first_name,
+                "RMbQ": canonical_last_name,
             }
             if existing:
                 bio_index, bio = max(
                     existing,
                     key=lambda item: _draft_match_priority(item[1], prospect.name),
                 )
-                write_fields("cPbu", bio_index, rights_updates)
+                write_fields("cPbu", bio_index, bio_draft_updates)
                 player_id = int(bio.get("zIBw") or -1)
                 goalie = int(bio.get("aljv") or -1) == POSITION_CODES["G"]
                 snapshot = cache.get_player_snapshot(
@@ -681,9 +1011,11 @@ def apply_draft_class(
                 ) if snapshot is not None else None
                 style_code = int((ratings or {}).get("sFgQ") or 1)
                 instance_source = snapshot if snapshot is not None and snapshot.instance_rows else templates[goalie]
+                related_instance_ids = relation_ids_by_player.get(player_id, set())
                 instance_teams = {
-                    int(row.get("BSXd") or -1)
-                    for row in (snapshot.instance_rows if snapshot is not None else [])
+                    int(row["BSXd"]) if row.get("BSXd") is not None else -1
+                    for instance_id in related_instance_ids
+                    for row in instance_rows_by_id.get(instance_id, [])
                 }
                 if player_id >= 16000 and snapshot is not None and snapshot.instance_rows:
                     stale_index = placeholder_relation_index.get(player_id)
@@ -691,23 +1023,19 @@ def apply_draft_class(
                         stale_relation_indexes.add(stale_index)
                 if not instance_teams:
                     amateur_team = _team_for_amateur_club(prospect, teams) or least_loaded_prospect_team()
+                    placement_team = amateur_team if is_undrafted else franchise_team
                     add_instance(
                         instance_source,
                         player_id=player_id,
-                        team=amateur_team,
+                        team=placement_team,
                         style_code=style_code,
                     )
-                    instance_teams.add(amateur_team.code)
-                holding_team = None if is_undrafted else _expansion_holding_team(prospect.team, teams)
-                if (
-                    holding_team is not None
-                    and holding_team.code not in instance_teams
-                    and team_instance_load.get(holding_team.code, 0) < MAX_EXPANSION_AFFILIATE_INSTANCES
-                ):
+                    instance_teams.add(placement_team.code)
+                if not is_undrafted and franchise_team.code not in instance_teams:
                     add_instance(
                         instance_source,
                         player_id=player_id,
-                        team=holding_team,
+                        team=franchise_team,
                         style_code=style_code,
                     )
                 changes.append(
@@ -717,7 +1045,7 @@ def apply_draft_class(
                         "action": "rights-updated",
                         "team": prospect.team,
                         "pick": prospect.pick,
-                        "changes": [{"section": "draft", "field": key, "before": bio.get(key), "after": value} for key, value in rights_updates.items() if bio.get(key) != value],
+                        "changes": [{"section": "draft", "field": key, "before": bio.get(key), "after": value} for key, value in bio_draft_updates.items() if bio.get(key) != value],
                     }
                 )
                 continue
@@ -730,6 +1058,7 @@ def apply_draft_class(
             player_id = int(blank_bio["zIBw"])
             first_name, _, last_name = prospect.name.partition(" ")
             amateur_team = _team_for_amateur_club(prospect, teams) or least_loaded_prospect_team()
+            placement_team = amateur_team if is_undrafted else franchise_team
             style_code = STYLE_CODES[prospect.archetype]
             template = templates[goalie]
             bio_updates = {
@@ -738,8 +1067,7 @@ def apply_draft_class(
                 "DaPp": int(blank_bio.get("DaPp") or 60000),
                 "aljv": POSITION_CODES[prospect.position],
                 "zKKG": 126,
-                "BSXd": amateur_team.code + 1,
-                "WzKY": 255,
+                "BSXd": 0 if is_undrafted else native_rights_code,
                 "QwoG": 0,
                 "dhKk": 0,
                 "GDhI": 0,
@@ -747,6 +1075,10 @@ def apply_draft_class(
                 "IrlK": 0,
                 "tRVs": 0,
                 **rights_updates,
+                **_draft_contract_updates(
+                    is_undrafted=is_undrafted,
+                    force_free_agent=force_free_agent,
+                ),
             }
             access.copy_record_fields(
                 db_index,
@@ -794,24 +1126,17 @@ def apply_draft_class(
             add_instance(
                 template,
                 player_id=player_id,
-                team=amateur_team,
+                team=placement_team,
                 style_code=style_code,
                 reserved_relation_index=placeholder_relation_index.get(player_id),
             )
-            holding_team = None if is_undrafted else _expansion_holding_team(prospect.team, teams)
-            if (
-                holding_team is not None
-                and holding_team.code != amateur_team.code
-                and team_instance_load.get(holding_team.code, 0) < MAX_EXPANSION_AFFILIATE_INSTANCES
-            ):
-                add_instance(template, player_id=player_id, team=holding_team, style_code=style_code)
             changes.append(
                 {
                     "player": prospect.name,
                     "player_id": player_id,
                     "action": "created",
                     "team": prospect.team,
-                    "current_team": amateur_team.abbrev,
+                    "current_team": placement_team.abbrev,
                     "pick": prospect.pick,
                     "overall": prospect.projected_overall,
                     "archetype": prospect.archetype,
@@ -824,6 +1149,11 @@ def apply_draft_class(
         for relation_index in sorted(stale_relation_indexes, reverse=True):
             access.remove_record(db_index, "caBZ", relation_index)
         access.save_database(db_index)
+    _consolidate_draft_player_instances(
+        db_path,
+        prospects,
+        free_agent_teams=free_agent_teams,
+    )
     return changes
 
 
@@ -944,10 +1274,29 @@ def apply_elite_prospects_scouting(
     return results
 
 
-def validate_draft_players(db_path: Path, prospects: list[DraftProspect]) -> list[str]:
+def validate_draft_players(
+    db_path: Path,
+    prospects: list[DraftProspect],
+    *,
+    free_agent_teams: set[str] | None = None,
+) -> list[str]:
+    free_agent_teams = {team.upper() for team in (free_agent_teams or set())}
     cache = build_player_snapshot_cache(db_path)
     valid_instance_ids = {int(row.get("TWSX") or -1) for row in cache.instance_rows}
+    instance_rows_by_id: dict[int, list[dict[str, object]]] = {}
+    for row in cache.instance_rows:
+        instance_rows_by_id.setdefault(int(row.get("TWSX") or -1), []).append(row)
+    relation_ids_by_player: dict[int, list[int]] = {}
+    for row in cache.relation_rows:
+        relation_ids_by_player.setdefault(int(row.get("qFky") or -1), []).append(int(row.get("qEfv") or -1))
+    teams = load_teams(db_path)
+    roster_slots = [
+        int(row["XWot"]) if row.get("XWot") is not None else -1
+        for row in cache.instance_rows
+    ]
     errors = []
+    if len(roster_slots) != len(set(roster_slots)):
+        errors.append("Roster contains duplicate XWot player slots")
     for prospect in prospects:
         matches = [
             bio
@@ -961,9 +1310,83 @@ def validate_draft_players(db_path: Path, prospects: list[DraftProspect]) -> lis
         bio = max(matches, key=lambda row: _draft_match_priority(row, prospect.name))
         player_id = int(bio.get("zIBw") or -1)
         snapshot = cache.get_player_snapshot(str(bio.get("PedH") or ""), str(bio.get("RMbQ") or ""), player_id)
-        if snapshot is None or not snapshot.instance_rows:
+        player_instance_rows = [
+            row
+            for instance_id in relation_ids_by_player.get(player_id, [])
+            for row in instance_rows_by_id.get(instance_id, [])
+        ]
+        if snapshot is None or not player_instance_rows:
             errors.append(f"{prospect.name}: team instance missing")
             continue
+        if len(player_instance_rows) != 1:
+            errors.append(
+                f"{prospect.name}: expected one active roster instance, found {len(player_instance_rows)}"
+            )
+        target_team = resolve_playable_nhl_team(prospect.team, teams)
+        franchise_team = None if target_team is None else _franchise_prospect_team(target_team, teams)
+        target_organization = None if target_team is None else organization_for_abbrev(target_team.abbrev)
+        expected_team_codes = (
+            {255}
+            if prospect.team.upper() in free_agent_teams
+            else {
+                team.code for team in teams
+                if target_organization is not None
+                and organization_for_abbrev(team.abbrev) == target_organization
+                and league_name_for_team(team) in {"NHL", "AHL", "Organization"}
+            }
+        )
+        if not expected_team_codes.intersection({
+            int(row["BSXd"]) if row.get("BSXd") is not None else -1
+            for row in player_instance_rows
+        }):
+            destination = "free agency" if expected_team_codes == {255} else prospect.team
+            errors.append(f"{prospect.name}: roster destination missing ({destination})")
+        if target_team is not None:
+            expected_ownership = 0 if expected_team_codes == {255} else target_team.code + 1
+            if int(bio.get("BSXd") or 0) != expected_ownership:
+                errors.append(
+                    f"{prospect.name}: franchise ownership is {bio.get('BSXd')}, "
+                    f"expected {expected_ownership} ({prospect.team})"
+                )
+            expected_rights = _franchise_rights_code(target_team, teams)
+            if (
+                int(bio.get("WBbd") or 0) != expected_rights
+                or int(bio.get("uWgv") or 0) != expected_rights
+            ):
+                errors.append(
+                    f"{prospect.name}: franchise rights do not match {prospect.team}"
+                )
+        expected_draft_metadata = _draft_metadata_updates(prospect, is_undrafted=False)
+        draft_mismatches = {
+            field: (bio.get(field), expected)
+            for field, expected in expected_draft_metadata.items()
+            if int(bio.get(field) if bio.get(field) is not None else -1) != expected
+        }
+        if draft_mismatches:
+            errors.append(
+                f"{prospect.name}: draft history is invalid {draft_mismatches}"
+            )
+        expected_contract = _draft_contract_updates(
+            is_undrafted=False,
+            force_free_agent=prospect.team.upper() in free_agent_teams,
+        )
+        contract_mismatches = {
+            field: (bio.get(field), expected)
+            for field, expected in expected_contract.items()
+            if int(bio.get(field) or 0) != expected
+        }
+        if contract_mismatches:
+            errors.append(
+                f"{prospect.name}: franchise contract state is invalid {contract_mismatches}"
+            )
+        for row in player_instance_rows:
+            team_code = int(row["BSXd"]) if row.get("BSXd") is not None else -1
+            roster_slot = int(row["XWot"]) if row.get("XWot") is not None else -1
+            if team_code != 255 and roster_slot // MAX_TEAM_INSTANCES != team_code:
+                errors.append(
+                    f"{prospect.name}: roster slot {roster_slot} does not belong to team {team_code}"
+                )
+                break
         if player_id >= 16000:
             invalid_relations = [
                 row

@@ -104,11 +104,11 @@ def build_player_index_from_tables(
         player_id = int(row["qFky"]) if row.get("qFky") is not None else -1
         instance_id = int(row["qEfv"]) if row.get("qEfv") is not None else -1
         relation_by_player_id.setdefault(player_id, []).append(instance_id)
-    instance_team_by_id = {
-        (int(row["TWSX"]) if row.get("TWSX") is not None else -1):
-        (int(row["BSXd"]) if row.get("BSXd") is not None else -1)
-        for row in instance_rows
-    }
+    instance_teams_by_id: dict[int, list[int]] = {}
+    for row in instance_rows:
+        instance_id = int(row["TWSX"]) if row.get("TWSX") is not None else -1
+        team_code = int(row["BSXd"]) if row.get("BSXd") is not None else -1
+        instance_teams_by_id.setdefault(instance_id, []).append(team_code)
 
     entries: list[PlayerListEntry] = []
     seen_player_ids: set[int] = set()
@@ -123,25 +123,20 @@ def build_player_index_from_tables(
         seen_player_ids.add(player_id)
         team_code = None
         best_score = -1
-        relation_keys = {player_id}
-        long_id = int(row.get("DaPp") or -1)
-        if long_id >= 0:
-            relation_keys.add(long_id)
         instance_ids: list[int] = []
         seen_instance_ids: set[int] = set()
-        for relation_key in relation_keys:
-            for instance_id in relation_by_player_id.get(relation_key, []):
-                if instance_id in seen_instance_ids:
-                    continue
-                seen_instance_ids.add(instance_id)
-                instance_ids.append(instance_id)
+        for instance_id in relation_by_player_id.get(player_id, []):
+            if instance_id in seen_instance_ids:
+                continue
+            seen_instance_ids.add(instance_id)
+            instance_ids.append(instance_id)
         for instance_id in instance_ids:
-            candidate_code = instance_team_by_id.get(instance_id)
-            team = None if candidate_code is None else team_by_code.get(candidate_code)
-            score = _primary_team_score(team, candidate_code)
-            if score > best_score:
-                team_code = candidate_code
-                best_score = score
+            for candidate_code in instance_teams_by_id.get(instance_id, []):
+                team = team_by_code.get(candidate_code)
+                score = _primary_team_score(team, candidate_code)
+                if score > best_score:
+                    team_code = candidate_code
+                    best_score = score
         is_hidden = team_code is None
         team = None if team_code is None else team_by_code.get(team_code)
         current_team_code = team_code

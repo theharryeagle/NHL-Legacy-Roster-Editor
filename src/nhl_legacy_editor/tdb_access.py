@@ -27,7 +27,7 @@ TABLE_NAME_FALLBACK_INDEXES = {
     "ttOk": 0,   # teams
     "caBZ": 2,   # player-to-instance relations
     "ulGe": 3,   # player instances
-    "vbHh": 4,   # player instance aux rows
+    "vbHh": 4,   # skater appearance/equipment rows (qEfv is its own row key)
     "ajmx": 5,   # player flags
     "yvSd": 6,   # skater ratings
     "cPbu": 7,   # player bio

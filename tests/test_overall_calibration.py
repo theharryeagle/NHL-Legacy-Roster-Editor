@@ -1,5 +1,20 @@
-from nhl_legacy_editor.attribute_mapper import calculate_goalie_overall
-from nhl_legacy_editor.rating_models import calculate_weighted_overall
+from nhl_legacy_editor.attribute_map import GOALIE_ATTRIBUTE_SPECS
+from nhl_legacy_editor.attribute_mapper import calculate_anchored_goalie_overall, calculate_goalie_overall
+from nhl_legacy_editor.rating_models import calculate_anchored_overall, calculate_weighted_overall, stored_overall_from_ratings_row
+
+
+def test_koet_is_not_treated_as_a_stored_overall() -> None:
+    assert stored_overall_from_ratings_row({"koEt": 59}) is None
+    assert stored_overall_from_ratings_row({"koEt": 50}) is None
+    assert stored_overall_from_ratings_row({"koEt": 0}) is None
+    assert stored_overall_from_ratings_row({}) is None
+
+
+def test_goalie_consistency_does_not_overwrite_stored_overall() -> None:
+    consistency = next(spec for spec in GOALIE_ATTRIBUTE_SPECS if spec.label == "Consistency")
+    assert consistency.field == "KzvQ"
+    assert consistency.mode == "raw"
+    assert consistency.max_value == 2
 
 
 def test_forward_formula_matches_low_nhl_card() -> None:
@@ -32,6 +47,26 @@ def test_forward_formula_matches_low_nhl_card() -> None:
     }
     assert calculate_weighted_overall(ratings, "two_way_forward", position="C") == 65
     assert calculate_weighted_overall(ratings, "sniper", position="C") == 65
+
+    # An unchanged roster card must retain EA's exact stored value even when
+    # the reverse-engineered absolute formula disagrees with it.
+    assert calculate_anchored_overall(
+        ratings,
+        ratings,
+        "two_way_forward",
+        70,
+        position="C",
+    ) == 70
+
+    upgraded = dict(ratings)
+    upgraded["offensive_awareness"] += 5
+    assert calculate_anchored_overall(
+        ratings,
+        upgraded,
+        "two_way_forward",
+        70,
+        position="C",
+    ) > 70
 
 
 def test_defense_formula_matches_observed_legacy_card() -> None:
@@ -90,3 +125,9 @@ def test_goalie_formula_uses_legacy_coefficients() -> None:
         "Vision": 80,
     }
     assert calculate_goalie_overall(ratings, "Butterfly Goalie") == 80
+    assert calculate_anchored_goalie_overall(
+        ratings,
+        ratings,
+        86,
+        "Butterfly Goalie",
+    ) == 86
