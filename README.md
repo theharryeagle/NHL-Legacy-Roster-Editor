@@ -12,6 +12,21 @@ The editor works with Xenia-exposed `RosterFile` saves. It extracts the embedded
 
 The project does not include NHL Legacy Edition, copyrighted game archives, roster saves, player photographs, or Xbox system files. Users must provide their own legally obtained game and roster files.
 
+## NHL 24 PC roster inspection
+
+This development version includes read-only inspection of the PS4 custom roster format used by [hilals' NHL 24 PC v1.0.1](https://github.com/hilals/nhl24pc/releases/tag/v1.0.1). It was verified against that release's published Utah roster. Install the Python dependencies with `python -m pip install -e .`.
+
+In the desktop app, open **Settings → Roster Files → Inspect NHL 24 PC Roster** and select a copied `RosterCustomN` folder containing `DATA`. For the published port, roster slots are under `user\home\1000\savedata\CUSA37933` relative to the launcher folder.
+
+Use the command line to list table IDs or compare two saves:
+
+```powershell
+nhl-legacy-editor nhl24-inspect "C:\roster-copies\RosterCustom0"
+nhl-legacy-editor nhl24-compare "C:\roster-copies\RosterCustom0" "C:\roster-copies\RosterCustom1"
+```
+
+The comparison reports changed table spans in the decompressed database. To help map an attribute, make two copies with a single in-game change between them and record the player, attribute and old and new values. NHL 24 rating edits and save export are pending field mapping and an in-game reload test.
+
 ## Current status
 
 The editor is usable for supported roster changes, but it is not a complete editor for every NHL Legacy or Franchise Mode system.

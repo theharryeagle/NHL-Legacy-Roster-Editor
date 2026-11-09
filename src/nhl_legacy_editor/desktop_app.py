@@ -22,6 +22,7 @@ from .editor_state import load_json_state, save_json_state
 from .hockeydb import fetch_hockeydb_profile_by_name
 from .move_tools import move_player_to_team, move_player_to_team_code, move_players_to_free_agency, move_players_to_teams
 from .moneypuck_scraper import MoneyPuckCSVClient, games_played, number, player_name, player_team
+from .nhl24_roster import read_nhl24_roster
 from .nhl_remote import fetch_edge_goalie_detail, fetch_edge_skater_detail, fetch_player_landing, find_player_on_official_rosters
 from .player_editing import contract_cap_hit_millions_from_raw, update_many_player_contract_cap_hits, update_many_player_goalie_ratings, update_many_player_ratings, update_player_bio, update_player_contract_cap_hit, update_player_contract_details, update_player_flags, update_player_goalie_ratings, update_player_instance_fields, update_player_ratings
 from .player_tools import PlayerSnapshotCache, build_player_snapshot_cache, get_player_snapshot
@@ -2140,6 +2141,9 @@ class NhlLegacyDesktopApp:
         ttk.Button(roster, text="OPEN DIFFERENT ROSTER", command=self._open_roster).grid(row=4, column=0, sticky="ew", padx=10, pady=10)
         ttk.Button(roster, text="CHOOSE GAME SAVE TARGET", command=self._choose_game_target_from_settings).grid(row=4, column=1, sticky="ew", padx=10, pady=10)
         ttk.Button(roster, text="RELOAD FROM GAME FILE", command=self._reload_from_game_file).grid(row=4, column=2, sticky="ew", padx=10, pady=10)
+        ttk.Button(roster, text="INSPECT NHL 24 PC ROSTER", command=self._inspect_nhl24_roster).grid(
+            row=5, column=0, sticky="ew", padx=10, pady=(0, 10)
+        )
         roster.columnconfigure(0, weight=1)
         roster.columnconfigure(1, weight=1)
         roster.columnconfigure(2, weight=1)
@@ -2225,6 +2229,28 @@ class NhlLegacyDesktopApp:
             self._set_status(f"Opened workspace {self.workspace.name}")
         except Exception as exc:
             self._show_error("Open roster failed", exc)
+
+    def _inspect_nhl24_roster(self) -> None:
+        folder = filedialog.askdirectory(
+            title="Select an NHL 24 PC custom roster slot folder",
+            parent=self.root,
+        )
+        if not folder:
+            return
+        roster_path = Path(folder)
+        try:
+            roster = read_nhl24_roster(roster_path)
+        except (OSError, ValueError) as exc:
+            self._show_error("NHL 24 roster inspection failed", exc)
+            return
+        messagebox.showinfo(
+            "NHL 24 PC roster inspection",
+            f"Read-only inspection of {roster_path.name}\n\n"
+            f"Database size: {len(roster.database):,} bytes\n"
+            f"Tables: {len(roster.tables)}\n\n"
+            "Player ratings and save editing are pending verification.",
+            parent=self.root,
+        )
 
     def _reload_from_game_file(self) -> None:
         if self.workspace is None or self.workspace.source_roster is None:

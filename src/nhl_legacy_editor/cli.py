@@ -12,6 +12,7 @@ from .contract_models import DEFAULT_REAL_CAP_MILLIONS, scale_contract_by_cap_pe
 from .db_probe import extract_ascii_strings, find_text_hits
 from .hockeydb import fetch_hockeydb_profile_by_name, search_hockeydb_player
 from .move_tools import get_player_current_team, move_player_to_team
+from .nhl24_roster import compare_nhl24_rosters, read_nhl24_roster
 from .nhl_remote import export_rosters_to_csv, fetch_team_roster, fetch_trade_headlines, find_player_on_official_rosters
 from .player_tools import find_players, get_player_snapshot, get_player_snapshot_by_query
 from .rating_models import ARCHETYPE_WEIGHTS, plan_rating_upgrade
@@ -45,6 +46,13 @@ def build_parser() -> argparse.ArgumentParser:
         type=Path,
         help="Output path for the extracted payload.",
     )
+
+    nhl24_inspect = subparsers.add_parser("nhl24-inspect", help="Inspect an NHL 24 PC roster slot.")
+    nhl24_inspect.add_argument("file", type=Path, help="Custom roster slot folder or DATA file.")
+
+    nhl24_compare = subparsers.add_parser("nhl24-compare", help="Compare NHL 24 PC roster tables.")
+    nhl24_compare.add_argument("before", type=Path, help="Original roster slot folder or DATA file.")
+    nhl24_compare.add_argument("after", type=Path, help="Edited roster slot folder or DATA file.")
 
     big_list_parser = subparsers.add_parser(
         "big-list",
@@ -736,6 +744,16 @@ def main() -> int:
         return cmd_inspect(args.file)
     if args.command == "extract-db":
         return cmd_extract_db(args.file, args.output)
+    if args.command in {"nhl24-inspect", "nhl24-compare"}:
+        try:
+            if args.command == "nhl24-inspect":
+                result = read_nhl24_roster(args.file).summary()
+            else:
+                result = compare_nhl24_rosters(read_nhl24_roster(args.before), read_nhl24_roster(args.after))
+        except (OSError, ValueError) as exc:
+            parser.error(str(exc))
+        print(json.dumps(result, indent=2))
+        return 0
     if args.command == "big-list":
         return cmd_big_list(args.file, args.filter)
     if args.command == "workspace-open":
