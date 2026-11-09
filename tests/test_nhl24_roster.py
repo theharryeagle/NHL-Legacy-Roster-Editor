@@ -50,3 +50,45 @@ def test_rejects_incompatible_or_invalid_save(tmp_path: Path, data: bytes) -> No
     path.write_bytes(data)
     with pytest.raises(ValueError):
         read_nhl24_roster(path)
+
+
+def test_export_edited_slot_rebuilds_index_and_table_crc(tmp_path: Path) -> None:
+    from struct import unpack_from
+
+    from nhl_legacy_editor.nhl24_roster import export_nhl24_slot
+    from nhl_legacy_editor.roster_formats import _crc32_bzip2
+
+    records = bytes(256)
+    table = bytes(36) + records + pack("<I", _crc32_bzip2(records) ^ 0xFFFFFFFF)
+    db = b"DB\x00\x08\x00\x00\x00\x00" + pack("<4I", 36 + len(table), 0, 1, 0)
+    db += pack("<4sII", b"Rate", 0, 0) + table
+    decoded = db + b"tail"
+    chunks = [b"{}", b"\x01" + compress(decoded) + pack("<I", len(decoded)), b"version", b"metadata"]
+    save_records = [pack("<QQ", len(chunk), 0) + chunk for chunk in chunks]
+    offsets = [sum(map(len, save_records[:index])) for index in range(5)]
+    names = [b"RosterCustom0", b"__SaveLoadFileInfo", b"__SaveLoadMetaData", b"__SaveloadVer"]
+    index = b"".join(
+        name.ljust(32, b"\0") + pack("<6Q", 1, len(save_records[record]), offsets[record], offsets[record + 1], 0, 0)
+        for name, record in zip(names, (1, 0, 3, 2))
+    )
+    source = tmp_path / "source"
+    source.mkdir()
+    (source / "NAME").write_bytes(names[0])
+    (source / "DATA").write_bytes(b"".join(save_records))
+    (source / "INDEX").write_bytes(index)
+
+    destination = tmp_path / "RosterCustom0"
+    edited = bytearray(db)
+    edited[72:328] = bytes(range(256))
+    export_nhl24_slot(source, destination, experimental_database=edited)
+
+    result = read_nhl24_roster(destination)
+    assert result.database[72:328] == edited[72:328]
+    assert unpack_from("<I", result.database, 328)[0] == _crc32_bzip2(edited[72:328]) ^ 0xFFFFFFFF
+    rebuilt_index = (destination / "INDEX").read_bytes()
+    metadata_start, metadata_end = unpack_from("<QQ", rebuilt_index, 0xD0)
+    assert metadata_start != offsets[3]
+    assert (destination / "DATA").read_bytes()[metadata_start:metadata_end] == save_records[3]
+    assert (source / "DATA").read_bytes() == b"".join(save_records)
+    with pytest.raises(FileExistsError):
+        export_nhl24_slot(source, destination)

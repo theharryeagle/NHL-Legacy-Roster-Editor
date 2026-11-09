@@ -12,7 +12,7 @@ from .contract_models import DEFAULT_REAL_CAP_MILLIONS, scale_contract_by_cap_pe
 from .db_probe import extract_ascii_strings, find_text_hits
 from .hockeydb import fetch_hockeydb_profile_by_name, search_hockeydb_player
 from .move_tools import get_player_current_team, move_player_to_team
-from .nhl24_roster import compare_nhl24_rosters, read_nhl24_roster
+from .nhl24_roster import compare_nhl24_rosters, export_nhl24_slot, read_nhl24_roster
 from .nhl_remote import export_rosters_to_csv, fetch_team_roster, fetch_trade_headlines, find_player_on_official_rosters
 from .player_tools import find_players, get_player_snapshot, get_player_snapshot_by_query
 from .rating_models import ARCHETYPE_WEIGHTS, plan_rating_upgrade
@@ -53,6 +53,15 @@ def build_parser() -> argparse.ArgumentParser:
     nhl24_compare = subparsers.add_parser("nhl24-compare", help="Compare NHL 24 PC roster tables.")
     nhl24_compare.add_argument("before", type=Path, help="Original roster slot folder or DATA file.")
     nhl24_compare.add_argument("after", type=Path, help="Edited roster slot folder or DATA file.")
+
+    nhl24_extract = subparsers.add_parser("nhl24-extract", help="Export an NHL 24 roster database for inspection.")
+    nhl24_extract.add_argument("file", type=Path)
+    nhl24_extract.add_argument("output", type=Path, help="New file for the extracted database.")
+
+    nhl24_export = subparsers.add_parser("nhl24-export", help="Write a copy of an NHL 24 roster slot.")
+    nhl24_export.add_argument("source", type=Path, help="Source slot folder with DATA, INDEX and NAME.")
+    nhl24_export.add_argument("destination", type=Path, help="New folder with the same slot name as NAME.")
+    nhl24_export.add_argument("--experimental-db", type=Path, help="Edited database for testing. Game loading is unverified.")
 
     big_list_parser = subparsers.add_parser(
         "big-list",
@@ -744,10 +753,19 @@ def main() -> int:
         return cmd_inspect(args.file)
     if args.command == "extract-db":
         return cmd_extract_db(args.file, args.output)
-    if args.command in {"nhl24-inspect", "nhl24-compare"}:
+    if args.command in {"nhl24-inspect", "nhl24-compare", "nhl24-extract", "nhl24-export"}:
         try:
             if args.command == "nhl24-inspect":
                 result = read_nhl24_roster(args.file).summary()
+            elif args.command == "nhl24-extract":
+                database = read_nhl24_roster(args.file).database
+                with args.output.open("xb") as output:
+                    output.write(database)
+                result = {"database": str(args.output)}
+            elif args.command == "nhl24-export":
+                database = args.experimental_db.read_bytes() if args.experimental_db else None
+                path = export_nhl24_slot(args.source, args.destination, experimental_database=database)
+                result = {"slot": str(path), "experimental": database is not None}
             else:
                 result = compare_nhl24_rosters(read_nhl24_roster(args.before), read_nhl24_roster(args.after))
         except (OSError, ValueError) as exc:

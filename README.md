@@ -14,7 +14,7 @@ The project does not include NHL Legacy Edition, copyrighted game archives, rost
 
 ## NHL 24 PC roster inspection
 
-This development version includes read-only inspection of the PS4 custom roster format used by [hilals' NHL 24 PC v1.0.1](https://github.com/hilals/nhl24pc/releases/tag/v1.0.1). It was verified against that release's published Utah roster. Install the Python dependencies with `python -m pip install -e .`.
+This development version can inspect and export copies of the PS4 custom roster format used by [hilals' NHL 24 PC v1.0.1](https://github.com/hilals/nhl24pc/releases/tag/v1.0.1). It was verified against that release's published Utah roster. Install the Python dependencies with `python -m pip install -e .`.
 
 In the desktop app, open **Settings → Roster Files → Inspect NHL 24 PC Roster** and select a copied `RosterCustomN` folder containing `DATA`. For the published port, roster slots are under `user\home\1000\savedata\CUSA37933` relative to the launcher folder.
 
@@ -25,7 +25,18 @@ nhl-legacy-editor nhl24-inspect "C:\roster-copies\RosterCustom0"
 nhl-legacy-editor nhl24-compare "C:\roster-copies\RosterCustom0" "C:\roster-copies\RosterCustom1"
 ```
 
-The comparison reports changed table spans in the decompressed database. To help map an attribute, make two copies with a single in-game change between them and record the player, attribute and old and new values. NHL 24 rating edits and save export are pending field mapping and an in-game reload test.
+The comparison reports changed table spans in the decompressed database. To help map an attribute, make two copies with a single in-game change between them and record the player, attribute and old and new values.
+
+```powershell
+nhl-legacy-editor nhl24-extract "C:\roster-copies\RosterCustom0" "C:\roster-copies\roster.db"
+nhl-legacy-editor nhl24-export "C:\roster-copies\RosterCustom0" "C:\export\RosterCustom0"
+```
+
+The export destination must be new, its parent must exist, and the slot name must match the source's `NAME` file. The normal export copies the slot byte for byte. For format research, `--experimental-db` takes a same-size replacement database with the original table and field layouts. It rebuilds the LZ4 record, updates the changed table checksums and adjusts `INDEX`. The outer game's `CRCValue` is preserved and still needs verification. Test experimental output with a disposable slot. NHL 24 player and rating mappings are pending, so the rating workflow below currently applies to Legacy workspaces.
+
+### Selected-season performance ratings
+
+The Advanced Metrics tab sends MoneyPuck and NHL EDGE measurements from the selected season through the attribute formulas. Bulk preview refreshes the source data. Existing skaters need at least 10 games and goalies need 5. Missing data can leave an attribute unchanged, and ambiguous player matches are skipped. The preview calculates the overall from the resulting attributes without forcing it to a preset target. CapWages scans propose moves for existing players, and ratings previews do not create players or prospects.
 
 ## Current status
 
@@ -154,7 +165,6 @@ The editor can compare the local roster with current NHL organization data and p
 - Team changes.
 - Contract changes.
 - Player updates.
-- Potential create-player candidates.
 
 Automatic matching is not perfect. Players with similar names, stale organization relationships, custom records, or incomplete external data may require manual review.
 

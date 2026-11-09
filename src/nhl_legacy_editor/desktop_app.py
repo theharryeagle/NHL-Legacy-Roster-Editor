@@ -13,7 +13,7 @@ import tkinter.font as tkfont
 from tkinter import filedialog, messagebox, ttk
 
 from .attribute_map import SKATER_ATTRIBUTE_SPECS, attribute_specs_by_field, display_to_raw, raw_to_display, specs_for_player_kind
-from .attribute_mapper import LegacyAttributeMapper, RecommendationSet, blend_season_recommendations, calculate_goalie_overall, stabilize_recommendations
+from .attribute_mapper import LegacyAttributeMapper, RecommendationSet, calculate_goalie_overall
 from .capwages import CapWagesDraftPick, fetch_capwages_team_contracts, fetch_capwages_team_draft_picks
 from .contract_models import DEFAULT_GAME_CAP_MILLIONS, DEFAULT_REAL_CAP_MILLIONS, scale_contract_by_cap_percentage
 from .contract_sync import build_contract_update_queue
@@ -21,7 +21,7 @@ from .draft_class import DraftRosterStatus, apply_draft_class, apply_elite_prosp
 from .editor_state import load_json_state, save_json_state
 from .hockeydb import fetch_hockeydb_profile_by_name
 from .move_tools import move_player_to_team, move_player_to_team_code, move_players_to_free_agency, move_players_to_teams
-from .moneypuck_scraper import MoneyPuckCSVClient, games_played, number, player_name, player_team
+from .moneypuck_scraper import MoneyPuckCSVClient, games_played, number, player_name, player_nhl_id, player_team
 from .nhl24_roster import read_nhl24_roster
 from .nhl_remote import fetch_edge_goalie_detail, fetch_edge_skater_detail, fetch_player_landing, find_player_on_official_rosters
 from .player_editing import contract_cap_hit_millions_from_raw, update_many_player_contract_cap_hits, update_many_player_goalie_ratings, update_many_player_ratings, update_player_bio, update_player_contract_cap_hit, update_player_contract_details, update_player_flags, update_player_goalie_ratings, update_player_instance_fields, update_player_ratings
@@ -207,8 +207,14 @@ LABEL_TO_SEMANTIC = {
 }
 ADVANCED_METRICS_STATE_FILE = "advanced_metrics_applied.json"
 ADVANCED_METRICS_MANUAL_REVIEW_FILE = "advanced_metrics_manual_review.json"
-ADVANCED_METRICS_MODEL_VERSION = "2026-07-14-toi-role-v2"
+ADVANCED_METRICS_MODEL_VERSION = "selected-season-v1"
+METRIC_MIN_GAMES = {"skater": 10, "goalie": 5}
 NHL_METRIC_ROSTER_LEAGUES = frozenset({"NHL", "AHL", "Organization", "Prospects", "Free Agents"})
+
+
+def current_nhl_season() -> int:
+    today = datetime.now()
+    return today.year if today.month >= 7 else today.year - 1
 
 
 def advanced_metric_signature(
@@ -1816,7 +1822,8 @@ class NhlLegacyDesktopApp:
         bulk.pack(fill="x", padx=12, pady=(0, 12))
         self.bulk_org_var = tk.StringVar(value="")
         self.bulk_league_var = tk.StringVar(value="NHL")
-        self.bulk_season_var = tk.StringVar(value="2025")
+        self.bulk_season_var = tk.StringVar(value=str(current_nhl_season()))
+        self.bulk_include_edge_var = tk.BooleanVar(value=True)
         self.bulk_position_filter_var = tk.StringVar(value="All Positions")
         ttk.Label(bulk, text="League scope").grid(row=0, column=0, sticky="w", padx=10, pady=(8, 2))
         ttk.Label(bulk, text="Team / Organization (type to search)").grid(row=0, column=1, sticky="w", padx=10, pady=(8, 2))
@@ -1842,10 +1849,13 @@ class NhlLegacyDesktopApp:
         ttk.Button(bulk, text="Largest OVR Changes", command=self._sort_bulk_by_largest_change).grid(row=6, column=0, columnspan=2, sticky="ew", padx=10, pady=(0, 8))
         ttk.Label(
             bulk,
-            text="Selected season requires 20+ GP. Players below 20 GP fall back one season. TOI/game sets position-aware role credit and reaches full workload credit at 25:00.",
+            text="Uses the selected season only. Existing skaters need 10 games and goalies need 5. Review the proposed changes before applying.",
             style="Muted.TLabel",
             wraplength=880,
         ).grid(row=7, column=0, columnspan=2, sticky="w", padx=10, pady=(0, 8))
+        ttk.Checkbutton(bulk, text="Include NHL EDGE (slower)", variable=self.bulk_include_edge_var).grid(
+            row=8, column=0, columnspan=2, sticky="w", padx=10, pady=(0, 8)
+        )
         bulk.columnconfigure(0, weight=1)
         bulk.columnconfigure(1, weight=2)
         self.bulk_org_combo.bind("<KeyRelease>", self._filter_team_combo)
@@ -1950,9 +1960,7 @@ class NhlLegacyDesktopApp:
         update_pane = ttk.PanedWindow(self.updates_tab, orient="vertical")
         update_pane.pack(fill="both", expand=True, padx=12, pady=(0, 12))
         move_frame = ttk.Frame(update_pane)
-        create_frame = ttk.Frame(update_pane)
         update_pane.add(move_frame, weight=3)
-        update_pane.add(create_frame, weight=1)
 
         move_columns = ("from", "to", "source", "reason")
         self.update_tree = ttk.Treeview(move_frame, columns=move_columns, show="tree headings", selectmode="extended")
@@ -1976,9 +1984,6 @@ class NhlLegacyDesktopApp:
         move_frame.rowconfigure(0, weight=1)
         self.update_tree.bind("<Button-3>", self._show_update_context_menu)
 
-        ttk.Label(create_frame, text="Create candidates from CapWages (players missing in roster with draft info)", style="Muted.TLabel").pack(anchor="w", pady=(8, 4))
-        self.create_candidate_list = tk.Listbox(create_frame, background="#0b1118", foreground=self.colors["ink"], selectbackground="#244e76", relief="flat", height=8, selectmode="extended")
-        self.create_candidate_list.pack(fill="both", expand=True)
 
     def _build_create_tab(self) -> None:
         wrapper = ScrollFrame(self.create_tab)
@@ -4249,16 +4254,19 @@ class NhlLegacyDesktopApp:
 
         self._run_background("Applying contract updates", worker, success)
 
-    def _moneypuck_tools(self, season: int, *, player_kind: str = "skater") -> tuple[MoneyPuckCSVClient, LegacyAttributeMapper]:
+    def _moneypuck_tools(self, season: int, *, player_kind: str = "skater", refresh: bool = False) -> tuple[MoneyPuckCSVClient, LegacyAttributeMapper]:
         with self.metric_bundle_lock:
             if self.moneypuck_client is None:
                 self.moneypuck_client = MoneyPuckCSVClient()
             key = (season, player_kind)
             cached = self.metric_bundle_cache.get(key)
-            if cached is not None:
+            if cached is not None and not refresh:
                 return self.moneypuck_client, cached[1]
-            rows = self.moneypuck_client.load_goalies(season) if player_kind == "goalie" else self.moneypuck_client.load_skaters(season)
-            model = self.moneypuck_client.build_percentile_model(season, min_games=20, player_kind=player_kind)
+            load = self.moneypuck_client.load_goalies if player_kind == "goalie" else self.moneypuck_client.load_skaters
+            rows = load(season, force_refresh=refresh)
+            model = self.moneypuck_client.build_percentile_model(
+                season, min_games=METRIC_MIN_GAMES[player_kind], player_kind=player_kind
+            )
             mapper = LegacyAttributeMapper(model)
             self.metric_bundle_cache[key] = (rows, mapper)
             if player_kind == "goalie":
@@ -4271,7 +4279,7 @@ class NhlLegacyDesktopApp:
         if self.moneypuck_client is None:
             self.moneypuck_client = MoneyPuckCSVClient()
         cache_dir = self.moneypuck_client.cache_dir
-        seasons = (season, season - 1)
+        seasons = (season,)
         metric_files = [
             cache_dir / f"{year}_{kind}.csv"
             for year in seasons
@@ -4286,23 +4294,14 @@ class NhlLegacyDesktopApp:
             return
         self.metrics_prewarm_started = True
         try:
-            season = int(self.bulk_season_var.get() or 2025)
+            season = int(self.bulk_season_var.get() or current_nhl_season())
         except ValueError:
-            season = 2025
+            season = current_nhl_season()
 
         def task():
             try:
-                for year in (season, season - 1):
-                    for player_kind in ("skater", "goalie"):
-                        _client, mapper = self._moneypuck_tools(year, player_kind=player_kind)
-                        rows = self.metric_bundle_cache[(year, player_kind)][0]
-                        for row in rows:
-                            if games_played(row) < 20:
-                                continue
-                            if player_kind == "goalie":
-                                mapper.goalie_recommendations(row, min_games=20)
-                            else:
-                                mapper.money_puck_recommendations(row, min_games=20)
+                for player_kind in METRIC_MIN_GAMES:
+                    self._moneypuck_tools(season, player_kind=player_kind)
                 self.metrics_prewarm_complete = True
             except Exception:
                 # A later explicit metrics load will surface any source error.
@@ -4720,6 +4719,7 @@ class NhlLegacyDesktopApp:
                 edge_error = str(exc)
         matched_nhl_player_id = edge_hit.player_id if edge_hit is not None else None
 
+        min_games = METRIC_MIN_GAMES[player_kind]
         mp_match = None
         mp_rec: RecommendationSet | None = None
         mp_error = None
@@ -4729,9 +4729,9 @@ class NhlLegacyDesktopApp:
                     player_name,
                     roster_team,
                     season=season,
-                    min_games=20,
+                    min_games=min_games,
                     rows=rows,
-                    allow_partial=include_edge,
+                    allow_partial=False,
                     position=position or "G",
                     nhl_player_id=matched_nhl_player_id,
                 )
@@ -4740,152 +4740,67 @@ class NhlLegacyDesktopApp:
                     player_name,
                     roster_team,
                     season=season,
-                    min_games=20,
+                    min_games=min_games,
                     rows=rows,
-                    allow_partial=include_edge,
+                    allow_partial=False,
                     position=position,
                     nhl_player_id=matched_nhl_player_id,
                 )
             if mp_match is not None:
                 # Player size is especially important for strength; use NHL bio
                 # data when available rather than forcing MoneyPuck to explain it.
-                mp_rec = mapper.goalie_recommendations(mp_match.row, min_games=20) if player_kind == "goalie" else None
+                mp_rec = mapper.goalie_recommendations(mp_match.row, min_games=min_games, season_performance=True) if player_kind == "goalie" else None
             else:
-                mp_error = f"No MoneyPuck 20+ GP {player_kind} match found."
+                mp_error = f"No MoneyPuck match with at least {min_games} games in {season}–{season + 1}."
         except Exception as exc:
             mp_error = str(exc)
 
-        if include_edge and edge_hit is not None:
+        if include_edge and mp_match is not None:
+            matched_nhl_player_id = player_nhl_id(mp_match.row) or matched_nhl_player_id
+        if include_edge and matched_nhl_player_id is not None and mp_match is not None:
             try:
                 if player_kind == "goalie":
-                    edge_data = self._fetch_cached_goalie_edge_detail(edge_hit.player_id, season)
+                    edge_data = self._fetch_cached_goalie_edge_detail(matched_nhl_player_id, season)
                     if edge_data:
                         edge_suggestions, edge_notes = self._build_goalie_edge_suggestions(edge_data)
                 else:
-                    edge_data = self._fetch_cached_edge_detail(edge_hit.player_id, season)
+                    edge_data = self._fetch_cached_edge_detail(matched_nhl_player_id, season)
                     if edge_data:
                         edge_suggestions, edge_notes = self._build_edge_suggestions(edge_data)
             except Exception as exc:
                 edge_error = str(exc)
 
+        if edge_data:
+            edge_error = None
+
         if mp_match is not None and player_kind != "goalie" and mp_rec is None:
             try:
                 player_bio = self._player_bio_for_metric_match(mp_match.row, edge_hit) if include_edge else None
-                mp_rec = mapper.money_puck_recommendations(mp_match.row, min_games=20, player_bio=player_bio)
+                mp_rec = mapper.money_puck_recommendations(mp_match.row, min_games=min_games, player_bio=player_bio, season_performance=True)
             except Exception as exc:
                 mp_error = str(exc)
-
-        season_used = season
-        prior_match = None
-        prior_rec: RecommendationSet | None = None
-        try:
-            prior_season = season - 1
-            prior_client, prior_mapper = self._moneypuck_tools(prior_season, player_kind=player_kind)
-            prior_rows = self.metric_bundle_cache[(prior_season, player_kind)][0]
-            if player_kind == "goalie":
-                prior_match = prior_client.find_goalie(
-                    player_name,
-                    roster_team,
-                    season=prior_season,
-                    min_games=20,
-                    rows=prior_rows,
-                    allow_partial=include_edge,
-                    position=position or "G",
-                    nhl_player_id=matched_nhl_player_id,
-                )
-                if prior_match is not None:
-                    prior_rec = prior_mapper.goalie_recommendations(prior_match.row, min_games=20)
-            elif mp_match is None:
-                prior_match = prior_client.find_skater(
-                    player_name,
-                    roster_team,
-                    season=prior_season,
-                    min_games=20,
-                    rows=prior_rows,
-                    allow_partial=include_edge,
-                    position=position,
-                    nhl_player_id=matched_nhl_player_id,
-                )
-                if prior_match is not None:
-                    player_bio = self._player_bio_for_metric_match(prior_match.row, edge_hit) if include_edge else None
-                    prior_rec = prior_mapper.money_puck_recommendations(
-                        prior_match.row,
-                        min_games=20,
-                        player_bio=player_bio,
-                    )
-        except Exception:
-            prior_match = None
-            prior_rec = None
-
-        if player_kind == "goalie" and mp_rec is not None and prior_rec is not None:
-            mp_rec = blend_season_recommendations(
-                mp_rec,
-                prior_rec,
-                current_weight=0.50,
-                previous_source=f"MoneyPuck {season - 1}",
-            )
-        elif mp_rec is None and prior_rec is not None:
-            mp_rec = blend_season_recommendations(
-                RecommendationSet(skipped_reason=f"No 20+ GP season in {season}."),
-                prior_rec,
-                current_weight=0.0,
-                previous_source=f"MoneyPuck {season - 1}",
-            )
-            mp_match = prior_match
-            season_used = season - 1
-            mp_error = None
 
         suggestions: dict[str, int] = {}
         notes: dict[str, str] = {}
         metric_signature = ""
         metric_state_key = ""
-        reused_applied_target = False
         if mp_rec is not None and not mp_rec.skipped_reason:
             blended = (
                 LegacyAttributeMapper.blend_goalie_with_edge(mp_rec, edge_suggestions)
                 if player_kind == "goalie"
                 else LegacyAttributeMapper.blend_with_edge(mp_rec, edge_suggestions)
             )
-            notes = dict(blended.notes)
+            suggestions = dict(blended.suggestions)
+            notes = {**edge_notes, **blended.notes}
             metric_signature = advanced_metric_signature(
-                blended.suggestions,
-                overall_baseline=mp_rec.overall_baseline,
-                season_used=season_used,
+                suggestions,
+                overall_baseline=None,
+                season_used=season,
                 include_edge=include_edge,
                 player_kind=player_kind,
             )
             if player_id is not None:
-                metric_state_key = self._advanced_metric_state_key(
-                    player_id,
-                    season,
-                    player_kind,
-                    include_edge,
-                )
-            saved_target = self.advanced_metric_targets.get(metric_state_key, {})
-            saved_values = saved_target.get("targets") if isinstance(saved_target, dict) else None
-            if (
-                metric_state_key
-                and saved_target.get("signature") == metric_signature
-                and isinstance(saved_values, dict)
-                and saved_values
-            ):
-                suggestions = {str(label): int(value) for label, value in saved_values.items()}
-                reused_applied_target = True
-                for label in suggestions:
-                    prior_note = notes.get(label, "advanced metrics")
-                    notes[label] = f"{prior_note} | previously applied stable target"
-            else:
-                suggestions = stabilize_recommendations(
-                    blended.suggestions,
-                    current_attributes,
-                    position=position,
-                    player_kind=player_kind,
-                    target_overall=mp_rec.overall_baseline,
-                    role_ceiling_overall=(
-                        mp_rec.overall_baseline if player_kind == "skater" else None
-                    ),
-                    notes=notes,
-                )
+                metric_state_key = self._advanced_metric_state_key(player_id, season, player_kind, include_edge)
 
         return {
             "edge_hit": edge_hit,
@@ -4896,11 +4811,11 @@ class NhlLegacyDesktopApp:
             "mp_error": mp_error,
             "suggestions": suggestions,
             "notes": notes,
-            "season_used": season_used,
+            "season_used": season,
             "metric_signature": metric_signature,
             "metric_state_key": metric_state_key,
             "metric_targets": dict(suggestions),
-            "metrics_up_to_date": reused_applied_target and metric_targets_match(current_attributes, suggestions),
+            "metrics_up_to_date": metric_targets_match(current_attributes, suggestions),
         }
 
     def _preview_org_attribute_updates(self, *, league_wide: bool = False) -> None:
@@ -4927,28 +4842,30 @@ class NhlLegacyDesktopApp:
             for row in self.manual_metric_review
         }
 
+        include_edge = self.bulk_include_edge_var.get()
+
         def worker():
-            client, skater_mapper = self._moneypuck_tools(season, player_kind="skater")
-            _client, goalie_mapper = self._moneypuck_tools(season, player_kind="goalie")
+            client, skater_mapper = self._moneypuck_tools(season, player_kind="skater", refresh=True)
+            _client, goalie_mapper = self._moneypuck_tools(season, player_kind="goalie", refresh=True)
             skater_rows = client.load_skaters(season)
             goalie_rows = client.load_goalies(season)
-            nhl_eligible_names: set[str] = set()
-            if league_wide and selected_league == "NHL":
-                self._moneypuck_tools(season - 1, player_kind="skater")
-                self._moneypuck_tools(season - 1, player_kind="goalie")
-                prior_skater_rows = self.metric_bundle_cache[(season - 1, "skater")][0]
-                prior_goalie_rows = self.metric_bundle_cache[(season - 1, "goalie")][0]
-                nhl_eligible_names = {
-                    normalize_name(player_name(row))
-                    for metric_rows in (skater_rows, goalie_rows, prior_skater_rows, prior_goalie_rows)
-                    for row in metric_rows
-                    if games_played(row) >= 20 and player_name(row)
-                }
+            if include_edge:
+                for cache in (self.edge_detail_cache, self.edge_goalie_detail_cache):
+                    for key in tuple(cache):
+                        if key[1] == season:
+                            cache.pop(key, None)
+            nhl_eligible_names = {
+                normalize_name(player_name(row))
+                for kind, rows in (("skater", skater_rows), ("goalie", goalie_rows))
+                for row in rows
+                if games_played(row) >= METRIC_MIN_GAMES[kind] and player_name(row)
+            }
             preview: list[dict[str, object]] = []
             candidates = [
                 player
                 for player in self.player_index
                 if not player.is_hidden
+                and player.league_name != "Prospects"
                 and player.player_id not in manual_review_ids
                 and (
                     (
@@ -5013,7 +4930,7 @@ class NhlLegacyDesktopApp:
                     client=client,
                     mapper=mapper,
                     mp_rows=mp_rows,
-                    include_edge=False,
+                    include_edge=include_edge,
                     current_attributes=current_display_map,
                     position=position,
                     player_id=entry.player_id,
@@ -5089,7 +5006,7 @@ class NhlLegacyDesktopApp:
                         "metric_signature": metric.get("metric_signature") or "",
                         "metric_state_key": metric.get("metric_state_key") or "",
                         "metric_targets": metric.get("metric_targets") or {},
-                        "sources": f"MoneyPuck {metric.get('season_used', season)}",
+                        "sources": f"MoneyPuck {season}" + (" + NHL EDGE" if metric.get("edge_data") else ""),
                         "summary": "; ".join(suggestion_parts[:10]) + ("; ..." if len(suggestion_parts) > 10 else ""),
                     }
                 )
@@ -5594,9 +5511,9 @@ class NhlLegacyDesktopApp:
         selected_player_id = self.selected_player.player_id
         roster_team = self.selected_player.current_team_abbrev or self.selected_player.organization_abbrev
         try:
-            metrics_season = int(self.bulk_season_var.get() or 2025)
+            metrics_season = int(self.bulk_season_var.get() or current_nhl_season())
         except ValueError:
-            metrics_season = 2025
+            metrics_season = current_nhl_season()
         if hasattr(self, "edge_text"):
             self.edge_text.delete("1.0", "end")
             self.edge_text.insert("1.0", f"Loading advanced metrics for {player_name}...")
@@ -6193,7 +6110,7 @@ class NhlLegacyDesktopApp:
                 note = notes.get(label, "")
                 lines.append(f"{label}: {value}" + (f" | {note}" if note else ""))
         else:
-            lines.append("No 20+ GP MoneyPuck goalie base match was available, so no attribute targets were staged.")
+            lines.append("No eligible MoneyPuck goalie match for the selected season. No ratings were staged.")
         self.edge_text.insert("1.0", "\n".join(lines))
 
     def _apply_edge_suggestions(self) -> None:
@@ -6239,7 +6156,7 @@ class NhlLegacyDesktopApp:
             save_json_state(self.workspace, "update_errors.json", {})
             self._render_update_queue()
             self._refresh_review()
-            self._set_status(f"Found {len(queue.get('moves', []))} move proposals and {len(queue.get('create_candidates', []))} create candidates.")
+            self._set_status(f"Found {len(queue.get('moves', []))} move proposals for existing players.")
 
         self._run_background("Scanning CapWages", worker, success)
 
@@ -6285,12 +6202,6 @@ class NhlLegacyDesktopApp:
                 iid=f"move-{index}",
                 text=str(row.get("player_name") or ""),
                 values=(row.get("from_team") or "", row.get("to_team") or "", row.get("source") or "", reason),
-            )
-        self.create_candidate_list.delete(0, "end")
-        for row in self.update_queue.get("create_candidates", []):
-            self.create_candidate_list.insert(
-                "end",
-                f"{row.get('player_name')} | {row.get('team')} | {row.get('position') or '?'} | drafted {row.get('drafted_by') or '?'} {row.get('draft_year') or ''}",
             )
 
     def _update_move_token(self, row: dict[str, object]) -> str:

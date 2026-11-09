@@ -337,6 +337,7 @@ class MoneyPuckCSVClient:
                     if not (key[0] == start_year and key[1] == row_kind)
                 }
                 self._match_cache.clear()
+                self._name_index_by_rows_id.clear()
                 self._model_cache = {
                     key: value
                     for key, value in self._model_cache.items()
@@ -692,13 +693,19 @@ class MoneyPuckPercentileModel:
         self._cache[cache_key] = values
         return values
 
-    def percentile(self, row: dict[str, Any], keys: Sequence[str], *, inverse: bool = False, default: float = 0.5) -> float:
+    def percentile(
+        self, row: dict[str, Any], keys: Sequence[str], *,
+        inverse: bool = False, default: float = 0.5, midrank: bool = False,
+    ) -> float:
         value = number(row, *keys)
         if value is None:
             return default
         values = self.values(keys, inverse=inverse)
         if not values:
             return default
+        if midrank:
+            rank = (bisect_left(values, value) + bisect_right(values, value)) / (2 * len(values))
+            return 1.0 - rank if inverse else rank
         if inverse:
             # Lower raw values are better for metrics like penalties/giveaways.
             # A player with fewer events should rank higher, not lower.

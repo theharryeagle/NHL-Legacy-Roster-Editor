@@ -41,17 +41,6 @@ class MoveProposal:
     reason: str
 
 
-@dataclass(slots=True)
-class CreateCandidate:
-    player_name: str
-    team: str
-    position: str | None
-    drafted_by: str | None
-    draft_year: int | None
-    status: str | None
-    source: str
-
-
 def normalize_name(value: str) -> str:
     cleaned = " ".join(value.lower().split())
     if "," in cleaned:
@@ -173,18 +162,8 @@ def filter_redundant_organization_moves(
 
     filtered = dict(queue)
     filtered["moves"] = filtered_moves
-    filtered.setdefault("create_candidates", list(queue.get("create_candidates", [])))
+    filtered["create_candidates"] = []
     return filtered
-
-
-def _has_real_draft_info(row) -> bool:
-    values = [row.drafted_by, row.draft_year]
-    for value in values:
-        if value is None:
-            return False
-        if str(value).strip() in {"", "?", "None", "Unknown"}:
-            return False
-    return True
 
 
 def build_capwages_roster_update(
@@ -203,7 +182,6 @@ def build_capwages_roster_update(
 
     players_by_name, players_by_equivalent_name = build_player_name_indexes(player_index)
     move_proposals: list[MoveProposal] = []
-    create_candidates: list[CreateCandidate] = []
 
     fetched_contracts: dict[str, dict[str, list[object]]] = {}
     with ThreadPoolExecutor(max_workers=8) as executor:
@@ -242,19 +220,6 @@ def build_capwages_roster_update(
             if roster_matches and all(bool(getattr(player, "is_hidden", False)) for player in roster_matches):
                 continue
             if not roster_matches:
-                if not _has_real_draft_info(row):
-                    continue
-                create_candidates.append(
-                    CreateCandidate(
-                        player_name=normalize_name(row.name).title(),
-                        team=target_team_abbrev,
-                        position=row.position,
-                        drafted_by=row.drafted_by,
-                        draft_year=row.draft_year,
-                        status=row.status,
-                        source="CapWages",
-                    )
-                )
                 continue
             eligible_matches = [
                 player
@@ -308,14 +273,7 @@ def build_capwages_roster_update(
     for proposal in move_proposals:
         dedup_moves[(proposal.player_id, proposal.to_team)] = proposal
 
-    dedup_creates: dict[tuple[str, str], CreateCandidate] = {}
-    for candidate in create_candidates:
-        dedup_creates[(candidate.player_name, candidate.team)] = candidate
-
     return {
         "moves": [asdict(item) for item in sorted(dedup_moves.values(), key=lambda item: (item.to_team, item.player_name))],
-        "create_candidates": [
-            asdict(item)
-            for item in sorted(dedup_creates.values(), key=lambda item: (item.team, item.player_name))
-        ],
+        "create_candidates": [],
     }

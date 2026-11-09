@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from functools import partial
 from typing import Any, Sequence
 
 from .moneypuck_scraper import (
@@ -488,27 +489,18 @@ class LegacyAttributeMapper:
         self.model = model
         self._recommendation_cache: dict[tuple[object, ...], RecommendationSet] = {}
 
-    def _p(
-        self,
-        row: dict[str, Any],
-        keys: Sequence[str],
-        *,
-        inverse: bool = False,
-        default: float = 0.5,
-    ) -> float:
-        return self.model.percentile(row, keys, inverse=inverse, default=default)
-
     def _weighted_score(
         self,
         row: dict[str, Any],
         parts: Sequence[tuple[Sequence[str], float, bool]],
         *,
         extras: Sequence[tuple[float | None, float]] = (),
+        midrank: bool = False,
     ) -> float:
         total_weight = 0.0
         score = 0.0
         for keys, weight, inverse in parts:
-            score += self._p(row, keys, inverse=inverse) * weight
+            score += self.model.percentile(row, keys, inverse=inverse, midrank=midrank) * weight
             total_weight += weight
         for value, weight in extras:
             if value is None or weight <= 0:
@@ -549,8 +541,15 @@ class LegacyAttributeMapper:
         note: str,
         *,
         extras: Sequence[tuple[float | None, float]] = (),
+        require_data: bool = False,
     ) -> None:
-        rec.add(label, rating_from_score(self._weighted_score(row, parts, extras=extras), floor, ceiling), note)
+        if require_data:
+            if label == "Durability":
+                return
+            parts = [part for part in parts if number(row, *part[0]) is not None]
+            if not parts and not any(value is not None for value, _ in extras):
+                return
+        rec.add(label, rating_from_score(self._weighted_score(row, parts, extras=extras, midrank=require_data), floor, ceiling), note)
 
     def money_puck_recommendations(
         self,
@@ -558,12 +557,13 @@ class LegacyAttributeMapper:
         min_games: int = 20,
         *,
         player_bio: dict[str, Any] | None = None,
+        season_performance: bool = False,
     ) -> RecommendationSet:
         size_key = (
             number(player_bio or {}, "heightInInches", "height_in_inches"),
             number(player_bio or {}, "weightInPounds", "weight_in_pounds"),
         )
-        cache_key = ("skater", id(row), min_games, *size_key)
+        cache_key = ("skater", id(row), min_games, season_performance, *size_key)
         cached = self._recommendation_cache.get(cache_key)
         if cached is not None:
             return clone_recommendation_set(cached)
@@ -571,6 +571,7 @@ class LegacyAttributeMapper:
             row,
             min_games=min_games,
             player_bio=player_bio,
+            season_performance=season_performance,
         )
         self._recommendation_cache[cache_key] = clone_recommendation_set(result)
         return result
@@ -581,6 +582,7 @@ class LegacyAttributeMapper:
         min_games: int = 20,
         *,
         player_bio: dict[str, Any] | None = None,
+        season_performance: bool = False,
     ) -> RecommendationSet:
         rec = RecommendationSet()
         gp = games_played(row)
@@ -588,13 +590,13 @@ class LegacyAttributeMapper:
             rec.skipped_reason = f"Skipped: {gp} GP, minimum is {min_games}."
             return rec
 
-        add = self.add_weighted
+        add = partial(self.add_weighted, require_data=season_performance)
         size_score = self._size_score(player_bio)
         position = self._position(row)
         is_defense = position == "D"
         won, taken = faceoff_won_taken(row)
         faceoff_defense_score = None
-        if position == "D":
+        if position == "D" and not season_performance:
             rec.add("Face-offs", 36, "defenseman fixed value")
         elif won is not None and taken is not None and taken > 0:
             pct_score = max(0.0, min(1.0, (((won / taken) * 100.0) - 45.0) / 15.0))
@@ -646,8 +648,11 @@ class LegacyAttributeMapper:
                 volume_cap = 99
             faceoff_rating = max(60, min(volume_cap, int(faceoff_rating)))
             rec.add("Face-offs", faceoff_rating, f"{int(won)}/{int(taken)} faceoffs ({pct_percent:.1f}%); volume cap {volume_cap}")
-        else:
+        elif not season_performance:
             rec.add("Face-offs", 60, "forward minimum: no recorded faceoffs")
+
+        if season_performance:
+            return rec
 
         shots = number(row, "_shots", default=0) or 0
         goals = number(row, "_goals", default=0) or 0
@@ -717,23 +722,27 @@ class LegacyAttributeMapper:
         )
         return rec
 
-    def goalie_recommendations(self, row: dict[str, Any], min_games: int = 20) -> RecommendationSet:
-        cache_key = ("goalie", id(row), min_games)
+    def goalie_recommendations(
+        self, row: dict[str, Any], min_games: int = 20, *, season_performance: bool = False
+    ) -> RecommendationSet:
+        cache_key = ("goalie", id(row), min_games, season_performance)
         cached = self._recommendation_cache.get(cache_key)
         if cached is not None:
             return clone_recommendation_set(cached)
-        result = self._goalie_recommendations_uncached(row, min_games=min_games)
+        result = self._goalie_recommendations_uncached(row, min_games=min_games, season_performance=season_performance)
         self._recommendation_cache[cache_key] = clone_recommendation_set(result)
         return result
 
-    def _goalie_recommendations_uncached(self, row: dict[str, Any], min_games: int = 20) -> RecommendationSet:
+    def _goalie_recommendations_uncached(
+        self, row: dict[str, Any], min_games: int = 20, *, season_performance: bool = False
+    ) -> RecommendationSet:
         rec = RecommendationSet()
         gp = games_played(row)
         if gp < min_games:
             rec.skipped_reason = f"Skipped: {gp} GP, minimum is {min_games}."
             return rec
 
-        add = self.add_weighted
+        add = partial(self.add_weighted, require_data=season_performance)
         core = [(("_save_pct",), 0.28, False), (("_goals_saved_above_expected",), 0.24, False), (("_gsae_per60",), 0.16, False), (("_high_danger_save_pct",), 0.18, False), (("_toi_per_gp",), 0.14, False)]
         low = [(("_low_danger_save_pct",), 0.34, False), (("_save_pct",), 0.22, False), (("_goals_saved_above_expected",), 0.18, False), (("_rebound_rate",), 0.14, True), (("_freeze_rate",), 0.12, False)]
         high = [(("_high_danger_save_pct",), 0.38, False), (("_gsae_per60",), 0.22, False), (("_save_pct",), 0.18, False), (("_rebound_rate",), 0.12, True), (("_shots_against_per60",), 0.10, False)]
@@ -752,12 +761,15 @@ class LegacyAttributeMapper:
         add(rec, row, "Shot Recovery", [(("_rebound_rate",), 0.44, True), (("_freeze_rate",), 0.20, False), (("_gsae_per60",), 0.18, False), (("_save_pct",), 0.18, False)], 72, 99, "low rebound rate, freeze rate, GSAE rate, save pct")
         add(rec, row, "Rebound Control", [(("_rebound_rate",), 0.52, True), (("_freeze_rate",), 0.18, False), (("_save_pct",), 0.16, False), (("_gsae_per60",), 0.14, False)], 72, 99, "rebound rate weighted heavily, with freeze/save/GSAE context")
         add(rec, row, "Poise", core, 74, 99, "overall goalie impact under workload: save pct, GSAE, high-danger saves, TOI")
-        add(rec, row, "Passing", [(("_freeze_rate",), 0.25, True), (("_rebound_rate",), 0.25, True), (("_save_pct",), 0.20, False), (("_toi_per_gp",), 0.15, False), (("_gsae_per60",), 0.15, False)], 45, 88, "limited puck-play proxy; no direct passing feed available")
         add(rec, row, "Angles", [(("_save_pct",), 0.28, False), (("_goals_against_per60",), 0.22, True), (("_high_danger_save_pct",), 0.20, False), (("_medium_danger_save_pct",), 0.18, False), (("_gsae_per60",), 0.12, False)], 74, 99, "positioning proxy: save pct, goals-against rate, danger-zone save pct")
-        add(rec, row, "Puck Play Frequency", [(("_freeze_rate",), 0.28, True), (("_rebound_rate",), 0.24, True), (("_shots_against_per60",), 0.20, False), (("_toi_per_gp",), 0.16, False), (("_save_pct",), 0.12, False)], 40, 86, "limited puck-touch proxy from freezes/rebounds/workload")
         add(rec, row, "Aggressiveness", [(("_shots_against_per60",), 0.30, False), (("_high_danger_save_pct",), 0.22, False), (("_rebound_rate",), 0.18, True), (("_freeze_rate",), 0.16, False), (("_gsae_per60",), 0.14, False)], 45, 92, "shot workload, high-danger saves, rebound/freeze profile")
         add(rec, row, "Durability", [(("games_played", "gamesPlayed"), 0.60, False), (("_toi_per_gp",), 0.28, False), (("_shots_against_per60",), 0.12, False)], 70, 98, "games, TOI/game, shots faced")
         add(rec, row, "Vision", core, 72, 99, "save pct, GSAE, high-danger saves, workload")
+        if season_performance:
+            return rec
+
+        add(rec, row, "Passing", [(("_freeze_rate",), 0.25, True), (("_rebound_rate",), 0.25, True), (("_save_pct",), 0.20, False), (("_toi_per_gp",), 0.15, False), (("_gsae_per60",), 0.15, False)], 45, 88, "limited puck-play proxy; no direct passing feed available")
+        add(rec, row, "Puck Play Frequency", [(("_freeze_rate",), 0.28, True), (("_rebound_rate",), 0.24, True), (("_shots_against_per60",), 0.20, False), (("_toi_per_gp",), 0.16, False), (("_save_pct",), 0.12, False)], 40, 86, "limited puck-touch proxy from freezes/rebounds/workload")
         baseline_score = self._weighted_score(
             row,
             [
